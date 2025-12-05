@@ -47,13 +47,20 @@ export async function POST(request: NextRequest) {
     // Проверяем, находимся ли мы на Vercel (через переменную окружения)
     const isVercel = process.env.VERCEL === '1' || process.env.BLOB_READ_WRITE_TOKEN;
 
-    if (isVercel && process.env.BLOB_READ_WRITE_TOKEN) {
+    if (isVercel) {
       // Используем Vercel Blob Storage на продакшене
       try {
-        const blob = await put(fileName, file, {
+        // Создаём опции для put
+        const putOptions: { access: 'public'; token?: string } = {
           access: 'public',
-          token: process.env.BLOB_READ_WRITE_TOKEN,
-        });
+        };
+        
+        // Добавляем токен только если он указан
+        if (process.env.BLOB_READ_WRITE_TOKEN) {
+          putOptions.token = process.env.BLOB_READ_WRITE_TOKEN;
+        }
+
+        const blob = await put(fileName, file, putOptions);
 
         return NextResponse.json({ 
           success: true, 
@@ -66,7 +73,7 @@ export async function POST(request: NextRequest) {
         console.error('Ошибка загрузки в Vercel Blob:', blobError);
         return NextResponse.json(
           { 
-            error: 'Ошибка загрузки в хранилище. Убедитесь, что BLOB_READ_WRITE_TOKEN настроен в Vercel.',
+            error: 'Ошибка загрузки в хранилище. Убедитесь, что Blob Storage настроен в Vercel.',
             details: blobError.message
           },
           { status: 500 }
