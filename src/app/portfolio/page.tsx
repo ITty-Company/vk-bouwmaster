@@ -78,11 +78,11 @@ export default function PortfolioPage() {
     window.addEventListener('focus', onFocus)
     document.addEventListener('visibilitychange', onVisible)
     
-    // Автообновление каждые 15 секунд
+    // Автообновление каждые 5 секунд для быстрого отображения новых работ
     const interval = setInterval(() => {
       fetchWorks()
       fetchReviews()
-    }, 15000)
+    }, 5000)
     
     return () => {
       window.removeEventListener('focus', onFocus)

@@ -930,7 +930,16 @@ export default function AdminPage() {
 
       if (response.ok) {
         const result = await response.json();
-        alert(editingWork ? 'Работа обновлена! Переводы обновлены автоматически.' : 'Работа добавлена! Переводы созданы автоматически на все языки.');
+        const work = result.work || result;
+        const imagesCount = work.images?.length || 0;
+        const videosCount = work.videos?.length || 0;
+        
+        if (editingWork) {
+          alert(`Работа обновлена!\n\nФото: ${imagesCount}\nВидео: ${videosCount}\n\nПереводы обновлены автоматически. Работа появится на сайте в течение 5 секунд.`);
+        } else {
+          alert(`Работа успешно добавлена!\n\nФото: ${imagesCount}\nВидео: ${videosCount}\n\nПереводы созданы автоматически на все языки. Работа появится в админ-панели и на сайте (Портфолио, Мои работы) в течение 5 секунд.`);
+        }
+        
         setWorksFormData({
           title: '',
           description: '',

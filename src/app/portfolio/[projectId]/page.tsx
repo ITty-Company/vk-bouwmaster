@@ -107,6 +107,23 @@ export default function PortfolioDetailPage() {
   useEffect(() => {
     fetchWorks()
     fetchComments()
+    
+    // Автообновление работ каждые 5 секунд для быстрого отображения новых работ
+    const interval = setInterval(() => {
+      fetchWorks()
+    }, 5000)
+    
+    // Автообновление при фокусе окна
+    const onFocus = () => {
+      fetchWorks()
+    }
+    
+    window.addEventListener('focus', onFocus)
+    
+    return () => {
+      clearInterval(interval)
+      window.removeEventListener('focus', onFocus)
+    }
   }, [projectId])
 
   const fetchWorks = async () => {
