@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { translateWork } from '@/lib/translate';
-import { put } from '@vercel/blob';
+import { put } from '@vercel/blob'; // Только put, без get
 
 const WORKS_FILE = join(process.cwd(), 'src/lib/works-data.json');
 const WORKS_BLOB_KEY = 'works-data.json';
