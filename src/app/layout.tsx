@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "VK Bouwmaster - Professionele Renovatiediensten",
   description: "VK Bouwmaster biedt professionele renovatiediensten, waaronder tegelwerk, dakreparaties, loodgieterswerk, schilderwerk en tuinontwerp. Transformeer uw huis met ons team van experts.",
   keywords: "renovatie, huisverbetering, bouw, tegelwerk, dakreparaties, loodgieterswerk, schilderwerk, tuinontwerp, bouwmeester, verbouwing",
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+    shortcut: '/icon.png',
+  },
   openGraph: {
     url: "https://vkbouwmaster.com",
     title: "VK Bouwmaster - Professionele Renovatiediensten",
