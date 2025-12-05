@@ -2,10 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { translateWork } from '@/lib/translate';
-import { put } from '@vercel/blob'; // Только put, без get
 
 const WORKS_FILE = join(process.cwd(), 'src/lib/works-data.json');
-const WORKS_BLOB_KEY = 'works-data.json';
 
 export interface WorkTranslations {
   title: string;
@@ -29,21 +27,7 @@ export interface PortfolioWork {
 }
 
 async function readWorksData(): Promise<PortfolioWork[]> {
-  const isVercel = process.env.VERCEL === '1' || process.env.BLOB_READ_WRITE_TOKEN;
-  if (isVercel) {
-    // Публичный fetch вместо get!
-    const url = 'https://vk-bouwmaster-blob.public.blob.vercel-storage.com/works-data.json';
-    try {
-      const response = await fetch(url);
-      if (!response.ok) return [];
-      const text = await response.text();
-      return text ? JSON.parse(text) : [];
-    } catch (error) {
-      console.error('Error reading from Blob:', error);
-      return [];
-    }
-  }
-  // Локальное чтение
+  // Локальное чтение из файла
   try {
     const data = readFileSync(WORKS_FILE, 'utf-8');
     return JSON.parse(data);
@@ -53,31 +37,12 @@ async function readWorksData(): Promise<PortfolioWork[]> {
 }
 
 async function writeWorksData(data: PortfolioWork[]): Promise<void> {
-  const isVercel = process.env.VERCEL === '1' || process.env.BLOB_READ_WRITE_TOKEN;
-  
-  if (isVercel && process.env.BLOB_READ_WRITE_TOKEN) {
-    // Используем Vercel Blob Storage на продакшене
-    try {
-      const jsonData = JSON.stringify(data, null, 2);
-      await put(WORKS_BLOB_KEY, jsonData, {
-        access: 'public',
-        token: process.env.BLOB_READ_WRITE_TOKEN,
-      });
-    } catch (error: any) {
-      console.error('Error writing to Blob:', error);
-      throw new Error(`Ошибка записи в хранилище: ${error.message || 'Неизвестная ошибка'}`);
-    }
-  } else {
-    // Локальная запись в файл
-    try {
-  writeFileSync(WORKS_FILE, JSON.stringify(data, null, 2), 'utf-8');
-    } catch (error: any) {
-      // Проверяем, не является ли это ошибкой файловой системы (например, на Vercel)
-      if (error.code === 'EROFS' || error.code === 'EACCES' || error.message?.includes('read-only')) {
-        throw new Error('Файловая система доступна только для чтения. На Vercel нужно использовать Vercel Blob Storage.');
-      }
-      throw error;
-    }
+  // Локальная запись в файл
+  try {
+    writeFileSync(WORKS_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (error: any) {
+    console.error('Error writing works data:', error);
+    throw new Error(`Ошибка записи данных: ${error.message || 'Неизвестная ошибка'}`);
   }
 }
 

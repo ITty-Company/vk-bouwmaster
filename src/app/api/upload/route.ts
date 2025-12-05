@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
-import { put } from '@vercel/blob';
 
 // Увеличиваем лимит размера файла (до 100MB)
 export const maxDuration = 60;
@@ -42,87 +41,49 @@ export async function POST(request: NextRequest) {
     // Генерируем уникальное имя файла
     const timestamp = Date.now();
     const originalName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-    const fileName = `uploads/${timestamp}_${originalName}`;
+    
+    // Локальная загрузка в public/uploads
+    const uploadDir = join(process.cwd(), 'public', 'uploads');
+    try {
+      if (!existsSync(uploadDir)) {
+        await mkdir(uploadDir, { recursive: true });
+      }
+    } catch (dirError) {
+      console.error('Ошибка создания директории:', dirError);
+    }
 
-    // Проверяем, находимся ли мы на Vercel (через переменную окружения)
-    const isVercel = process.env.VERCEL === '1' || process.env.BLOB_READ_WRITE_TOKEN;
+    const filePath = join(uploadDir, `${timestamp}_${originalName}`);
 
-    if (isVercel) {
-      // Используем Vercel Blob Storage на продакшене
-      try {
-        // Создаём опции для put
-        const putOptions: { access: 'public'; token?: string } = {
-          access: 'public',
-        };
-        
-        // Добавляем токен только если он указан
-        if (process.env.BLOB_READ_WRITE_TOKEN) {
-          putOptions.token = process.env.BLOB_READ_WRITE_TOKEN;
-        }
-
-        const blob = await put(fileName, file, putOptions);
-
-        return NextResponse.json({ 
-          success: true, 
-          url: blob.url,
-          fileName: fileName,
-          size: file.size,
-          type: file.type
-        });
-      } catch (blobError: any) {
-        console.error('Ошибка загрузки в Vercel Blob:', blobError);
+    try {
+      // Конвертируем File в Buffer и сохраняем
+      const bytes = await file.arrayBuffer();
+      const buffer = Buffer.from(bytes);
+      await writeFile(filePath, buffer);
+    } catch (writeError: any) {
+      console.error('Ошибка записи файла:', writeError);
+      
+      if (writeError.code === 'EROFS' || writeError.code === 'EACCES' || writeError.message?.includes('read-only')) {
         return NextResponse.json(
           { 
-            error: 'Ошибка загрузки в хранилище. Убедитесь, что Blob Storage настроен в Vercel.',
-            details: blobError.message
+            error: 'Файловая система доступна только для чтения.',
+            code: 'READ_ONLY_FS'
           },
           { status: 500 }
         );
       }
-    } else {
-      // Локальная загрузка в public/uploads
-      const uploadDir = join(process.cwd(), 'public', 'uploads');
-      try {
-        if (!existsSync(uploadDir)) {
-          await mkdir(uploadDir, { recursive: true });
-        }
-      } catch (dirError) {
-        console.error('Ошибка создания директории:', dirError);
-      }
-
-      const filePath = join(uploadDir, `${timestamp}_${originalName}`);
-
-      try {
-        // Конвертируем File в Buffer и сохраняем
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-        await writeFile(filePath, buffer);
-      } catch (writeError: any) {
-        console.error('Ошибка записи файла:', writeError);
-        
-        if (writeError.code === 'EROFS' || writeError.code === 'EACCES' || writeError.message?.includes('read-only')) {
-          return NextResponse.json(
-            { 
-              error: 'Файловая система доступна только для чтения. На Vercel используйте Vercel Blob Storage.',
-              code: 'READ_ONLY_FS'
-            },
-            { status: 500 }
-          );
-        }
-        throw writeError;
-      }
-
-      // Возвращаем URL файла
-      const fileUrl = `/uploads/${timestamp}_${originalName}`;
-
-      return NextResponse.json({ 
-        success: true, 
-        url: fileUrl,
-        fileName: `${timestamp}_${originalName}`,
-        size: file.size,
-        type: file.type
-      });
+      throw writeError;
     }
+
+    // Возвращаем URL файла
+    const fileUrl = `/uploads/${timestamp}_${originalName}`;
+
+    return NextResponse.json({ 
+      success: true, 
+      url: fileUrl,
+      fileName: `${timestamp}_${originalName}`,
+      size: file.size,
+      type: file.type
+    });
   } catch (error: any) {
     console.error('Ошибка загрузки файла:', error);
     const errorMessage = error.message || 'Ошибка при загрузке файла';
@@ -146,42 +107,25 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const isVercel = process.env.VERCEL === '1' || process.env.BLOB_READ_WRITE_TOKEN;
+    // Локальное удаление
+    if (!fileName) {
+      return NextResponse.json(
+        { error: 'Имя файла не указано' },
+        { status: 400 }
+      );
+    }
 
-    if (isVercel && blobUrl) {
-      // Удаление из Vercel Blob Storage
-      try {
-        const { del } = await import('@vercel/blob');
-        await del(blobUrl, { token: process.env.BLOB_READ_WRITE_TOKEN });
-        return NextResponse.json({ success: true });
-      } catch (error: any) {
-        console.error('Ошибка удаления из Blob:', error);
-        return NextResponse.json(
-          { error: 'Ошибка при удалении файла из хранилища' },
-          { status: 500 }
-        );
-      }
-    } else {
-      // Локальное удаление
-      if (!fileName) {
-        return NextResponse.json(
-          { error: 'Имя файла не указано' },
-          { status: 400 }
-        );
-      }
-
-      const filePath = join(process.cwd(), 'public', 'uploads', fileName);
-      const { unlink } = await import('fs/promises');
-      
-      try {
-        await unlink(filePath);
-        return NextResponse.json({ success: true });
-      } catch (error) {
-        return NextResponse.json(
-          { error: 'Файл не найден' },
-          { status: 404 }
-        );
-      }
+    const filePath = join(process.cwd(), 'public', 'uploads', fileName);
+    const { unlink } = await import('fs/promises');
+    
+    try {
+      await unlink(filePath);
+      return NextResponse.json({ success: true });
+    } catch (error) {
+      return NextResponse.json(
+        { error: 'Файл не найден' },
+        { status: 404 }
+      );
     }
   } catch (error) {
     return NextResponse.json(

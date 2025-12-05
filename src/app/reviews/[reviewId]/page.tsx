@@ -223,7 +223,7 @@ export default function ReviewMediaPage() {
                   ? review.translations[currentLanguage] 
                   : review.message}
               </p>
-            </div>
+          </div>
           </motion.div>
         </div>
       </div>
@@ -296,30 +296,30 @@ export default function ReviewMediaPage() {
           )}
           <div className="bg-gradient-to-br from-gray-900/90 via-gray-900/80 to-gray-900/90 border-2 border-blue-700/40 rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl shadow-blue-900/20 backdrop-blur-sm">
             <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed whitespace-pre-wrap">
-              {review.translations && review.translations[currentLanguage] 
-                ? review.translations[currentLanguage] 
-                : review.message}
-            </p>
+            {review.translations && review.translations[currentLanguage] 
+              ? review.translations[currentLanguage] 
+              : review.message}
+          </p>
           </div>
         </motion.div>
 
         {/* Заголовок галереи */}
         {allMedia.length > 0 && (
           <>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
               className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 md:mb-8 text-center mt-6 sm:mt-8"
-            >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-300">
-                {t.reviews?.detail?.photosAndVideos || t.reviews?.list?.photosAndVideos || 'Photos and videos from review'}
-              </span>
-            </motion.h2>
+        >
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-300">
+            {t.reviews?.detail?.photosAndVideos || t.reviews?.list?.photosAndVideos || 'Photos and videos from review'}
+          </span>
+        </motion.h2>
 
-            {/* Галерея */}
+        {/* Галерея */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
-              {allMedia.map((media, idx) => (
+          {allMedia.map((media, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -350,8 +350,8 @@ export default function ReviewMediaPage() {
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.div>
-              ))}
-            </div>
+          ))}
+        </div>
           </>
         )}
       </div>

@@ -52,22 +52,22 @@ export async function GET(request: NextRequest) {
     }
     
     // Для всех остальных языков (включая NL по умолчанию) возвращаем переводы
-    const translated = data.map(category => {
-      const translation = category.translations?.[lang];
-      if (translation) {
-        return {
-          ...category,
-          title: translation.title,
-          questions: category.questions.map((q, idx) => ({
-            ...q,
-            question: translation.questions[idx]?.question || q.question,
-            answer: translation.questions[idx]?.answer || q.answer
-          }))
-        };
-      }
-      return category;
-    });
-    return NextResponse.json(translated);
+      const translated = data.map(category => {
+        const translation = category.translations?.[lang];
+        if (translation) {
+          return {
+            ...category,
+            title: translation.title,
+            questions: category.questions.map((q, idx) => ({
+              ...q,
+              question: translation.questions[idx]?.question || q.question,
+              answer: translation.questions[idx]?.answer || q.answer
+            }))
+          };
+        }
+        return category;
+      });
+      return NextResponse.json(translated);
   } catch (error) {
     return NextResponse.json(
       { error: 'Ошибка при чтении данных' },
