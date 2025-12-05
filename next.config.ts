@@ -35,6 +35,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'vk-bouwmaster.onrender.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
     // Разрешаем неоптимизированные изображения для локальных файлов
     unoptimized: false,
