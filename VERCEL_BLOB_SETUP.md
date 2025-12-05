@@ -11,27 +11,28 @@ Vercel Blob Storage — это облачное хранилище файлов 
 
 ## Настройка (5 минут)
 
-### Шаг 1: Получите токен в Vercel
+### Шаг 1: Создайте Blob Storage в Vercel
 
 1. Откройте [Vercel Dashboard](https://vercel.com/dashboard)
 2. Выберите ваш проект `vk-bouwmaster`
-3. Перейдите в **Settings** → **Storage**
+3. Перейдите в **Settings** → **Storage** (в верхней навигации)
 4. Нажмите **Create Database** или **Add Storage**
 5. Выберите **Blob**
 6. Создайте Blob Storage (назовите его, например, `vk-bouwmaster-blob`)
-7. После создания перейдите в **Settings** → **Storage** → выберите ваш Blob
-8. В разделе **Environment Variables** найдите `BLOB_READ_WRITE_TOKEN`
-9. Скопируйте этот токен
+7. После создания Vercel автоматически добавит переменную окружения `BLOB_READ_WRITE_TOKEN`
 
-### Шаг 2: Добавьте токен в переменные окружения Vercel
+### Шаг 2: Проверьте переменные окружения (опционально)
 
-1. В Vercel Dashboard перейдите в **Settings** → **Environment Variables**
-2. Нажмите **Add New**
-3. Добавьте:
-   - **Name**: `BLOB_READ_WRITE_TOKEN`
-   - **Value**: вставьте скопированный токен
-   - **Environment**: выберите **Production**, **Preview**, и **Development**
-4. Нажмите **Save**
+**Обычно токен добавляется автоматически**, но если нужно проверить:
+
+1. В Vercel Dashboard перейдите в **Settings** → **Environment Variables** (в левом меню)
+2. Найдите переменную `BLOB_READ_WRITE_TOKEN`
+3. Если её нет, добавьте вручную:
+   - Нажмите **Add New**
+   - **Key**: `BLOB_READ_WRITE_TOKEN`
+   - **Value**: получите токен из **Storage** → выберите ваш Blob → **Settings** → **Environment Variables**
+   - **Environments**: выберите **Production**, **Preview**, и **Development**
+   - Нажмите **Save**
 
 ### Шаг 3: Перезапустите деплой
 
