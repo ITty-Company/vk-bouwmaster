@@ -835,7 +835,13 @@ export default function AdminPage() {
       const url = await handleFileUpload(file);
       if (url) {
         setWorksFormData({ ...worksFormData, mainImage: url });
+        console.log('Основное фото загружено:', url);
+      } else {
+        alert('Не удалось загрузить основное фото. Проверьте консоль браузера для деталей.');
       }
+    } catch (error) {
+      console.error('Ошибка загрузки основного фото:', error);
+      alert('Ошибка при загрузке основного фото');
     } finally {
       setUploading(false);
     }
