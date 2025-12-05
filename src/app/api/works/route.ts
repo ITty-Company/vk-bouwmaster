@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { translateWork } from '@/lib/translate';
-import { get, put } from '@vercel/blob';
+import { put } from '@vercel/blob';
 
 const WORKS_FILE = join(process.cwd(), 'src/lib/works-data.json');
 const WORKS_BLOB_KEY = 'works-data.json';
@@ -30,30 +30,25 @@ export interface PortfolioWork {
 
 async function readWorksData(): Promise<PortfolioWork[]> {
   const isVercel = process.env.VERCEL === '1' || process.env.BLOB_READ_WRITE_TOKEN;
-  
-  if (isVercel && process.env.BLOB_READ_WRITE_TOKEN) {
-    // Используем Vercel Blob Storage на продакшене
+  if (isVercel) {
+    // Публичный fetch вместо get!
+    const url = 'https://vk-bouwmaster-blob.public.blob.vercel-storage.com/works-data.json';
     try {
-      const blob = await get(WORKS_BLOB_KEY, { token: process.env.BLOB_READ_WRITE_TOKEN });
-      const text = await blob.text();
-      return JSON.parse(text || '[]');
-    } catch (error: any) {
-      // Если файл не существует, возвращаем пустой массив
-      if (error.statusCode === 404) {
-        return [];
-      }
+      const response = await fetch(url);
+      if (!response.ok) return [];
+      const text = await response.text();
+      return text ? JSON.parse(text) : [];
+    } catch (error) {
       console.error('Error reading from Blob:', error);
       return [];
     }
-  } else {
-    // Локальное чтение из файла
-    try {
-      const data = readFileSync(WORKS_FILE, 'utf-8');
-      return JSON.parse(data);
-    } catch (error) {
-      // Если файл не существует, возвращаем пустой массив
-      return [];
-    }
+  }
+  // Локальное чтение
+  try {
+    const data = readFileSync(WORKS_FILE, 'utf-8');
+    return JSON.parse(data);
+  } catch {
+    return [];
   }
 }
 
@@ -75,7 +70,7 @@ async function writeWorksData(data: PortfolioWork[]): Promise<void> {
   } else {
     // Локальная запись в файл
     try {
-      writeFileSync(WORKS_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  writeFileSync(WORKS_FILE, JSON.stringify(data, null, 2), 'utf-8');
     } catch (error: any) {
       // Проверяем, не является ли это ошибкой файловой системы (например, на Vercel)
       if (error.code === 'EROFS' || error.code === 'EACCES' || error.message?.includes('read-only')) {
@@ -278,4 +273,5 @@ export async function DELETE(request: NextRequest) {
     );
   }
 }
+
 
