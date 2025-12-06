@@ -117,8 +117,8 @@ export default function PricingPage() {
           {pricingData.packages.length === 0 ? (
             <div className="text-center py-16 border-2 border-dashed border-gray-700 rounded-lg bg-gray-900/30">
               <div className="text-6xl mb-4">💰</div>
-              <p className="text-gray-300 text-xl font-medium mb-2">{t.pricing?.noPackages?.title || 'No pricing packages yet'}</p>
-              <p className="text-gray-500 text-sm">{t.pricing?.noPackages?.subtitle || 'Add pricing packages through the admin panel'}</p>
+              <p className="text-gray-300 text-xl font-medium mb-2">No pricing packages yet</p>
+              <p className="text-gray-500 text-sm">Add pricing packages through the admin panel</p>
             </div>
           ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
