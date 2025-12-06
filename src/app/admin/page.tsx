@@ -1042,6 +1042,7 @@ export default function AdminPage() {
           category: '',
           projectId: '',
           images: [],
+          videos: [],
           workDate: new Date().toISOString().split('T')[0],
           city: '',
           translations: {},
