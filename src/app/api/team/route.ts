@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
     // Если запрашивается исходный язык (определяем автоматически), возвращаем оригинальные данные
     // Для всех остальных языков возвращаем переводы
     if (lang === 'RU' || lang === 'EN') {
-      return NextResponse.json(data);
+    return NextResponse.json(data);
     }
     
     // Для всех остальных языков возвращаем переводы

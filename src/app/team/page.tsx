@@ -86,41 +86,41 @@ export default function TeamPage() {
               <p className="text-gray-500 text-sm">{t.team?.noMembers?.subtitle || 'Add team members through the admin panel'}</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {teamMembers.map((member) => (
                 <div key={member.id} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="relative">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-80 object-cover"
-                    />
+                <div className="relative">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-80 object-cover"
+                  />
+                </div>
+                
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-white mb-2">{member.name}</h3>
+                  <p className="text-blue-400 font-medium mb-3">{member.position}</p>
+                  <p className="text-gray-300 mb-4 text-sm">{member.bio}</p>
+                  
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-white mb-2 text-sm">{t.team.specialties}</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {member.specialties.map((specialty, specialtyIndex) => (
+                        <span
+                          key={specialtyIndex}
+                          className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs"
+                        >
+                          {specialty}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                   
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-white mb-2">{member.name}</h3>
-                    <p className="text-blue-400 font-medium mb-3">{member.position}</p>
-                    <p className="text-gray-300 mb-4 text-sm">{member.bio}</p>
-                    
-                    <div className="mb-4">
-                      <h4 className="font-semibold text-white mb-2 text-sm">{t.team.specialties}</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {member.specialties.map((specialty, specialtyIndex) => (
-                          <span
-                            key={specialtyIndex}
-                            className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs"
-                          >
-                            {specialty}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div className="text-sm text-gray-300">{t.team.experience} {member.experience}</div>
-                  </div>
+                  <div className="text-sm text-gray-300">{t.team.experience} {member.experience}</div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
           )}
         </div>
       </section>

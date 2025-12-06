@@ -121,50 +121,50 @@ export default function PricingPage() {
               <p className="text-gray-500 text-sm">{t.pricing?.noPackages?.subtitle || 'Add pricing packages through the admin panel'}</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {pricingData.packages.map((plan) => (
-                <div
+              <div
                   key={plan.id}
-                  className={`relative bg-gray-800 rounded-lg shadow-lg p-8 ${
-                    plan.popular ? 'ring-2 ring-blue-600 transform scale-105' : ''
+                className={`relative bg-gray-800 rounded-lg shadow-lg p-8 ${
+                  plan.popular ? 'ring-2 ring-blue-600 transform scale-105' : ''
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">{t.pricing.packages.popular}</span>
+                  </div>
+                )}
+                
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                  <p className="text-gray-300 mb-4">{plan.description}</p>
+                  <div className="text-3xl font-bold text-blue-400">{plan.price}</div>
+                </div>
+                
+                <ul className="space-y-4 mb-8">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center">
+                      <svg className="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <Link
+                  href="/contact"
+                  className={`w-full py-3 px-6 rounded-lg font-semibold text-center transition-colors ${
+                    plan.popular
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                   }`}
                 >
-                  {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">{t.pricing.packages.popular}</span>
-                    </div>
-                  )}
-                  
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                    <p className="text-gray-300 mb-4">{plan.description}</p>
-                    <div className="text-3xl font-bold text-blue-400">{plan.price}</div>
-                  </div>
-                  
-                  <ul className="space-y-4 mb-8">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center">
-                        <svg className="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-gray-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <Link
-                    href="/contact"
-                    className={`w-full py-3 px-6 rounded-lg font-semibold text-center transition-colors ${
-                      plan.popular
-                        ? 'bg-blue-600 text-white hover:bg-blue-700'
-                        : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                    }`}
-                  >
-                    {t.common?.getQuote || 'Get Quote'}
-                  </Link>
-                </div>
-              ))}
-            </div>
+                  {t.common?.getQuote || 'Get Quote'}
+                </Link>
+              </div>
+            ))}
+          </div>
           )}
         </div>
       </section>
@@ -184,27 +184,27 @@ export default function PricingPage() {
               <p className="text-gray-500 text-sm">{t.pricing?.noServices?.subtitle || 'Add service pricing through the admin panel'}</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {pricingData.services.map((service) => (
                 <div key={service.id} className="bg-gray-800 rounded-lg shadow-lg p-8">
-                  <h3 className="text-xl font-semibold text-white mb-2">{service.service}</h3>
-                  <div className="text-2xl font-bold text-blue-400 mb-4">{service.priceRange}</div>
-                  <p className="text-gray-300 mb-6">{service.description}</p>
-                  
-                  <div>
-                    <h4 className="font-semibold text-white mb-3">{t.common?.includes || 'Includes:'}</h4>
-                    <ul className="space-y-2">
-                      {service.includes.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-center text-sm text-gray-300">
-                          <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <h3 className="text-xl font-semibold text-white mb-2">{service.service}</h3>
+                <div className="text-2xl font-bold text-blue-400 mb-4">{service.priceRange}</div>
+                <p className="text-gray-300 mb-6">{service.description}</p>
+                
+                <div>
+                  <h4 className="font-semibold text-white mb-3">{t.common?.includes || 'Includes:'}</h4>
+                  <ul className="space-y-2">
+                    {service.includes.map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-center text-sm text-gray-300">
+                        <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
           )}
         </div>
       </section>

@@ -712,7 +712,7 @@ export default function PortfolioDetailPage() {
                     </div>
                     <div className="text-white whitespace-pre-wrap mb-2 text-base leading-relaxed">
                       {c.translations && c.translations[currentLanguage] 
-                        ? c.translations[currentLanguage] 
+                            ? c.translations[currentLanguage] 
                         : c.message}
                     </div>
                     {(c.photos && c.photos.length > 0) || (c.videos && c.videos.length > 0) ? (

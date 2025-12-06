@@ -1402,12 +1402,12 @@ export function getTranslatedWork(
 ): { title: string; description: string; category: string; city?: string } {
   // Если есть переводы для текущего языка, используем их
   if (work.translations && work.translations[language]) {
-    const translation = work.translations[language]
-    return {
-      title: translation.title || work.title,
-      description: translation.description || work.description,
-      category: translation.category ? translateCategory(translation.category, language) : translateCategory(work.category, language),
-      city: translation.city || work.city
+  const translation = work.translations[language]
+  return {
+    title: translation.title || work.title,
+    description: translation.description || work.description,
+    category: translation.category ? translateCategory(translation.category, language) : translateCategory(work.category, language),
+    city: translation.city || work.city
     }
   }
 

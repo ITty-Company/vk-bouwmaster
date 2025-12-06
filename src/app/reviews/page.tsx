@@ -744,7 +744,7 @@ export default function ReviewsPage() {
                       <div className="mb-4">
                         <p className="text-white text-base md:text-lg leading-relaxed whitespace-pre-wrap">
                           {c.translations && c.translations[currentLanguage] 
-                            ? c.translations[currentLanguage] 
+                                ? c.translations[currentLanguage] 
                             : c.message}
                         </p>
                       </div>
