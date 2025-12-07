@@ -1412,7 +1412,6 @@ export function getTranslatedWork(
   }
 
   // Если переводов нет, возвращаем оригинал
-  // В будущем здесь можно добавить fallback на перевод в реальном времени
   return {
     title: work.title,
     description: work.description,

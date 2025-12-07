@@ -173,7 +173,7 @@ export async function GET(request: NextRequest) {
             });
             works[index] = { ...work, translations };
             translationsAdded = true;
-            console.log(`[Works API] ✅ Translation completed for work ${work.id}`);
+            console.log(`[Works API] ✅ Translation completed for work ${work.id}. Languages:`, Object.keys(translations || {}).length);
             // Небольшая задержка между переводами, чтобы не спамить API
             await new Promise(resolve => setTimeout(resolve, 100));
           } catch (error: any) {
@@ -184,7 +184,9 @@ export async function GET(request: NextRequest) {
     }
     
     if (translationsAdded) {
-      console.log(`[Works API] 💾 Saving works with new translations...`);
+      console.log(`[Works API] 💾 Saving ${works.length} works with new translations...`);
+      await writeWorksData(works);
+      console.log(`[Works API] ✅ Works saved successfully with translations`);
     }
 
     // Если нужно, по-прежнему можно форсировать translateAll=true (останавливаемся только на пустых переводах)
