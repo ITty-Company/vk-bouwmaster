@@ -120,7 +120,7 @@ export default function PortfolioDetailPage() {
       clearInterval(interval)
       window.removeEventListener('focus', onFocus)
     }
-  }, [projectId])
+  }, [projectId, currentLanguage]) // Добавляем currentLanguage, чтобы обновлять при смене языка
 
   const fetchWorks = async () => {
     try {
