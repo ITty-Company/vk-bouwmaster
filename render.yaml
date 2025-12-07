@@ -12,4 +12,8 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      # ВАЖНО: Добавьте OPENAI_API_KEY в настройках Render через веб-интерфейс:
+      # Settings → Environment → Add Environment Variable
+      # key: OPENAI_API_KEY
+      # value: ваш-ключ-от-openai
 
