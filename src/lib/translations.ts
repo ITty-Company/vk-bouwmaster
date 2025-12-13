@@ -7,6 +7,7 @@ export interface Translations {
     about: string
     services: string
     portfolio: string
+    reviews: string
     team: string
     pricing: string
     blog: string
@@ -15685,3 +15686,8082 @@ export const translations: Record<Language, Translations | PartialTranslations> 
       services: {
         title: 'Teenused'
       },
+      shot: {
+        title: 'Shot'
+      },
+      copyright: '© 2025 VK Bouwmaster. Kõik õigused kaitstud.',
+      privacy: 'Privaatsuspoliitika',
+      terms: 'Kasutustingimused'
+    },
+    admin: {
+      login: {
+        title: 'Administreerimispaneel',
+        subtitle: 'Logi sisse sisu haldamiseks',
+        email: 'E-post',
+        password: 'Parool',
+        emailPlaceholder: 'Sisestage oma e-posti aadress',
+        passwordPlaceholder: '••••••••',
+        loginButton: 'Logi sisse',
+        loggingIn: 'Sisselogimine...',
+        connectionError: 'Ühenduse viga serveriga',
+        goHome: 'Mine Avalehele'
+      },
+      accessDenied: {
+        title: 'Juurdepääs Keelatud',
+        message: 'Vale e-posti aadress või parool. Teil pole juurdepääsu sellele alale — ainult administraatoritel on juurdepääs.',
+        goHome: 'Mine Avalehele',
+        tryAgain: 'Proovi Uuesti'
+      }
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Põrandate Paigaldamine',
+          subtitle: 'Professionaalsed põrandate paigaldamise ja remonditeenused kõikidele põrandamaterjalide tüüpidele'
+        },
+        solutions: {
+          title: 'Professionaalsed Lahendused',
+          description1: 'Teisendage oma ruum meie professionaalsete põrandate paigaldamise teenustega. Ma spetsialiseerun kõikidele põrandamaterjalide tüüpidele ja pakun eksperdi paigaldamist, remonti ja hooldusteenuseid.',
+          description2: 'Minu kogemus tagab õiged paigaldamistehnikad, tähelepanu detailidele ja kvaliteetsete materjalide kasutamise ilusate, vastupidavate põrandate loomiseks, mis kestavad aastaid.',
+          projectsCompleted: 'Lõpetatud Projektid',
+          yearsExperience: 'Aastat Kogemust'
+        },
+        services: {
+          title: 'Meie Teenused',
+          items: [
+            'Parketi paigaldamine',
+            'Laminaatpõrand',
+            'Plaatide ja kivi paigaldamine',
+            'Vaiba paigaldamine',
+            'Vinüülpõrand (LVT)',
+            'Põrandate remont ja taastamine'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Värvimisteenused',
+          subtitle: 'Professionaalsed sisemise ja välimise värvimisteenused premium kvaliteediga värvidega'
+        },
+        solutions: {
+          title: 'Professionaalsed Lahendused',
+          description1: 'Teisendage oma ruum professionaalsete värvimisteenustega. Tagan kvaliteetse pinna ettevalmistamise, premium värvide kasutamise ja veatu täitmise.',
+          description2: 'Minu kogemus tagab vastupidavad viimistlused, täiuslikult siledad pinnad ja kaitset välistegurite eest.',
+          projectsCompleted: 'Lõpetatud Projektid',
+          yearsExperience: 'Aastat Kogemust'
+        },
+        services: {
+          title: 'Meie Teenused',
+          items: [
+            'Seinte ja lagede värvimine',
+            'Välimiste fassaadide värvimine',
+            'Dekoratiivne värvimine',
+            'Pindade põhivärvimine',
+            'Puitkonstruktsioonide värvimine',
+            'Kaitse töötlus'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Torustikuremondid',
+          subtitle: 'Professionaalsed torustikuremondi ja paigaldamisteenused majadele ja kontoritele'
+        },
+        solutions: {
+          title: 'Professionaalsed Lahendused',
+          description1: 'Täielik valik torustikuteenuseid teie kodu või äri jaoks. Pakun kvaliteetset paigaldamist, remonti ja hooldust kõikidele torustikuseadmete tüüpidele.',
+          description2: 'Aastate kogemus tagab usaldusväärsuse, vastupidavuse ja kõigi ohutuse standardite järgimise.',
+          projectsCompleted: 'Lõpetatud Projektid',
+          yearsExperience: 'Aastat Kogemust'
+        },
+        services: {
+          title: 'Meie Teenused',
+          items: [
+            'Torude remont ja vahetus',
+            'Torustikuseadmete paigaldamine',
+            'Veevarustuse paigaldamine',
+            'Kanalisatsiooni remont',
+            'Radiaatorite paigaldamine',
+            'Drenaažide puhastamine'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Katuse Remondid',
+          subtitle: 'Eksperdi katuse remondi- ja hooldusteenused teie vara kaitsmiseks'
+        },
+        solutions: {
+          title: 'Professionaalsed Lahendused',
+          description1: 'Hõlpsav katuseremont, hooldus ja ennetamine. Töötan erinevate katusetüüpidega, parandan lekkimisi ja kahjustusi.',
+          description2: 'Kvaliteetsed materjalid ja rangetehnoloogia järgimine — vastupidava ja usaldusväärse katuse eest.',
+          projectsCompleted: 'Lõpetatud Projektid',
+          yearsExperience: 'Aastat Kogemust'
+        },
+        services: {
+          title: 'Meie Teenused',
+          items: [
+            'Lekkimiste ja kahjustuste remont',
+            'Katusekatuse vahetus',
+            'Veevoolude paigaldamine ja remont',
+            'Liitmiste ja ääriste tihendamine',
+            'Kohalikud ja suuremad remondid',
+            'Ennetav kontroll ja hooldus'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Aiakujundus',
+          subtitle: 'Ilusad aiakujunduse ja maastikuarhitektuuri teenused teie väliruumi parandamiseks'
+        },
+        solutions: {
+          title: 'Professionaalsed Lahendused',
+          description1: 'Individuaalne lähenemine kujundusele ja maastikuarhitektuurile. Loon funktsionaalseid ja esteetilisi aedu, mis vastavad teie soovidele ja koha tingimustele.',
+          description2: 'Taimede, valgustuse ja pindade valik — harmoonia ja pika eluea eest.',
+          projectsCompleted: 'Lõpetatud Projektid',
+          yearsExperience: 'Aastat Kogemust'
+        },
+        services: {
+          title: 'Meie Teenused',
+          items: [
+            'Maastikuarhitektuur',
+            'Taimede valik ja maastikukujundus',
+            'Murude ja teede paigaldamine',
+            'Kastmis- ja drenaažisüsteemid',
+            'Aia valgustus',
+            'Hooajaline aiahooldus'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Plaadid',
+          subtitle: 'Professionaalsed plaatide eemaldamise ja paigaldamise teenused köökidele, vannitoomidele ja muudele ruumidele'
+        },
+        solutions: {
+          title: 'Professionaalsed Lahendused',
+          description1: 'Vanade plaatide eemaldamine, pinna ettevalmistamine ja täpne plaatide paigaldamine. Tagan õige geomeetria, liitmiste täitmise ja hüdroisolatsiooni.',
+          description2: 'Kasutan kvaliteetseid materjale ja tööriistu — veatu tulemuste ja vastupidavuse eest.',
+          projectsCompleted: 'Lõpetatud Projektid',
+          yearsExperience: 'Aastat Kogemust'
+        },
+        services: {
+          title: 'Meie Teenused',
+          items: [
+            'Vanade plaatide eemaldamine',
+            'Pinnase ettevalmistamine ja tasandamine',
+            'Niiskete alade hüdroisolatsioon',
+            'Plaatide ja mosaiigi paigaldamine',
+            'Liitmiste täitmine ja tihendamine',
+            'Üksikute elementide taastamine ja vahetus'
+          ]
+        }
+      },
+      paving: {
+        hero: {
+          title: 'Kivisillutise Paigaldamine',
+          subtitle: 'Professionaalne kivisillutise paigaldamine sõiduteedele, jalgteedele, terrassidele ja välialadele'
+        },
+        solutions: {
+          title: 'Professionaalsed Lahendused',
+          description1: 'Muutke oma väliruum professionaalse kivisillutise paigaldamisega. Olen spetsialiseerunud ilusate, vastupidavate pindade loomisele sõiduteedele, jalgteedele, terrassidele ja aiakrundidele.',
+          description2: 'Minu kogemus tagab õige aluse ettevalmistamise, täpse paigaldamise ja tähelepanu detailidele pikaajaliste tulemuste saavutamiseks, mis suurendavad teie vara väärtust ja välimust.',
+          projectsCompleted: 'Lõpetatud Projektid',
+          yearsExperience: 'Aastat Kogemust'
+        },
+        services: {
+          title: 'Meie Teenused',
+          items: [
+            'Sõidutee sillutamine',
+            'Jalgteede ja radade paigaldamine',
+            'Terrassi ja patiio sillutamine',
+            'Aiakrundi sillutamine',
+            'Aluse ettevalmistamine ja tasandamine',
+            'Drenaažisüsteemi paigaldamine',
+            'Ääriste paigaldamine ja viimistlus'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Privaatsuspoliitika',
+        subtitle: 'VK Bouwmaster Privaatsuspoliitika'
+      },
+      introduction: {
+        title: '1. Sissejuhatus',
+        content: 'VK Bouwmaster ("meie", "me" või "ettevõte") kohustub kaitstma teie privaatsust. See Privaatsuspoliitika selgitab, kuidas me kogume, kasutame, avaldame ja kaitseme teie teavet, kui kasutate meie veebisaiti ja teenuseid.'
+      },
+      dataCollection: {
+        title: '2. Teave, mida me kogume',
+        personalInfo: {
+          title: 'Isiklik teave',
+          items: ['Nimi', 'E-posti aadress', 'Telefoninumber']
+        },
+        projectInfo: {
+          title: 'Projekti teave',
+          items: ['Taotluse üksikasjad', 'Projekti aadress', 'Töö kirjeldus']
+        },
+        technicalInfo: {
+          title: 'Tehniline teave',
+          items: ['IP-aadress', 'Brauseri tüüp', 'Kasutamise andmed']
+        }
+      },
+      dataUsage: {
+        title: '3. Kuidas me teie teavet kasutame',
+        subtitle: 'Kogutud teavet kasutame:',
+        items: [
+          { icon: '✅', text: 'Meie teenuste pakkumiseks ja parandamiseks' },
+          { icon: '📞', text: 'Teiega projekti kohta ühenduse võtmiseks' },
+          { icon: '📧', text: 'Informatiivsete materjalide ja uuenduste saatmiseks' },
+          { icon: '🔒', text: 'Meie veebisaidi turvalisuse tagamiseks' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Andmete kaitse',
+        content: 'Rakendame sobivaid tehnilisi ja organisatsioonilisi meetmeid teie isikuandmete kaitsmiseks volitamata juurdepääsu, muutmise, avaldamise või hävitamise eest.',
+        encryption: 'Andmete krüpteerimine',
+        secureAccess: 'Turvaline juurdepääs',
+        regularChecks: 'Regulaarsed kontrollid'
+      },
+      thirdParty: {
+        title: '5. Kolmandatele osapooltele avaldamine',
+        content: 'Me ei müü, vaheta ega edasta teie isikuandmeid kolmandatele osapooltele ilma teie nõusolekuta, välja arvatud juhul, kui see on vajalik meie teenuste pakkumiseks või nõuab seda seadus.'
+      },
+      userRights: {
+        title: '6. Teie õigused',
+        subtitle: 'Teil on õigus:',
+        items: [
+          { icon: '📖', text: 'Juurdepääs oma isikuandmetele' },
+          { icon: '✏️', text: 'Ebatäpsete andmete parandamine' },
+          { icon: '🗑️', text: 'Oma andmete kustutamise taotlemine' },
+          { icon: '🔄', text: 'Nõusoleku tagasivõtmine andmete töötlemiseks' }
+        ]
+      },
+      contact: {
+        title: '7. Kontakt',
+        subtitle: 'Kui teil on küsimusi meie Privaatsuspoliitika kohta, palun võtke meiega ühendust:',
+        email: {
+          title: 'E-post',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Telefon',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Privaatsuspoliitika uuendused',
+        content: 'Võime perioodiliselt seda Privaatsuspoliitikat uuendada. Teavitame teid kõigist muudatustest, avaldades uue Privaatsuspoliitika sellel lehel uuendatud kuupäevaga.'
+      },
+      lastUpdated: 'Viimati uuendatud: Jaanuar 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Teenuse tingimused',
+        subtitle: 'VK Bouwmaster Teenuse tingimused'
+      },
+      acceptance: {
+        title: '1. Tingimuste aktsepteerimine',
+        content: 'VK Bouwmaster veebisaiti ja teenuseid kasutades nõustute nende Teenuse tingimustega. Kui te ei nõustu mõne tingimusega, palun ärge kasutage meie teenuseid.'
+      },
+      services: {
+        title: '2. Teenuste kirjeldus',
+        content: 'VK Bouwmaster pakub professionaalseid renoveerimis- ja ümberehitusteenuseid, sealhulgas, kuid mitte piiratud: põrandate paigaldamine, värvimine, torustikutööd, katusereparatsioonid, aiakujundus ja muud ehituseteenused.'
+      },
+      estimates: {
+        title: '3. Hinnangud ja hinnad',
+        content: 'Pakkume tasuta töö hinnanguid. Näidatud hinnad on ligikaudsed ja võivad erineda sõltuvalt:',
+        factors: ['Projekti keerukusest', 'Kasutatud materjalidest', 'Töö ulatusest', 'Täiendavatest kliendi nõuetest']
+      },
+      payment: {
+        title: '4. Makse',
+        content: 'Maksetingimused lepitakse individuaalselt iga projekti jaoks ja määratakse lepingus. Tavaliselt on vaja:',
+        items: ['Ettemaks võib olla vajalik materjalide ostmiseks', 'Lõplik makse tehakse pärast tööde lõpetamist', 'Tööde vastuvõtt toimub kliendi juuresolekul']
+      },
+      warranty: {
+        title: '5. Garantii',
+        content: 'Pakkume garantii lõpetatud töödele vastavalt lepingu tingimustele. Garantii üksikasjad arutatakse individuaalselt iga projekti jaoks.'
+      },
+      liability: {
+        title: '6. Vastutus',
+        content: 'VK Bouwmaster vastutab lõpetatud tööde kvaliteedi eest kokkulepitud lepingu raames. Kasutame kvaliteetseid materjale ja professionaalseid töövõtteid. Klient vastutab projekti kohta täpse teabe andmise eest.'
+      },
+      cancellation: {
+        title: '7. Tühistamine ja muudatused',
+        content: 'Projekti muudatused tuleb ette kokku leppida. Projekti tühistamine tuleb mõistlikus ajas teatada. Raha tagasimakse tingimused lepitakse individuaalselt.'
+      },
+      intellectualProperty: {
+        title: '8. Intellektuaalne omand',
+        content: 'Kõik VK Bouwmaster poolt projekti osana loodud materjalid ja disainid jäävad ettevõtte omandiks kuni tööde täieliku tasumiseni, pärast mida õigused üle antakse kliendile.'
+      },
+      contact: {
+        title: '9. Kontakt',
+        content: 'Küsimuste korral nende Teenuse tingimuste kohta võtke ühendust:',
+        email: 'E-post: vkbouwmaster@gmail.com',
+        phone: 'Telefon: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Tingimuste muudatused',
+        content: 'Jätame endale õiguse neid Teenuse tingimusi igal ajal muuta. Meie teenuste jätkuv kasutamine pärast muudatusi tähendab teie nõusolekut uute tingimustega.'
+      },
+      lastUpdated: 'Viimati uuendatud: Jaanuar 2025'
+    }
+  },
+  LV: {
+    navigation: {
+      home: 'Sākums',
+      about: 'Par Mums',
+      services: 'Pakalpojumi',
+      portfolio: 'Portfelis',
+      reviews: 'Atsauksmes',
+      team: 'Komanda',
+      pricing: 'Cenas',
+      blog: 'Blogs',
+      faq: 'BUJ',
+      contact: 'Kontakts',
+      getQuote: 'Piedāvājums',
+      language: 'Valoda',
+      adminPanel: '🔐 Admin panelis',
+      scrollLeft: 'Ritināt pa kreisi',
+      scrollRight: 'Ritināt pa labi',
+      adminPanelTitle: 'Administrācijas panelis',
+      switchLanguage: 'Mainīt valodu'
+    },
+    common: {
+      loading: 'Ielādē...',
+      error: 'Kļūda',
+      success: 'Veiksmīgi',
+      cancel: 'Atcelt',
+      save: 'Saglabāt',
+      delete: 'Dzēst',
+      edit: 'Rediģēt',
+      view: 'Skatīt',
+      learnMore: 'Uzzināt Vairāk',
+      readMore: 'Lasīt Vairāk',
+      getStarted: 'Sākt',
+      contactUs: 'Sazināties ar Mums',
+      years: 'Gadi',
+      projects: 'Projekti',
+      satisfaction: 'Apmierinātība',
+      support: 'Atbalsts',
+      experience: 'Pieredze',
+      quality: 'Kvalitāte',
+      team: 'Komanda',
+      clients: 'Klienti',
+      completed: 'Pabeigts',
+      happy: 'Laimīgs',
+      available: 'Pieejams',
+      expertise: 'Ekspertīze'
+    },
+    home: {
+      hero: {
+        title1: 'Profesionāli',
+        title2: 'Renovācijas Pakalpojumi',
+        subtitle: 'Profesionāli renovācijas pakalpojumi ar vairāk nekā 10 gadu pieredzi. Īsts savas amata meistars, kas prot visu: no grīdu ieklāšanas līdz pilnīgai rekonstrukcijai. Kvalitatīvs darbs, uzmanība katrai detaļai, termiņu ievērošana un godīgas cenas. Es pārveidoju jūsu telpu ar mīlestību un profesionalitāti.',
+        cta1: 'Iegūt Bezmaksas Piedāvājumu',
+        cta2: 'Skatīt Manus Darbus'
+      },
+      about: {
+        title: 'Par Meistaru',
+        description1: 'Vladimir ir meistars ar vairāk nekā 10 gadu pieredzi renovācijā un būvniecībā. Viņu izceļ <span class="text-blue-400 font-medium">izņēmīga atbildība</span> un uzmanība detaļām.',
+        description2: 'Katrs projekts tiek pabeigts ar <span class="text-blue-400 font-medium">augstāko kvalitāti</span> un stingru termiņu ievērošanu. Klienti viņu vērtē par viņa godīgumu, profesionalitāti un spēju īstenot pat vissarežģītākās idejas.',
+        projectsCount: '200+',
+        projectsLabel: 'Pabeigti Projekti',
+        yearsCount: '10+',
+        yearsLabel: 'Gadi Pieredzes',
+        satisfactionPercent: '100%',
+        satisfactionLabel: 'Apmierināti Klienti',
+        supportLabel: 'Klientu Atbalsts',
+        viewWorks: 'Skatīt Manus Darbus'
+      },
+      works: {
+        title: 'Mani Darbi',
+        description: 'Vladimir ir meistars, kurš renovāciju pārvērš mākslā: precīzi termiņi, ideāla ģeometrija un nevainojama kvalitāte katrā detaļā.',
+        work: 'darbs',
+        works2: 'darbi',
+        works5: 'darbu'
+      },
+      services: {
+        title: 'Mani Pakalpojumi',
+        subtitle: 'Piedāvāju renovācijas pakalpojumus jūsu mājas vai uzņēmuma pārveidošanai',
+        flooring: {
+          title: 'Grīdas Ieklāšana',
+          description: 'Profesionāli grīdas iekļaušanas un remonta pakalpojumi visu veidu grīdas materiāliem.'
+        },
+        painting: {
+          title: 'Krāsošanas Pakalpojumi',
+          description: 'Iekšējie un ārējie krāsošanas pakalpojumi ar premium kvalitātes krāsām un apdares slāņiem.'
+        },
+        plumbing: {
+          title: 'Santehnikas Remonti',
+          description: 'Profesionāli santehnikas remonta un uzstādīšanas pakalpojumi mājām un birojiem.'
+        },
+        roofing: {
+          title: 'Jumta Remonti',
+          description: 'Ekspertu jumta remonta un uzturēšanas pakalpojumi jūsu īpašuma aizsardzībai.'
+        },
+        garden: {
+          title: 'Dārza Dizains',
+          description: 'Skaisti dārza dizaina un ainavu arhitektūras pakalpojumi jūsu ārtelpas uzlabošanai.'
+        },
+        tile: {
+          title: 'Plākšņu Ieklāšana',
+          description: 'Profesionāli plākšņu noņemšanas un uzstādīšanas pakalpojumi virtuvēm, vannas istabām un citām telpām.'
+        }
+      },
+      achievements: {
+        title: 'Mūsu Sasniegumi',
+        subtitle: 'Skaitļi, kas runā par mūsu panākumiem',
+        experience: {
+          title: 'Gadi Pieredzes',
+          subtitle: 'Vairāk nekā desmitgade profesionālu pakalpojumu'
+        },
+        projects: {
+          title: 'Pabeigti Projekti',
+          subtitle: 'Veiksmīgi izpildīti projekti'
+        },
+        clients: {
+          title: 'Apmierināti Klienti',
+          subtitle: 'Apmierināti klienti'
+        },
+        satisfaction: {
+          title: 'Apmierinātības Līmenis',
+          subtitle: 'Klientu apmierinātība garantēta'
+        },
+        support: {
+          title: 'Atbalsts 24/7',
+          subtitle: 'Nepārtraukts klientu atbalsts'
+        }
+      },
+      whyChoose: {
+        title: 'Kāpēc Izvēlēties VK Bouwmaster?',
+        subtitle: 'Mēs sniedzam izņēmīgus rezultātus ar mūsu apņemšanos kvalitātei un klientu apmierinātībai',
+        experience: {
+          title: 'Gadi Pieredzes',
+          description: 'Vairāk nekā desmitgade pieredzes renovācijas un būvniecības pakalpojumos'
+        },
+        quality: {
+          title: 'Kvalitātes Garantija',
+          description: 'Mēs atbalstām savu darbu ar visaptverošām kvalitātes garantijām'
+        },
+        team: {
+          title: 'Ekspertu Komanda',
+          description: 'Kvalificēti profesionāļi, kas ir veltīti izņēmīgu rezultātu sasniegšanai'
+        }
+      },
+      testimonials: {
+        title: 'Ko Saka Mūsu Klienti',
+        subtitle: 'Īsti atsauksmes no apmierinātiem klientiem, kas mums uzticēja savus projektus',
+        testimonial1: {
+          text: 'Izņēmīgs darbs! Komanda pilnībā pārveidoja mūsu virtuvi. Profesionāli, tīri un piegādāts laikā. Ļoti iesaku!',
+          author: 'Jānis Bērziņš',
+          role: 'Mājas Īpašnieks'
+        },
+        testimonial2: {
+          text: 'Izcilas pakalpojumi no sākuma līdz beigām. Viņi renovēja mūsu biroja telpu un pārsniedza visas cerības. Noteikti izmantosu vēlreiz!',
+          author: 'Anna Ozola',
+          role: 'Biroja Vadītāja'
+        }
+      }
+    },
+    about: {
+      hero: {
+        title: 'Par VK Bouwmaster',
+        subtitle: 'Jūsu uzticams partneris profesionālos renovācijas un būvniecības pakalpojumos'
+      },
+      story: {
+        title: 'Mūsu Stāsts',
+        paragraph1: 'Dibināts vairāk nekā pirms desmit gadiem, VK Bouwmaster ir bijis profesionālo renovācijas pakalpojumu priekšgalā. Tas, kas sākās kā mazs ģimenes uzņēmums, ir izaudzis par vienu no uzticamākajiem nosaukumiem māju uzlabošanā un būvniecībā.',
+        paragraph2: 'Mūsu ceļojums sākās ar vienkāršu misiju: pārveidot telpas un pārsniegt cerības. Šodien mēs turpinām uzturēt šo apņemšanos caur inovatīviem risinājumiem, kvalitatīvu amatniecību un izņēmīgu klientu apkalpošanu.',
+        paragraph3: 'Katrs projekts, ko mēs uzsākam, atspoguļo mūsu aizraušanos ar izcilību un mūsu apņemšanos jūsu redzējuma īstenošanai. Mēs uzskatām, ka jūsu māja ir vairāk nekā tikai ēka—tā ir vieta, kur tiek radīti atmiņas un sapņi kļūst par īstenību.'
+      },
+      mission: {
+        title: 'Mūsu Misija un Vērtības',
+        subtitle: 'Mūs virza mūsu pamatvērtības un apņemšanās izcilībai',
+        mission: {
+          title: 'Mūsu Misija',
+          description: 'Nodrošināt izņēmīgus renovācijas pakalpojumus, kas pārveido telpas un pārsniedz mūsu klientu cerības, izmantojot kvalitatīvu amatniecību un inovatīvus risinājumus.'
+        },
+        quality: {
+          title: 'Kvalitāte Pirmajā Vietā',
+          description: 'Mēs nekad nekompromitējam kvalitāti. Katrs projekts tiek pabeigts ar uzmanību detaļām un izmantojot tikai labākos materiālus un metodes.'
+        },
+        customer: {
+          title: 'Fokuss uz Klientu',
+          description: 'Mūsu klienti ir vissvarīgākie visā, ko mēs darām. Mēs klausāmies, skaidri sazināmies un cieši sadarbojamies ar jums, lai sasniegtu jūsu redzējumu.'
+        }
+      },
+      whyChoose: {
+        title: 'Kāpēc Izvēlēties VK Bouwmaster?',
+        subtitle: 'Mēs izceļamies no konkurences ar mūsu unikālo pieeju un apņemšanos izcilībai',
+        award: {
+          title: 'Apbalvots',
+          description: 'Atzīts par izcilību renovācijas un būvniecības pakalpojumos'
+        },
+        expert: {
+          title: 'Ekspertu Komanda',
+          description: 'Kvalificēti profesionāļi ar gadiem pieredzes savās jomās'
+        },
+        onTime: {
+          title: 'Savlaicīga Piegāde',
+          description: 'Mēs respektējam jūsu laiku un piegādājam projektus saskaņā ar grafiku, katru reizi'
+        },
+        fair: {
+          title: 'Godīga Cena',
+          description: 'Pārredzama cenu noteikšana bez slēptiem izdevumiem vai pārsteigumiem'
+        }
+      },
+      certifications: {
+        title: 'Sertifikācijas un Licences',
+        subtitle: 'Mēs uzturam augstākos standartus ar atbilstošām sertifikācijām un licencēm',
+        licensed: {
+          title: 'Licencēts un Apdrošināts',
+          description: 'Pilnībā licencēts un apdrošināts jūsu mieram un aizsardzībai'
+        },
+        certified: {
+          title: 'Nozares Sertificēts',
+          description: 'Sertificēts no vadošajām nozares organizācijām un tirdzniecības asociācijām'
+        },
+        quality: {
+          title: 'Garantēta Kvalitāte',
+          description: 'Regulāri kvalitātes auditi un nepārtrauktas uzlabošanas procesi'
+        }
+      },
+      cta: {
+        title: 'Gatavi Strādāt ar Mums?',
+        subtitle: 'Apspriedīsim jūsu projektu un redzēsim, kā mēs varam īstenot jūsu redzējumu',
+        cta1: 'Saņemt Bezmaksas Piedāvājumu',
+        cta2: 'Skatīt Mūsu Darbu'
+      }
+    },
+    portfolio: {
+      hero: {
+        title: 'Mans Portfolio',
+        subtitle: 'Izpētiet manus pabeigtos projektus un redziet mana darba kvalitāti'
+      },
+      stats: {
+        projects: 'Pabeigti Projekti',
+        years: 'Gadu Pieredze',
+        satisfaction: 'Klientu Apmierinātība',
+        clients: 'Apmierināti Klienti'
+      },
+      whyChoose: {
+        title: 'Kāpēc Mani Izvēlēties',
+        features: [
+          { icon: '🛠️', title: 'Kvalitāte', desc: 'Sakārtoti, tīri un ar uzmanību detaļām. Izmantoju pārbaudītus materiālus un tehnoloģijas.' },
+          { icon: '⏱️', title: 'Termiņi', desc: 'Strādāju pēc skaidra grafika. Pabeidzu laikā — bez pārsteigumiem vai "rītdienām".' },
+          { icon: '🤝', title: 'Godīgums', desc: 'Pārredzamas aplēses un posmi. Vienmēr saprotat, par ko maksājat.' },
+          { icon: '💬', title: 'Komunikācija', desc: 'Vienmēr pieejams, ātri atbildēju un piedāvāju risinājumus jūsu pieprasījumam.' },
+          { icon: '🧼', title: 'Tīrība', desc: 'Uzturu kārtību vietā, aizsargāju mēbeles un pārklājumus, tīru pēc sevis.' },
+          { icon: '🔒', title: 'Garantija', desc: 'Sniegšu garantiju pabeigtajiem darbiem un palikšu pieejams pēc nodošanas.' }
+        ]
+      },
+      featured: {
+        title: 'Mani Projekti',
+        subtitle: 'Katrs projekts demonstrē manu apņemšanos kvalitātei, uzmanībai detaļām un klientu uzticību'
+      },
+      features: 'Galvenās Funkcijas:',
+      noWorks: {
+        title: 'Vēl nav pievienoti darbi',
+        subtitle: 'Pievienojiet darbus caur administrācijas paneli'
+      },
+      testimonials: {
+        title: 'Ko Saka Mani Klienti',
+        subtitle: 'Neuzticieties man tikai vārdiem — izlasiet īstu klientu atsauksmes'
+      },
+      noReviews: 'Vēl nav atsauksmju',
+      cta: {
+        title: 'Gatavi Sākt Savu Projektu?',
+        subtitle: 'Ļaujiet man pārveidot jūsu telpu ar tādu pašu kvalitāti un uzmanību detaļām'
+      },
+      detail: {
+        backToProjects: 'Atpakaļ pie projektiem',
+        projectNotFound: 'Projekts nav atrasts',
+        projectNotFoundSubtitle: 'Projekts ar ID {projectId} neeksistē vai ir dzēsts',
+        noMedia: 'Vēl nav foto un video',
+        noMediaSubtitle: 'Pievienojiet foto un video administrācijas panelī',
+        allPhotosAndVideos: 'Visas projekta foto un video',
+        oneOfWork: '✨ Viens no mūsu darbiem',
+        date: 'Datums',
+        city: 'Pilsēta',
+        photos: 'Foto',
+        videos: 'Video',
+        comments: 'Komentāri',
+        noComments: 'Vēl nav komentāru. Esi pirmais!',
+        beFirst: 'Esi pirmais!',
+        profileImageLabel: 'Profila foto',
+        profileImageOptional: '(nav obligāts)',
+        addProfileImage: 'Pievienot profila foto',
+        changePhoto: 'Mainīt foto',
+        deletePhoto: 'Dzēst foto',
+        cityLabel: 'Pilsēta',
+        cityOptional: '(nav obligāts)',
+        cityPlaceholder: 'Kurā pilsētā pasūtījums tika veikts?',
+        ratingLabel: 'Vērtējums',
+        ratingRequired: '(obligāts)',
+        commentLabel: 'Jūsu komentārs',
+        commentPlaceholder: 'Rakstiet savu komentāru šeit...',
+        charactersLeft: 'Atlikušas rakstzīmes:',
+        addPhotosLabel: '📷 Pievienot foto',
+        addPhotosOptional: '(nav obligāts)',
+        selectPhotos: '📷 Izvēlēties foto',
+        photosUploaded: 'Augšupielādētie foto:',
+        addVideosLabel: '🎥 Pievienot video',
+        addVideosOptional: '(nav obligāts)',
+        selectVideos: '🎥 Izvēlēties video',
+        videosUploaded: 'Augšupielādētie video:',
+        deleteVideo: 'Dzēst video',
+        submitting: 'Tiek nosūtīts…',
+        submitComment: '📤 Nosūtīt komentāru',
+        commentWillAppear: 'Komentārs tiks parādīts pēc administratora apstiprināšanas.',
+        viewAllPhotos: 'Skatīt visas foto ({count})',
+        noProject: 'Bez projekta',
+        category: 'Kategorija',
+        project: 'Projekts',
+        translateTo: 'Tulkot uz...',
+        showOriginal: 'Rādīt oriģinālu',
+        translatedTo: 'Tulkots uz',
+        translating: 'Tulkošana...'
+      }
+    },
+    services: {
+      hero: {
+        title: 'Mūsu Pakalpojumi',
+        subtitle: 'Pilnīgi renovācijas un būvniecības pakalpojumi jūsu telpas pārveidošanai'
+      },
+      whatWeDo: {
+        title: 'Ko Mēs Darām',
+        subtitle: 'No mazām labošanām līdz pilnīgām renovācijām, mums ir ekspertīze, lai tiktu galā ar jebkuru projektu'
+      },
+      process: {
+        title: 'Mūsu Process',
+        subtitle: 'Mēs sekojam pierādītam procesam, lai nodrošinātu, ka jūsu projekts tiek pabeigts saskaņā ar augstākajiem standartiem',
+        consultation: {
+          title: 'Konsultācija',
+          description: 'Mēs sākam ar detalizētu konsultāciju, lai izprastu jūsu vajadzības un redzējumu'
+        },
+        planning: {
+          title: 'Plānošana',
+          description: 'Detalizēta plānošana un dizains, lai nodrošinātu labāko rezultātu jūsu projektam'
+        },
+        execution: {
+          title: 'Izpilde',
+          description: 'Profesionāla izpilde ar kvalitatīviem materiāliem un prasmīgu amatniecību'
+        },
+        completion: {
+          title: 'Pabeigšana',
+          description: 'Galīgā pārbaude un tīrīšana, lai nodrošinātu jūsu pilnīgu apmierinātību'
+        }
+      },
+      cta: {
+        title: 'Gatavi Sākt Savu Projektu?',
+        subtitle: 'Sazinieties ar mums šodien bezmaksas konsultācijai un piedāvājumam',
+        cta1: 'Saņemt Bezmaksas Piedāvājumu',
+        cta2: 'Skatīt Mūsu Darbu'
+      }
+    },
+    footer: {
+      description: 'Profesionālas renovācijas pakalpojumi ar vairāk nekā 10 gadu pieredzi. Es pārveidoju jūsu telpu ar kvalitatīvu darbu un uzmanību detaļām.',
+      quickLinks: {
+        title: 'Ātras Saites'
+      },
+      services: {
+        title: 'Pakalpojumi'
+      },
+      shot: {
+        title: 'Shot'
+      },
+      copyright: '© 2025 VK Bouwmaster. Visas tiesības aizsargātas.',
+      privacy: 'Privātuma Politika',
+      terms: 'Pakalpojumu Noteikumi'
+    },
+    admin: {
+      login: {
+        title: 'Administrācijas Panelis',
+        subtitle: 'Piesakieties, lai pārvaldītu saturu',
+        email: 'E-pasts',
+        password: 'Parole',
+        emailPlaceholder: 'Ievadiet savu e-pasta adresi',
+        passwordPlaceholder: '••••••••',
+        loginButton: 'Piesakieties',
+        loggingIn: 'Piesakās...',
+        connectionError: 'Savienojuma kļūda ar serveri',
+        goHome: 'Doties uz Sākumu'
+      },
+      accessDenied: {
+        title: 'Piekļuve Liegta',
+        message: 'Nederīga e-pasta adrese vai parole. Jums nav piekļuves šai zonai — tikai administratoriem ir piekļuve.',
+        goHome: 'Doties uz Sākumu',
+        tryAgain: 'Mēģināt Vēlreiz'
+      }
+    },
+    thankYou: {
+      title: 'Paldies par jūsu atsauksmi!',
+      message1: 'Esmu ļoti priecīgs, ka dalījāties ar savu pieredzi!',
+      message2: 'Es vienmēr cenšos būt labāks jums. Jūsu atsauksme palīdzēs man kļūt vēl labākam.',
+      backToReviews: 'Atpakaļ uz atsauksmēm'
+    },
+    contactThankYou: {
+      title: 'Paldies par jūsu ziņojumu!',
+      message: 'Sazināšos ar jums dienas laikā.',
+      backToContact: 'Atpakaļ uz kontaktiem'
+    },
+    reviews: {
+      hero: {
+        badge: 'Jūsu viedoklis mums ir svarīgs',
+        title: 'Klientu atsauksmes',
+        subtitle: 'Dalieties ar savu pieredzi ar mums. Jūsu atsauksmes palīdz citiem klientiem pieņemt lēmumus.'
+      },
+      form: {
+        title: 'Atstāt atsauksmi',
+        namePlaceholder: 'Vārds',
+        surnamePlaceholder: 'Uzvārds (nav obligāti)',
+        profileImageLabel: 'Profilu attēls',
+        profileImageOptional: '(nav obligāti)',
+        addProfileImage: 'Pievienot profila attēlu',
+        changePhoto: 'Mainīt foto',
+        deletePhoto: 'Dzēst foto',
+        cityLabel: 'Pilsēta',
+        cityOptional: '(nav obligāti)',
+        cityPlaceholder: 'Kurā pilsētā tika veikts pasūtījums?',
+        ratingLabel: 'Vērtējums',
+        ratingRequired: '(obligāti)',
+        reviewLabel: 'Jūsu atsauksme',
+        reviewPlaceholder: 'Pastāstiet mums par savu pieredzi ar mums... Kas jums patika? Ko var uzlabot?',
+        charactersLeft: 'Atlikuši rakstzīmes:',
+        goodReview: 'Laba atsauksme!',
+        addPhotosLabel: 'Pievienot foto',
+        addPhotosOptional: '(nav obligāti)',
+        selectPhotos: '📷 Izvēlēties foto',
+        photosUploaded: 'Foto augšupielādēti:',
+        addVideosLabel: 'Pievienot video',
+        addVideosOptional: '(nav obligāti)',
+        selectVideos: '🎥 Izvēlēties video',
+        videosUploaded: 'Video augšupielādēti:',
+        deleteVideo: 'Dzēst video',
+        submitting: 'Nosūta…',
+        submitButton: 'Iesniegt atsauksmi',
+        reviewWillAppear: 'Atsauksme tiks parādīta pēc administratora apstiprināšanas',
+        fillRequiredFields: 'Lūdzu, aizpildiet vārdu un ziņojumu',
+        errorSubmitting: 'Kļūda, iesniedzot atsauksmi. Lūdzu, mēģiniet vēlreiz.',
+        errorConnection: 'Kļūda, iesniedzot atsauksmi. Lūdzu, pārbaudiet interneta savienojumu un mēģiniet vēlreiz.'
+      },
+      list: {
+        title: 'Visas atsauksmes',
+        review: 'atsauksme',
+        reviews2: 'atsauksmes',
+        reviews5: 'atsauksmju',
+        noReviews: 'Vēl nav atsauksmju. Esi pirmais!',
+        photosAndVideos: 'Foto un video no atsauksmes',
+        viewAllMedia: 'Skatīt visas fotogrāfijas un video →'
+      },
+      detail: {
+        backToReviews: 'Atpakaļ uz atsauksmēm',
+        reviewNotFound: 'Atsauksme nav atrasta',
+        reviewNotFoundSubtitle: 'Atsauksme ar ID {reviewId} neeksistē',
+        noMedia: 'Šai atsauksmei nav foto un video',
+        noMediaSubtitle: 'Atpakaļ uz atsauksmēm',
+        photosAndVideos: 'Foto un video no atsauksmes'
+      }
+    },
+    contact: {
+      hero: {
+        title: 'Sazinieties Ar Mani',
+        subtitle: 'Esmu gatavs atbildēt uz jūsu jautājumiem un apspriest jūsu projektu'
+      },
+      form: {
+        title: 'Nosūtiet Man Ziņojumu',
+        name: 'Pilns Vārds',
+        email: 'E-pasta Adrese',
+        phone: 'Tālruņa Numurs',
+        service: 'Nepieciešamā Pakalpojums',
+        message: 'Ziņojums',
+        submit: 'Nosūtīt Ziņojumu',
+        selectService: 'Izvēlieties pakalpojumu',
+        other: 'Cits',
+        street: 'Iela',
+        houseNumber: 'Mājas Numurs',
+        postalCode: 'Pasta Indekss',
+        city: 'Pilsēta',
+        namePlaceholder: 'Jūsu vārds',
+        emailPlaceholder: 'jus@email.com',
+        phonePlaceholder: '+31 6 1234 5678',
+        streetPlaceholder: 'Ielas nosaukums',
+        houseNumberPlaceholder: '123',
+        postalCodePlaceholder: '1234 AB',
+        cityPlaceholder: 'Amsterdama',
+        messagePlaceholder: 'Pastāstiet mums par savu projektu...',
+        streetRequired: 'Iela ir obligāta',
+        houseNumberRequired: 'Mājas numurs ir obligāts',
+        postalCodeRequired: 'Pasta indekss ir obligāts',
+        postalCodeInvalid: 'Nederīgs pasta indeksa formāts. Izmantojiet formātu: 1234 AB',
+        successMessage: 'Paldies par jūsu ziņojumu! Mēs drīz ar jums sazināsimies.',
+        errorMessage: 'Radās kļūda. Lūdzu, mēģiniet vēlreiz.',
+        sendMessage: 'Nosūtīt Ziņojumu'
+      },
+      info: {
+        title: 'Kontaktinformācija',
+        phone: {
+          title: 'Tālrunis',
+          number1: '+380 99 080 4115',
+          number2: ''
+        },
+        email: {
+          title: 'E-pasts',
+          address1: 'vkbouwmaster@gmail.com',
+          address2: ''
+        },
+        address: {
+          title: 'Adrese',
+          street: '',
+          city: '',
+          country: 'Nīderlande'
+        },
+        hours: {
+          title: 'Darba Laiks',
+          weekdays: '',
+          saturday: '',
+          sunday: '',
+          byAppointment: 'Pēc iepriekšējas vienošanās'
+        },
+        emergency: {
+          title: 'Ārkārtas Pakalpojums',
+          description: 'Vajag steidzamus remontdarbus? Mēs piedāvājam 24/7 ārkārtas pakalpojumus kritiskiem jautājumiem.',
+          phone: 'Zvaniet Tagad: +380 99 080 4115'
+        },
+        contactMethods: {
+          title: 'Sazinieties Ar Mani',
+          subtitle: 'Varat sazināties ar mani, izmantojot WhatsApp, E-pastu un Telegram',
+          whatsapp: 'WhatsApp',
+          telegram: 'Telegram',
+          email: 'E-pasts'
+        }
+      },
+      faq: {
+        hero: {
+          title: 'Bieži Uzdotie Jautājumi',
+          subtitle: 'Atrodiet atbildes uz populāriem jautājumiem par mūsu renovācijas pakalpojumiem'
+        },
+        contact: {
+          title: 'Vai Joprojām Ir Jautājumi?',
+          subtitle: 'Nevarat atrast atbildi? Mūsu komanda ir šeit, lai palīdzētu!'
+        },
+        title: 'Bieži Uzdotie Jautājumi',
+        subtitle: 'Ātras atbildes uz biežiem jautājumiem par mūsu pakalpojumiem',
+        q1: {
+          question: 'Cik ilgi ilgst tipiska renovācija?',
+          answer: 'Projekta termiņi atšķiras atkarībā no apjoma un sarežģītības. Vienkārši projekti, piemēram, krāsošana, var aizņemt 1-3 dienas, bet lielākas renovācijas var aizņemt vairākas nedēļas. Mēs sniedzam detalizētus termiņus konsultācijas laikā.'
+        },
+        q2: {
+          question: 'Vai jūs sniedzat bezmaksas aplēses?',
+          answer: 'Jā! Mēs piedāvājam bezmaksas, bez saistībām aplēses visiem mūsu pakalpojumiem. Mūsu komanda apmeklēs jūsu īpašumu, lai novērtētu nepieciešamos darbus un sniegtu detalizētu piedāvājumu.'
+        },
+        q3: {
+          question: 'Vai jūs esat licencēti un apdrošināti?',
+          answer: 'Absolūti. VK Bouwmaster ir pilnībā licencēts un apdrošināts. Mums ir visaptveroša atbildības apdrošināšana un darbinieku kompensācija, lai aizsargātu gan mūsu komandu, gan jūsu īpašumu.'
+        },
+        q4: {
+          question: 'Kādas teritorijas jūs apkalpojat?',
+          answer: 'Mēs apkalpojam lielāko metropolises teritoriju un apkārtējos reģionus. Sazinieties ar mums, lai apstiprinātu, vai mēs apkalpojam jūsu konkrēto atrašanās vietu.'
+        }
+      }
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Grīdu Ieklāšana',
+          subtitle: 'Profesionāli grīdu uzstādīšanas un remonta pakalpojumi visiem grīdas materiālu veidiem'
+        },
+        solutions: {
+          title: 'Profesionāli Risinājumi',
+          description1: 'Pārveidojiet savu telpu ar mūsu profesionālajiem grīdu uzstādīšanas pakalpojumiem. Es specializējos visos grīdas materiālu veidos un nodrošinu ekspertu uzstādīšanu, remontu un apkopes pakalpojumus.',
+          description2: 'Mana pieredze nodrošina pareizas uzstādīšanas metodes, uzmanību detaļām un kvalitatīvu materiālu izmantošanu, lai izveidotu skaistas, izturīgas grīdas, kas kalpos gadiem.',
+          projectsCompleted: 'Pabeigtie Projekti',
+          yearsExperience: 'Gadu Pieredze'
+        },
+        services: {
+          title: 'Mūsu Pakalpojumi',
+          items: [
+            'Parketa uzstādīšana',
+            'Lamināta grīda',
+            'Flīžu un akmeņu uzstādīšana',
+            'Paklāju uzstādīšana',
+            'Vinila grīda (LVT)',
+            'Grīdu remonts un restaurācija'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Krāsošanas Pakalpojumi',
+          subtitle: 'Profesionāli iekšējo un ārējo krāsošanas pakalpojumi ar premium kvalitātes krāsām'
+        },
+        solutions: {
+          title: 'Profesionāli Risinājumi',
+          description1: 'Pārveidojiet savu telpu ar profesionāliem krāsošanas pakalpojumiem. Es nodrošinu kvalitatīvu virsmas sagatavošanu, premium krāsu izmantošanu un nevainojamu izpildi.',
+          description2: 'Mana pieredze garantē izturīgus apdari, pilnīgi gludas virsmas un aizsardzību pret ārējiem faktoriem.',
+          projectsCompleted: 'Pabeigtie Projekti',
+          yearsExperience: 'Gadu Pieredze'
+        },
+        services: {
+          title: 'Mūsu Pakalpojumi',
+          items: [
+            'Sienu un griestu krāsošana',
+            'Ārējo fasāžu krāsošana',
+            'Dekoratīva krāsošana',
+            'Virsmu gruntēšana',
+            'Koka konstrukciju krāsošana',
+            'Aizsargājoša apstrāde'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Santehnikas Remonti',
+          subtitle: 'Profesionāli santehnikas remonta un uzstādīšanas pakalpojumi mājām un birojiem'
+        },
+        solutions: {
+          title: 'Profesionāli Risinājumi',
+          description1: 'Pilns santehnikas pakalpojumu klāsts jūsu mājai vai biznesam. Es nodrošinu kvalitatīvu uzstādīšanu, remontu un apkopi visu veidu santehnikas ierīcēm.',
+          description2: 'Gadu pieredze garantē uzticamību, izturību un atbilstību visiem drošības standartiem.',
+          projectsCompleted: 'Pabeigtie Projekti',
+          yearsExperience: 'Gadu Pieredze'
+        },
+        services: {
+          title: 'Mūsu Pakalpojumi',
+          items: [
+            'Cauruļu remonts un nomaiņa',
+            'Santehnikas ierīču uzstādīšana',
+            'Ūdensapgādes uzstādīšana',
+            'Kanalizācijas remonts',
+            'Radiatoru uzstādīšana',
+            'Noteku tīrīšana'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Jumta Remonti',
+          subtitle: 'Ekspertu jumta remonta un uzturēšanas pakalpojumi jūsu īpašuma aizsardzībai'
+        },
+        solutions: {
+          title: 'Profesionāli Risinājumi',
+          description1: 'Pilnīgs jumta remonts, uzturēšana un novēršana. Es strādāju ar dažādiem jumta veidiem, laboju noplūdes un bojājumus.',
+          description2: 'Kvalitatīvi materiāli un stingra tehnoloģijas ievērošana — izturīgam un uzticamam jumtam.',
+          projectsCompleted: 'Pabeigtie Projekti',
+          yearsExperience: 'Gadu Pieredze'
+        },
+        services: {
+          title: 'Mūsu Pakalpojumi',
+          items: [
+            'Noplūžu un bojājumu remonts',
+            'Jumta seguma nomaiņa',
+            'Noteku uzstādīšana un remonts',
+            'Savienojumu un apšuvumu blīvēšana',
+            'Vietējie un lieli remonti',
+            'Preventīva pārbaude un uzturēšana'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Dārza Dizains',
+          subtitle: 'Skaisti dārza dizaina un ainavu arhitektūras pakalpojumi jūsu āra telpas uzlabošanai'
+        },
+        solutions: {
+          title: 'Profesionāli Risinājumi',
+          description1: 'Individuāla pieeja dizainam un ainavu arhitektūrai. Es izveidoju funkcionālus un estētiskus dārzus, kas atbilst jūsu vēlmēm un vietas apstākļiem.',
+          description2: 'Augu, apgaismojuma un virsmu izvēle — harmonijai un ilgam kalpošanas laikam.',
+          projectsCompleted: 'Pabeigtie Projekti',
+          yearsExperience: 'Gadu Pieredze'
+        },
+        services: {
+          title: 'Mūsu Pakalpojumi',
+          items: [
+            'Ainavu dizains',
+            'Augu izvēle un ainavu dizains',
+            'Zālienu un taku uzstādīšana',
+            'Aplūkošanas un drenāžas sistēmas',
+            'Dārza apgaismojums',
+            'Sezonāla dārza uzturēšana'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Flīžu Uzstādīšana',
+          subtitle: 'Profesionāli flīžu noņemšanas un uzstādīšanas pakalpojumi virtuvēm, vannas istabām un citām telpām'
+        },
+        solutions: {
+          title: 'Profesionāli Risinājumi',
+          description1: 'Veco flīžu noņemšana, virsmas sagatavošana un precīza flīžu uzstādīšana. Es nodrošinu pareizu ģeometriju, šuvju aizpildīšanu un hidroizolāciju.',
+          description2: 'Es izmanto kvalitatīvus materiālus un instrumentus — nevainojamiem rezultātiem un izturībai.',
+          projectsCompleted: 'Pabeigtie Projekti',
+          yearsExperience: 'Gadu Pieredze'
+        },
+        services: {
+          title: 'Mūsu Pakalpojumi',
+          items: [
+            'Veco flīžu noņemšana',
+            'Virsmas sagatavošana un izlīdzināšana',
+            'Mitru zonu hidroizolācija',
+            'Flīžu un mozaīkas uzstādīšana',
+            'Šuvju aizpildīšana un blīvēšana',
+            'Atsevišķu elementu restaurācija un nomaiņa'
+          ]
+        }
+      },
+      paving: {
+        hero: {
+          title: 'Akmens Bruģēšanas Uzstādīšana',
+          subtitle: 'Profesionāla akmens bruģēšanas uzstādīšana piebraucamajām ceļiem, takām, terasēm un āra zonām'
+        },
+        solutions: {
+          title: 'Profesionāli Risinājumi',
+          description1: 'Pārveidojiet savu āra telpu ar profesionālu akmens bruģēšanas uzstādīšanu. Es specializējos skaistu, izturīgu virsmu izveidē piebraucamajiem ceļiem, takām, terasēm un dārza zonām.',
+          description2: 'Mana pieredze nodrošina pareizu pamatnes sagatavošanu, precīzu uzstādīšanu un uzmanību detaļām ilgtermiņa rezultātiem, kas paaugstina jūsu īpašuma vērtību un izskatu.',
+          projectsCompleted: 'Pabeigtie Projekti',
+          yearsExperience: 'Gadu Pieredze'
+        },
+        services: {
+          title: 'Mūsu Pakalpojumi',
+          items: [
+            'Piebraucamā ceļa bruģēšana',
+            'Taku un ceļu uzstādīšana',
+            'Terasu un patiņu bruģēšana',
+            'Dārza zonas bruģēšana',
+            'Pamatnes sagatavošana un izlīdzināšana',
+            'Drenāžas sistēmas uzstādīšana',
+            'Malu uzstādīšana un apdare'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Privātuma politika',
+        subtitle: 'VK Bouwmaster Privātuma politika'
+      },
+      introduction: {
+        title: '1. Ievads',
+        content: 'VK Bouwmaster ("mēs", "mūsu" vai "uzņēmums") apņemas aizsargāt jūsu privātumu. Šī Privātuma politika izskaidro, kā mēs vācam, izmantojam, atklājam un aizsargājam jūsu informāciju, izmantojot mūsu vietni un pakalpojumus.'
+      },
+      dataCollection: {
+        title: '2. Informācija, ko mēs vācam',
+        personalInfo: {
+          title: 'Personīgā informācija',
+          items: ['Vārds', 'E-pasta adrese', 'Tālruņa numurs']
+        },
+        projectInfo: {
+          title: 'Projekta informācija',
+          items: ['Pieprasījuma detaļas', 'Projekta adrese', 'Darba apraksts']
+        },
+        technicalInfo: {
+          title: 'Tehniskā informācija',
+          items: ['IP adrese', 'Pārlūka veids', 'Lietošanas dati']
+        }
+      },
+      dataUsage: {
+        title: '3. Kā mēs izmantojam jūsu informāciju',
+        subtitle: 'Vāktu informāciju izmantojam:',
+        items: [
+          { icon: '✅', text: 'Mūsu pakalpojumu sniegšanai un uzlabošanai' },
+          { icon: '📞', text: 'Sazināšanai ar jums par jūsu projektu' },
+          { icon: '📧', text: 'Informācijas materiālu un atjauninājumu nosūtīšanai' },
+          { icon: '🔒', text: 'Mūsu vietnes drošības nodrošināšanai' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Datu aizsardzība',
+        content: 'Mēs ieviešam atbilstošus tehniskos un organizatoriskos pasākumus, lai aizsargātu jūsu personīgo informāciju no neautorizētas piekļuves, izmaiņām, atklāšanu vai iznīcināšanu.',
+        encryption: 'Datu šifrēšana',
+        secureAccess: 'Droša piekļuve',
+        regularChecks: 'Regulāras pārbaudes'
+      },
+      thirdParty: {
+        title: '5. Izpaušana trešajām personām',
+        content: 'Mēs nepārdodam, nemainām vai nepārnesam jūsu personīgo informāciju trešajām personām bez jūsu piekrišanas, izņemot gadījumus, kad tas ir nepieciešams mūsu pakalpojumu sniegšanai vai to prasa likums.'
+      },
+      userRights: {
+        title: '6. Jūsu tiesības',
+        subtitle: 'Jums ir tiesības:',
+        items: [
+          { icon: '📖', text: 'Piekļūt savai personīgajai informācijai' },
+          { icon: '✏️', text: 'Labot neprecīzu informāciju' },
+          { icon: '🗑️', text: 'Pieprasīt savu datu dzēšanu' },
+          { icon: '🔄', text: 'Atsaukt piekrišanu datu apstrādei' }
+        ]
+      },
+      contact: {
+        title: '7. Kontakti',
+        subtitle: 'Ja jums ir jautājumi par mūsu Privātuma politiku, lūdzu, sazinieties ar mums:',
+        email: {
+          title: 'E-pasts',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Tālrunis',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Privātuma politikas atjauninājumi',
+        content: 'Mēs varam periodiski atjaunināt šo Privātuma politiku. Mēs jūs informēsim par jebkādām izmaiņām, publicējot jauno Privātuma politiku šajā lapā ar atjauninātu datumu.'
+      },
+      lastUpdated: 'Pēdējais atjauninājums: Janvāris 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Pakalpojumu noteikumi',
+        subtitle: 'VK Bouwmaster Pakalpojumu noteikumi'
+      },
+      acceptance: {
+        title: '1. Noteikumu pieņemšana',
+        content: 'Izmantojot VK Bouwmaster vietni un pakalpojumus, jūs piekrītat šiem Pakalpojumu noteikumiem. Ja jūs nepiekrītat kādam no noteikumiem, lūdzu, neizmantojiet mūsu pakalpojumus.'
+      },
+      services: {
+        title: '2. Pakalpojumu apraksts',
+        content: 'VK Bouwmaster nodrošina profesionālus renovācijas un pārveidošanas pakalpojumus, ieskaitot, bet ne tikai: grīdu uzstādīšanu, krāsošanu, santehnikas darbus, jumta remontu, dārza dizainu un citus būvniecības pakalpojumus.'
+      },
+      estimates: {
+        title: '3. Novērtējumi un cenas',
+        content: 'Mēs sniedzam bezmaksas darbu novērtējumus. Norādītās cenas ir orientējošas un var atšķirties atkarībā no:',
+        factors: ['Projekta sarežģītības', 'Izmantotajiem materiāliem', 'Darba apjoma', 'Papildu klienta prasībām']
+      },
+      payment: {
+        title: '4. Maksājums',
+        content: 'Maksājuma noteikumi tiek vienoti individuāli katram projektam un norādīti līgumā. Parasti nepieciešams:',
+        items: ['Iepriekšējais maksājums var būt nepieciešams materiālu iegādei', 'Galīgais maksājums tiek veikts pēc darbu pabeigšanas', 'Darbu pieņemšana tiek veikta klienta klātbūtnē']
+      },
+      warranty: {
+        title: '5. Garantija',
+        content: 'Mēs nodrošinām garantiju pabeigtajiem darbiem saskaņā ar līguma noteikumiem. Garantijas detaļas tiek apspriestas individuāli katram projektam.'
+      },
+      liability: {
+        title: '6. Atbildība',
+        content: 'VK Bouwmaster ir atbildīgs par pabeigto darbu kvalitāti vienotā līguma ietvaros. Mēs izmantojam kvalitatīvus materiālus un profesionālas darba metodes. Klients ir atbildīgs par precīzas informācijas sniegšanu par projektu.'
+      },
+      cancellation: {
+        title: '7. Atcelšana un izmaiņas',
+        content: 'Projekta izmaiņas jāvienojas iepriekš. Projekta atcelšana jāpaziņo saprātīgā laikā. Naudas atmaksas noteikumi tiek vienoti individuāli.'
+      },
+      intellectualProperty: {
+        title: '8. Intelektuālā īpašuma',
+        content: 'Visi materiāli un dizaini, ko izveidojis VK Bouwmaster kā projekta daļu, paliek uzņēmuma īpašumā līdz pilnīgai darbu samaksai, pēc tam tiesības tiek nodotas klientam.'
+      },
+      contact: {
+        title: '9. Kontakti',
+        content: 'Jautājumiem par šiem Pakalpojumu noteikumiem sazinieties:',
+        email: 'E-pasts: vkbouwmaster@gmail.com',
+        phone: 'Tālrunis: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Noteikumu izmaiņas',
+        content: 'Mēs paturam tiesības jebkurā laikā mainīt šos Pakalpojumu noteikumus. Mūsu pakalpojumu turpmāka izmantošana pēc izmaiņām nozīmē jūsu piekrišanu jaunajiem noteikumiem.'
+      },
+      lastUpdated: 'Pēdējais atjauninājums: Janvāris 2025'
+    }
+  },
+  LT: {
+    navigation: {
+      home: 'Pradžia',
+      about: 'Apie Mus',
+      services: 'Paslaugos',
+      portfolio: 'Portfelis',
+      reviews: 'Atsiliepimai',
+      team: 'Komanda',
+      pricing: 'Kainos',
+      blog: 'Tinklaraštis',
+      faq: 'DUK',
+      contact: 'Kontaktai',
+      getQuote: 'Pasiūlymas',
+      language: 'Kalba',
+      adminPanel: '🔐 Admin skydelis',
+      scrollLeft: 'Slinkti į kairę',
+      scrollRight: 'Slinkti į dešinę',
+      adminPanelTitle: 'Administravimo skydelis',
+      switchLanguage: 'Keisti kalbą'
+    },
+    common: {
+      loading: 'Kraunama...',
+      error: 'Klaida',
+      success: 'Sėkmė',
+      cancel: 'Atšaukti',
+      save: 'Išsaugoti',
+      delete: 'Ištrinti',
+      edit: 'Redaguoti',
+      view: 'Peržiūrėti',
+      learnMore: 'Sužinoti Daugiau',
+      readMore: 'Skaityti Daugiau',
+      getStarted: 'Pradėti',
+      contactUs: 'Susisiekti su Mumis',
+      years: 'Metai',
+      projects: 'Projektai',
+      satisfaction: 'Patenkinimas',
+      support: 'Palaikymas',
+      experience: 'Patirtis',
+      quality: 'Kokybė',
+      team: 'Komanda',
+      clients: 'Klientai',
+      completed: 'Baigta',
+      happy: 'Laimingas',
+      available: 'Prieinamas',
+      expertise: 'Ekspertizė'
+    },
+    home: {
+      hero: {
+        title1: 'Profesionalūs',
+        title2: 'Rekonstrukcijos Paslaugos',
+        subtitle: 'Profesionalūs rekonstrukcijos paslaugos su daugiau nei 10 metų patirtimi. Tikras savo amato meistras, kuris moka viską: nuo grindų klojimo iki visiškos rekonstrukcijos. Kokybiškas darbas, dėmesys kiekvienai detalėi, terminų laikymasis ir sąžiningos kainos. Aš transformuoju jūsų erdvę su meile ir profesionalumu.',
+        cta1: 'Gauti Nemokamą Pasiūlymą',
+        cta2: 'Žiūrėti Mano Darbus'
+      },
+      about: {
+        title: 'Apie Meistrą',
+        description1: 'Vladimiras yra meistras su daugiau nei 10 metų patirtimi rekonstrukcijoje ir statybose. Jį išskiria <span class="text-blue-400 font-medium">išskirtinis atsakomybės jausmas</span> ir dėmesys detalėms.',
+        description2: 'Kiekvienas projektas atliekamas <span class="text-blue-400 font-medium">aukščiausios kokybės</span> ir griežtai laikantis terminų. Klientai vertina jį už sąžiningumą, profesionalumą ir gebėjimą įgyvendinti sudėtingiausias idėjas.',
+        projectsCount: '200+',
+        projectsLabel: 'Užbaigtų Projektų',
+        yearsCount: '10+',
+        yearsLabel: 'Metų Patirties',
+        satisfactionPercent: '100%',
+        satisfactionLabel: 'Patenkintų Klientų',
+        supportLabel: 'Klientų Palaikymas',
+        viewWorks: 'Žiūrėti Mano Darbus'
+      },
+      works: {
+        title: 'Mano Darbai',
+        description: 'Vladimiras yra meistras, kuris rekonstrukciją paverčia menu: tikslūs terminai, idealus geometrija ir nepriekaištinga kokybė kiekviename detali.',
+        work: 'darbas',
+        works2: 'darbai',
+        works5: 'darbų'
+      },
+      services: {
+        title: 'Mano Paslaugos',
+        subtitle: 'Siūlau rekonstrukcijos paslaugas jūsų namo ar verslo transformacijai',
+        flooring: {
+          title: 'Grindų Kėlimas',
+          description: 'Profesionalūs grindų kėlimo ir remonto paslaugos visų tipų grindų medžiagoms.'
+        },
+        painting: {
+          title: 'Dažymo Paslaugos',
+          description: 'Vidaus ir išorės dažymo paslaugos premium kokybės dažais ir apdailos sluoksniais.'
+        },
+        plumbing: {
+          title: 'Santechnikos Remontai',
+          description: 'Profesionalios santechnikos remonto ir įrengimo paslaugos namams ir biurams.'
+        },
+        roofing: {
+          title: 'Stogo Remontai',
+          description: 'Ekspertinės stogo remonto ir priežiūros paslaugos jūsų nuosavybės apsaugai.'
+        },
+        garden: {
+          title: 'Sodo Dizainas',
+          description: 'Gražios sodo dizaino ir kraštovaizdžio architektūros paslaugos jūsų lauko erdvės pagerinimui.'
+        },
+        tile: {
+          title: 'Plytelių Kėlimas',
+          description: 'Profesionalūs plytelių šalinimo ir įrengimo paslaugos virtuvėms, vonios kambariams ir kitoms patalpoms.'
+        }
+      },
+      achievements: {
+        title: 'Mūsų Pasiekimai',
+        subtitle: 'Skaičiai, kalbantys apie mūsų sėkmę',
+        experience: {
+          title: 'Metų Patirties',
+          subtitle: 'Daugiau nei dešimtmetis profesionalaus aptarnavimo'
+        },
+        projects: {
+          title: 'Užbaigtų Projektų',
+          subtitle: 'Sėkmingai užbaigti projektai'
+        },
+        clients: {
+          title: 'Patenkintų Klientų',
+          subtitle: 'Patenkinti klientai'
+        },
+        satisfaction: {
+          title: 'Patenkinimo Lygis',
+          subtitle: 'Klientų patenkinimas garantuotas'
+        },
+        support: {
+          title: 'Palaikymas 24/7',
+          subtitle: 'Nenutrūkstamas klientų palaikymas'
+        }
+      },
+      whyChoose: {
+        title: 'Kodėl Rinktis VK Bouwmaster?',
+        subtitle: 'Teikiame išskirtinius rezultatus su mūsų įsipareigojimu kokybei ir klientų patenkinimui',
+        experience: {
+          title: 'Metų Patirties',
+          description: 'Daugiau nei dešimtmetis patirties rekonstrukcijos ir statybos paslaugose'
+        },
+        quality: {
+          title: 'Kokybių Garancija',
+          description: 'Stovime už savo darbu su visapusiškomis kokybės garantijomis'
+        },
+        team: {
+          title: 'Ekspertų Komanda',
+          description: 'Kvalifikuoti profesionalai, pasišventę išskirtinių rezultatų pasiekimui'
+        }
+      },
+      testimonials: {
+        title: 'Ką Sako Mūsų Klientai',
+        subtitle: 'Tikri atsiliepimai iš patenkintų klientų, kurie mums patikėjo savo projektus',
+        testimonial1: {
+          text: 'Išskirtinis darbas! Komanda visiškai transformavo mūsų virtuvę. Profesionaliai, švariai ir pristatyta laiku. Karščiai rekomenduoju!',
+          author: 'Jonas Petraitis',
+          role: 'Namo Savininkas'
+        },
+        testimonial2: {
+          text: 'Puikūs paslaugos nuo pradžių iki galo. Jie rekonstravo mūsų biuro erdvę ir viršijo visus lūkesčius. Tikrai naudosiu dar kartą!',
+          author: 'Rasa Jankauskienė',
+          role: 'Biuro Vadovė'
+        }
+      }
+    },
+    about: {
+      hero: {
+        title: 'Apie VK Bouwmaster',
+        subtitle: 'Jūsų patikimas partneris profesionaliuose renovacijos ir statybos paslaugose'
+      },
+      story: {
+        title: 'Mūsų Istorija',
+        paragraph1: 'Įkurtas daugiau nei prieš dešimtmetį, VK Bouwmaster buvo profesionalių renovacijos paslaugų priekyje. Tai, kas prasidėjo kaip mažas šeimos verslas, išaugo į vieną iš patikimiausių vardų namų tobulinime ir statyboje.',
+        paragraph2: 'Mūsų kelionė prasidėjo paprasta misija: transformuoti erdves ir viršyti lūkesčius. Šiandien mes tęsiame šį įsipareigojimą per inovatyvius sprendimus, kokybišką amatų darbą ir nepaprastą klientų aptarnavimą.',
+        paragraph3: 'Kiekvienas projektas, kurį pradedame, atspindi mūsų aistrą tobulybei ir mūsų pasišventimą jūsų vizijos įgyvendinimui. Mes tikime, kad jūsų namas yra daugiau nei tik pastatas—tai vieta, kur kuriamos prisiminimai ir svajonės tampa tikrove.'
+      },
+      mission: {
+        title: 'Mūsų Misija ir Vertybės',
+        subtitle: 'Mus varo mūsų pagrindinės vertybės ir pasišventimas tobulybei',
+        mission: {
+          title: 'Mūsų Misija',
+          description: 'Teikti nepaprastas renovacijos paslaugas, kurios transformuoja erdves ir viršija mūsų klientų lūkesčius per kokybišką amatų darbą ir inovatyvius sprendimus.'
+        },
+        quality: {
+          title: 'Kokybe Pirma',
+          description: 'Mes niekada nekompromisuojame dėl kokybės. Kiekvienas projektas baigiamas atkreipiant dėmesį į detales ir naudojant tik geriausius medžiagas ir metodus.'
+        },
+        customer: {
+          title: 'Fokusas į Klientą',
+          description: 'Mūsų klientai yra visko, ką darome, širdyje. Mes klausome, aiškiai komunikuojame ir glaudžiai bendradarbiaujame su jumis, kad pasiektume jūsų viziją.'
+        }
+      },
+      whyChoose: {
+        title: 'Kodėl Rinktis VK Bouwmaster?',
+        subtitle: 'Mes išsiskiriame nuo konkurentų unikaliu požiūriu ir pasišventimu tobulybei',
+        award: {
+          title: 'Apdovanotas',
+          description: 'Pripažintas už puikybę renovacijos ir statybos paslaugose'
+        },
+        expert: {
+          title: 'Ekspertų Komanda',
+          description: 'Kvalifikuoti profesionalai su metų patirtimi savo srityse'
+        },
+        onTime: {
+          title: 'Laiku Pristatymas',
+          description: 'Mes gerbiame jūsų laiką ir pristatome projektus pagal grafiką, kiekvieną kartą'
+        },
+        fair: {
+          title: 'Sąžininga Kaina',
+          description: 'Skaidrus kainodara be paslėptų išlaidų ar netikėtumų'
+        }
+      },
+      certifications: {
+        title: 'Sertifikatai ir Licencijos',
+        subtitle: 'Mes laikomės aukščiausių standartų su tinkamais sertifikatais ir licencijomis',
+        licensed: {
+          title: 'Licencijuotas ir Draudžiamas',
+          description: 'Pilnai licencijuotas ir draudžiamas jūsų ramybei ir apsaugai'
+        },
+        certified: {
+          title: 'Pramonės Sertifikuotas',
+          description: 'Sertifikuotas pagrindinėmis pramonės organizacijomis ir prekybos asociacijomis'
+        },
+        quality: {
+          title: 'Garantuota Kokybė',
+          description: 'Reguliarios kokybės audito ir nuolatinio tobulinimo procesai'
+        }
+      },
+      cta: {
+        title: 'Pasiruošę Dirbti su Mumis?',
+        subtitle: 'Apsvarstykime jūsų projektą ir pažiūrėkime, kaip galime įgyvendinti jūsų viziją',
+        cta1: 'Gauti Nemokamą Pasiūlymą',
+        cta2: 'Žiūrėti Mūsų Darbą'
+      }
+    },
+    portfolio: {
+      hero: {
+        title: 'Mano Portfolio',
+        subtitle: 'Tyrinėkite mano užbaigtus projektus ir pamatykite mano darbo kokybę'
+      },
+      stats: {
+        projects: 'Užbaigti Projektai',
+        years: 'Metų Patirtis',
+        satisfaction: 'Klientų Pasitenkinimas',
+        clients: 'Patenkinti Klientai'
+      },
+      whyChoose: {
+        title: 'Kodėl Pasirinkti Mane',
+        features: [
+          { icon: '🛠️', title: 'Kokybė', desc: 'Tvarkingai, švariai ir su dėmesiu detalėms. Naudoju patikrintas medžiagas ir technologijas.' },
+          { icon: '⏱️', title: 'Terminai', desc: 'Dirbu pagal aiškų grafiką. Užbaigiu laiku — be staigmenų ar "rytojų".' },
+          { icon: '🤝', title: 'Sąžiningumas', desc: 'Skaidrūs sąmatai ir etapai. Visada suprantate, už ką mokate.' },
+          { icon: '💬', title: 'Komunikacija', desc: 'Visada pasiekiamas, greitai atsakau ir siūlau sprendimus jūsų užklausai.' },
+          { icon: '🧼', title: 'Švara', desc: 'Laikau tvarką vietoje, saugau baldus ir dangas, valau po savęs.' },
+          { icon: '🔒', title: 'Garantija', desc: 'Suteikiu garantiją atliktiems darbams ir lieku pasiekiamas po perdavimo.' }
+        ]
+      },
+      featured: {
+        title: 'Mano Projektai',
+        subtitle: 'Kiekvienas projektas demonstruoja mano įsipareigojimą kokybei, dėmesiui detalėms ir klientų pasitikėjimui'
+      },
+      features: 'Pagrindinės Savybės:',
+      noWorks: {
+        title: 'Dar nepridėti darbai',
+        subtitle: 'Pridėkite darbus per administravimo skydelį'
+      },
+      testimonials: {
+        title: 'Ką Sako Mano Klientai',
+        subtitle: 'Netikėkite manimi tik žodžiais — skaitykite tikrų klientų atsiliepimus'
+      },
+      noReviews: 'Dar nėra atsiliepimų',
+      cta: {
+        title: 'Pasiruošę Pradėti Savo Projektą?',
+        subtitle: 'Leiskite man transformuoti jūsų erdvę su ta pačia kokybe ir dėmesiu detalėms'
+      },
+      detail: {
+        backToProjects: 'Atgal į projektus',
+        projectNotFound: 'Projektas nerastas',
+        projectNotFoundSubtitle: 'Projektas su ID {projectId} neegzistuoja arba buvo ištrintas',
+        noMedia: 'Dar nėra nuotraukų ir vaizdo įrašų',
+        noMediaSubtitle: 'Pridėkite nuotraukas ir vaizdo įrašus administravimo skydelyje',
+        allPhotosAndVideos: 'Visos projekto nuotraukos ir vaizdo įrašai',
+        oneOfWork: '✨ Vienas iš mūsų darbų',
+        date: 'Data',
+        city: 'Miestas',
+        photos: 'Nuotraukos',
+        videos: 'Vaizdo įrašai',
+        comments: 'Komentarai',
+        noComments: 'Dar nėra komentarų. Būkite pirmas!',
+        beFirst: 'Būkite pirmas!',
+        profileImageLabel: 'Profilio nuotrauka',
+        profileImageOptional: '(neprivaloma)',
+        addProfileImage: 'Pridėti profilio nuotrauką',
+        changePhoto: 'Keisti nuotrauką',
+        deletePhoto: 'Ištrinti nuotrauką',
+        cityLabel: 'Miestas',
+        cityOptional: '(neprivaloma)',
+        cityPlaceholder: 'Kuriame mieste buvo užsakyta?',
+        ratingLabel: 'Įvertinimas',
+        ratingRequired: '(privaloma)',
+        commentLabel: 'Jūsų komentaras',
+        commentPlaceholder: 'Parašykite savo komentarą čia...',
+        charactersLeft: 'Likę simbolių:',
+        addPhotosLabel: '📷 Pridėti nuotraukas',
+        addPhotosOptional: '(neprivaloma)',
+        selectPhotos: '📷 Pasirinkti nuotraukas',
+        photosUploaded: 'Įkeltos nuotraukos:',
+        addVideosLabel: '🎥 Pridėti vaizdo įrašus',
+        addVideosOptional: '(neprivaloma)',
+        selectVideos: '🎥 Pasirinkti vaizdo įrašus',
+        videosUploaded: 'Įkelti vaizdo įrašai:',
+        deleteVideo: 'Ištrinti vaizdo įrašą',
+        submitting: 'Siunčiama…',
+        submitComment: '📤 Pateikti komentarą',
+        commentWillAppear: 'Komentaras bus rodomas po administratoriaus patvirtinimo.',
+        viewAllPhotos: 'Peržiūrėti visas nuotraukas ({count})',
+        noProject: 'Be projekto',
+        category: 'Kategorija',
+        project: 'Projektas',
+        translateTo: 'Versti į...',
+        showOriginal: 'Rodyti originalą',
+        translatedTo: 'Išversta į',
+        translating: 'Vertimas...'
+      }
+    },
+    thankYou: {
+      title: 'Dėkojame už jūsų atsiliepimą!',
+      message1: 'Esu labai laimingas, kad pasidalijote savo patirtimi!',
+      message2: 'Visada siekiu būti geresnis jums. Jūsų atsiliepimas padės man tapti dar geresniu.',
+      backToReviews: 'Atgal į atsiliepimus'
+    },
+    contactThankYou: {
+      title: 'Dėkojame už jūsų žinutę!',
+      message: 'Susisieksiu su jumis per dieną.',
+      backToContact: 'Atgal į kontaktus'
+    },
+    reviews: {
+      hero: {
+        badge: 'Jūsų nuomonė mums svarbi',
+        title: 'Klientų atsiliepimai',
+        subtitle: 'Pasidalinkite savo patirtimi su mumis. Jūsų atsiliepimai padeda kitiems klientams priimti sprendimus.'
+      },
+      form: {
+        title: 'Palikite atsiliepimą',
+        namePlaceholder: 'Vardas',
+        surnamePlaceholder: 'Pavardė (neprivaloma)',
+        profileImageLabel: 'Profilio nuotrauka',
+        profileImageOptional: '(neprivaloma)',
+        addProfileImage: 'Pridėti profilio nuotrauką',
+        changePhoto: 'Pakeisti nuotrauką',
+        deletePhoto: 'Ištrinti nuotrauką',
+        cityLabel: 'Miestas',
+        cityOptional: '(neprivaloma)',
+        cityPlaceholder: 'Kuriame mieste buvo pateikta užsakymas?',
+        ratingLabel: 'Įvertinimas',
+        ratingRequired: '(privaloma)',
+        reviewLabel: 'Jūsų atsiliepimas',
+        reviewPlaceholder: 'Papasakokite apie savo patirtį su mumis... Kas jums patiko? Ką galima pagerinti?',
+        charactersLeft: 'Liko simbolių:',
+        goodReview: 'Geras atsiliepimas!',
+        addPhotosLabel: 'Pridėti nuotraukas',
+        addPhotosOptional: '(neprivaloma)',
+        selectPhotos: '📷 Pasirinkti nuotraukas',
+        photosUploaded: 'Nuotraukos įkeltos:',
+        addVideosLabel: 'Pridėti vaizdo įrašus',
+        addVideosOptional: '(neprivaloma)',
+        selectVideos: '🎥 Pasirinkti vaizdo įrašus',
+        videosUploaded: 'Vaizdo įrašai įkelti:',
+        deleteVideo: 'Ištrinti vaizdo įrašą',
+        submitting: 'Siunčiama…',
+        submitButton: 'Pateikti atsiliepimą',
+        reviewWillAppear: 'Atsiliepimas bus rodomas po administratoriaus patvirtinimo',
+        fillRequiredFields: 'Prašome užpildyti vardą ir žinutę',
+        errorSubmitting: 'Klaida siunčiant atsiliepimą. Prašome bandyti dar kartą.',
+        errorConnection: 'Klaida siunčiant atsiliepimą. Prašome patikrinti interneto ryšį ir bandyti dar kartą.'
+      },
+      list: {
+        title: 'Visi atsiliepimai',
+        review: 'atsiliepimas',
+        reviews2: 'atsiliepimai',
+        reviews5: 'atsiliepimų',
+        noReviews: 'Kol kas nėra atsiliepimų. Būkite pirmas!',
+        photosAndVideos: 'Nuotraukos ir vaizdo įrašai iš atsiliepimo',
+        viewAllMedia: 'Peržiūrėti visas nuotraukas ir vaizdo įrašus →'
+      },
+      detail: {
+        backToReviews: 'Atgal į atsiliepimus',
+        reviewNotFound: 'Atsiliepimas nerastas',
+        reviewNotFoundSubtitle: 'Atsiliepimas su ID {reviewId} neegzistuoja',
+        noMedia: 'Šis atsiliepimas neturi nuotraukų ir vaizdo įrašų',
+        noMediaSubtitle: 'Grįžti į atsiliepimus',
+        photosAndVideos: 'Nuotraukos ir vaizdo įrašai iš atsiliepimo'
+      }
+    },
+    services: {
+      hero: {
+        title: 'Mūsų Paslaugos',
+        subtitle: 'Išsamios renovacijos ir statybos paslaugos jūsų erdvės transformavimui'
+      },
+      whatWeDo: {
+        title: 'Ką Mes Darome',
+        subtitle: 'Nuo mažų remonto darbų iki pilnų renovacijų, turime patirtį bet kokio projekto valdymui'
+      },
+      process: {
+        title: 'Mūsų Procesas',
+        subtitle: 'Sekame patikrintu procesu, kad užtikrintume, jog jūsų projektas bus baigtas pagal aukščiausius standartus',
+        consultation: {
+          title: 'Konsultacija',
+          description: 'Pradedame išsamią konsultaciją, kad suprastume jūsų poreikius ir viziją'
+        },
+        planning: {
+          title: 'Planavimas',
+          description: 'Išsamus planavimas ir dizainas, kad užtikrintume geriausią rezultatą jūsų projektui'
+        },
+        execution: {
+          title: 'Įgyvendinimas',
+          description: 'Profesionalus įgyvendinimas su kokybiškais medžiagomis ir kvalifikuotu amatiniu darbu'
+        },
+        completion: {
+          title: 'Užbaigimas',
+          description: 'Galutinė patikra ir valymas, kad užtikrintume jūsų visišką pasitenkinimą'
+        }
+      },
+      cta: {
+        title: 'Pasiruošę Pradėti Savo Projektą?',
+        subtitle: 'Susisiekite su mumis šiandien nemokamai konsultacijai ir pasiūlymui',
+        cta1: 'Gauti Nemokamą Pasiūlymą',
+        cta2: 'Žiūrėti Mūsų Darbą'
+      }
+    },
+    footer: {
+      description: 'Profesionalios renovacijos paslaugos su daugiau nei 10 metų patirtimi. Transformuoju jūsų erdvę su kokybišku darbu ir dėmesiu detalėms.',
+      quickLinks: {
+        title: 'Greitos Nuorodos'
+      },
+      services: {
+        title: 'Paslaugos'
+      },
+      shot: {
+        title: 'Shot'
+      },
+      copyright: '© 2025 VK Bouwmaster. Visos teisės saugomos.',
+      privacy: 'Privatumo Politika',
+      terms: 'Paslaugų Sąlygos'
+    },
+    admin: {
+      login: {
+        title: 'Administravimo Skydelis',
+        subtitle: 'Prisijunkite, kad valdytumėte turinį',
+        email: 'El. paštas',
+        password: 'Slaptažodis',
+        emailPlaceholder: 'Įveskite savo el. pašto adresą',
+        passwordPlaceholder: '••••••••',
+        loginButton: 'Prisijungti',
+        loggingIn: 'Prisijungiama...',
+        connectionError: 'Ryšio klaida su serveriu',
+        goHome: 'Eiti į Pagrindinį'
+      },
+      accessDenied: {
+        title: 'Prieiga Uždrausta',
+        message: 'Neteisingas el. pašto adresas arba slaptažodis. Jūs neturite prieigos prie šios srities — tik administratoriai turi prieigą.',
+        goHome: 'Eiti į Pagrindinį',
+        tryAgain: 'Bandyti Dar Kartą'
+      }
+    },
+    contact: {
+      hero: {
+        title: 'Susisiekite Su Manimi',
+        subtitle: 'Esu pasiruošęs atsakyti į jūsų klausimus ir aptarti jūsų projektą'
+      },
+      form: {
+        title: 'Siųskite Man Pranešimą',
+        name: 'Pilnas Vardas',
+        email: 'El. Pašto Adresas',
+        phone: 'Telefono Numeris',
+        service: 'Reikalinga Paslauga',
+        message: 'Pranešimas',
+        submit: 'Siųsti Pranešimą',
+        selectService: 'Pasirinkite paslaugą',
+        other: 'Kita',
+        street: 'Gatvė',
+        houseNumber: 'Namo Numeris',
+        postalCode: 'Pašto Kodas',
+        city: 'Miestas',
+        namePlaceholder: 'Jūsų vardas',
+        emailPlaceholder: 'jus@email.com',
+        phonePlaceholder: '+31 6 1234 5678',
+        streetPlaceholder: 'Gatvės pavadinimas',
+        houseNumberPlaceholder: '123',
+        postalCodePlaceholder: '1234 AB',
+        cityPlaceholder: 'Amsterdamas',
+        messagePlaceholder: 'Papasakokite mums apie savo projektą...',
+        streetRequired: 'Gatvė yra privaloma',
+        houseNumberRequired: 'Namo numeris yra privalomas',
+        postalCodeRequired: 'Pašto kodas yra privalomas',
+        postalCodeInvalid: 'Neteisingas pašto kodo formatas. Naudokite formatą: 1234 AB',
+        successMessage: 'Dėkojame už jūsų pranešimą! Netrukus susisieksime.',
+        errorMessage: 'Įvyko klaida. Prašome bandyti dar kartą.',
+        sendMessage: 'Siųsti Pranešimą'
+      },
+      info: {
+        title: 'Kontaktinė Informacija',
+        phone: {
+          title: 'Telefonas',
+          number1: '+380 99 080 4115',
+          number2: ''
+        },
+        email: {
+          title: 'El. Paštas',
+          address1: 'vkbouwmaster@gmail.com',
+          address2: ''
+        },
+        address: {
+          title: 'Adresas',
+          street: '',
+          city: '',
+          country: 'Nyderlandai'
+        },
+        hours: {
+          title: 'Darbo Laikas',
+          weekdays: '',
+          saturday: '',
+          sunday: '',
+          byAppointment: 'Pagal susitarimą'
+        },
+        emergency: {
+          title: 'Skubios Paslaugos',
+          description: 'Reikia skubių remonto darbų? Siūlome 24/7 skubias paslaugas kritiniams klausimams.',
+          phone: 'Skambinkite Dabar: +380 99 080 4115'
+        },
+        contactMethods: {
+          title: 'Susisiekite Su Manimi',
+          subtitle: 'Galite susisiekti su manimi per WhatsApp, El. Paštą ir Telegram',
+          whatsapp: 'WhatsApp',
+          telegram: 'Telegram',
+          email: 'El. Paštas'
+        }
+      },
+      faq: {
+        hero: {
+          title: 'Dažniausiai Užduodami Klausimai',
+          subtitle: 'Raskite atsakymus į populiariausius klausimus apie mūsų renovacijos paslaugas'
+        },
+        contact: {
+          title: 'Vis Dar Turite Klausimų?',
+          subtitle: 'Negalite rasti atsakymo? Mūsų komanda čia, kad padėtų!'
+        },
+        title: 'Dažniausiai Užduodami Klausimai',
+        subtitle: 'Greiti atsakymai į dažniausius klausimus apie mūsų paslaugas',
+        q1: {
+          question: 'Kiek laiko trunka tipinė renovacija?',
+          answer: 'Projekto terminai skiriasi priklausomai nuo apimties ir sudėtingumo. Paprasti projektai, pvz., dažymas, gali užtrukti 1-3 dienas, o didesnės renovacijos gali užtrukti kelias savaites. Pateikiame detalių terminų konsultacijos metu.'
+        },
+        q2: {
+          question: 'Ar teikiate nemokamus įvertinimus?',
+          answer: 'Taip! Siūlome nemokamus, be įsipareigojimų įvertinimus visoms mūsų paslaugoms. Mūsų komanda aplankys jūsų nuosavybę, kad įvertintų reikalingus darbus ir pateiktų išsamų pasiūlymą.'
+        },
+        q3: {
+          question: 'Ar esate licencijuoti ir draudžiami?',
+          answer: 'Absoliučiai. VK Bouwmaster yra visiškai licencijuotas ir draudžiamas. Turime išsamų atsakomybės draudimą ir darbuotojų kompensaciją, kad apsaugotume tiek mūsų komandą, tiek jūsų nuosavybę.'
+        },
+        q4: {
+          question: 'Kokias teritorijas aptarnaujate?',
+          answer: 'Aptarnaujame didesnę metropolio teritoriją ir aplinkinius regionus. Susisiekite su mumis, kad patvirtintume, ar aptarnaujame jūsų konkrečią vietą.'
+        }
+      }
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Grindų Kėlimas',
+          subtitle: 'Profesionalūs grindų kėlimo ir remonto paslaugos visų tipų grindų medžiagoms'
+        },
+        solutions: {
+          title: 'Profesionalūs Sprendimai',
+          description1: 'Transformuokite savo erdvę su mūsų profesionaliomis grindų kėlimo paslaugomis. Specializuojuosi visų tipų grindų medžiagose ir teikiu ekspertinį montavimą, remontą ir priežiūrą.',
+          description2: 'Mano patirtis užtikrina tinkamas montavimo technikas, dėmesį detalėms ir kokybiškų medžiagų naudojimą, kad sukurtų gražias, patvarias grindis, kurios tarnaus metus.',
+          projectsCompleted: 'Baigti Projektai',
+          yearsExperience: 'Metų Patirtis'
+        },
+        services: {
+          title: 'Mūsų Paslaugos',
+          items: [
+            'Parketo montavimas',
+            'Laminuotos grindys',
+            'Plytelių ir akmens montavimas',
+            'Kilimų montavimas',
+            'Vinilinės grindys (LVT)',
+            'Grindų remontas ir restauracija'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Dažymo Paslaugos',
+          subtitle: 'Profesionalūs vidaus ir išorės dažymo paslaugos su premium kokybės dažais'
+        },
+        solutions: {
+          title: 'Profesionalūs Sprendimai',
+          description1: 'Transformuokite savo erdvę su profesionaliomis dažymo paslaugomis. Užtikrinu kokybišką paviršiaus paruošimą, premium dažų naudojimą ir nepriekaištingą atlikimą.',
+          description2: 'Mano patirtis garantuoja patvarią apdailą, idealiai lygius paviršius ir apsaugą nuo išorinių veiksnių.',
+          projectsCompleted: 'Baigti Projektai',
+          yearsExperience: 'Metų Patirtis'
+        },
+        services: {
+          title: 'Mūsų Paslaugos',
+          items: [
+            'Sienų ir lubų dažymas',
+            'Išorinių fasadų dažymas',
+            'Dekoratyvinis dažymas',
+            'Paviršių gruntavimas',
+            'Medinių konstrukcijų dažymas',
+            'Apsauginis apdorojimas'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Santechnikos Remontai',
+          subtitle: 'Profesionalūs santechnikos remonto ir montavimo paslaugos namams ir biurams'
+        },
+        solutions: {
+          title: 'Profesionalūs Sprendimai',
+          description1: 'Pilnas santechnikos paslaugų spektras jūsų namui ar verslui. Teikiu kokybišką montavimą, remontą ir priežiūrą visų tipų santechnikos įrangai.',
+          description2: 'Metų patirtis garantuoja patikimumą, patvarumą ir atitiktį visiems saugos standartams.',
+          projectsCompleted: 'Baigti Projektai',
+          yearsExperience: 'Metų Patirtis'
+        },
+        services: {
+          title: 'Mūsų Paslaugos',
+          items: [
+            'Vamzdžių remontas ir keitimas',
+            'Santechnikos įrangos montavimas',
+            'Vandens tiekimo montavimas',
+            'Kanalizacijos remontas',
+            'Radiatorių montavimas',
+            'Nuotekų valymas'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Stogo Remontai',
+          subtitle: 'Ekspertinės stogo remonto ir priežiūros paslaugos jūsų nuosavybės apsaugai'
+        },
+        solutions: {
+          title: 'Profesionalūs Sprendimai',
+          description1: 'Išsamus stogo remontas, priežiūra ir prevencija. Dirbu su įvairiais stogų tipais, tvarkau nutekėjimus ir pažeidimus.',
+          description2: 'Kokybiškos medžiagos ir griežtas technologijos laikymasis — patvaraus ir patikimo stogo užtikrinimui.',
+          projectsCompleted: 'Baigti Projektai',
+          yearsExperience: 'Metų Patirtis'
+        },
+        services: {
+          title: 'Mūsų Paslaugos',
+          items: [
+            'Nutekėjimų ir pažeidimų remontas',
+            'Stogo dangos keitimas',
+            'Lietvamzdžių montavimas ir remontas',
+            'Siūlių ir apvadų sandarinimas',
+            'Vietiniai ir didesni remontai',
+            'Prevencinė apžiūra ir priežiūra'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Sodo Dizainas',
+          subtitle: 'Gražios sodo dizaino ir kraštovaizdžio architektūros paslaugos jūsų lauko erdvės pagerinimui'
+        },
+        solutions: {
+          title: 'Profesionalūs Sprendimai',
+          description1: 'Individualus požiūris į dizainą ir kraštovaizdžio architektūrą. Kuriu funkcionalius ir estetinius sodus, pritaikytus jūsų pageidavimams ir vietos sąlygoms.',
+          description2: 'Augalų, apšvietimo ir paviršių parinkimas — harmonijai ir ilgam tarnavimo laikui.',
+          projectsCompleted: 'Baigti Projektai',
+          yearsExperience: 'Metų Patirtis'
+        },
+        services: {
+          title: 'Mūsų Paslaugos',
+          items: [
+            'Kraštovaizdžio dizainas',
+            'Augalų parinkimas ir kraštovaizdžio dizainas',
+            'Vejos ir takų montavimas',
+            'Laistymo ir drenažo sistemos',
+            'Sodo apšvietimas',
+            'Sezoninė sodo priežiūra'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Plytelių Kėlimas',
+          subtitle: 'Profesionalios plytelių šalinimo ir montavimo paslaugos virtuvėms, vonios kambariams ir daugiau'
+        },
+        solutions: {
+          title: 'Profesionalūs Sprendimai',
+          description1: 'Senų plytelių šalinimas, paviršiaus paruošimas ir tikslus plytelių montavimas. Užtikrinu tinkamą geometriją, siūlų užpildymą ir hidroizoliaciją.',
+          description2: 'Naudoju kokybiškas medžiagas ir įrankius — nepriekaištingiems rezultatams ir patvarumui.',
+          projectsCompleted: 'Baigti Projektai',
+          yearsExperience: 'Metų Patirtis'
+        },
+        services: {
+          title: 'Mūsų Paslaugos',
+          items: [
+            'Senų plytelių šalinimas',
+            'Paviršiaus paruošimas ir išlyginimas',
+            'Drėgnų zonų hidroizoliacija',
+            'Plytelių ir mozaikos montavimas',
+            'Siūlų užpildymas ir sandarinimas',
+            'Atskirų elementų restauracija ir keitimas'
+          ]
+        }
+      },
+      paving: {
+        hero: {
+          title: 'Akmeninės Grindys Montavimas',
+          subtitle: 'Profesionalus akmeninių grindų montavimas važiuojamiesiems keliams, takams, terasoms ir lauko erdvėms'
+        },
+        solutions: {
+          title: 'Profesionalūs Sprendimai',
+          description1: 'Transformuokite savo lauko erdvę su profesionaliu akmeninių grindų montavimu. Specializuojuosi gražių, patvarių paviršių kūrime važiuojamiesiems keliams, takams, terasoms ir sodo zonoms.',
+          description2: 'Mano patirtis užtikrina tinkamą pagrindo paruošimą, tikslų montavimą ir dėmesį detalėms ilgalaikiams rezultatams, kurie padidina jūsų nuosavybės vertę ir išvaizdą.',
+          projectsCompleted: 'Baigti Projektai',
+          yearsExperience: 'Metų Patirtis'
+        },
+        services: {
+          title: 'Mūsų Paslaugos',
+          items: [
+            'Važiuojamojo kelio grindys',
+            'Takų ir keliukų montavimas',
+            'Terasos ir patijo grindys',
+            'Sodo zonos grindys',
+            'Pagrindo paruošimas ir išlyginimas',
+            'Drenažo sistemos montavimas',
+            'Kraštų montavimas ir apdaila'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Privatumo politika',
+        subtitle: 'VK Bouwmaster Privatumo politika'
+      },
+      introduction: {
+        title: '1. Įvadas',
+        content: 'VK Bouwmaster ("mes", "mūsų" arba "įmonė") įsipareigoja saugoti jūsų privatumą. Ši Privatumo politika paaiškina, kaip mes renkame, naudojame, atskleidžiame ir saugome jūsų informaciją naudodami mūsų svetainę ir paslaugas.'
+      },
+      dataCollection: {
+        title: '2. Informacija, kurią renkame',
+        personalInfo: {
+          title: 'Asmeninė informacija',
+          items: ['Vardas', 'El. pašto adresas', 'Telefono numeris']
+        },
+        projectInfo: {
+          title: 'Projekto informacija',
+          items: ['Užklausos detalės', 'Projekto adresas', 'Darbo aprašymas']
+        },
+        technicalInfo: {
+          title: 'Techninė informacija',
+          items: ['IP adresas', 'Naršyklės tipas', 'Naudojimo duomenys']
+        }
+      },
+      dataUsage: {
+        title: '3. Kaip mes naudojame jūsų informaciją',
+        subtitle: 'Surinktą informaciją naudojame:',
+        items: [
+          { icon: '✅', text: 'Teikti ir pagerinti mūsų paslaugas' },
+          { icon: '📞', text: 'Susisiekti su jumis dėl jūsų projekto' },
+          { icon: '📧', text: 'Siųsti informacinius medžiagus ir atnaujinimus' },
+          { icon: '🔒', text: 'Užtikrinti mūsų svetainės saugumą' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Duomenų apsauga',
+        content: 'Mes taikome tinkamas technines ir organizacines priemones jūsų asmeninės informacijos apsaugai nuo neteisėto prieigos, pakeitimo, atskleidimo ar sunaikinimo.',
+        encryption: 'Duomenų šifravimas',
+        secureAccess: 'Saugus prieiga',
+        regularChecks: 'Reguliarios patikros'
+      },
+      thirdParty: {
+        title: '5. Atskleidimas trečiosioms šalims',
+        content: 'Mes neparduodame, nekeičiame ir neperkeliame jūsų asmeninės informacijos trečiosioms šalims be jūsų sutikimo, išskyrus atvejus, kai tai būtina mūsų paslaugų teikimui arba to reikalauja įstatymas.'
+      },
+      userRights: {
+        title: '6. Jūsų teisės',
+        subtitle: 'Jūs turite teisę:',
+        items: [
+          { icon: '📖', text: 'Gauti prieigą prie savo asmeninės informacijos' },
+          { icon: '✏️', text: 'Ištaisyti netikslią informaciją' },
+          { icon: '🗑️', text: 'Prašyti ištrinti savo duomenis' },
+          { icon: '🔄', text: 'Atsisakyti sutikimo duomenų apdorojimui' }
+        ]
+      },
+      contact: {
+        title: '7. Kontaktai',
+        subtitle: 'Jei turite klausimų apie mūsų Privatumo politiką, prašome susisiekti:',
+        email: {
+          title: 'El. paštas',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Telefonas',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Privatumo politikos atnaujinimai',
+        content: 'Mes galime periodiškai atnaujinti šią Privatumo politiką. Apie visus pakeitimus pranešime jums paskelbdami naują Privatumo politiką šiame puslapyje su atnaujinta data.'
+      },
+      lastUpdated: 'Paskutinis atnaujinimas: Sausis 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Paslaugų teikimo sąlygos',
+        subtitle: 'VK Bouwmaster Paslaugų teikimo sąlygos'
+      },
+      acceptance: {
+        title: '1. Sąlygų priėmimas',
+        content: 'Naudodami VK Bouwmaster svetainę ir paslaugas, jūs sutinkate su šiomis Paslaugų teikimo sąlygomis. Jei nesutinkate su bet kuria sąlyga, prašome nenaudoti mūsų paslaugų.'
+      },
+      services: {
+        title: '2. Paslaugų aprašymas',
+        content: 'VK Bouwmaster teikia profesionalias renovacijos ir pertvarkymo paslaugas, įskaitant, bet neapsiribojant: grindų montavimą, dažymą, santechnikos darbus, stogo remontą, sodo dizainą ir kitas statybos paslaugas.'
+      },
+      estimates: {
+        title: '3. Įvertinimai ir kainos',
+        content: 'Teikiame nemokamus darbų įvertinimus. Nurodytos kainos yra orientacinės ir gali skirtis priklausomai nuo:',
+        factors: ['Projekto sudėtingumo', 'Naudotų medžiagų', 'Darbo apimties', 'Papildomų kliento reikalavimų']
+      },
+      payment: {
+        title: '4. Mokėjimas',
+        content: 'Mokėjimo sąlygos deramos individualiai kiekvienam projektui ir nurodomos sutartyje. Paprastai reikia:',
+        items: ['Išankstinis mokėjimas gali būti reikalingas medžiagų pirkimui', 'Galutinis mokėjimas atliekamas baigus darbus', 'Darbų priėmimas atliekamas kliento buvimo metu']
+      },
+      warranty: {
+        title: '5. Garantija',
+        content: 'Teikiame garantiją atliktiems darbams pagal sutarties sąlygas. Garantijos detalės aptariamos individualiai kiekvienam projektui.'
+      },
+      liability: {
+        title: '6. Atsakomybė',
+        content: 'VK Bouwmaster yra atsakingas už atliktų darbų kokybę pagal susitartą sutartį. Naudojame kokybiškas medžiagas ir profesionalius darbo metodus. Klientas yra atsakingas už tikslios informacijos apie projektą pateikimą.'
+      },
+      cancellation: {
+        title: '7. Atšaukimas ir pakeitimai',
+        content: 'Projekto pakeitimai turi būti iš anksto susitarti. Projekto atšaukimas turi būti praneštas per protingą laiką. Pinigų grąžinimo sąlygos deramos individualiai.'
+      },
+      intellectualProperty: {
+        title: '8. Intelektinė nuosavybė',
+        content: 'Visi medžiagos ir dizainai, sukurti VK Bouwmaster kaip projekto dalis, lieka įmonės nuosavybe iki visiško darbų apmokėjimo, po to teisės perduodamos klientui.'
+      },
+      contact: {
+        title: '9. Kontaktai',
+        content: 'Klausimams dėl šių Paslaugų teikimo sąlygų susisiekite:',
+        email: 'El. paštas: vkbouwmaster@gmail.com',
+        phone: 'Telefonas: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Sąlygų pakeitimai',
+        content: 'Mes pasiliekame teisę bet kuriuo metu keisti šias Paslaugų teikimo sąlygas. Tęsdami naudoti mūsų paslaugas po pakeitimų, jūs sutinkate su naujomis sąlygomis.'
+      },
+      lastUpdated: 'Paskutinis atnaujinimas: Sausis 2025'
+    }
+  },
+  FI: {
+    navigation: {
+      home: 'Koti',
+      about: 'Tietoa Meistä',
+      services: 'Palvelut',
+      portfolio: 'Portfolio',
+      reviews: 'Arvostelut',
+      team: 'Tiimi',
+      pricing: 'Hinnat',
+      blog: 'Blogi',
+      faq: 'UKK',
+      contact: 'Yhteystiedot',
+      getQuote: 'Tarjous',
+      language: 'Kieli',
+      adminPanel: '🔐 Ylläpitopaneeli',
+      scrollLeft: 'Vieritä vasemmalle',
+      scrollRight: 'Vieritä oikealle',
+      adminPanelTitle: 'Ylläpitopaneeli',
+      switchLanguage: 'Vaihda kieltä'
+    },
+    common: {
+      loading: 'Ladataan...',
+      error: 'Virhe',
+      success: 'Onnistui',
+      cancel: 'Peruuta',
+      save: 'Tallenna',
+      delete: 'Poista',
+      edit: 'Muokkaa',
+      view: 'Näytä',
+      learnMore: 'Lue Lisää',
+      readMore: 'Lue Lisää',
+      getStarted: 'Aloita',
+      contactUs: 'Ota Yhteyttä',
+      years: 'Vuotta',
+      projects: 'Projektit',
+      satisfaction: 'Tyytyväisyys',
+      support: 'Tuki',
+      experience: 'Kokemus',
+      quality: 'Laatu',
+      team: 'Joukkue',
+      clients: 'Asiakkaat',
+      completed: 'Valmis',
+      happy: 'Onnellinen',
+      available: 'Saatavilla',
+      expertise: 'Asiantuntemus'
+    },
+    home: {
+      hero: {
+        title1: 'Ammattimaiset',
+        title2: 'Kunnostuspalvelut',
+        subtitle: 'Ammattimaiset kunnostuspalvelut yli 10 vuoden kokemuksella. Oikea ammattilainen, joka osaa kaiken: lattioiden asennuksesta täydelliseen kunnostukseen. Laadukas työ, huomio jokaiseen yksityiskohtaan, aikataulujen noudattaminen ja rehelliset hinnat. Muutan tilasi rakkaudella ja ammattitaidolla.',
+        cta1: 'Hae Ilmainen Tarjous',
+        cta2: 'Katso Työni'
+      },
+      about: {
+        title: 'Mestari',
+        description1: 'Vladimir on mestari, jolla on yli 10 vuoden kokemus kunnostuksesta ja rakentamisesta. Hänet erottaa <span class="text-blue-400 font-medium">poikkeuksellinen vastuullisuus</span> ja huomio yksityiskohtiin.',
+        description2: 'Jokainen projekti toteutetaan <span class="text-blue-400 font-medium">korkeimmalla laadulla</span> ja tiukalla aikataulun noudattamisella. Asiakkaat arvostavat häntä rehellisyydestä, ammattitaidosta ja kyvystä toteuttaa vaikeimmatkin ideat.',
+        projectsCount: '200+',
+        projectsLabel: 'Valmistuneita Projekteja',
+        yearsCount: '10+',
+        yearsLabel: 'Vuotta Kokemusta',
+        satisfactionPercent: '100%',
+        satisfactionLabel: 'Tyytyväisiä Asiakkaita',
+        supportLabel: 'Asiakaspalvelu',
+        viewWorks: 'Katso Työni'
+      },
+      works: {
+        title: 'Työni',
+        description: 'Vladimir on mestari, joka muuttaa kunnostuksen taiteeksi: tarkat aikataulut, täydellinen geometria ja moitteeton laatu jokaisessa yksityiskohdassa.',
+        work: 'työ',
+        works2: 'työtä',
+        works5: 'työtä'
+      },
+      services: {
+        title: 'Palveluni',
+        subtitle: 'Tarjoan kunnostuspalveluja kotisi tai yrityksesi muuttamiseen',
+        flooring: {
+          title: 'Lattian Asennus',
+          description: 'Ammattimaiset lattian asennus- ja korjauspalvelut kaikentyyppisille lattiamateriaaleille.'
+        },
+        painting: {
+          title: 'Maalauspalvelut',
+          description: 'Sisä- ja ulkomaalauspalvelut premium-laatuisilla maaleilla ja viimeistelyillä.'
+        },
+        plumbing: {
+          title: 'Putkiremontit',
+          description: 'Ammattimaiset putkiremontti- ja asennuspalvelut kotitalouksille ja toimistoille.'
+        },
+        roofing: {
+          title: 'Kattoremontit',
+          description: 'Asiantuntevat kattoremontti- ja huoltopalvelut kiinteistösi suojaksi.'
+        },
+        garden: {
+          title: 'Puutarhan Suunnittelu',
+          description: 'Kauniit puutarhan suunnittelu- ja maisema-arkkitehtuuripalvelut ulkotilasi parantamiseksi.'
+        },
+        tile: {
+          title: 'Laattojen Asennus',
+          description: 'Ammattimaiset laattojen poisto- ja asennuspalvelut keittiöihin, kylpyhuoneisiin ja muihin tiloihin.'
+        },
+        paving: {
+          title: 'Päällystyslaattojen Asennus',
+          description: 'Ammattimainen päällystyslaattojen asennus ajoteille, kävelyteille, terasseille ja ulkotiloille.'
+        },
+        hedge: {
+          title: 'Aidan Leikkuu',
+          description: 'Ammattimaiset aidan leikkuu- ja hoitopalvelut puutarhasi siistin ja kauniin ulkoasun ylläpitämiseksi.'
+        },
+        ceiling: {
+          title: 'Katto ja Seinät',
+          description: 'Ammattimaiset katto- ja seinäasennus-, korjaus- ja viimeistelypalvelut sisätiloihin.'
+        },
+        drywall: {
+          title: 'Kipsilevytyöt',
+          description: 'Ammattimaiset kipsilevyn asennus-, korjaus- ja viimeistelypalvelut seinille ja katolle.'
+        }
+      },
+      achievements: {
+        title: 'Saavutuksemme',
+        subtitle: 'Luvut, jotka puhuvat menestyksestämme',
+        experience: {
+          title: 'Vuotta Kokemusta',
+          subtitle: 'Yli vuosikymmen ammattimaisia palveluja'
+        },
+        projects: {
+          title: 'Valmistuneita Projekteja',
+          subtitle: 'Menestyksekkäästi valmistuneet projektit'
+        },
+        clients: {
+          title: 'Tyytyväisiä Asiakkaita',
+          subtitle: 'Tyytyväiset asiakkaat'
+        },
+        satisfaction: {
+          title: 'Tyytyväisyystaso',
+          subtitle: 'Asiakastyytyväisyys taattu'
+        },
+        support: {
+          title: 'Tuki 24/7',
+          subtitle: 'Ympärivuorokautinen asiakaspalvelu'
+        }
+      },
+      whyChoose: {
+        title: 'Miksi Valita VK Bouwmaster?',
+        subtitle: 'Tarjoamme poikkeuksellisia tuloksia sitoutumisellamme laatuun ja asiakastyytyväisyyteen',
+        experience: {
+          title: 'Vuotta Kokemusta',
+          description: 'Yli vuosikymmen kokemusta kunnostus- ja rakennuspalveluissa'
+        },
+        quality: {
+          title: 'Laatutakuu',
+          description: 'Tuemme työtämme kattavilla laatutakuilla'
+        },
+        team: {
+          title: 'Asiantuntijatiimi',
+          description: 'Koulutetut ammattilaiset, jotka ovat omistautuneet poikkeuksellisten tulosten saavuttamiseen'
+        }
+      },
+      testimonials: {
+        title: 'Mitä Asiakkaamme Sanovat',
+        subtitle: 'Todellisia palautteita tyytyväisiltä asiakkailta, jotka luottivat meille projektinsa',
+        testimonial1: {
+          text: 'Poikkeuksellinen työ! Tiimi muutti keittiömme täysin. Ammattimainen, puhdas ja toimitettu ajallaan. Suosittelen lämpimästi!',
+          author: 'Jukka Virtanen',
+          role: 'Kodin Omistaja'
+        },
+        testimonial2: {
+          text: 'Erinomaiset palvelut alusta loppuun. He kunnostivat toimistotilamme ja ylittivät kaikki odotukset. Käytän ehdottomasti uudelleen!',
+          author: 'Liisa Korhonen',
+          role: 'Toimiston Johtaja'
+        }
+      }
+    },
+    about: {
+      hero: {
+        title: 'Tietoja VK Bouwmaster',
+        subtitle: 'Luotettava kumppanisi ammattimaisissa kunnostus- ja rakennuspalveluissa'
+      },
+      story: {
+        title: 'Tarina',
+        paragraph1: 'Yli vuosikymmen sitten perustettu VK Bouwmaster on ollut ammattimaisissa kunnostuspalveluissa kärjessä. Se, mikä alkoi pienestä perheyrityksestä, on kasvanut yhdeksi luotettavimmista nimistä kotien parantamisessa ja rakentamisessa.',
+        paragraph2: 'Matkamme alkoi yksinkertaisella tehtävällä: muuttaa tiloja ja ylittää odotukset. Tänään jatkamme sitoutumistamme innovatiivisten ratkaisujen, laadukkaan käsityön ja poikkeuksellisen asiakaspalvelun kautta.',
+        paragraph3: 'Jokainen hanke, jonka aloitamme, heijastaa intohimomme täydellisyyttä kohtaan ja sitoutumistamme visiosi toteuttamiseen. Uskomme, että kotisi on enemmän kuin vain rakennus—se on paikka, jossa muistot luodaan ja unelmat toteutuvat.'
+      },
+      mission: {
+        title: 'Missio ja Arvot',
+        subtitle: 'Meitä ohjaavat perusarvomme ja sitoutumisemme täydellisyyteen',
+        mission: {
+          title: 'Missio',
+          description: 'Tarjota poikkeuksellisia kunnostuspalveluja, jotka muuttavat tiloja ja ylittävät asiakkaidemme odotukset laadukkaan käsityön ja innovatiivisten ratkaisujen kautta.'
+        },
+        quality: {
+          title: 'Laatu Etusijalla',
+          description: 'Emme koskaan kompromissi laadusta. Jokainen projekti suoritetaan huolellisesti ja käyttäen vain parhaimpia materiaaleja ja tekniikoita.'
+        },
+        customer: {
+          title: 'Asiakaslähtöisyys',
+          description: 'Asiakkaamme ovat kaikkea, mitä teemme, sydämessä. Kuuntelemme, viestimme selkeästi ja työskentelemme tiiviisti kanssasi visiosi saavuttamiseksi.'
+        }
+      },
+      whyChoose: {
+        title: 'Miksi Valita VK Bouwmaster?',
+        subtitle: 'Eristymme kilpailijoista ainutlaatuisella lähestymistavallamme ja sitoutumisellamme täydellisyyteen',
+        award: {
+          title: 'Palkittu',
+          description: 'Tunnustettu erinomaisuudesta kunnostus- ja rakennuspalveluissa'
+        },
+        expert: {
+          title: 'Asiantuntijatiimi',
+          description: 'Koulutetut ammattilaiset, joilla on vuosien kokemus omilla aloillaan'
+        },
+        onTime: {
+          title: 'Ajallinen Toimitus',
+          description: 'Kunnioitamme aikasi ja toimitatamme projektit aikataulun mukaan, joka kerta'
+        },
+        fair: {
+          title: 'Reilu Hinnoittelu',
+          description: 'Läpinäkyvä hinnoittelu ilman piilotettuja kustannuksia tai yllätyksiä'
+        }
+      },
+      certifications: {
+        title: 'Sertifikaatit ja Luvat',
+        subtitle: 'Ylläpidämme korkeimmat standardit asianmukaisten sertifikaattien ja luvilla',
+        licensed: {
+          title: 'Lisensioitu ja Vakuutettu',
+          description: 'Täysin lisensioitu ja vakuutettu mielenrauhasi ja suojasi varten'
+        },
+        certified: {
+          title: 'Alan Sertifioitu',
+          description: 'Sertifioitu johtavien alan organisaatioiden ja kauppayhdistysten toimesta'
+        },
+        quality: {
+          title: 'Laatuvarmistettu',
+          description: 'Säännölliset laatuaudit ja jatkuvat parannusprosessit'
+        }
+      },
+      cta: {
+        title: 'Valmis Työskentelemään Kanssamme?',
+        subtitle: 'Keskustellaan projektistasi ja katsotaan, miten voimme toteuttaa visiosi',
+        cta1: 'Hae Ilmainen Tarjous',
+        cta2: 'Katso Työmme'
+      }
+    },
+    portfolio: {
+      hero: {
+        title: 'Portfolio',
+        subtitle: 'Tutustu valmiisiin projekteihini ja katso työni laatu'
+      },
+      stats: {
+        projects: 'Valmistuneet Projektit',
+        years: 'Vuotta Kokemusta',
+        satisfaction: 'Asiakastyytyväisyys',
+        clients: 'Tytytyväiset Asiakkaat'
+      },
+      whyChoose: {
+        title: 'Miksi Valita Minut',
+        features: [
+          { icon: '🛠️', title: 'Laatu', desc: 'Siisti, puhdas ja huomio yksityiskohtiin. Käytän varmennettuja materiaaleja ja tekniikoita.' },
+          { icon: '⏱️', title: 'Aikataulut', desc: 'Työskentelen selkeän aikataulun mukaan. Viimeistelen ajoissa — ilman yllätyksiä tai "huomenia".' },
+          { icon: '🤝', title: 'Rehellisyys', desc: 'Läpinäkyvät arviot ja vaiheet. Ymmärrät aina, mistä maksat.' },
+          { icon: '💬', title: 'Viestintä', desc: 'Aina saatavilla, vastaan nopeasti ja tarjoan ratkaisuja pyyntöösi.' },
+          { icon: '🧼', title: 'Puhtaus', desc: 'Pidän paikan siistinä, suojan huonekaluja ja päällysteitä, siivoan jälkeeni.' },
+          { icon: '🔒', title: 'Takuu', desc: 'Tarjoan takuun valmistuneille töille ja olen saatavilla toimitusten jälkeen.' }
+        ]
+      },
+      featured: {
+        title: 'Omat Projektini',
+        subtitle: 'Jokainen projekti osoittaa sitoutumiseni laatuun, yksityiskohtiin ja asiakkaiden luottamukseen'
+      },
+      features: 'Avainominaisuudet:',
+      noWorks: {
+        title: 'Töitä ei ole vielä lisätty',
+        subtitle: 'Lisää töitä hallintapaneelin kautta'
+      },
+      testimonials: {
+        title: 'Mitä Asiakkaani Sanovat',
+        subtitle: 'Älä usko minua vain sanoihin — lue oikeiden asiakkaiden arvosteluja'
+      },
+      noReviews: 'Arvosteluja ei ole vielä',
+      cta: {
+        title: 'Valmis Aloittamaan Projektisi?',
+        subtitle: 'Anna minun muuttaa tilasi samalla laadulla ja huomio yksityiskohtiin'
+      },
+      detail: {
+        backToProjects: 'Takaisin projekteihin',
+        projectNotFound: 'Projektia ei löytynyt',
+        projectNotFoundSubtitle: 'Projekti ID:llä {projectId} ei ole olemassa tai on poistettu',
+        noMedia: 'Ei vielä kuvia ja videoita',
+        noMediaSubtitle: 'Lisää kuvia ja videoita hallintapaneelissa',
+        allPhotosAndVideos: 'Kaikki projektin kuvat ja videot',
+        oneOfWork: '✨ Yksi työmme',
+        date: 'Päivämäärä',
+        city: 'Kaupunki',
+        photos: 'Kuvat',
+        videos: 'Videot',
+        comments: 'Kommentit',
+        noComments: 'Ei vielä kommentteja. Ole ensimmäinen!',
+        beFirst: 'Ole ensimmäinen!',
+        profileImageLabel: 'Profiilikuva',
+        profileImageOptional: '(valinnainen)',
+        addProfileImage: 'Lisää profiilikuva',
+        changePhoto: 'Vaihda kuvaa',
+        deletePhoto: 'Poista kuva',
+        cityLabel: 'Kaupunki',
+        cityOptional: '(valinnainen)',
+        cityPlaceholder: 'Missä kaupungissa tilaus tehtiin?',
+        ratingLabel: 'Arvio',
+        ratingRequired: '(pakollinen)',
+        commentLabel: 'Kommenttisi',
+        commentPlaceholder: 'Kirjoita kommenttisi tähän...',
+        charactersLeft: 'Jäljellä olevia merkkejä:',
+        addPhotosLabel: '📷 Lisää kuvia',
+        addPhotosOptional: '(valinnainen)',
+        selectPhotos: '📷 Valitse kuvat',
+        photosUploaded: 'Ladatut kuvat:',
+        addVideosLabel: '🎥 Lisää videoita',
+        addVideosOptional: '(valinnainen)',
+        selectVideos: '🎥 Valitse videot',
+        videosUploaded: 'Ladatut videot:',
+        deleteVideo: 'Poista video',
+        submitting: 'Lähetetään…',
+        submitComment: '📤 Lähetä kommentti',
+        commentWillAppear: 'Kommentti näkyy ylläpitäjän hyväksymisen jälkeen.',
+        viewAllPhotos: 'Katso kaikki kuvat ({count})',
+        noProject: 'Ilman projektia',
+        category: 'Kategoria',
+        project: 'Projekti',
+        translateTo: 'Käännä kielelle...',
+        showOriginal: 'Näytä alkuperäinen',
+        translatedTo: 'Käännetty kielelle',
+        translating: 'Kääntäminen...'
+      }
+    },
+    services: {
+      hero: {
+        title: 'Palvelumme',
+        subtitle: 'Kattavat kunnostus- ja rakennuspalvelut tilan muuttamiseen'
+      },
+      whatWeDo: {
+        title: 'Mitä Teemme',
+        subtitle: 'Pienistä korjauksista täydellisiin kunnostuksiin, meillä on asiantuntemus minkä tahansa projektin hoitamiseen'
+      },
+      process: {
+        title: 'Prosessimme',
+        subtitle: 'Noudatamme todistettua prosessia varmistaaksemme, että projektisi valmistuu korkeimpiin standardeihin',
+        consultation: {
+          title: 'Konsultointi',
+          description: 'Aloitamme yksityiskohtaisella konsultoinnilla ymmärtääksemme tarpeesi ja visiosi'
+        },
+        planning: {
+          title: 'Suunnittelu',
+          description: 'Yksityiskohtainen suunnittelu ja suunnittelu parhaan tuloksen takaamiseksi projektillesi'
+        },
+        execution: {
+          title: 'Toteutus',
+          description: 'Ammattimainen toteutus laadukkaille materiaaleille ja taitavalla käsityöllä'
+        },
+        completion: {
+          title: 'Valmistuminen',
+          description: 'Lopullinen tarkastus ja siivous täydellisen tyytyväisyytesi varmistamiseksi'
+        }
+      },
+      cta: {
+        title: 'Valmis Aloittamaan Projektisi?',
+        subtitle: 'Ota yhteyttä tänään ilmaiseksi konsultaatioon ja tarjoukseen',
+        cta1: 'Hae Ilmainen Tarjous',
+        cta2: 'Katso Työmme'
+      }
+    },
+    footer: {
+      description: 'Ammattimaiset kunnostuspalvelut yli 10 vuoden kokemuksella. Muutan tilasi laadukkaalla työllä ja huomio yksityiskohtiin.',
+      quickLinks: {
+        title: 'Pikalinkit'
+      },
+      services: {
+        title: 'Palvelut'
+      },
+      shot: {
+        title: 'Shot'
+      },
+      copyright: '© 2025 VK Bouwmaster. Kaikki oikeudet pidätetään.',
+      privacy: 'Tietosuojakäytäntö',
+      terms: 'Käyttöehdot'
+    },
+    admin: {
+      login: {
+        title: 'Ylläpidon Paneeli',
+        subtitle: 'Kirjaudu sisään sisällön hallintaan',
+        email: 'Sähköposti',
+        password: 'Salasana',
+        emailPlaceholder: 'Syötä sähköpostiosoitteesi',
+        passwordPlaceholder: '••••••••',
+        loginButton: 'Kirjaudu',
+        loggingIn: 'Kirjaudutaan...',
+        connectionError: 'Yhteysvirhe palvelimelle',
+        goHome: 'Siirry Etusivulle'
+      },
+      accessDenied: {
+        title: 'Pääsy Estetty',
+        message: 'Virheellinen sähköpostiosoite tai salasana. Sinulla ei ole pääsyä tähän alueeseen — vain ylläpitäjillä on pääsy.',
+        goHome: 'Siirry Etusivulle',
+        tryAgain: 'Yritä Uudelleen'
+      }
+    },
+    thankYou: {
+      title: 'Kiitos arvostelustasi!',
+      message1: 'Olen erittäin iloinen, että jaoit kokemuksesi!',
+      message2: 'Pyriin aina olemaan parempi sinulle. Arvostelusi auttaa minua tulemaan vielä paremmaksi.',
+      backToReviews: 'Takaisin arvosteluihin'
+    },
+    contactThankYou: {
+      title: 'Kiitos viestistäsi!',
+      message: 'Otan yhteyttä sinuun päivän sisällä.',
+      backToContact: 'Takaisin yhteystietoihin'
+    },
+    reviews: {
+      hero: { badge: 'Mielipiteesi on meille tärkeä', title: 'Asiakasarvostelut', subtitle: 'Jaa kokemuksesi kanssamme. Arvostelusi auttavat muita asiakkaita tekemään päätöksiä.' },
+      form: { title: 'Jätä arvostelu', namePlaceholder: 'Nimi', surnamePlaceholder: 'Sukunimi (valinnainen)', profileImageLabel: 'Profiilikuva', profileImageOptional: '(valinnainen)', addProfileImage: 'Lisää profiilikuva', changePhoto: 'Vaihda kuva', deletePhoto: 'Poista kuva', cityLabel: 'Kaupunki', cityOptional: '(valinnainen)', cityPlaceholder: 'Missä kaupungissa tilaus tehtiin?', ratingLabel: 'Arvostelu', ratingRequired: '(pakollinen)', reviewLabel: 'Arvostelusi', reviewPlaceholder: 'Kerro meille kokemuksestasi kanssamme... Mitä pidit? Mitä voitaisiin parantaa?', charactersLeft: 'Merkkejä jäljellä:', goodReview: 'Hyvä arvostelu!', addPhotosLabel: 'Lisää kuvia', addPhotosOptional: '(valinnainen)', selectPhotos: '📷 Valitse kuvat', photosUploaded: 'Kuvat ladattu:', addVideosLabel: 'Lisää videoita', addVideosOptional: '(valinnainen)', selectVideos: '🎥 Valitse videot', videosUploaded: 'Videot ladattu:', deleteVideo: 'Poista video', submitting: 'Lähetetään…', submitButton: 'Lähetä arvostelu', reviewWillAppear: 'Arvostelu näkyy ylläpidon hyväksymisen jälkeen', fillRequiredFields: 'Ole hyvä ja täytä nimi ja viesti', errorSubmitting: 'Virhe arvostelun lähettämisessä. Ole hyvä ja yritä uudelleen.', errorConnection: 'Virhe arvostelun lähettämisessä. Ole hyvä ja tarkista internet-yhteytesi ja yritä uudelleen.' },
+      list: { title: 'Kaikki arvostelut', review: 'arvostelu', reviews2: 'arvostelua', reviews5: 'arvostelua', noReviews: 'Ei vielä arvosteluja. Ole ensimmäinen!', photosAndVideos: 'Kuvat ja videot arvostelusta', viewAllMedia: 'Katso kaikki kuvat ja videot →' },
+      detail: {
+        backToReviews: 'Takaisin arvosteluihin',
+        reviewNotFound: 'Arvostelua ei löytynyt',
+        reviewNotFoundSubtitle: 'Arvostelua ID:llä {reviewId} ei ole olemassa',
+        noMedia: 'Tällä arvostelulla ei ole kuvia ja videoita',
+        noMediaSubtitle: 'Takaisin arvosteluihin',
+        photosAndVideos: 'Kuvat ja videot arvostelusta'
+      }
+    },
+    contact: {
+      hero: {
+        title: 'Ota Yhteyttä',
+        subtitle: 'Ota yhteyttä tiimiimme ilmaiseksi konsultaatioon ja tarjoukseen'
+      },
+      form: {
+        title: 'Lähetä Viesti',
+        name: 'Koko Nimi',
+        email: 'Sähköpostiosoite',
+        phone: 'Puhelinnumero',
+        service: 'Tarvittava Palvelu',
+        message: 'Viesti',
+        submit: 'Lähetä Viesti',
+        selectService: 'Valitse palvelu',
+        other: 'Muu',
+        street: 'Katu',
+        houseNumber: 'Talnumero',
+        postalCode: 'Postinumero',
+        city: 'Kaupunki',
+        namePlaceholder: 'Nimesi',
+        emailPlaceholder: 'sahkoposti@email.com',
+        phonePlaceholder: '+31 6 1234 5678',
+        streetPlaceholder: 'Kadun nimi',
+        houseNumberPlaceholder: '123',
+        postalCodePlaceholder: '1234 AB',
+        cityPlaceholder: 'Amsterdam',
+        messagePlaceholder: 'Kerro meille projektistasi...',
+        streetRequired: 'Katu on pakollinen',
+        houseNumberRequired: 'Talnumero on pakollinen',
+        postalCodeRequired: 'Postinumero on pakollinen',
+        postalCodeInvalid: 'Virheellinen postinumeron muoto. Käytä muotoa: 1234 AB',
+        successMessage: 'Kiitos viestistäsi! Otamme yhteyttä pian.',
+        errorMessage: 'Tapahtui virhe. Yritä uudelleen.',
+        sendMessage: 'Lähetä Viesti'
+      },
+      info: {
+        title: 'Ota Yhteyttä',
+        phone: {
+          title: 'Puhelin',
+          number1: '+380 99 080 4115',
+          number2: ''
+        },
+        email: {
+          title: 'Sähköposti',
+          address1: 'vkbouwmaster@gmail.com',
+          address2: ''
+        },
+        address: {
+          title: 'Osoite',
+          street: '',
+          city: '',
+          country: 'Alankomaat'
+        },
+        hours: {
+          title: 'Aukioloajat',
+          weekdays: '',
+          saturday: '',
+          sunday: '',
+          byAppointment: 'Ajanvarauksesta'
+        },
+        emergency: {
+          title: 'Hätäpalvelu',
+          description: 'Tarvitsetko kiireellisiä korjauksia? Tarjoamme 24/7 hätäpalveluita kriittisille ongelmille.',
+          phone: 'Soita Nyt: +380 99 080 4115'
+        },
+        contactMethods: {
+          title: 'Ota Yhteyttä',
+          subtitle: 'Voit ottaa yhteyttä minuun WhatsApp, Sähköposti ja Telegram kautta',
+          whatsapp: 'WhatsApp',
+          telegram: 'Telegram',
+          email: 'Sähköposti'
+        }
+      },
+      faq: {
+        hero: {
+          title: 'Usein Kysytyt Kysymykset',
+          subtitle: 'Löydä vastaukset suosittuihin kysymyksiin kunnostuspalveluistamme'
+        },
+        contact: {
+          title: 'Onko Sinulla Vielä Kysymyksiä?',
+          subtitle: 'Etkö löydä etsimääsi vastausta? Tiimimme on täällä auttamaan!'
+        },
+        title: 'Usein Kysytyt Kysymykset',
+        subtitle: 'Nopeita vastauksia yleisiin kysymyksiin palveluistamme',
+        q1: {
+          question: 'Kuinka kauan tyypillinen kunnostus kestää?',
+          answer: 'Projektin ajankohdat vaihtelevat laajuuden ja monimutkaisuuden mukaan. Yksinkertaiset projektit, kuten maalaus, voivat kestää 1-3 päivää, kun taas suuremmat kunnostukset voivat kestää useita viikkoja. Tarjoamme yksityiskohtaiset ajankohdat konsultoinnin aikana.'
+        },
+        q2: {
+          question: 'Tarjoatteko ilmaisia arvioita?',
+          answer: 'Kyllä! Tarjoamme ilmaisia, sitoutumattomia arvioita kaikille palveluillemme. Tiimimme vierailee kiinteistössäsi arvioidakseen tarvittavat työt ja antaakseen yksityiskohtaisen tarjouksen.'
+        },
+        q3: {
+          question: 'Oletteko lisensoituja ja vakuutettuja?',
+          answer: 'Ehdottomasti. VK Bouwmaster on täysin lisensoitu ja vakuutettu. Meillä on kattava vastuuvakuutus ja työntekijöiden korvaus suojataksemme sekä tiimimme että kiinteistösi.'
+        },
+        q4: {
+          question: 'Mitä alueita palvelette?',
+          answer: 'Palvelemme suurempaa metropolialuetta ja ympäröiviä alueita. Ota yhteyttä vahvistaaksesi, palvelemmeko tiettyä sijaintiasi.'
+        }
+      }
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Lattian Asennus',
+          subtitle: 'Ammattimaiset lattian asennus- ja korjauspalvelut kaikille lattiamateriaalilajeille'
+        },
+        solutions: {
+          title: 'Ammattimaiset Ratkaisut',
+          description1: 'Muunna tilasi ammattilaisten lattian asennuspalveluillamme. Erikoistun kaikentyyppisiin lattiamateriaaleihin ja tarjoan asiantuntija-asennusta, korjauksia ja huoltoa.',
+          description2: 'Kokemukseni varmistaa oikeat asennustekniikat, huomion yksityiskohtiin ja laadukkaiden materiaalien käytön kauniiden, kestäviä lattiaa luomiseen, jotka kestävät vuosia.',
+          projectsCompleted: 'Valmistuneet Projektit',
+          yearsExperience: 'Vuosia Kokemusta'
+        },
+        services: {
+          title: 'Palvelumme',
+          items: [
+            'Parketin asennus',
+            'Laminaattilattia',
+            'Laattojen ja kiven asennus',
+            'Mattojen asennus',
+            'Vinylilattia (LVT)',
+            'Lattioiden korjaus ja restaurointi'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Maalauspalvelut',
+          subtitle: 'Ammattimaiset sisä- ja ulkomaalauspalvelut premium-laatuisilla maaleilla'
+        },
+        solutions: {
+          title: 'Ammattimaiset Ratkaisut',
+          description1: 'Muunna tilasi ammattilaisten maalauspalveluilla. Varmistan laadukkaan pinnan valmistelun, premium-maalien käytön ja virheettömän toteutuksen.',
+          description2: 'Kokemukseni takaa kestävät viimeistelyt, täydellisesti sileät pinnat ja suojan ulkoisilta tekijöiltä.',
+          projectsCompleted: 'Valmistuneet Projektit',
+          yearsExperience: 'Vuosia Kokemusta'
+        },
+        services: {
+          title: 'Palvelumme',
+          items: [
+            'Seinien ja kattojen maalaus',
+            'Ulkofasadein maalaus',
+            'Dekoratiivinen maalaus',
+            'Pintojen pohjamaalaus',
+            'Puurakenteiden maalaus',
+            'Suojakäsittely'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Putkiremontit',
+          subtitle: 'Ammattimaiset putkiremontti- ja asennuspalvelut kodeille ja toimistoille'
+        },
+        solutions: {
+          title: 'Ammattimaiset Ratkaisut',
+          description1: 'Laaja putkipalveluvalikoima kodillesi tai yrityksellesi. Tarjoan laadukasta asennusta, korjauksia ja huoltoa kaikentyyppisille putkilaitteille.',
+          description2: 'Vuosien kokemus takaa luotettavuuden, kestävyyden ja kaikkien turvallisuusstandardien noudattamisen.',
+          projectsCompleted: 'Valmistuneet Projektit',
+          yearsExperience: 'Vuosia Kokemusta'
+        },
+        services: {
+          title: 'Palvelumme',
+          items: [
+            'Putkien korjaus ja vaihto',
+            'Putkilaitteiden asennus',
+            'Vesijohtojen asennus',
+            'Viemärien korjaus',
+            'Lämmityspatterien asennus',
+            'Viemärien puhdistus'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Kattoremontit',
+          subtitle: 'Asiantuntijan kattoremontti- ja huoltopalvelut omaisuutesi suojaamiseksi'
+        },
+        solutions: {
+          title: 'Ammattimaiset Ratkaisut',
+          description1: 'Kattava kattoremontti, huolto ja ennaltaehkäisy. Työskentelen erityyppisten kattojen parissa, korjaan vuotoja ja vaurioita.',
+          description2: 'Laadukkaat materiaalit ja tiukka teknologian noudattaminen — kestävä ja luotettava katto.',
+          projectsCompleted: 'Valmistuneet Projektit',
+          yearsExperience: 'Vuosia Kokemusta'
+        },
+        services: {
+          title: 'Palvelumme',
+          items: [
+            'Vuotojen ja vaurioiden korjaus',
+            'Kattopäällysteen vaihto',
+            'Sadevesien asennus ja korjaus',
+            'Liitosten ja päällysteiden tiivistys',
+            'Paikalliset ja suuremmat remontit',
+            'Ennakoiva tarkastus ja huolto'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Puutarhasuunnittelu',
+          subtitle: 'Kauniit puutarhasuunnittelu- ja maisema-arkkitehtuuripalvelut ulkotilojesi parantamiseksi'
+        },
+        solutions: {
+          title: 'Ammattimaiset Ratkaisut',
+          description1: 'Yksilöllinen lähestymistapa suunnitteluun ja maisema-arkkitehtuuriin. Luon toimivia ja esteettisiä puutarhoja, jotka sopivat toiveisiisi ja paikan olosuhteisiin.',
+          description2: 'Kasvien, valaistuksen ja pintojen valinta — harmonialle ja pitkälle kestolle.',
+          projectsCompleted: 'Valmistuneet Projektit',
+          yearsExperience: 'Vuosia Kokemusta'
+        },
+        services: {
+          title: 'Palvelumme',
+          items: [
+            'Maisemasuunnittelu',
+            'Kasvien valinta ja maisemasuunnittelu',
+            'Nurmien ja polkujen asennus',
+            'Kastelu- ja kuivatusjärjestelmät',
+            'Puutarhan valaistus',
+            'Kausittainen puutarhanhoito'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Laattojen Asennus',
+          subtitle: 'Ammattimaiset laattojen poisto- ja asennuspalvelut keittiöihin, kylpyhuoneisiin ja muihin tiloihin'
+        },
+        solutions: {
+          title: 'Ammattimaiset Ratkaisut',
+          description1: 'Vanhojen laattojen poisto, pinnan valmistelu ja tarkka laattojen asennus. Varmistan oikean geometrian, saumauksen ja vesieristyksen.',
+          description2: 'Käytän laadukkaita materiaaleja ja työkaluja — virheettömille tuloksille ja kestävyydelle.',
+          projectsCompleted: 'Valmistuneet Projektit',
+          yearsExperience: 'Vuosia Kokemusta'
+        },
+        services: {
+          title: 'Palvelumme',
+          items: [
+            'Vanhojen laattojen poisto',
+            'Pinnan valmistelu ja tasoitus',
+            'Kosteiden alueiden vesieristys',
+            'Laattojen ja mosaiikin asennus',
+            'Saumaus ja tiivistys',
+            'Yksittäisten elementtien restaurointi ja vaihto'
+          ]
+        }
+      },
+      paving: {
+        hero: {
+          title: 'Kivipäällysteen Asennus',
+          subtitle: 'Ammattimainen kivipäällysteen asennus ajoteille, kävelyteille, terasseille ja ulkotiloihin'
+        },
+        solutions: {
+          title: 'Ammattimaiset Ratkaisut',
+          description1: 'Muunna ulkotilasi ammattimaisella kivipäällysteen asennuksella. Erikoistun kauniiden, kestävien pintojen luomiseen ajoteille, kävelyteille, terasseille ja puutarha-alueille.',
+          description2: 'Kokemukseni varmistaa oikean pohjan valmistelun, tarkan asennuksen ja huomion yksityiskohtiin pitkäkestoisia tuloksia varten, jotka parantavat kiinteistösi arvoa ja ulkoasua.',
+          projectsCompleted: 'Valmistuneet Projektit',
+          yearsExperience: 'Vuosia Kokemusta'
+        },
+        services: {
+          title: 'Palvelumme',
+          items: [
+            'Ajotien päällystys',
+            'Kävelyteiden ja polkujen asennus',
+            'Terassin ja pation päällystys',
+            'Puutarha-alueen päällystys',
+            'Pohjan valmistelu ja tasoitus',
+            'Viemärijärjestelmän asennus',
+            'Reunojen asennus ja viimeistely'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Tietosuojakäytäntö',
+        subtitle: 'VK Bouwmaster Tietosuojakäytäntö'
+      },
+      introduction: {
+        title: '1. Johdanto',
+        content: 'VK Bouwmaster ("me", "meidän" tai "yritys") sitoutuu suojelemaan yksityisyyttänne. Tämä Tietosuojakäytäntö selittää, miten keräämme, käytämme, paljastamme ja suojelemme tietojanne, kun käytätte verkkosivustoamme ja palvelujamme.'
+      },
+      dataCollection: {
+        title: '2. Tiedot, joita keräämme',
+        personalInfo: {
+          title: 'Henkilökohtaiset tiedot',
+          items: ['Nimi', 'Sähköpostiosoite', 'Puhelinnumero']
+        },
+        projectInfo: {
+          title: 'Projektin tiedot',
+          items: ['Pyynnön yksityiskohdat', 'Projektin osoite', 'Työn kuvaus']
+        },
+        technicalInfo: {
+          title: 'Tekniset tiedot',
+          items: ['IP-osoite', 'Selaimen tyyppi', 'Käyttötiedot']
+        }
+      },
+      dataUsage: {
+        title: '3. Miten käytämme tietojanne',
+        subtitle: 'Kerättyjä tietoja käytämme:',
+        items: [
+          { icon: '✅', text: 'Palveluidemme tarjoamiseen ja parantamiseen' },
+          { icon: '📞', text: 'Yhteydenottoon kanssanne projektistanne' },
+          { icon: '📧', text: 'Informatiivisten materiaalien ja päivitysten lähettämiseen' },
+          { icon: '🔒', text: 'Verkkosivustomme turvallisuuden varmistamiseen' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Tietojen suoja',
+        content: 'Toteutamme asianmukaiset tekniset ja organisatoriset toimenpiteet henkilötietojenne suojaamiseksi luvattomalta pääsyltä, muutokselta, paljastamiselta tai tuhoutumiselta.',
+        encryption: 'Tietojen salaus',
+        secureAccess: 'Turvallinen pääsy',
+        regularChecks: 'Säännölliset tarkistukset'
+      },
+      thirdParty: {
+        title: '5. Tietojen luovuttaminen kolmansille osapuolille',
+        content: 'Emme myy, vaihda tai siirrä henkilötietojanne kolmansille osapuolille ilman suostumustanne, paitsi kun se on välttämätöntä palveluidemme tarjoamiseksi tai laki sitä vaatii.'
+      },
+      userRights: {
+        title: '6. Teidän oikeutenne',
+        subtitle: 'Teillä on oikeus:',
+        items: [
+          { icon: '📖', text: 'Päästä käsiksi henkilötietoihinne' },
+          { icon: '✏️', text: 'Korjata epätarkkoja tietoja' },
+          { icon: '🗑️', text: 'Pyytää tietojenne poistamista' },
+          { icon: '🔄', text: 'Peruuttaa suostumus tietojenne käsittelyyn' }
+        ]
+      },
+      contact: {
+        title: '7. Yhteystiedot',
+        subtitle: 'Jos sinulla on kysymyksiä Tietosuojakäytännöstämme, ota yhteyttä:',
+        email: {
+          title: 'Sähköposti',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Puhelin',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Tietosuojakäytännön päivitykset',
+        content: 'Voimme ajoittain päivittää tätä Tietosuojakäytäntöä. Ilmoitamme teille kaikista muutoksista julkaisemalla uuden Tietosuojakäytännön tällä sivulla päivitettynä päivämäärällä.'
+      },
+      lastUpdated: 'Viimeksi päivitetty: Tammikuu 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Käyttöehdot',
+        subtitle: 'VK Bouwmaster Käyttöehdot'
+      },
+      acceptance: {
+        title: '1. Ehtojen hyväksyminen',
+        content: 'Käyttämällä VK Bouwmaster verkkosivustoa ja palveluja hyväksyt nämä Käyttöehdot. Jos et hyväksy jotakin ehtoa, älä käytä palvelujamme.'
+      },
+      services: {
+        title: '2. Palvelujen kuvaus',
+        content: 'VK Bouwmaster tarjoaa ammattimaisia kunnostus- ja uudistuspalveluja, mukaan lukien, mutta ei rajoittuen: lattioiden asennukseen, maalaukseen, putkityöhön, kattoremontteihin, puutarhasuunnitteluun ja muihin rakennuspalveluihin.'
+      },
+      estimates: {
+        title: '3. Arviot ja hinnat',
+        content: 'Tarjoamme ilmaisia työarvioita. Ilmoitetut hinnat ovat suuntaa-antavia ja voivat vaihdella riippuen:',
+        factors: ['Projektin monimutkaisuudesta', 'Käytetyistä materiaaleista', 'Työn laajuudesta', 'Asiakkaan lisävaatimuksista']
+      },
+      payment: {
+        title: '4. Maksu',
+        content: 'Maksuehdot sovitaan yksilöllisesti jokaiselle projektille ja määritellään sopimuksessa. Yleensä vaaditaan:',
+        items: ['Ennakkomaksu voi olla tarpeen materiaalien ostamiseen', 'Lopullinen maksu suoritetaan työn valmistumisen jälkeen', 'Työn vastaanotto tapahtuu asiakkaan läsnä ollessa']
+      },
+      warranty: {
+        title: '5. Takuu',
+        content: 'Tarjoamme takuun valmistuneille töille sopimusehtojen mukaisesti. Takuun yksityiskohdat keskustellaan yksilöllisesti jokaiselle projektille.'
+      },
+      liability: {
+        title: '6. Vastuu',
+        content: 'VK Bouwmaster vastaa valmistuneiden töiden laadusta sovitun sopimuksen puitteissa. Käytämme laadukkaita materiaaleja ja ammattimaisia työtapoja. Asiakas vastaa tarkkojen tietojen antamisesta projektista.'
+      },
+      cancellation: {
+        title: '7. Peruutus ja muutokset',
+        content: 'Projektin muutokset on sovittava etukäteen. Projektin peruutus on ilmoitettava kohtuullisessa ajassa. Rahojen palautusehdot sovitaan yksilöllisesti.'
+      },
+      intellectualProperty: {
+        title: '8. Henkinen omaisuus',
+        content: 'Kaikki VK Bouwmasterin projektin osana luomat materiaalit ja suunnittelut pysyvät yrityksen omistuksessa, kunnes työt on maksettu kokonaan, minkä jälkeen oikeudet siirtyvät asiakkaalle.'
+      },
+      contact: {
+        title: '9. Yhteystiedot',
+        content: 'Kysymyksistä näihin Käyttöehtoihin liittyen ota yhteyttä:',
+        email: 'Sähköposti: vkbouwmaster@gmail.com',
+        phone: 'Puhelin: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Ehtojen muutokset',
+        content: 'Pidätämme oikeuden muuttaa näitä Käyttöehtoja milloin tahansa. Palveluidemme jatkuva käyttö muutosten jälkeen tarkoittaa suostumustanne uusiin ehtoihin.'
+      },
+      lastUpdated: 'Viimeksi päivitetty: Tammikuu 2025'
+    }
+  },
+  SV: {
+    navigation: {
+      home: 'Hem',
+      about: 'Om Oss',
+      services: 'Tjänster',
+      portfolio: 'Portfolio',
+      reviews: 'Recensioner',
+      team: 'Team',
+      pricing: 'Priser',
+      blog: 'Blogg',
+      faq: 'FAQ',
+      contact: 'Kontakt',
+      getQuote: 'Offert',
+      language: 'Språk',
+      adminPanel: '🔐 Adminpanel',
+      scrollLeft: 'Rulla åt vänster',
+      scrollRight: 'Rulla åt höger',
+      adminPanelTitle: 'Administrationspanel',
+      switchLanguage: 'Byt språk'
+    },
+    common: {
+      loading: 'Laddar...',
+      error: 'Fel',
+      success: 'Framgång',
+      cancel: 'Avbryt',
+      save: 'Spara',
+      delete: 'Ta Bort',
+      edit: 'Redigera',
+      view: 'Visa',
+      learnMore: 'Läs Mer',
+      readMore: 'Läs Mer',
+      getStarted: 'Kom Igång',
+      contactUs: 'Kontakta Oss',
+      years: 'År',
+      projects: 'Projekt',
+      satisfaction: 'Tillfredsställelse',
+      support: 'Support',
+      experience: 'Erfarenhet',
+      quality: 'Kvalitet',
+      team: 'Team',
+      clients: 'Kunder',
+      completed: 'Slutförd',
+      happy: 'Glad',
+      available: 'Tillgänglig',
+      expertise: 'Expertis'
+    },
+    home: {
+      hero: {
+        title1: 'Professionella',
+        title2: 'Renoveringstjänster',
+        subtitle: 'Professionella renoveringstjänster med över 10 års erfarenhet. En sann mästare i sitt yrke som kan allt: från golvläggning till komplett renovering. Kvalitetsarbete, uppmärksamhet på varje detalj, tidsfrister och ärliga priser. Jag transformerar ditt utrymme med kärlek och professionalism.',
+        cta1: 'Få Gratis Offer',
+        cta2: 'Se Mina Arbeten'
+      },
+      about: {
+        title: 'Om Mästaren',
+        description1: 'Vladimir är en mästare med över 10 års erfarenhet inom renovering och byggnation. Han utmärker sig genom <span class="text-blue-400 font-medium">exceptionellt ansvarstagande</span> och uppmärksamhet på detaljer.',
+        description2: 'Varje projekt genomförs med <span class="text-blue-400 font-medium">högsta kvalitet</span> och strikt följande av deadlines. Kunder värderar honom för hans ärlighet, professionalitet och förmåga att realisera de mest komplexa idéerna.',
+        projectsCount: '200+',
+        projectsLabel: 'Färdiga Projekt',
+        yearsCount: '10+',
+        yearsLabel: 'Års Erfarenhet',
+        satisfactionPercent: '100%',
+        satisfactionLabel: 'Nöjda Kunder',
+        supportLabel: 'Kundsupport',
+        viewWorks: 'Se Mina Arbeten'
+      },
+      works: {
+        title: 'Mina Arbeten',
+        description: 'Vladimir är en mästare som förvandlar renovering till konst: precisa deadlines, perfekt geometri och ovanlig kvalitet i varje detalj.',
+        work: 'arbete',
+        works2: 'arbeten',
+        works5: 'arbeten'
+      },
+      services: {
+        title: 'Mina Tjänster',
+        subtitle: 'Erbjuder renoveringstjänster för att transformera ditt hem eller företag',
+        flooring: {
+          title: 'Golvläggning',
+          description: 'Professionella golvläggnings- och reparationsservice för alla typer av golvmaterial.'
+        },
+        painting: {
+          title: 'Målningsservice',
+          description: 'In- och utvändig målningsservice med premium kvalitetsfärger och finish.'
+        },
+        plumbing: {
+          title: 'Rörreparationer',
+          description: 'Professionell rörreparations- och installationsservice för hem och kontor.'
+        },
+        roofing: {
+          title: 'Takreparationer',
+          description: 'Expert takreparations- och underhållsservice för att skydda din egendom.'
+        },
+        garden: {
+          title: 'Trädgårdsdesign',
+          description: 'Vackra trädgårdsdesign- och landskapsarkitekturtjänster för att förbättra ditt utomhusutrymme.'
+        },
+        tile: {
+          title: 'Kakelinstallation',
+          description: 'Professionella kakelborttagning- och installationstjänster för kök, badrum och mer.'
+        },
+        paving: {
+          title: 'Stenläggning',
+          description: 'Professionell stenläggning för uppfarter, gångvägar, uteplatser och utomhusområden.'
+        },
+        hedge: {
+          title: 'Häckskärning',
+          description: 'Professionella häckskärnings- och underhållstjänster för att hålla din trädgård snygg och vacker.'
+        },
+        ceiling: {
+          title: 'Tak och Väggar',
+          description: 'Professionella tjänster för installation, reparation och efterbehandling av tak och väggar för innutrymmen.'
+        },
+        drywall: {
+          title: 'Gipsskivor',
+          description: 'Professionella tjänster för installation, reparation och efterbehandling av gipsskivor för väggar och tak.'
+        }
+      },
+      achievements: {
+        title: 'Våra Framgångar',
+        subtitle: 'Siffror som talar om vår framgång',
+        experience: {
+          title: 'Års Erfarenhet',
+          subtitle: 'Över ett decennium professionella tjänster'
+        },
+        projects: {
+          title: 'Färdiga Projekt',
+          subtitle: 'Framgångsrikt levererade projekt'
+        },
+        clients: {
+          title: 'Nöjda Kunder',
+          subtitle: 'Nöjda kunder'
+        },
+        satisfaction: {
+          title: 'Tjänstnivå',
+          subtitle: 'Kundnöjdhet garanterad'
+        },
+        support: {
+          title: 'Support 24/7',
+          subtitle: 'Dygnet runt kundsupport'
+        }
+      },
+      whyChoose: {
+        title: 'Varför Välja VK Bouwmaster?',
+        subtitle: 'Vi levererar exceptionella resultat med vårt engagemang för kvalitet och kundnöjdhet',
+        experience: {
+          title: 'Års Erfarenhet',
+          description: 'Över ett decennium erfarenhet inom renoverings- och byggtjänster'
+        },
+        quality: {
+          title: 'Kvalitetsgaranti',
+          description: 'Vi står bakom vårt arbete med omfattande kvalitetsgarantier'
+        },
+        team: {
+          title: 'Expertteam',
+          description: 'Kvalificerade professionella som är dedikerade till att leverera exceptionella resultat'
+        }
+      },
+      testimonials: {
+        title: 'Vad Våra Kunder Säger',
+        subtitle: 'Riktig feedback från nöjda kunder som anförtrodde oss sina projekt',
+        testimonial1: {
+          text: 'Exceptionellt arbete! Teamet transformerade vårt kök helt. Professionellt, rent och levererat i tid. Varmt rekommenderar!',
+          author: 'Erik Andersson',
+          role: 'Husägare'
+        },
+        testimonial2: {
+          text: 'Utmärkta tjänster från början till slut. De renoverade vårt kontorsutrymme och överträffade alla förväntningar. Kommer definitivt använda igen!',
+          author: 'Maria Johansson',
+          role: 'Kontorschef'
+        }
+      }
+    },
+    about: {
+      hero: {
+        title: 'Om VK Bouwmaster',
+        subtitle: 'Din pålitliga partner inom professionella renoveringstjänster och byggtjänster'
+      },
+      story: {
+        title: 'Vår Historia',
+        paragraph1: 'Grundad för över ett decennium sedan, har VK Bouwmaster varit i framkanten av professionella renoveringstjänster. Vad som började som ett litet familjeföretag har växt till ett av de mest betrodda namnen inom hemförbättring och byggande.',
+        paragraph2: 'Vår resa började med ett enkelt uppdrag: att förvandla utrymmen och överträffa förväntningar. Idag fortsätter vi att upprätthålla det åtagandet genom innovativa lösningar, kvalitetshantverk och exceptionell kundservice.',
+        paragraph3: 'Varje projekt vi påtar oss återspeglar vår passion för excellens och vår hängivenhet att göra din vision verklig. Vi tror att ditt hem är mer än bara en byggnad—det är där minnen skapas och drömmar blir verklighet.'
+      },
+      mission: {
+        title: 'Vårt Uppdrag och Värderingar',
+        subtitle: 'Vi drivs av våra kärnvärderingar och engagemang för excellens',
+        mission: {
+          title: 'Vårt Uppdrag',
+          description: 'Att leverera exceptionella renoveringstjänster som förvandlar utrymmen och överträffar våra kunders förväntningar genom kvalitetshantverk och innovativa lösningar.'
+        },
+        quality: {
+          title: 'Kvalitet Först',
+          description: 'Vi kompromissar aldrig med kvalitet. Varje projekt genomförs med uppmärksamhet på detaljer och använder endast de finaste materialen och teknikerna.'
+        },
+        customer: {
+          title: 'Kundfokus',
+          description: 'Våra kunder är i hjärtat av allt vi gör. Vi lyssnar, kommunicerar tydligt och arbetar nära med dig för att uppnå din vision.'
+        }
+      },
+      whyChoose: {
+        title: 'Varför Välja VK Bouwmaster?',
+        subtitle: 'Vi sticker ut från konkurrensen med vår unika approach och engagemang för excellens',
+        award: {
+          title: 'Prisbelönt',
+          description: 'Erkänd för excellens inom renoveringstjänster och byggtjänster'
+        },
+        expert: {
+          title: 'Experttim',
+          description: 'Skickliga yrkesmän med års erfarenhet inom sina respektive områden'
+        },
+        onTime: {
+          title: 'Tidsenlig Leverans',
+          description: 'Vi respekterar din tid och levererar projekt enligt schema, varje gång'
+        },
+        fair: {
+          title: 'Rättvis Prissättning',
+          description: 'Transparent prissättning utan dolda kostnader eller överraskningar'
+        }
+      },
+      certifications: {
+        title: 'Certifieringar och Licenser',
+        subtitle: 'Vi upprätthåller högsta standarder med lämpliga certifieringar och licenser',
+        licensed: {
+          title: 'Licensierad och Försäkrad',
+          description: 'Fullt licensierad och försäkrad för din sinnesro och skydd'
+        },
+        certified: {
+          title: 'Industrisertifierad',
+          description: 'Certifierad av ledande branschorganisationer och branschföreningar'
+        },
+        quality: {
+          title: 'Kvalitetssäkrad',
+          description: 'Regelbundna kvalitetsgranskningar och kontinuerliga förbättringsprocesser'
+        }
+      },
+      cta: {
+        title: 'Redo att Arbeta med Oss?',
+        subtitle: 'Låt oss diskutera ditt projekt och se hur vi kan göra din vision verklig',
+        cta1: 'Få Gratis Offer',
+        cta2: 'Se Vårt Arbete'
+      }
+    },
+    portfolio: {
+      hero: {
+        title: 'Mitt Portfolio',
+        subtitle: 'Utforska mina slutförda projekt och se kvaliteten på mitt arbete'
+      },
+      stats: {
+        projects: 'Slutförda Projekt',
+        years: 'Års Erfarenhet',
+        satisfaction: 'Kundnöjdhet',
+        clients: 'Nöjda Kunder'
+      },
+      whyChoose: {
+        title: 'Varför Välja Mig',
+        features: [
+          { icon: '🛠️', title: 'Kvalitet', desc: 'Snyggt, rent och med uppmärksamhet på detaljer. Jag använder beprövade material och tekniker.' },
+          { icon: '⏱️', title: 'Tidsplaner', desc: 'Jag arbetar enligt en tydlig tidsplan. Jag slutför i tid — inga överraskningar eller "imorgon".' },
+          { icon: '🤝', title: 'Ärlighet', desc: 'Transparenta uppskattningar och faser. Du förstår alltid vad du betalar för.' },
+          { icon: '💬', title: 'Kommunikation', desc: 'Alltid tillgänglig, svarar snabbt och erbjuder lösningar för din begäran.' },
+          { icon: '🧼', title: 'Renlighet', desc: 'Jag håller ordning på platsen, skyddar möbler och beläggningar, städar efter mig.' },
+          { icon: '🔒', title: 'Garanti', desc: 'Jag ger garanti på slutförda arbeten och förblir tillgänglig efter leverans.' }
+        ]
+      },
+      featured: {
+        title: 'Mina Projekt',
+        subtitle: 'Varje projekt visar mitt engagemang för kvalitet, uppmärksamhet på detaljer och kundens förtroende'
+      },
+      features: 'Nyckelfunktioner:',
+      noWorks: {
+        title: 'Inga arbeten har lagts till ännu',
+        subtitle: 'Lägg till arbeten via administrationspanelen'
+      },
+      testimonials: {
+        title: 'Vad Mina Kunder Säger',
+        subtitle: 'Tro inte bara på mitt ord — läs recensioner från riktiga kunder'
+      },
+      noReviews: 'Inga recensioner ännu',
+      cta: {
+        title: 'Redo att Starta Ditt Projekt?',
+        subtitle: 'Låt mig transformera ditt utrymme med samma kvalitet och uppmärksamhet på detaljer'
+      },
+      detail: {
+        backToProjects: 'Tillbaka till projekt',
+        projectNotFound: 'Projekt hittades inte',
+        projectNotFoundSubtitle: 'Projektet med ID {projectId} finns inte eller har tagits bort',
+        noMedia: 'Inga foton och videor ännu',
+        noMediaSubtitle: 'Lägg till foton och videor i adminpanelen',
+        allPhotosAndVideos: 'Alla projektets foton och videor',
+        oneOfWork: '✨ Ett av våra verk',
+        date: 'Datum',
+        city: 'Stad',
+        photos: 'Foton',
+        videos: 'Videor',
+        comments: 'Kommentarer',
+        noComments: 'Inga kommentarer ännu. Var först!',
+        beFirst: 'Var först!',
+        profileImageLabel: 'Profilbild',
+        profileImageOptional: '(valfritt)',
+        addProfileImage: 'Lägg till profilbild',
+        changePhoto: 'Ändra foto',
+        deletePhoto: 'Ta bort foto',
+        cityLabel: 'Stad',
+        cityOptional: '(valfritt)',
+        cityPlaceholder: 'I vilken stad gjordes beställningen?',
+        ratingLabel: 'Betyg',
+        ratingRequired: '(obligatoriskt)',
+        commentLabel: 'Din kommentar',
+        commentPlaceholder: 'Skriv din kommentar här...',
+        charactersLeft: 'Återstående tecken:',
+        addPhotosLabel: '📷 Lägg till foton',
+        addPhotosOptional: '(valfritt)',
+        selectPhotos: '📷 Välj foton',
+        photosUploaded: 'Uppladdade foton:',
+        addVideosLabel: '🎥 Lägg till videor',
+        addVideosOptional: '(valfritt)',
+        selectVideos: '🎥 Välj videor',
+        videosUploaded: 'Uppladdade videor:',
+        deleteVideo: 'Ta bort video',
+        submitting: 'Skickar…',
+        submitComment: '📤 Skicka kommentar',
+        commentWillAppear: 'Kommentaren visas efter godkännande av administratör.',
+        viewAllPhotos: 'Visa alla foton ({count})',
+        noProject: 'Utan projekt',
+        category: 'Kategori',
+        project: 'Projekt',
+        translateTo: 'Översätt till...',
+        showOriginal: 'Visa original',
+        translatedTo: 'Översatt till',
+        translating: 'Översätter...'
+      }
+    },
+    services: {
+      hero: {
+        title: 'Våra Tjänster',
+        subtitle: 'Omfattande renoveringstjänster och byggtjänster för att transformera ditt utrymme'
+      },
+      whatWeDo: {
+        title: 'Vad Vi Gör',
+        subtitle: 'Från små reparationer till kompletta renoveringar, vi har expertisen att hantera vilket projekt som helst'
+      },
+      process: {
+        title: 'Vår Process',
+        subtitle: 'Vi följer en beprövad process för att säkerställa att ditt projekt slutförs enligt högsta standard',
+        consultation: {
+          title: 'Konsultation',
+          description: 'Vi börjar med en detaljerad konsultation för att förstå dina behov och vision'
+        },
+        planning: {
+          title: 'Planering',
+          description: 'Detaljerad planering och design för att säkerställa det bästa resultatet för ditt projekt'
+        },
+        execution: {
+          title: 'Genomförande',
+          description: 'Professionellt genomförande med kvalitetsmaterial och skickligt hantverk'
+        },
+        completion: {
+          title: 'Slutförande',
+          description: 'Slutlig inspektion och städning för att säkerställa din fullständiga tillfredsställelse'
+        }
+      },
+      cta: {
+        title: 'Redo att Starta Ditt Projekt?',
+        subtitle: 'Kontakta oss idag för en gratis konsultation och offert',
+        cta1: 'Få Gratis Offer',
+        cta2: 'Se Vårt Arbete'
+      }
+    },
+    footer: {
+      description: 'Professionella renoveringstjänster med över 10 års erfarenhet. Jag transformerar ditt utrymme med kvalitetsarbete och uppmärksamhet på detaljer.',
+      quickLinks: {
+        title: 'Snabblänkar'
+      },
+      services: {
+        title: 'Tjänster'
+      },
+      shot: {
+        title: 'Shot'
+      },
+      copyright: '© 2025 VK Bouwmaster. Alla rättigheter förbehållna.',
+      privacy: 'Integritetspolicy',
+      terms: 'Användarvillkor'
+    },
+    admin: {
+      login: {
+        title: 'Administrationspanel',
+        subtitle: 'Logga in för att hantera innehåll',
+        email: 'E-post',
+        password: 'Lösenord',
+        emailPlaceholder: 'Ange din e-postadress',
+        passwordPlaceholder: '••••••••',
+        loginButton: 'Logga in',
+        loggingIn: 'Loggar in...',
+        connectionError: 'Anslutningsfel med servern',
+        goHome: 'Gå till Startsidan'
+      },
+      accessDenied: {
+        title: 'Åtkomst Nekad',
+        message: 'Ogiltig e-postadress eller lösenord. Du har inte tillgång till detta område — endast administratörer har tillgång.',
+        goHome: 'Gå till Startsidan',
+        tryAgain: 'Försök Igen'
+      }
+    },
+    thankYou: {
+      title: 'Tack för din recension!',
+      message1: 'Jag är mycket glad att du delade din upplevelse!',
+      message2: 'Jag strävar alltid efter att bli bättre för dig. Din recension hjälper mig att bli ännu bättre.',
+      backToReviews: 'Tillbaka till recensioner'
+    },
+    contactThankYou: {
+      title: 'Tack för ditt meddelande!',
+      message: 'Jag kommer att kontakta dig inom en dag.',
+      backToContact: 'Tillbaka till kontakt'
+    },
+    reviews: {
+      hero: { badge: 'Din åsikt är viktig för oss', title: 'Kundrecensioner', subtitle: 'Dela din upplevelse med oss. Dina recensioner hjälper andra kunder att fatta beslut.' },
+      form: { title: 'Lämna en recension', namePlaceholder: 'Namn', surnamePlaceholder: 'Efternamn (valfritt)', profileImageLabel: 'Profilbild', profileImageOptional: '(valfritt)', addProfileImage: 'Lägg till profilbild', changePhoto: 'Byt foto', deletePhoto: 'Radera foto', cityLabel: 'Stad', cityOptional: '(valfritt)', cityPlaceholder: 'I vilken stad lades beställningen?', ratingLabel: 'Betyg', ratingRequired: '(obligatoriskt)', reviewLabel: 'Din recension', reviewPlaceholder: 'Berätta för oss om din upplevelse med oss... Vad gillade du? Vad kan förbättras?', charactersLeft: 'Tecken kvar:', goodReview: 'Bra recension!', addPhotosLabel: 'Lägg till foton', addPhotosOptional: '(valfritt)', selectPhotos: '📷 Välj foton', photosUploaded: 'Foton uppladdade:', addVideosLabel: 'Lägg till videor', addVideosOptional: '(valfritt)', selectVideos: '🎥 Välj videor', videosUploaded: 'Videor uppladdade:', deleteVideo: 'Radera video', submitting: 'Skickar…', submitButton: 'Skicka recension', reviewWillAppear: 'Recensionen visas efter administratörsgodkännande', fillRequiredFields: 'Vänligen fyll i namn och meddelande', errorSubmitting: 'Fel vid sändning av recension. Vänligen försök igen.', errorConnection: 'Fel vid sändning av recension. Vänligen kontrollera din internetanslutning och försök igen.' },
+      list: { title: 'Alla recensioner', review: 'recension', reviews2: 'recensioner', reviews5: 'recensioner', noReviews: 'Inga recensioner ännu. Var först!', photosAndVideos: 'Foton och videor från recensionen', viewAllMedia: 'Se alla foton och videor →' },
+      detail: {
+        backToReviews: 'Tillbaka till recensioner',
+        reviewNotFound: 'Recension hittades inte',
+        reviewNotFoundSubtitle: 'Recension med ID {reviewId} finns inte',
+        noMedia: 'Denna recension har inga foton och videor',
+        noMediaSubtitle: 'Tillbaka till recensioner',
+        photosAndVideos: 'Foton och videor från recensionen'
+      }
+    },
+    contact: {
+      hero: {
+        title: 'Kontakta Oss',
+        subtitle: 'Kontakta vårt team för en gratis konsultation och offert'
+      },
+      form: {
+        title: 'Skicka Ett Meddelande',
+        name: 'Fullständigt Namn',
+        email: 'E-postadress',
+        phone: 'Telefonnummer',
+        service: 'Behövd Tjänst',
+        message: 'Meddelande',
+        submit: 'Skicka Meddelande',
+        selectService: 'Välj en tjänst',
+        other: 'Annat',
+        street: 'Gata',
+        houseNumber: 'Husnummer',
+        postalCode: 'Postnummer',
+        city: 'Stad',
+        namePlaceholder: 'Ditt namn',
+        emailPlaceholder: 'din@email.com',
+        phonePlaceholder: '+31 6 1234 5678',
+        streetPlaceholder: 'Gatunamn',
+        houseNumberPlaceholder: '123',
+        postalCodePlaceholder: '1234 AB',
+        cityPlaceholder: 'Amsterdam',
+        messagePlaceholder: 'Berätta för oss om ditt projekt...',
+        streetRequired: 'Gata är obligatorisk',
+        houseNumberRequired: 'Husnummer är obligatoriskt',
+        postalCodeRequired: 'Postnummer är obligatoriskt',
+        postalCodeInvalid: 'Ogiltigt postnummerformat. Använd formatet: 1234 AB',
+        successMessage: 'Tack för ditt meddelande! Vi kommer att kontakta dig snart.',
+        errorMessage: 'Ett fel uppstod. Vänligen försök igen.',
+        sendMessage: 'Skicka Meddelande'
+      },
+      info: {
+        title: 'Kontakta Oss',
+        phone: {
+          title: 'Telefon',
+          number1: '+380 99 080 4115',
+          number2: ''
+        },
+        email: {
+          title: 'E-post',
+          address1: 'vkbouwmaster@gmail.com',
+          address2: ''
+        },
+        address: {
+          title: 'Adress',
+          street: '',
+          city: '',
+          country: 'Nederländerna'
+        },
+        hours: {
+          title: 'Öppettider',
+          weekdays: '',
+          saturday: '',
+          sunday: '',
+          byAppointment: 'Efter överenskommelse'
+        },
+        emergency: {
+          title: 'Akutservice',
+          description: 'Behöver du akuta reparationer? Vi erbjuder 24/7 akutservice för kritiska problem.',
+          phone: 'Ring Nu: +380 99 080 4115'
+        },
+        contactMethods: {
+          title: 'Kontakta Mig',
+          subtitle: 'Du kan nå mig via WhatsApp, E-post och Telegram',
+          whatsapp: 'WhatsApp',
+          telegram: 'Telegram',
+          email: 'E-post'
+        }
+      },
+      faq: {
+        hero: {
+          title: 'Vanliga Frågor',
+          subtitle: 'Hitta svar på populära frågor om våra renoveringstjänster'
+        },
+        contact: {
+          title: 'Har Du Fortfarande Frågor?',
+          subtitle: 'Kan du inte hitta svaret du letar efter? Vårt team är här för att hjälpa!'
+        },
+        title: 'Vanliga Frågor',
+        subtitle: 'Snabba svar på vanliga frågor om våra tjänster',
+        q1: {
+          question: 'Hur lång tid tar en typisk renovering?',
+          answer: 'Projekttidsramar varierar beroende på omfattning och komplexitet. Enkla projekt som målning kan ta 1-3 dagar, medan större renoveringar kan ta flera veckor. Vi tillhandahåller detaljerade tidsramar under konsultationen.'
+        },
+        q2: {
+          question: 'Erbjuder ni gratis offerter?',
+          answer: 'Ja! Vi erbjuder gratis, inga förpliktelser offerter för alla våra tjänster. Vårt team kommer att besöka din fastighet för att bedöma det nödvändiga arbetet och ge en detaljerad offert.'
+        },
+        q3: {
+          question: 'Är ni licensierade och försäkrade?',
+          answer: 'Absolut. VK Bouwmaster är fullt licensierat och försäkrat. Vi har omfattande ansvarsförsäkring och arbetsskadeförsäkring för att skydda både vårt team och din fastighet.'
+        },
+        q4: {
+          question: 'Vilka områden betjänar ni?',
+          answer: 'Vi betjänar det större storstadsområdet och omgivande regioner. Kontakta oss för att bekräfta om vi betjänar din specifika plats.'
+        }
+      }
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Golvläggning',
+          subtitle: 'Professionella golvläggnings- och reparationsservice för alla typer av golvmaterial'
+        },
+        solutions: {
+          title: 'Professionella Lösningar',
+          description1: 'Förvandla ditt utrymme med våra professionella golvläggningstjänster. Jag specialiserar mig på alla typer av golvmaterial och erbjuder expertinstallation, reparation och underhåll.',
+          description2: 'Min erfarenhet säkerställer rätta installationstekniker, uppmärksamhet på detaljer och användning av kvalitetsmaterial för att skapa vackra, hållbara golv som kommer att hålla i år.',
+          projectsCompleted: 'Slutförda Projekt',
+          yearsExperience: 'År Erfarenhet'
+        },
+        services: {
+          title: 'Våra Tjänster',
+          items: [
+            'Parkettinstallation',
+            'Laminatgolv',
+            'Kakel- och steninstallation',
+            'Mattinstallation',
+            'Vinylgolv (LVT)',
+            'Golvreparation och restaurering'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Målningsservice',
+          subtitle: 'Professionella in- och utvändiga målningsservice med premium kvalitetsfärger'
+        },
+        solutions: {
+          title: 'Professionella Lösningar',
+          description1: 'Förvandla ditt utrymme med professionella målningsservice. Jag säkerställer kvalitetsförberedelse av ytor, användning av premiumfärger och felfri utförande.',
+          description2: 'Min erfarenhet garanterar hållbara avslutningar, perfekt släta ytor och skydd mot externa faktorer.',
+          projectsCompleted: 'Slutförda Projekt',
+          yearsExperience: 'År Erfarenhet'
+        },
+        services: {
+          title: 'Våra Tjänster',
+          items: [
+            'Målning av väggar och tak',
+            'Målning av ytterfasader',
+            'Dekorativ målning',
+            'Grundning av ytor',
+            'Målning av träkonstruktioner',
+            'Skyddande behandling'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Rörreparationer',
+          subtitle: 'Professionella rörreparations- och installationsservice för hem och kontor'
+        },
+        solutions: {
+          title: 'Professionella Lösningar',
+          description1: 'Fullständigt utbud av rörservice för ditt hem eller företag. Jag erbjuder kvalitetsinstallation, reparation och underhåll av alla typer av rörinstallationer.',
+          description2: 'År av erfarenhet garanterar pålitlighet, hållbarhet och överensstämmelse med alla säkerhetsstandarder.',
+          projectsCompleted: 'Slutförda Projekt',
+          yearsExperience: 'År Erfarenhet'
+        },
+        services: {
+          title: 'Våra Tjänster',
+          items: [
+            'Rörreparation och byte',
+            'Installation av rörinstallationer',
+            'Vattenförsörjningsinstallation',
+            'Avloppsreparation',
+            'Radiatorinstallation',
+            'Avloppsrensning'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Takreparationer',
+          subtitle: 'Expert takreparations- och underhållsservice för att skydda din egendom'
+        },
+        solutions: {
+          title: 'Professionella Lösningar',
+          description1: 'Omfattande takreparation, underhåll och förebyggande åtgärder. Jag arbetar med olika typer av tak, reparerar läckor och skador.',
+          description2: 'Kvalitetsmaterial och strikt följande av teknologin — för ett hållbart och pålitligt tak.',
+          projectsCompleted: 'Slutförda Projekt',
+          yearsExperience: 'År Erfarenhet'
+        },
+        services: {
+          title: 'Våra Tjänster',
+          items: [
+            'Reparation av läckor och skador',
+            'Takbyte',
+            'Installation och reparation av rännor',
+            'Tätning av fogar och beslag',
+            'Lokala och större reparationer',
+            'Förebyggande inspektion och underhåll'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Trädgårdsdesign',
+          subtitle: 'Vackra trädgårdsdesign- och landskapsarkitekturtjänster för att förbättra ditt utomhusutrymme'
+        },
+        solutions: {
+          title: 'Professionella Lösningar',
+          description1: 'Individualiserad approach till design och landskapsarkitektur. Jag skapar funktionella och estetiska trädgårdar anpassade efter dina önskemål och platsförhållanden.',
+          description2: 'Urval av växter, belysning och ytor — för harmoni och lång livslängd.',
+          projectsCompleted: 'Slutförda Projekt',
+          yearsExperience: 'År Erfarenhet'
+        },
+        services: {
+          title: 'Våra Tjänster',
+          items: [
+            'Landskapsdesign',
+            'Urval och landskapsdesign av växter',
+            'Installation av gräsytor och stigar',
+            'Bevattnings- och dräneringssystem',
+            'Trädgårdsbelysning',
+            'Säsongsunderhåll av trädgård'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Kakelinstallation',
+          subtitle: 'Professionella kakelborttagning- och installationstjänster för kök, badrum och mer'
+        },
+        solutions: {
+          title: 'Professionella Lösningar',
+          description1: 'Borttagning av gamla kakel, ytförberedelse och exakt kakelinstallation. Jag säkerställer korrekt geometri, fogning och vattentätning.',
+          description2: 'Jag använder kvalitetsmaterial och verktyg — för felfria resultat och hållbarhet.',
+          projectsCompleted: 'Slutförda Projekt',
+          yearsExperience: 'År Erfarenhet'
+        },
+        services: {
+          title: 'Våra Tjänster',
+          items: [
+            'Borttagning av gamla kakel',
+            'Ytförberedelse och utjämning',
+            'Vattentätning av fuktiga områden',
+            'Installation av kakel och mosaik',
+            'Fogning och tätning',
+            'Restaurering och byte av enskilda element'
+          ]
+        }
+      },
+      paving: {
+        hero: {
+          title: 'Stenbeläggningsinstallation',
+          subtitle: 'Professionell stenbeläggningsinstallation för uppfarter, gångvägar, terrasser och utomhusområden'
+        },
+        solutions: {
+          title: 'Professionella Lösningar',
+          description1: 'Förvandla ditt utomhusutrymme med professionell stenbeläggningsinstallation. Jag specialiserar mig på att skapa vackra, hållbara ytor för uppfarter, gångvägar, terrasser och trädgårdsområden.',
+          description2: 'Min erfarenhet säkerställer korrekt grundförberedelse, exakt installation och uppmärksamhet på detaljer för långvariga resultat som ökar värdet och utseendet på din fastighet.',
+          projectsCompleted: 'Slutförda Projekt',
+          yearsExperience: 'År Erfarenhet'
+        },
+        services: {
+          title: 'Våra Tjänster',
+          items: [
+            'Uppfartsbeläggning',
+            'Installation av gångvägar och stigar',
+            'Terrass- och patio-beläggning',
+            'Trädgårdsområdesbeläggning',
+            'Grundförberedelse och utjämning',
+            'Dränagesysteminstallation',
+            'Kantinstallation och efterbehandling'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Integritetspolicy',
+        subtitle: 'VK Bouwmaster Integritetspolicy'
+      },
+      introduction: {
+        title: '1. Introduktion',
+        content: 'VK Bouwmaster ("vi", "vår" eller "företag") åtar sig att skydda din integritet. Denna Integritetspolicy förklarar hur vi samlar in, använder, avslöjar och skyddar din information när du använder vår webbplats och tjänster.'
+      },
+      dataCollection: {
+        title: '2. Information vi samlar in',
+        personalInfo: {
+          title: 'Personlig information',
+          items: ['Namn', 'E-postadress', 'Telefonnummer']
+        },
+        projectInfo: {
+          title: 'Projektinformation',
+          items: ['Förfrågningsdetaljer', 'Projektadress', 'Arbetsbeskrivning']
+        },
+        technicalInfo: {
+          title: 'Teknisk information',
+          items: ['IP-adress', 'Webbläsartyp', 'Användningsdata']
+        }
+      },
+      dataUsage: {
+        title: '3. Hur vi använder din information',
+        subtitle: 'Vi använder den insamlade informationen för att:',
+        items: [
+          { icon: '✅', text: 'Leverera och förbättra våra tjänster' },
+          { icon: '📞', text: 'Kontakta dig angående ditt projekt' },
+          { icon: '📧', text: 'Skicka informationsmaterial och uppdateringar' },
+          { icon: '🔒', text: 'Säkerställa vår webbplatss säkerhet' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Dataskydd',
+        content: 'Vi implementerar lämpliga tekniska och organisatoriska åtgärder för att skydda din personliga information mot obehörig åtkomst, ändring, avslöjande eller förstörelse.',
+        encryption: 'Datakryptering',
+        secureAccess: 'Säker åtkomst',
+        regularChecks: 'Regelbundna kontroller'
+      },
+      thirdParty: {
+        title: '5. Upplysning till tredje part',
+        content: 'Vi säljer, byter eller överför inte din personliga information till tredje part utan ditt samtycke, utom när det är nödvändigt för att tillhandahålla våra tjänster eller krävs av lag.'
+      },
+      userRights: {
+        title: '6. Dina rättigheter',
+        subtitle: 'Du har rätt att:',
+        items: [
+          { icon: '📖', text: 'Få tillgång till din personliga information' },
+          { icon: '✏️', text: 'Rätta felaktig information' },
+          { icon: '🗑️', text: 'Begära radering av dina data' },
+          { icon: '🔄', text: 'Återkalla samtycke till datahantering' }
+        ]
+      },
+      contact: {
+        title: '7. Kontakt',
+        subtitle: 'Om du har frågor om vår Integritetspolicy, vänligen kontakta oss:',
+        email: {
+          title: 'E-post',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Telefon',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Uppdateringar av Integritetspolicyn',
+        content: 'Vi kan periodiskt uppdatera denna Integritetspolicy. Vi kommer att meddela dig om eventuella ändringar genom att publicera den nya Integritetspolicyn på denna sida med ett uppdaterat datum.'
+      },
+      lastUpdated: 'Senast uppdaterad: Januari 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Användarvillkor',
+        subtitle: 'VK Bouwmaster Användarvillkor'
+      },
+      acceptance: {
+        title: '1. Godkännande av villkor',
+        content: 'Genom att använda VK Bouwmaster webbplats och tjänster godkänner du dessa Användarvillkor. Om du inte godkänner något av villkoren, vänligen använd inte våra tjänster.'
+      },
+      services: {
+        title: '2. Beskrivning av tjänster',
+        content: 'VK Bouwmaster tillhandahåller professionella renoverings- och ombyggnadstjänster, inklusive men inte begränsat till: golvinstallation, målning, rörmokeriarbeten, takreparationer, trädgårdsdesign och andra byggtjänster.'
+      },
+      estimates: {
+        title: '3. Uppskattningar och priser',
+        content: 'Vi tillhandahåller gratis arbetsuppskattningar. De angivna priserna är ungefärliga och kan variera beroende på:',
+        factors: ['Projektets komplexitet', 'Använda material', 'Arbetets omfattning', 'Ytterligare kundkrav']
+      },
+      payment: {
+        title: '4. Betalning',
+        content: 'Betalningsvillkor överenskommes individuellt för varje projekt och specificeras i kontraktet. Vanligtvis krävs:',
+        items: ['Förskottsbetalning kan krävas för materialinköp', 'Slutbetalning görs efter arbets slutförande', 'Arbetsacceptans utförs i kundens närvaro']
+      },
+      warranty: {
+        title: '5. Garanti',
+        content: 'Vi tillhandahåller garanti på slutförda arbeten i enlighet med kontraktsvillkoren. Garantidetaljer diskuteras individuellt för varje projekt.'
+      },
+      liability: {
+        title: '6. Ansvar',
+        content: 'VK Bouwmaster är ansvarig för kvaliteten på slutförda arbeten inom ramen för det överenskomna kontraktet. Vi använder kvalitetsmaterial och professionella arbetsmetoder. Kunden är ansvarig för att tillhandahålla korrekt information om projektet.'
+      },
+      cancellation: {
+        title: '7. Avbokning och ändringar',
+        content: 'Ändringar i projektet måste överenskommas i förväg. Projektavbokning måste meddelas inom rimlig tid. Återbetalningsvillkor överenskommes individuellt.'
+      },
+      intellectualProperty: {
+        title: '8. Immateriell egendom',
+        content: 'Alla material och design som skapats av VK Bouwmaster som en del av projektet förblir företagets egendom tills arbeten är fullt betalda, varefter rättigheterna överförs till kunden.'
+      },
+      contact: {
+        title: '9. Kontakt',
+        content: 'För frågor relaterade till dessa Användarvillkor, kontakta:',
+        email: 'E-post: vkbouwmaster@gmail.com',
+        phone: 'Telefon: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Ändringar av villkor',
+        content: 'Vi förbehåller oss rätten att ändra dessa Användarvillkor när som helst. Fortsatt användning av våra tjänster efter ändringar innebär ditt godkännande av de nya villkoren.'
+      },
+      lastUpdated: 'Senast uppdaterad: Januari 2025'
+    }
+  },
+  DA: {
+    navigation: {
+      home: 'Hjem',
+      about: 'Om Os',
+      services: 'Tjenester',
+      portfolio: 'Portfolio',
+      reviews: 'Anmeldelser',
+      team: 'Team',
+      pricing: 'Priser',
+      blog: 'Blog',
+      faq: 'FAQ',
+      contact: 'Kontakt',
+      getQuote: 'Tilbud',
+      language: 'Sprog',
+      adminPanel: '🔐 Adminpanel',
+      scrollLeft: 'Rul til venstre',
+      scrollRight: 'Rul til højre',
+      adminPanelTitle: 'Administrationspanel',
+      switchLanguage: 'Skift sprog'
+    },
+    thankYou: {
+      title: 'Tak for din anmeldelse!',
+      message1: 'Jeg er meget glad for, at du delte din oplevelse!',
+      message2: 'Jeg stræber altid efter at være bedre for dig. Din anmeldelse hjælper mig med at blive endnu bedre.',
+      backToReviews: 'Tilbage til anmeldelser'
+    },
+    contactThankYou: {
+      title: 'Tak for din besked!',
+      message: 'Jeg vil kontakte dig inden for en dag.',
+      backToContact: 'Tilbage til kontakt'
+    },
+    reviews: {
+      hero: { badge: 'Din mening er vigtig for os', title: 'Kundeanmeldelser', subtitle: 'Del din oplevelse med os. Dine anmeldelser hjælper andre kunder med at træffe beslutninger.' },
+      form: { title: 'Efterlad en anmeldelse', namePlaceholder: 'Navn', surnamePlaceholder: 'Efternavn (valgfrit)', profileImageLabel: 'Profilbillede', profileImageOptional: '(valgfrit)', addProfileImage: 'Tilføj profilbillede', changePhoto: 'Skift foto', deletePhoto: 'Slet foto', cityLabel: 'By', cityOptional: '(valgfrit)', cityPlaceholder: 'Hvilken by blev ordren placeret i?', ratingLabel: 'Bedømmelse', ratingRequired: '(påkrævet)', reviewLabel: 'Din anmeldelse', reviewPlaceholder: 'Fortæl os om din oplevelse med os... Hvad kunne du lide? Hvad kan forbedres?', charactersLeft: 'Tegn tilbage:', goodReview: 'God anmeldelse!', addPhotosLabel: 'Tilføj billeder', addPhotosOptional: '(valgfrit)', selectPhotos: '📷 Vælg billeder', photosUploaded: 'Billeder uploadet:', addVideosLabel: 'Tilføj videoer', addVideosOptional: '(valgfrit)', selectVideos: '🎥 Vælg videoer', videosUploaded: 'Videoer uploadet:', deleteVideo: 'Slet video', submitting: 'Sender…', submitButton: 'Indsend anmeldelse', reviewWillAppear: 'Anmeldelsen vises efter administratorgodkendelse', fillRequiredFields: 'Udfyld venligst navn og besked', errorSubmitting: 'Fejl ved indsendelse af anmeldelse. Prøv venligst igen.', errorConnection: 'Fejl ved indsendelse af anmeldelse. Tjek venligst din internetforbindelse og prøv igen.' },
+      list: { title: 'Alle anmeldelser', review: 'anmeldelse', reviews2: 'anmeldelser', reviews5: 'anmeldelser', noReviews: 'Ingen anmeldelser endnu. Vær den første!', photosAndVideos: 'Billeder og videoer fra anmeldelsen', viewAllMedia: 'Se alle billeder og videoer →' },
+      detail: {
+        backToReviews: 'Tilbage til anmeldelser',
+        reviewNotFound: 'Anmeldelse ikke fundet',
+        reviewNotFoundSubtitle: 'Anmeldelse med ID {reviewId} findes ikke',
+        noMedia: 'Denne anmeldelse har ingen billeder og videoer',
+        noMediaSubtitle: 'Tilbage til anmeldelser',
+        photosAndVideos: 'Billeder og videoer fra anmeldelsen'
+      }
+    },
+    contact: {
+      hero: {
+        title: 'Kontakt Os',
+        subtitle: 'Kontakt vores team for en gratis konsultation og tilbud'
+      },
+      form: {
+        title: 'Send Os En Besked',
+        name: 'Fulde Navn',
+        email: 'E-mailadresse',
+        phone: 'Telefonnummer',
+        service: 'Nødvendig Tjeneste',
+        message: 'Besked',
+        submit: 'Send Besked',
+        selectService: 'Vælg en tjeneste',
+        other: 'Andet',
+        street: 'Gade',
+        houseNumber: 'Husnummer',
+        postalCode: 'Postnummer',
+        city: 'By',
+        namePlaceholder: 'Dit navn',
+        emailPlaceholder: 'din@email.com',
+        phonePlaceholder: '+31 6 1234 5678',
+        streetPlaceholder: 'Gadenavn',
+        houseNumberPlaceholder: '123',
+        postalCodePlaceholder: '1234 AB',
+        cityPlaceholder: 'Amsterdam',
+        messagePlaceholder: 'Fortæl os om dit projekt...',
+        streetRequired: 'Gade er påkrævet',
+        houseNumberRequired: 'Husnummer er påkrævet',
+        postalCodeRequired: 'Postnummer er påkrævet',
+        postalCodeInvalid: 'Ugyldigt postnummerformat. Brug formatet: 1234 AB',
+        successMessage: 'Tak for din besked! Vi kontakter dig snart.',
+        errorMessage: 'Der opstod en fejl. Prøv venligst igen.',
+        sendMessage: 'Send Besked'
+      },
+      info: {
+        title: 'Kontaktinformation',
+        phone: {
+          title: 'Telefon',
+          number1: '+380 99 080 4115',
+          number2: ''
+        },
+        email: {
+          title: 'E-mail',
+          address1: 'vkbouwmaster@gmail.com',
+          address2: ''
+        },
+        address: {
+          title: 'Adresse',
+          street: '',
+          city: '',
+          country: 'Holland'
+        },
+        hours: {
+          title: 'Åbningstider',
+          weekdays: '',
+          saturday: '',
+          sunday: '',
+          byAppointment: 'Efter aftale'
+        },
+        emergency: {
+          title: 'Akutservice',
+          description: 'Har du brug for akutte reparationer? Vi tilbyder 24/7 akutservice for kritiske problemer.',
+          phone: 'Ring Nu: +380 99 080 4115'
+        },
+        contactMethods: {
+          title: 'Kontakt Mig',
+          subtitle: 'Du kan kontakte mig via WhatsApp, E-mail og Telegram',
+          whatsapp: 'WhatsApp',
+          telegram: 'Telegram',
+          email: 'E-mail'
+        }
+      },
+      faq: {
+        hero: {
+          title: 'Ofte Stillede Spørgsmål',
+          subtitle: 'Find svar på populære spørgsmål om vores renoveringstjenester'
+        },
+        contact: {
+          title: 'Har Du Stadig Spørgsmål?',
+          subtitle: 'Kan du ikke finde svaret? Vores team er her for at hjælpe!'
+        },
+        title: 'Ofte Stillede Spørgsmål',
+        subtitle: 'Hurtige svar på almindelige spørgsmål om vores tjenester',
+        q1: {
+          question: 'Hvor lang tid tager en typisk renovering?',
+          answer: 'Projektets tidsrammer varierer afhængigt af omfang og kompleksitet. Enkle projekter som maling kan tage 1-3 dage, mens større renoveringer kan tage flere uger. Vi giver detaljerede tidsrammer under konsultationen.'
+        },
+        q2: {
+          question: 'Tilbyder I gratis estimater?',
+          answer: 'Ja! Vi tilbyder gratis, ingen forpligtelse estimater for alle vores tjenester. Vores team vil besøge din ejendom for at vurdere det nødvendige arbejde og give en detaljeret tilbud.'
+        },
+        q3: {
+          question: 'Er I licenserede og forsikrede?',
+          answer: 'Absolut. VK Bouwmaster er fuldt licenseret og forsikret. Vi har omfattende ansvarsforsikring og arbejdsskadeforsikring for at beskytte både vores team og din ejendom.'
+        },
+        q4: {
+          question: 'Hvilke områder betjener I?',
+          answer: 'Vi betjener det større storbyområde og omkringliggende regioner. Kontakt os for at bekræfte, om vi betjener din specifikke placering.'
+        }
+      }
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Gulvlægning',
+          subtitle: 'Professionelle gulvlægnings- og reparationsservice til alle typer gulvmaterialer'
+        },
+        solutions: {
+          title: 'Professionelle Løsninger',
+          description1: 'Transformer dit rum med vores professionelle gulvlægningstjenester. Jeg specialiserer mig i alle typer gulvmaterialer og tilbyder ekspertinstallation, reparation og vedligeholdelse.',
+          description2: 'Min erfaring sikrer korrekte installationsteknikker, opmærksomhed på detaljer og brug af kvalitetsmaterialer til at skabe smukke, holdbare gulve, der vil holde i årevis.',
+          projectsCompleted: 'Færdige Projekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Vores Tjenester',
+          items: [
+            'Parketinstallation',
+            'Laminatgulv',
+            'Flise- og steninstallation',
+            'Tæppeinstallation',
+            'Vinylgulv (LVT)',
+            'Gulvreparation og restaurering'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Maleriservice',
+          subtitle: 'Professionelle indvendige og udvendige maleriservice med premium kvalitetsmaling'
+        },
+        solutions: {
+          title: 'Professionelle Løsninger',
+          description1: 'Transformer dit rum med professionelle maleriservice. Jeg sikrer kvalitetsforberedelse af overflader, brug af premiummaling og fejlfri udførelse.',
+          description2: 'Min erfaring garanterer holdbare afslutninger, perfekt glatte overflader og beskyttelse mod eksterne faktorer.',
+          projectsCompleted: 'Færdige Projekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Vores Tjenester',
+          items: [
+            'Maling af vægge og lofter',
+            'Maling af udvendige facader',
+            'Dekorativ maling',
+            'Grundlægning af overflader',
+            'Maling af trækonstruktioner',
+            'Beskyttende behandling'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Rørreparationer',
+          subtitle: 'Professionelle rørreparations- og installationsservice til hjem og kontorer'
+        },
+        solutions: {
+          title: 'Professionelle Løsninger',
+          description1: 'Komplet udvalg af rørservice til dit hjem eller firma. Jeg tilbyder kvalitetsinstallation, reparation og vedligeholdelse af alle typer rørinstallationer.',
+          description2: 'År med erfaring garanterer pålidelighed, holdbarhed og overholdelse af alle sikkerhedsstandarder.',
+          projectsCompleted: 'Færdige Projekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Vores Tjenester',
+          items: [
+            'Rørreparation og udskiftning',
+            'Installation af rørinstallationer',
+            'Vandforsyningsinstallation',
+            'Kloakreparation',
+            'Radiatorinstallation',
+            'Afløbsrensning'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Tagreparationer',
+          subtitle: 'Ekspert tagreparations- og vedligeholdelsesservice til beskyttelse af din ejendom'
+        },
+        solutions: {
+          title: 'Professionelle Løsninger',
+          description1: 'Omfattende tagreparation, vedligeholdelse og forebyggelse. Jeg arbejder med forskellige typer tag, reparerer lækager og skader.',
+          description2: 'Kvalitetsmaterialer og streng overholdelse af teknologi — til et holdbart og pålideligt tag.',
+          projectsCompleted: 'Færdige Projekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Vores Tjenester',
+          items: [
+            'Reparation af lækager og skader',
+            'Tagskifte',
+            'Installation og reparation af nedløb',
+            'Tætning af samlinger og beslag',
+            'Lokale og større reparationer',
+            'Forebyggende inspektion og vedligeholdelse'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Haveplanlægning',
+          subtitle: 'Smukke haveplanlægnings- og landskabsarkitekturtjenester til forbedring af dit udendørsområde'
+        },
+        solutions: {
+          title: 'Professionelle Løsninger',
+          description1: 'Individualiseret tilgang til design og landskabsarkitektur. Jeg skaber funktionelle og æstetiske haver tilpasset dine ønsker og stedforhold.',
+          description2: 'Udvalg af planter, belysning og overflader — til harmoni og lang levetid.',
+          projectsCompleted: 'Færdige Projekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Vores Tjenester',
+          items: [
+            'Landskabsdesign',
+            'Udvalg og landskabsdesign af planter',
+            'Installation af græsarealer og stier',
+            'Vandings- og drænagesystemer',
+            'Havebelysning',
+            'Sæsonbestemt havevedligeholdelse'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Fliserinstallation',
+          subtitle: 'Professionelle flisefjernings- og installationstjenester til køkkener, badeværelser og mere'
+        },
+        solutions: {
+          title: 'Professionelle Løsninger',
+          description1: 'Fjernelse af gamle fliser, overfladeforberedelse og præcis fliseinstallation. Jeg sikrer korrekt geometri, fugning og vandtætning.',
+          description2: 'Jeg bruger kvalitetsmaterialer og værktøjer — til fejlfrie resultater og holdbarhed.',
+          projectsCompleted: 'Færdige Projekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Vores Tjenester',
+          items: [
+            'Fjernelse af gamle fliser',
+            'Overfladeforberedelse og udjævning',
+            'Vandtætning af fugtige områder',
+            'Installation af fliser og mosaik',
+            'Fugning og tætning',
+            'Restaurering og udskiftning af enkelte elementer'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Fortrolighedspolitik',
+        subtitle: 'VK Bouwmaster Fortrolighedspolitik'
+      },
+      introduction: {
+        title: '1. Introduktion',
+        content: 'VK Bouwmaster ("vi", "vores" eller "virksomhed") forpligter sig til at beskytte dit privatliv. Denne Fortrolighedspolitik forklarer, hvordan vi indsamler, bruger, videregiver og beskytter dine oplysninger, når du bruger vores websted og tjenester.'
+      },
+      dataCollection: {
+        title: '2. Oplysninger, vi indsamler',
+        personalInfo: {
+          title: 'Personlige oplysninger',
+          items: ['Navn', 'E-mailadresse', 'Telefonnummer']
+        },
+        projectInfo: {
+          title: 'Projektoplysninger',
+          items: ['Anmodningsdetaljer', 'Projektadresse', 'Arbejdsbeskrivelse']
+        },
+        technicalInfo: {
+          title: 'Tekniske oplysninger',
+          items: ['IP-adresse', 'Browsertype', 'Brugsdata']
+        }
+      },
+      dataUsage: {
+        title: '3. Sådan bruger vi dine oplysninger',
+        subtitle: 'Vi bruger de indsamlede oplysninger til:',
+        items: [
+          { icon: '✅', text: 'Levere og forbedre vores tjenester' },
+          { icon: '📞', text: 'Kontakte dig vedrørende dit projekt' },
+          { icon: '📧', text: 'Sende informationsmateriale og opdateringer' },
+          { icon: '🔒', text: 'Sikre vores websteds sikkerhed' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Databeskyttelse',
+        content: 'Vi implementerer passende tekniske og organisatoriske foranstaltninger for at beskytte dine personlige oplysninger mod uautoriseret adgang, ændring, videregivelse eller ødelæggelse.',
+        encryption: 'Datakryptering',
+        secureAccess: 'Sikker adgang',
+        regularChecks: 'Regelmæssige kontroller'
+      },
+      thirdParty: {
+        title: '5. Videregivelse til tredjeparter',
+        content: 'Vi sælger, bytter eller overfører ikke dine personlige oplysninger til tredjeparter uden dit samtykke, undtagen når det er nødvendigt for at levere vores tjenester eller påkrævet ved lov.'
+      },
+      userRights: {
+        title: '6. Dine rettigheder',
+        subtitle: 'Du har ret til:',
+        items: [
+          { icon: '📖', text: 'Få adgang til dine personlige oplysninger' },
+          { icon: '✏️', text: 'Rette unøjagtige oplysninger' },
+          { icon: '🗑️', text: 'Anmode om sletning af dine data' },
+          { icon: '🔄', text: 'Tilbagekalde samtykke til databehandling' }
+        ]
+      },
+      contact: {
+        title: '7. Kontakt',
+        subtitle: 'Hvis du har spørgsmål om vores Fortrolighedspolitik, kontakt os venligst:',
+        email: {
+          title: 'E-mail',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Telefon',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Opdateringer af Fortrolighedspolitikken',
+        content: 'Vi kan periodisk opdatere denne Fortrolighedspolitik. Vi vil underrette dig om eventuelle ændringer ved at offentliggøre den nye Fortrolighedspolitik på denne side med en opdateret dato.'
+      },
+      lastUpdated: 'Sidst opdateret: Januar 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Servicevilkår',
+        subtitle: 'VK Bouwmaster Servicevilkår'
+      },
+      acceptance: {
+        title: '1. Accept af vilkår',
+        content: 'Ved at bruge VK Bouwmaster websted og tjenester accepterer du disse Servicevilkår. Hvis du ikke accepterer nogle af vilkårene, brug venligst ikke vores tjenester.'
+      },
+      services: {
+        title: '2. Beskrivelse af tjenester',
+        content: 'VK Bouwmaster leverer professionelle renoverings- og ombygningstjenester, herunder men ikke begrænset til: gulvinstallation, maling, rørleggerarbejde, tagreparationer, haveudformning og andre byggetjenester.'
+      },
+      estimates: {
+        title: '3. Estimater og priser',
+        content: 'Vi leverer gratis arbejdsestimater. De angivne priser er omtrentlige og kan variere afhængigt af:',
+        factors: ['Projektets kompleksitet', 'Brugte materialer', 'Arbejdets omfang', 'Yderligere kundekrav']
+      },
+      payment: {
+        title: '4. Betaling',
+        content: 'Betalingsvilkår aftales individuelt for hvert projekt og specificeres i kontrakten. Normalt kræves:',
+        items: ['Forskud kan være påkrævet til materialekøb', 'Endelig betaling foretages efter arbejdets afslutning', 'Arbejdsaccept foretages i kundens nærvær']
+      },
+      warranty: {
+        title: '5. Garanti',
+        content: 'Vi leverer garanti på afsluttede arbejder i overensstemmelse med kontraktvilkårene. Garantidetaljer diskuteres individuelt for hvert projekt.'
+      },
+      liability: {
+        title: '6. Ansvar',
+        content: 'VK Bouwmaster er ansvarlig for kvaliteten af afsluttede arbejder inden for rammerne af den aftalte kontrakt. Vi bruger kvalitetsmaterialer og professionelle arbejdsmetoder. Kunden er ansvarlig for at give præcis information om projektet.'
+      },
+      cancellation: {
+        title: '7. Annullering og ændringer',
+        content: 'Ændringer i projektet skal aftales på forhånd. Projektannullering skal meddeles inden for rimelig tid. Refusionsvilkår aftales individuelt.'
+      },
+      intellectualProperty: {
+        title: '8. Immateriel ejendomsret',
+        content: 'Alle materialer og design skabt af VK Bouwmaster som en del af projektet forbliver virksomhedens ejendom, indtil arbejdet er fuldt betalt, hvorefter rettighederne overføres til kunden.'
+      },
+      contact: {
+        title: '9. Kontakt',
+        content: 'For spørgsmål relateret til disse Servicevilkår, kontakt:',
+        email: 'E-mail: vkbouwmaster@gmail.com',
+        phone: 'Telefon: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Ændringer af vilkår',
+        content: 'Vi forbeholder os retten til at ændre disse Servicevilkår når som helst. Fortsat brug af vores tjenester efter ændringer betyder din accept af de nye vilkår.'
+      },
+      lastUpdated: 'Sidst opdateret: Januar 2025'
+    }
+  },
+  NO: {
+    navigation: {
+      home: 'Hjem',
+      about: 'Om Oss',
+      services: 'Tjenester',
+      portfolio: 'Portfolio',
+      reviews: 'Anmeldelser',
+      team: 'Team',
+      pricing: 'Priser',
+      blog: 'Blogg',
+      faq: 'FAQ',
+      contact: 'Kontakt',
+      getQuote: 'Tilbud',
+      language: 'Språk',
+      adminPanel: '🔐 Adminpanel',
+      scrollLeft: 'Rull til venstre',
+      scrollRight: 'Rull til høyre',
+      adminPanelTitle: 'Administrasjonspanel',
+      switchLanguage: 'Bytt språk'
+    },
+    common: {
+      loading: 'Laster...',
+      error: 'Feil',
+      success: 'Suksess',
+      cancel: 'Avbryt',
+      save: 'Lagre',
+      delete: 'Slett',
+      edit: 'Rediger',
+      view: 'Vis',
+      learnMore: 'Lær Mer',
+      readMore: 'Les Mer',
+      getStarted: 'Kom i Gang',
+      contactUs: 'Kontakt Oss',
+      years: 'År',
+      projects: 'Prosjekter',
+      satisfaction: 'Tilfredshet',
+      support: 'Støtte',
+      experience: 'Erfaring',
+      quality: 'Kvalitet',
+      team: 'Team',
+      clients: 'Kunder',
+      completed: 'Fullført',
+      happy: 'Glad',
+      available: 'Tilgjengelig',
+      expertise: 'Ekspertise'
+    },
+    home: {
+      hero: {
+        title1: 'Profesjonelle',
+        title2: 'Renoveringstjenester',
+        subtitle: 'Profesjonelle renoveringstjenester med over 10 års erfaring. En sann mester i sitt fag som kan alt: fra gulvlegging til komplett renovering. Kvalitetsarbeid, oppmerksomhet på hver detalj, overholdelse av tidsfrister og ærlige priser. Jeg transformerer ditt rom med kjærlighet og profesjonalitet.',
+        cta1: 'Få Gratis Tilbud',
+        cta2: 'Se Mine Arbeider'
+      },
+      about: {
+        title: 'Om Mesteren',
+        description1: 'Vladimir er en mester med over 10 års erfaring i renovering og bygning. Han skiller sig ud med <span class="text-blue-400 font-medium">ekstraordinært ansvar</span> og opmærksomhed på detaljer.',
+        description2: 'Hvert projekt gennemføres med <span class="text-blue-400 font-medium">højeste kvalitet</span> og streng overholdelse af tidsfrister. Kunder værdsætter ham for hans ærlighed, professionalitet og evne til at realisere de mest komplekse idéer.',
+        projectsCount: '200+',
+        projectsLabel: 'Fuldførte Projekter',
+        yearsCount: '10+',
+        yearsLabel: 'Års Erfaring',
+        satisfactionPercent: '100%',
+        satisfactionLabel: 'Tilfredse Kunder',
+        supportLabel: 'Kundesupport',
+        viewWorks: 'Se Mine Arbejder'
+      },
+      works: {
+        title: 'Mine Arbejder',
+        description: 'Vladimir er en mester, der forvandler renovering til kunst: præcise tidsfrister, perfekt geometri og fejlfri kvalitet i hver detalje.',
+        work: 'arbejde',
+        works2: 'arbejder',
+        works5: 'arbejder'
+      },
+      services: {
+        title: 'Mine Tjenester',
+        subtitle: 'Tilbyder renoveringstjenester for at transformere dit hjem eller virksomhed',
+        flooring: {
+          title: 'Gulvlægning',
+          description: 'Professionelle gulvlægnings- og reparationsservice for alle typer gulvmaterialer.'
+        },
+        painting: {
+          title: 'Malingsservice',
+          description: 'Inde- og udendørs malingsservice med førsteklasses malinger og finish.'
+        },
+        plumbing: {
+          title: 'Rørreparationer',
+          description: 'Professionelle rørreparations- og installationsservice til hjem og kontorer.'
+        },
+        roofing: {
+          title: 'Tagreparationer',
+          description: 'Eksperttagreparations- og vedligeholdelsesservice til beskyttelse af din ejendom.'
+        },
+        garden: {
+          title: 'Haveplanlægning',
+          description: 'Smukke haveplanlægnings- og landskabsarkitekturservice til forbedring af dit udendørsområde.'
+        },
+        tile: {
+          title: 'Flisebelægning',
+          description: 'Professionelle flisefjernings- og installationsservice til køkkener, badeværelser og mere.'
+        },
+        paving: {
+          title: 'Stenbelægning',
+          description: 'Professionel stenbelægning til indkørsler, gangstier, terrasser og udendørsområder.'
+        },
+        hedge: {
+          title: 'Hækklippning',
+          description: 'Professionelle hækklippnings- og vedligeholdelsesservice for at holde din have pæn og smuk.'
+        },
+        ceiling: {
+          title: 'Lofter og Vægge',
+          description: 'Professionelle service til installation, reparation og efterbehandling af lofter og vægge til indendørsrum.'
+        },
+        drywall: {
+          title: 'Gipspladearbejde',
+          description: 'Professionelle service til installation, reparation og efterbehandling af gipsplader til vægge og lofter.'
+        }
+      },
+      achievements: {
+        title: 'Vores Præstationer',
+        subtitle: 'Tal, der taler for vores succes',
+        experience: {
+          title: 'Års Erfaring',
+          subtitle: 'Over et årti med professionelle tjenester'
+        },
+        projects: {
+          title: 'Fuldførte Projekter',
+          subtitle: 'Vellykkede leverede projekter'
+        },
+        clients: {
+          title: 'Tilfredse Kunder',
+          subtitle: 'Tilfredse kunder'
+        },
+        satisfaction: {
+          title: 'Tilfredshed',
+          subtitle: 'Kundetilfredshed garanteret'
+        },
+        support: {
+          title: 'Support 24/7',
+          subtitle: 'Døgnåben kundesupport'
+        }
+      },
+      whyChoose: {
+        title: 'Hvorfor Vælge VK Bouwmaster?',
+        subtitle: 'Vi leverer ekstraordinære resultater med vores engagement for kvalitet og kundetilfredshed',
+        experience: {
+          title: 'Års Erfaring',
+          description: 'Over et årti med erfaring i renoverings- og byggetjenester'
+        },
+        quality: {
+          title: 'Kvalitetsgaranti',
+          description: 'Vi står bag vores arbejde med omfattende kvalitetsgarantier'
+        },
+        team: {
+          title: 'Eksperthold',
+          description: 'Kvalificerede professionelle dedikerede til at levere ekstraordinære resultater'
+        }
+      },
+      testimonials: {
+        title: 'Hvad Vores Kunder Siger',
+        subtitle: 'Ægte tilbagemeldinger fra tilfredse kunder, der betroede os deres projekter',
+        testimonial1: {
+          text: 'Ekstraordinært arbejde! Holdet transformerede vores køkken fuldstændigt. Professionelt, rent og leveret til tiden. Varmt anbefaler!',
+          author: 'Ole Hansen',
+          role: 'Husejer'
+        },
+        testimonial2: {
+          text: 'Fremragende service fra start til slut. De renoverede vores kontorområde og overgik alle forventninger. Kommer helt sikkert til at bruge igen!',
+          author: 'Ingrid Olsen',
+          role: 'Kontorchef'
+        }
+      }
+    },
+    about: {
+      hero: {
+        title: 'Om VK Bouwmaster',
+        subtitle: 'Din pålidelige partner inden for professionelle renoveringstjenester og byggetjenester'
+      },
+      story: {
+        title: 'Vores Historie',
+        paragraph1: 'Grundlagt for over et årti siden, har VK Bouwmaster været i fronten af professionelle renoveringstjenester. Det, der startede som en lille familieforretning, er vokset til et af de mest betroede navne inden for hjemforbedring og byggeri.',
+        paragraph2: 'Vores rejse startede med en enkel mission: at transformere rum og overgå forventninger. I dag fortsætter vi med at opretholde det engagement gennem innovative løsninger, kvalitetshåndværk og ekseptionel kundeservice.',
+        paragraph3: 'Hvert projekt, vi påtager os, afspejler vores passion for ekscellens og vores dedikation til at gøre din vision til virkelighed. Vi tror på, at dit hjem er mere end blot en bygning—det er hvor minder skabes og drømme bliver til virkelighed.'
+      },
+      mission: {
+        title: 'Vores Mission og Værdier',
+        subtitle: 'Vi drives af vores kern værdier og engagement for ekscellens',
+        mission: {
+          title: 'Vores Mission',
+          description: 'At levere ekstraordinære renoveringstjenester, der transformerer rum og overgår vores kunders forventninger gennem kvalitetshåndværk og innovative løsninger.'
+        },
+        quality: {
+          title: 'Kvalitet Først',
+          description: 'Vi gør aldrig kompromis med kvalitet. Hvert projekt gennemføres med opmærksomhed på detaljer og bruger kun de fineste materialer og teknikker.'
+        },
+        customer: {
+          title: 'Kundefokus',
+          description: 'Vores kunder er i hjertet af alt, hvad vi gør. Vi lytter, kommunikerer klart og arbejder tæt med dig for at opnå din vision.'
+        }
+      },
+      whyChoose: {
+        title: 'Hvorfor Vælge VK Bouwmaster?',
+        subtitle: 'Vi skiller os ud fra konkurrencen med vores unikke tilgang og engagement for ekscellens',
+        award: {
+          title: 'Prisbelønnet',
+          description: 'Anerkendt for ekscellens inden for renoveringstjenester og byggetjenester'
+        },
+        expert: {
+          title: 'Eksperthold',
+          description: 'Dygtige professionelle med års erfaring inden for deres respektive områder'
+        },
+        onTime: {
+          title: 'Tidsenlig Leverance',
+          description: 'Vi respekterer din tid og leverer projekter efter tidsplan, hver gang'
+        },
+        fair: {
+          title: 'Rimelig Prissætning',
+          description: 'Transparent prissætning uden skjulte omkostninger eller overraskelser'
+        }
+      },
+      certifications: {
+        title: 'Certificeringer og Licenser',
+        subtitle: 'Vi opretholder højeste standarder med passende certificeringer og licenser',
+        licensed: {
+          title: 'Licenseret og Forsikret',
+          description: 'Fuldt licenseret og forsikret for din ro og beskyttelse'
+        },
+        certified: {
+          title: 'Industricertificeret',
+          description: 'Certificeret af førende brancheorganisationer og handelsforeninger'
+        },
+        quality: {
+          title: 'Kvalitetssikret',
+          description: 'Regelmæssige kvalitetsauditer og kontinuerlige forbedringsprocesser'
+        }
+      },
+      cta: {
+        title: 'Klar til at Arbejde med Os?',
+        subtitle: 'Lad os diskutere dit projekt og se, hvordan vi kan gøre din vision til virkelighed',
+        cta1: 'Få Gratis Tilbud',
+        cta2: 'Se Vores Arbejde'
+      }
+    },
+    portfolio: {
+      hero: {
+        title: 'Mit Portfolio',
+        subtitle: 'Udforsk mine færdige projekter og se kvaliteten af mit arbejde'
+      },
+      stats: {
+        projects: 'Færdige Projekter',
+        years: 'Års Erfaring',
+        satisfaction: 'Kundetilfredshed',
+        clients: 'Tilfredse Kunder'
+      },
+      whyChoose: {
+        title: 'Hvorfor Vælge Mig',
+        features: [
+          { icon: '🛠️', title: 'Kvalitet', desc: 'Pænt, rent og med opmærksomhed på detaljer. Jeg bruger afprøvede materialer og teknologier.' },
+          { icon: '⏱️', title: 'Tidsplaner', desc: 'Jeg arbejder efter en klar tidsplan. Jeg afslutter til tiden — ingen overraskelser eller "i morgen".' },
+          { icon: '🤝', title: 'Ærlighed', desc: 'Transparente estimater og faser. Du forstår altid, hvad du betaler for.' },
+          { icon: '💬', title: 'Kommunikation', desc: 'Altid tilgængelig, svarer hurtigt og tilbyder løsninger til din anmodning.' },
+          { icon: '🧼', title: 'Renlighed', desc: 'Jeg holder orden på stedet, beskytter møbler og belægninger, rydder op efter mig.' },
+          { icon: '🔒', title: 'Garanti', desc: 'Jeg giver garanti på færdige arbejder og forbliver tilgængelig efter levering.' }
+        ]
+      },
+      featured: {
+        title: 'Mine Projekter',
+        subtitle: 'Hvert projekt viser mit engagement for kvalitet, opmærksomhed på detaljer og kundens tillid'
+      },
+      features: 'Nøglefunktioner:',
+      noWorks: {
+        title: 'Ingen arbejder er tilføjet endnu',
+        subtitle: 'Tilføj arbejder via administrationspanelet'
+      },
+      testimonials: {
+        title: 'Hvad Mine Kunder Siger',
+        subtitle: 'Tro ikke bare på mit ord — læs anmeldelser fra rigtige kunder'
+      },
+      noReviews: 'Ingen anmeldelser endnu',
+      cta: {
+        title: 'Klar til at Starte Dit Projekt?',
+        subtitle: 'Lad mig transformere dit rum med samme kvalitet og opmærksomhed på detaljer'
+      },
+      detail: {
+        backToProjects: 'Tilbage til projekter',
+        projectNotFound: 'Projekt ikke fundet',
+        projectNotFoundSubtitle: 'Projektet med ID {projectId} findes ikke eller er blevet fjernet',
+        noMedia: 'Ingen fotos og videoer endnu',
+        noMediaSubtitle: 'Tilføj fotos og videoer i adminpanelet',
+        allPhotosAndVideos: 'Alle projektets fotos og videoer',
+        oneOfWork: '✨ Et af vores værker',
+        date: 'Dato',
+        city: 'By',
+        photos: 'Fotos',
+        videos: 'Videoer',
+        comments: 'Kommentarer',
+        noComments: 'Ingen kommentarer endnu. Vær den første!',
+        beFirst: 'Vær den første!',
+        profileImageLabel: 'Profilbillede',
+        profileImageOptional: '(valgfrit)',
+        addProfileImage: 'Tilføj profilbillede',
+        changePhoto: 'Skift foto',
+        deletePhoto: 'Slet foto',
+        cityLabel: 'By',
+        cityOptional: '(valgfrit)',
+        cityPlaceholder: 'I hvilken by blev ordren foretaget?',
+        ratingLabel: 'Bedømmelse',
+        ratingRequired: '(påkrævet)',
+        commentLabel: 'Din kommentar',
+        commentPlaceholder: 'Skriv din kommentar her...',
+        charactersLeft: 'Tilbageværende tegn:',
+        addPhotosLabel: '📷 Tilføj fotos',
+        addPhotosOptional: '(valgfrit)',
+        selectPhotos: '📷 Vælg fotos',
+        photosUploaded: 'Uploadede fotos:',
+        addVideosLabel: '🎥 Tilføj videoer',
+        addVideosOptional: '(valgfrit)',
+        selectVideos: '🎥 Vælg videoer',
+        videosUploaded: 'Uploadede videoer:',
+        deleteVideo: 'Slet video',
+        submitting: 'Sender…',
+        submitComment: '📤 Send kommentar',
+        commentWillAppear: 'Kommentaren vises efter godkendelse af administrator.',
+        viewAllPhotos: 'Se alle fotos ({count})',
+        noProject: 'Uden projekt',
+        category: 'Kategori',
+        project: 'Projekt',
+        translateTo: 'Oversæt til...',
+        showOriginal: 'Vis original',
+        translatedTo: 'Oversat til',
+        translating: 'Oversætter...'
+      }
+    },
+    services: {
+      hero: {
+        title: 'Vores Tjenester',
+        subtitle: 'Omfattende renoveringstjenester og byggetjenester til at transformere dit rum'
+      },
+      whatWeDo: {
+        title: 'Hvad Vi Gør',
+        subtitle: 'Fra små reparationer til komplette renoveringer, har vi ekspertisen til at håndtere ethvert projekt'
+      },
+      process: {
+        title: 'Vores Proces',
+        subtitle: 'Vi følger en påvist proces for at sikre, at dit projekt gennemføres efter højeste standard',
+        consultation: {
+          title: 'Konsultation',
+          description: 'Vi starter med en detaljeret konsultation for at forstå dine behov og vision'
+        },
+        planning: {
+          title: 'Planlægning',
+          description: 'Detaljeret planlægning og design for at sikre det bedste resultat for dit projekt'
+        },
+        execution: {
+          title: 'Udførelse',
+          description: 'Professionel udførelse med kvalitetsmaterialer og dygtigt håndværk'
+        },
+        completion: {
+          title: 'Færdiggørelse',
+          description: 'Endelig inspektion og oprydning for at sikre din fulde tilfredshed'
+        }
+      },
+      cta: {
+        title: 'Klar til at Starte Dit Projekt?',
+        subtitle: 'Kontakt os i dag for en gratis konsultation og tilbud',
+        cta1: 'Få Gratis Tilbud',
+        cta2: 'Se Vores Arbejde'
+      }
+    },
+    footer: {
+      description: 'Professionelle renoveringstjenester med over 10 års erfaring. Jeg transformerer dit rum med kvalitetsarbejde og opmærksomhed på detaljer.',
+      quickLinks: {
+        title: 'Hurtige Links'
+      },
+      services: {
+        title: 'Tjenester'
+      },
+      shot: {
+        title: 'Shot'
+      },
+      copyright: '© 2025 VK Bouwmaster. Alle rettigheder forbeholdes.',
+      privacy: 'Fortrolighedspolitik',
+      terms: 'Servicevilkår'
+    },
+    admin: {
+      login: {
+        title: 'Administrasjonspanel',
+        subtitle: 'Logg inn for å administrere innhold',
+        email: 'E-post',
+        password: 'Passord',
+        emailPlaceholder: 'Skriv inn din e-postadresse',
+        passwordPlaceholder: '••••••••',
+        loginButton: 'Logg inn',
+        loggingIn: 'Logger inn...',
+        connectionError: 'Tilkoblingsfeil med serveren',
+        goHome: 'Gå til Hjem'
+      },
+      accessDenied: {
+        title: 'Tilgang Nektet',
+        message: 'Ugyldig e-postadresse eller passord. Du har ikke tilgang til dette området — bare administratorer har tilgang.',
+        goHome: 'Gå til Hjem',
+        tryAgain: 'Prøv Igjen'
+      }
+    },
+    thankYou: {
+      title: 'Takk for din anmeldelse!',
+      message1: 'Jeg er veldig glad for at du delte din opplevelse!',
+      message2: 'Jeg strever alltid etter å være bedre for deg. Din anmeldelse hjelper meg med å bli enda bedre.',
+      backToReviews: 'Tilbake til anmeldelser'
+    },
+    contactThankYou: {
+      title: 'Takk for din melding!',
+      message: 'Jeg vil kontakte deg innen en dag.',
+      backToContact: 'Tilbake til kontakt'
+    },
+    reviews: {
+      hero: { badge: 'Din mening er viktig for oss', title: 'Kundeanmeldelser', subtitle: 'Del din opplevelse med oss. Dine anmeldelser hjelper andre kunder med å ta beslutninger.' },
+      form: { title: 'Legg igjen en anmeldelse', namePlaceholder: 'Navn', surnamePlaceholder: 'Etternavn (valgfritt)', profileImageLabel: 'Profilbilde', profileImageOptional: '(valgfritt)', addProfileImage: 'Legg til profilbilde', changePhoto: 'Endre bilde', deletePhoto: 'Slett bilde', cityLabel: 'By', cityOptional: '(valgfritt)', cityPlaceholder: 'I hvilken by ble bestillingen plassert?', ratingLabel: 'Vurdering', ratingRequired: '(påkrevd)', reviewLabel: 'Din anmeldelse', reviewPlaceholder: 'Fortell oss om din opplevelse med oss... Hva likte du? Hva kan forbedres?', charactersLeft: 'Tegn igjen:', goodReview: 'Bra anmeldelse!', addPhotosLabel: 'Legg til bilder', addPhotosOptional: '(valgfritt)', selectPhotos: '📷 Velg bilder', photosUploaded: 'Bilder lastet opp:', addVideosLabel: 'Legg til videoer', addVideosOptional: '(valgfritt)', selectVideos: '🎥 Velg videoer', videosUploaded: 'Videoer lastet opp:', deleteVideo: 'Slett video', submitting: 'Sender…', submitButton: 'Send anmeldelse', reviewWillAppear: 'Anmeldelsen vises etter administratorgodkjenning', fillRequiredFields: 'Vennligst fyll inn navn og melding', errorSubmitting: 'Feil ved sending av anmeldelse. Vennligst prøv igjen.', errorConnection: 'Feil ved sending av anmeldelse. Vennligst sjekk internettilkoblingen din og prøv igjen.' },
+      list: { title: 'Alle anmeldelser', review: 'anmeldelse', reviews2: 'anmeldelser', reviews5: 'anmeldelser', noReviews: 'Ingen anmeldelser ennå. Vær den første!', photosAndVideos: 'Bilder og videoer fra anmeldelsen', viewAllMedia: 'Se alle bilder og videoer →' },
+      detail: {
+        backToReviews: 'Tilbake til anmeldelser',
+        reviewNotFound: 'Anmeldelse ikke funnet',
+        reviewNotFoundSubtitle: 'Anmeldelse med ID {reviewId} finnes ikke',
+        noMedia: 'Denne anmeldelsen har ingen bilder og videoer',
+        noMediaSubtitle: 'Tilbake til anmeldelser',
+        photosAndVideos: 'Bilder og videoer fra anmeldelsen'
+      }
+    },
+    contact: {
+      hero: {
+        title: 'Kontakt Oss',
+        subtitle: 'Kontakt vårt team for en gratis konsultasjon og tilbud'
+      },
+      form: {
+        title: 'Send Oss En Melding',
+        name: 'Fullt Navn',
+        email: 'E-postadresse',
+        phone: 'Telefonnummer',
+        service: 'Nødvendig Tjeneste',
+        message: 'Melding',
+        submit: 'Send Melding',
+        selectService: 'Velg en tjeneste',
+        other: 'Annet',
+        street: 'Gate',
+        houseNumber: 'Husnummer',
+        postalCode: 'Postnummer',
+        city: 'By',
+        namePlaceholder: 'Ditt navn',
+        emailPlaceholder: 'din@email.com',
+        phonePlaceholder: '+31 6 1234 5678',
+        streetPlaceholder: 'Gatenavn',
+        houseNumberPlaceholder: '123',
+        postalCodePlaceholder: '1234 AB',
+        cityPlaceholder: 'Amsterdam',
+        messagePlaceholder: 'Fortell oss om prosjektet ditt...',
+        streetRequired: 'Gate er påkrevd',
+        houseNumberRequired: 'Husnummer er påkrevd',
+        postalCodeRequired: 'Postnummer er påkrevd',
+        postalCodeInvalid: 'Ugyldig postnummerformat. Bruk formatet: 1234 AB',
+        successMessage: 'Takk for din melding! Vi kontakter deg snart.',
+        errorMessage: 'Det oppstod en feil. Vennligst prøv igjen.',
+        sendMessage: 'Send Melding'
+      },
+      info: {
+        title: 'Kontaktinformasjon',
+        phone: {
+          title: 'Telefon',
+          number1: '+380 99 080 4115',
+          number2: ''
+        },
+        email: {
+          title: 'E-post',
+          address1: 'vkbouwmaster@gmail.com',
+          address2: ''
+        },
+        address: {
+          title: 'Adresse',
+          street: '',
+          city: '',
+          country: 'Nederland'
+        },
+        hours: {
+          title: 'Åpningstider',
+          weekdays: '',
+          saturday: '',
+          sunday: '',
+          byAppointment: 'Etter avtale'
+        },
+        emergency: {
+          title: 'Akuttjeneste',
+          description: 'Trenger du akutte reparasjoner? Vi tilbyr 24/7 akuttjeneste for kritiske problemer.',
+          phone: 'Ring Nå: +380 99 080 4115'
+        },
+        contactMethods: {
+          title: 'Kontakt Meg',
+          subtitle: 'Du kan kontakte meg via WhatsApp, E-post og Telegram',
+          whatsapp: 'WhatsApp',
+          telegram: 'Telegram',
+          email: 'E-post'
+        }
+      },
+      faq: {
+        hero: {
+          title: 'Ofte Stilte Spørsmål',
+          subtitle: 'Finn svar på populære spørsmål om våre renoveringstjenester'
+        },
+        contact: {
+          title: 'Har Du Fortsatt Spørsmål?',
+          subtitle: 'Finner du ikke svaret? Vårt team er her for å hjelpe!'
+        },
+        title: 'Ofte Stilte Spørsmål',
+        subtitle: 'Raske svar på vanlige spørsmål om våre tjenester',
+        q1: {
+          question: 'Hvor lang tid tar en typisk renovering?',
+          answer: 'Prosjektets tidsrammer varierer avhengig av omfang og kompleksitet. Enkle prosjekter som maling kan ta 1-3 dager, mens større renoveringer kan ta flere uker. Vi gir detaljerte tidsrammer under konsultasjonen.'
+        },
+        q2: {
+          question: 'Tilbyr dere gratis estimater?',
+          answer: 'Ja! Vi tilbyr gratis, ingen forpliktelse estimater for alle våre tjenester. Vårt team vil besøke din eiendom for å vurdere det nødvendige arbeidet og gi et detaljert tilbud.'
+        },
+        q3: {
+          question: 'Er dere lisensiert og forsikret?',
+          answer: 'Absolutt. VK Bouwmaster er fullt lisensiert og forsikret. Vi har omfattende ansvarsforsikring og arbeidsskadeforsikring for å beskytte både vårt team og din eiendom.'
+        },
+        q4: {
+          question: 'Hvilke områder betjener dere?',
+          answer: 'Vi betjener det større storbyområdet og omkringliggende regioner. Kontakt oss for å bekrefte om vi betjener din spesifikke lokasjon.'
+        }
+      }
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Gulvlegging',
+          subtitle: 'Profesjonelle gulvleggings- og reparasjonstjenester for alle typer gulvmaterialer'
+        },
+        solutions: {
+          title: 'Profesjonelle Løsninger',
+          description1: 'Transformer rommet ditt med våre profesjonelle gulvleggingstjenester. Jeg spesialiserer meg på alle typer gulvmaterialer og tilbyr ekspertinstallasjon, reparasjon og vedlikehold.',
+          description2: 'Min erfaring sikrer riktige installasjonsteknikker, oppmerksomhet på detaljer og bruk av kvalitetsmaterialer for å skape vakre, holdbare gulv som vil vare i årevis.',
+          projectsCompleted: 'Fullførte Prosjekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Våre Tjenester',
+          items: [
+            'Parkettinstallasjon',
+            'Laminatgulv',
+            'Flis- og steininstallasjon',
+            'Teppeinstallasjon',
+            'Vinylgulv (LVT)',
+            'Gulvreparasjon og restaurering'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Malingsservice',
+          subtitle: 'Profesjonelle innvendige og utvendige malingsservice med premium kvalitetsmaling'
+        },
+        solutions: {
+          title: 'Profesjonelle Løsninger',
+          description1: 'Transformer rommet ditt med profesjonelle malingsservice. Jeg sikrer kvalitetsforberedelse av overflater, bruk av premiummaling og feilfri utførelse.',
+          description2: 'Min erfaring garanterer holdbare avslutninger, perfekt glatte overflater og beskyttelse mot eksterne faktorer.',
+          projectsCompleted: 'Fullførte Prosjekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Våre Tjenester',
+          items: [
+            'Maling av vegger og tak',
+            'Maling av utvendige fasader',
+            'Dekorativ maling',
+            'Grunning av overflater',
+            'Maling av trekonstruksjoner',
+            'Beskyttende behandling'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Rørreparasjoner',
+          subtitle: 'Profesjonelle rørreparasjons- og installasjonstjenester for hjem og kontorer'
+        },
+        solutions: {
+          title: 'Profesjonelle Løsninger',
+          description1: 'Komplett utvalg av rørservice for hjemmet eller bedriften din. Jeg tilbyr kvalitetsinstallasjon, reparasjon og vedlikehold av alle typer rørinstallasjoner.',
+          description2: 'År med erfaring garanterer pålitelighet, holdbarhet og overholdelse av alle sikkerhetsstandarder.',
+          projectsCompleted: 'Fullførte Prosjekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Våre Tjenester',
+          items: [
+            'Rørreparasjon og utskifting',
+            'Installasjon av rørinstallasjoner',
+            'Vannforsyningsinstallasjon',
+            'Kloakkreparasjon',
+            'Radiatorinstallasjon',
+            'Avløpsrensning'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Takreparasjoner',
+          subtitle: 'Ekspert takreparasjons- og vedlikeholdstjenester for å beskytte eiendommen din'
+        },
+        solutions: {
+          title: 'Profesjonelle Løsninger',
+          description1: 'Omfattende takreparasjon, vedlikehold og forebygging. Jeg jobber med forskjellige typer tak, reparerer lekkasjer og skader.',
+          description2: 'Kvalitetsmaterialer og streng overholdelse av teknologi — for et holdbart og pålitelig tak.',
+          projectsCompleted: 'Fullførte Prosjekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Våre Tjenester',
+          items: [
+            'Reparasjon av lekkasjer og skader',
+            'Takskifte',
+            'Installasjon og reparasjon av nedløp',
+            'Tetting av samlinger og beslag',
+            'Lokale og større reparasjoner',
+            'Forebyggende inspeksjon og vedlikehold'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Hageplanlegging',
+          subtitle: 'Vakre hageplanleggings- og landskapsarkitekturtjenester for å forbedre utendørsområdet ditt'
+        },
+        solutions: {
+          title: 'Profesjonelle Løsninger',
+          description1: 'Individuell tilnærming til design og landskapsarkitektur. Jeg skaper funksjonelle og estetiske hager tilpasset dine ønsker og stedforhold.',
+          description2: 'Utvalg av planter, belysning og overflater — for harmoni og lang levetid.',
+          projectsCompleted: 'Fullførte Prosjekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Våre Tjenester',
+          items: [
+            'Landskapsdesign',
+            'Utvalg og landskapsdesign av planter',
+            'Installasjon av gressområder og stier',
+            'Vanning- og dreneringssystemer',
+            'Hagebelysning',
+            'Sesongbasert hagevedlikehold'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Flisinstallasjon',
+          subtitle: 'Profesjonelle flisfjernings- og installasjonstjenester for kjøkken, baderom og mer'
+        },
+        solutions: {
+          title: 'Profesjonelle Løsninger',
+          description1: 'Fjerning av gamle fliser, overflateforberedelse og presis flisinstallasjon. Jeg sikrer riktig geometri, fuging og vanntetting.',
+          description2: 'Jeg bruker kvalitetsmaterialer og verktøy — for feilfrie resultater og holdbarhet.',
+          projectsCompleted: 'Fullførte Prosjekter',
+          yearsExperience: 'År Erfaring'
+        },
+        services: {
+          title: 'Våre Tjenester',
+          items: [
+            'Fjerning av gamle fliser',
+            'Overflateforberedelse og utjevning',
+            'Vanntetting av fuktige områder',
+            'Installasjon av fliser og mosaikk',
+            'Fuging og tetting',
+            'Restaurering og utskifting av enkeltelementer'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Personvernpolicy',
+        subtitle: 'VK Bouwmaster Personvernpolicy'
+      },
+      introduction: {
+        title: '1. Introduksjon',
+        content: 'VK Bouwmaster ("vi", "vår" eller "selskap") forpliktet seg til å beskytte ditt personvern. Denne Personvernpolicyen forklarer hvordan vi samler inn, bruker, avslører og beskytter informasjonen din når du bruker nettstedet og tjenestene våre.'
+      },
+      dataCollection: {
+        title: '2. Informasjon vi samler inn',
+        personalInfo: {
+          title: 'Personlig informasjon',
+          items: ['Navn', 'E-postadresse', 'Telefonnummer']
+        },
+        projectInfo: {
+          title: 'Prosjektinformasjon',
+          items: ['Forespørselsdetaljer', 'Prosjektadresse', 'Arbeidsbeskrivelse']
+        },
+        technicalInfo: {
+          title: 'Teknisk informasjon',
+          items: ['IP-adresse', 'Nettlesertype', 'Bruksdata']
+        }
+      },
+      dataUsage: {
+        title: '3. Hvordan vi bruker informasjonen din',
+        subtitle: 'Vi bruker den innsamlede informasjonen til:',
+        items: [
+          { icon: '✅', text: 'Levere og forbedre tjenestene våre' },
+          { icon: '📞', text: 'Kontakte deg angående prosjektet ditt' },
+          { icon: '📧', text: 'Sende informasjonsmateriale og oppdateringer' },
+          { icon: '🔒', text: 'Sikre nettstedets vårt sikkerhet' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Databeskyttelse',
+        content: 'Vi implementerer passende tekniske og organisatoriske tiltak for å beskytte din personlige informasjon mot uautorisert tilgang, endring, avsløring eller ødeleggelse.',
+        encryption: 'Datakryptering',
+        secureAccess: 'Sikker tilgang',
+        regularChecks: 'Regelmessige kontroller'
+      },
+      thirdParty: {
+        title: '5. Videregivelse til tredjeparter',
+        content: 'Vi selger, bytter eller overfører ikke din personlige informasjon til tredjeparter uten ditt samtykke, bortsett fra når det er nødvendig for å levere tjenestene våre eller kreves ved lov.'
+      },
+      userRights: {
+        title: '6. Dine rettigheter',
+        subtitle: 'Du har rett til:',
+        items: [
+          { icon: '📖', text: 'Få tilgang til din personlige informasjon' },
+          { icon: '✏️', text: 'Korrigere unøyaktig informasjon' },
+          { icon: '🗑️', text: 'Be om sletting av dataene dine' },
+          { icon: '🔄', text: 'Trekke tilbake samtykke til databehandling' }
+        ]
+      },
+      contact: {
+        title: '7. Kontakt',
+        subtitle: 'Hvis du har spørsmål om Personvernpolicyen vår, vennligst kontakt oss:',
+        email: {
+          title: 'E-post',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Telefon',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Oppdateringer av Personvernpolicyen',
+        content: 'Vi kan periodisk oppdatere denne Personvernpolicyen. Vi vil varsle deg om eventuelle endringer ved å publisere den nye Personvernpolicyen på denne siden med en oppdatert dato.'
+      },
+      lastUpdated: 'Sist oppdatert: Januar 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Tjenestevilkår',
+        subtitle: 'VK Bouwmaster Tjenestevilkår'
+      },
+      acceptance: {
+        title: '1. Godkjenning av vilkår',
+        content: 'Ved å bruke VK Bouwmaster nettsted og tjenester godkjenner du disse Tjenestevilkårene. Hvis du ikke godkjenner noen av vilkårene, vennligst ikke bruk tjenestene våre.'
+      },
+      services: {
+        title: '2. Beskrivelse av tjenester',
+        content: 'VK Bouwmaster leverer profesjonelle renoverings- og ombyggingstjenester, inkludert men ikke begrenset til: gulvinstallasjon, maling, rørleggerarbeid, takreparasjoner, hagedesign og andre byggetjenester.'
+      },
+      estimates: {
+        title: '3. Estimater og priser',
+        content: 'Vi leverer gratis arbeidsestimater. De oppgitte prisene er omtrentlige og kan variere avhengig av:',
+        factors: ['Prosjektets kompleksitet', 'Brukte materialer', 'Arbeidets omfang', 'Tilleggskrav fra kunden']
+      },
+      payment: {
+        title: '4. Betaling',
+        content: 'Betalingsvilkår avtales individuelt for hvert prosjekt og spesifiseres i kontrakten. Vanligvis kreves:',
+        items: ['Forskudd kan være nødvendig for materialkjøp', 'Sluttbetaling gjøres etter arbeidets fullføring', 'Arbeidsaksept utføres i kundens nærvær']
+      },
+      warranty: {
+        title: '5. Garanti',
+        content: 'Vi leverer garanti på fullførte arbeider i samsvar med kontraktvilkårene. Garantidetaljer diskuteres individuelt for hvert prosjekt.'
+      },
+      liability: {
+        title: '6. Ansvar',
+        content: 'VK Bouwmaster er ansvarlig for kvaliteten på fullførte arbeider innenfor rammen av den avtalte kontrakten. Vi bruker kvalitetsmaterialer og profesjonelle arbeidsmetoder. Kunden er ansvarlig for å gi nøyaktig informasjon om prosjektet.'
+      },
+      cancellation: {
+        title: '7. Avbestilling og endringer',
+        content: 'Endringer i prosjektet må avtales på forhånd. Prosjektavbestilling må varsles innen rimelig tid. Refusjonsvilkår avtales individuelt.'
+      },
+      intellectualProperty: {
+        title: '8. Immateriell eiendom',
+        content: 'Alle materialer og design opprettet av VK Bouwmaster som en del av prosjektet forblir selskapets eiendom til arbeidet er fullt betalt, hvoretter rettighetene overføres til kunden.'
+      },
+      contact: {
+        title: '9. Kontakt',
+        content: 'For spørsmål relatert til disse Tjenestevilkårene, kontakt:',
+        email: 'E-post: vkbouwmaster@gmail.com',
+        phone: 'Telefon: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Endringer av vilkår',
+        content: 'Vi forbeholder oss retten til å endre disse Tjenestevilkårene når som helst. Fortsatt bruk av tjenestene våre etter endringer betyr din godkjenning av de nye vilkårene.'
+      },
+      lastUpdated: 'Sist oppdatert: Januar 2025'
+    }
+  },
+  RU: {
+    navigation: {
+      home: 'Главная',
+      about: 'Про меня',
+      services: 'Услуги',
+      portfolio: 'Портфолио',
+      reviews: 'Отзывы',
+      team: 'Команда',
+      pricing: 'Цены',
+      blog: 'Блог',
+      faq: 'FAQ',
+      contact: 'Контакты',
+      getQuote: 'Запрос',
+      language: 'Язык',
+      adminPanel: '🔐 Админ-панель',
+      scrollLeft: 'Прокрутить влево',
+      scrollRight: 'Прокрутить вправо',
+      adminPanelTitle: 'Панель администратора',
+      switchLanguage: 'Переключить язык'
+    },
+    common: {
+      loading: 'Загрузка...',
+      error: 'Ошибка',
+      success: 'Успех',
+      cancel: 'Отмена',
+      save: 'Сохранить',
+      delete: 'Удалить',
+      edit: 'Редактировать',
+      view: 'Просмотр',
+      learnMore: 'Узнать Больше',
+      readMore: 'Читать Далее',
+      getStarted: 'Начать',
+      contactUs: 'Связаться с Нами',
+      years: 'Лет',
+      projects: 'Проекты',
+      satisfaction: 'Удовлетворенность',
+      support: 'Поддержка',
+      experience: 'Опыт',
+      quality: 'Качество',
+      team: 'Команда',
+      clients: 'Клиенты',
+      completed: 'Завершено',
+      happy: 'Счастливый',
+      available: 'Доступно',
+      expertise: 'Экспертиза',
+      getQuote: 'Получить Смету',
+      includes: 'Включает:',
+      requestQuote: 'Запросить Смету',
+      viewServices: 'Посмотреть Услуги',
+      callUs: 'Позвоните Нам',
+      callUsSubtitle: 'Поговорите напрямую с нашей командой',
+      emailUs: 'Напишите Нам',
+      emailUsSubtitle: 'Получите подробный ответ',
+      contactForm: 'Форма Обратной Связи',
+      contactFormSubtitle: 'Отправьте нам сообщение',
+      applyNow: 'Подать Заявку',
+      emailPlaceholder: 'Введите ваш email',
+      subscribe: 'Подписаться',
+      viewDetails: 'Посмотреть Детали'
+    },
+    home: {
+      hero: {
+        title1: 'Профессиональные',
+        title2: 'Услуги Ремонта',
+        subtitle: 'Профессиональные услуги ремонта с более чем 10-летним опытом. Мастер своего дела, который умеет всё: от укладки полов до полной реконструкции. Качественная работа, внимание к каждой детали, соблюдение сроков и честные цены. Преображаю ваше пространство с любовью и профессионализмом.',
+        cta1: 'Получить Бесплатную Смету',
+        cta2: 'Посмотреть мои работы'
+      },
+      about: {
+        title: 'О мастере',
+        description1: 'Владимир — мастер с более чем 10-летним опытом в сфере ремонта и строительства. Его отличает <span class="text-blue-400 font-medium">исключительная ответственность</span> и внимание к деталям.',
+        description2: 'Каждый проект выполняется с <span class="text-blue-400 font-medium">высочайшим качеством</span> и точным соблюдением сроков. Клиенты ценят его за честность, профессионализм и способность воплощать самые сложные идеи в реальность.',
+        projectsCount: '200+',
+        projectsLabel: 'Завершенных проектов',
+        yearsCount: '10+',
+        yearsLabel: 'Лет опыта',
+        satisfactionPercent: '100%',
+        satisfactionLabel: 'Довольных клиентов',
+        supportLabel: 'Поддержка клиентов',
+        viewWorks: 'Посмотреть мои работы'
+      },
+      works: {
+        title: 'Мои работы',
+        description: 'Владимир — мастер, который превращает ремонт в искусство: точные сроки, идеальная геометрия и безупречное качество в каждой детали.',
+        work: 'работа',
+        works2: 'работы',
+        works5: 'работ'
+      },
+      services: {
+        title: 'Наши Услуги',
+        subtitle: 'Я предлагаю услуги по ремонту для преобразования вашего дома или бизнеса',
+        flooring: {
+          title: 'Укладка Напольных Покрытий',
+          description: 'Профессиональная укладка и ремонт напольных покрытий для всех типов материалов.'
+        },
+        painting: {
+          title: 'Малярные Услуги',
+          description: 'Внутренние и наружные малярные работы с использованием высококачественных красок и покрытий.'
+        },
+        plumbing: {
+          title: 'Сантехнические Работы',
+          description: 'Профессиональные услуги по ремонту и установке сантехники для домов и офисов.'
+        },
+        roofing: {
+          title: 'Ремонт Крыш',
+          description: 'Экспертные услуги по ремонту и обслуживанию крыш для защиты вашей собственности.'
+        },
+        garden: {
+          title: 'Дизайн Сада',
+          description: 'Красивый дизайн сада и ландшафтные услуги для улучшения вашего открытого пространства.'
+        },
+        tile: {
+          title: 'Укладка Плитки',
+          description: 'Профессиональные услуги по демонтажу и укладке плитки для кухонь, ванных комнат и других помещений.'
+        },
+        paving: {
+          title: 'Укладка Тротуарной Плитки',
+          description: 'Профессиональная укладка тротуарной плитки для подъездных путей, дорожек, патио и открытых площадок.'
+        },
+        hedge: {
+          title: 'Обрезка Живых Изгородей',
+          description: 'Профессиональные услуги по обрезке и уходу за живыми изгородями для поддержания аккуратного и красивого вида вашего сада.'
+        },
+        ceiling: {
+          title: 'Потолки и Стены',
+          description: 'Профессиональные услуги по установке, ремонту и отделке потолков и стен для внутренних помещений.'
+        },
+        drywall: {
+          title: 'Работа с Гипсокартоном',
+          description: 'Профессиональные услуги по установке, ремонту и отделке гипсокартона для стен и потолков.'
+        }
+      },
+      achievements: {
+        title: 'Наши Достижения',
+        subtitle: 'Цифры, говорящие о нашем успехе',
+        experience: {
+          title: 'Лет Опыта',
+          subtitle: 'Более десяти лет профессионального обслуживания'
+        },
+        projects: {
+          title: 'Завершенных Проектов',
+          subtitle: 'Успешно выполненных проектов'
+        },
+        clients: {
+          title: 'Довольных Клиентов',
+          subtitle: 'Удовлетворенных заказчиков'
+        },
+        satisfaction: {
+          title: 'Уровень Удовлетворенности',
+          subtitle: 'Гарантированная удовлетворенность клиентов'
+        },
+        support: {
+          title: 'Поддержка 24/7',
+          subtitle: 'Круглосуточная поддержка клиентов'
+        }
+      },
+      whyChoose: {
+        title: 'Почему Выбирают VK Bouwmaster?',
+        subtitle: 'Мы обеспечиваем исключительные результаты благодаря нашей приверженности качеству и удовлетворенности клиентов',
+        experience: {
+          title: 'Многолетний Опыт',
+          description: 'Более 10 лет опыта в сфере ремонта и строительства'
+        },
+        quality: {
+          title: 'Высокое Качество',
+          description: 'Мы используем только лучшие материалы и современные технологии'
+        },
+        team: {
+          title: 'Профессиональная Команда',
+          description: 'Наши мастера - это сертифицированные специалисты с многолетним опытом'
+        }
+      },
+      testimonials: {
+        title: 'Отзывы Клиентов',
+        subtitle: 'Что говорят о нас наши довольные клиенты',
+        testimonial1: {
+          text: 'VK Bouwmaster превзошел все наши ожидания. Качество работы и профессионализм команды на высшем уровне.',
+          author: 'Анна Петрова',
+          role: 'Владелец квартиры'
+        },
+        testimonial2: {
+          text: 'Отличная работа! Проект был завершен в срок и с превосходным качеством. Рекомендую всем!',
+          author: 'Михаил Смирнов',
+          role: 'Директор офиса'
+        },
+        testimonial3: {
+          text: 'Очень довольны результатом. Команда работала аккуратно, убирали за собой. Спасибо за отличную работу!',
+          author: 'Елена Козлова',
+          role: 'Владелец дома'
+        }
+      },
+      process: {
+        title: 'Наш Процесс Работы',
+        subtitle: 'Как мы работаем над вашим проектом',
+        step1: {
+          title: 'Консультация',
+          description: 'Бесплатная консультация и оценка вашего проекта'
+        },
+        step2: {
+          title: 'Планирование',
+          description: 'Детальное планирование и составление сметы'
+        },
+        step3: {
+          title: 'Выполнение',
+          description: 'Профессиональное выполнение работ с контролем качества'
+        },
+        step4: {
+          title: 'Завершение',
+          description: 'Финальная проверка и передача готового проекта'
+        }
+      },
+      cta: {
+        title: 'Готовы Начать Ваш Проект?',
+        subtitle: 'Свяжитесь с нами сегодня для бесплатной консультации',
+        cta1: 'Получить Бесплатную Смету',
+        cta2: 'Посмотреть Портфолио',
+        cta3: 'Связаться с Нами',
+        contact: {
+          title: 'Позвоните Нам',
+          description: 'Быстрые ответы на ваши вопросы',
+          phone: '+31 6 1234 5678'
+        },
+        email: {
+          title: 'Напишите Нам',
+          description: 'Отправьте нам сообщение',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        chat: {
+          title: 'Онлайн Чат',
+          description: 'Мгновенная поддержка',
+          status: 'Онлайн'
+        }
+      }
+    },
+    about: {
+      hero: {
+        title: 'Про меня',
+        subtitle: 'Ваш надежный партнер в сфере ремонта и строительства'
+      },
+      story: {
+        title: 'Моя История',
+        paragraph1: 'VK Bouwmaster была основана с целью предоставления высококачественных услуг по ремонту и строительству.',
+        paragraph2: 'За годы работы я накопил богатый опыт в различных областях строительства и ремонта. Я постоянно усовершенствую свои навыки.',
+        paragraph3: 'Я горжусь тем, что каждый мой проект выполняется с максимальным вниманием к деталям и качеству. Моя цель - превзойти ожидания клиентов и создать пространства, которые вдохновляют.'
+      },
+      mission: {
+        title: 'Моя Миссия',
+        subtitle: 'Что движет мной в работе',
+        mission: {
+          title: 'Качество Превыше Всего',
+          description: 'Я стремлюсь к совершенству в каждом проекте, используя только лучшие материалы и технологии.'
+        },
+        quality: {
+          title: 'Инновационные Решения',
+          description: 'Я применяю современные методы и технологии для достижения наилучших результатов.'
+        },
+        customer: {
+          title: 'Удовлетворенность Клиентов',
+          description: 'Моя главная цель - полная удовлетворенность клиентов и долгосрочные партнерские отношения.'
+        }
+      },
+      whyChoose: {
+        title: 'Почему Выбирают Меня',
+        subtitle: 'Мои преимущества и уникальные особенности',
+        award: {
+          title: 'Награды и Сертификаты',
+          description: 'Я получил множество наград за качество работы и инновационные решения.'
+        },
+        expert: {
+          title: 'Экспертная Команда',
+          description: 'Наши специалисты имеют сертификаты и многолетний опыт в различных областях строительства.'
+        },
+        onTime: {
+          title: 'Соблюдение Сроков',
+          description: 'Я всегда выполняю проекты в установленные сроки без компромиссов в качестве.'
+        },
+        fair: {
+          title: 'Честные Цены',
+          description: 'Прозрачное ценообразование без скрытых платежей и неожиданных доплат.'
+        }
+      },
+      certifications: {
+        title: 'Система Качества и Лицензии',
+        subtitle: 'Мои официальные документы и достижения',
+        licensed: {
+          title: 'Лицензированная Деятельность',
+          description: 'Я имею все необходимые лицензии для выполнения строительных и ремонтных работ.'
+        },
+        certified: {
+          title: 'Сертифицированные Специалисты',
+          description: 'Наша команда состоит из сертифицированных мастеров с подтвержденной квалификацией.'
+        },
+        quality: {
+          title: 'Система Качества',
+          description: 'Я работаю по международным стандартам качества и безопасности.'
+        }
+      },
+      cta: {
+        title: 'Готовы Работать со Мной?',
+        subtitle: 'Свяжитесь со мной для обсуждения вашего проекта',
+        cta1: 'Получить Консультацию',
+        cta2: 'Посмотреть Мои Работы'
+      }
+    },
+    services: {
+      hero: {
+        title: 'Наши Услуги',
+        subtitle: 'Полный спектр услуг по ремонту и строительству'
+      },
+      whatWeDo: {
+        title: 'Что Мы Делаем',
+        subtitle: 'Мы специализируемся на различных видах ремонтных и строительных работ'
+      },
+      process: {
+        title: 'Наш Процесс',
+        subtitle: 'Как мы работаем над вашим проектом',
+        consultation: {
+          title: 'Консультация',
+          description: 'Бесплатная консультация и оценка вашего проекта'
+        },
+        planning: {
+          title: 'Планирование',
+          description: 'Детальное планирование и составление технического задания'
+        },
+        execution: {
+          title: 'Выполнение',
+          description: 'Профессиональное выполнение работ с постоянным контролем'
+        },
+        completion: {
+          title: 'Завершение',
+          description: 'Финальная проверка и передача готового проекта'
+        }
+      },
+      cta: {
+        title: 'Нужна Помощь с Проектом?',
+        subtitle: 'Свяжитесь с нами для получения подробной информации',
+        cta1: 'Получить Консультацию',
+        cta2: 'Запросить Смету'
+      }
+    },
+    contact: {
+      hero: {
+        title: 'Свяжитесь со Мной',
+        subtitle: 'Я готов ответить на ваши вопросы и обсудить ваш проект'
+      },
+      form: {
+        title: 'Отправить Сообщение',
+        name: 'Имя',
+        email: 'Email',
+        phone: 'Телефон',
+        service: 'Услуга',
+        message: 'Сообщение',
+        submit: 'Отправить',
+        selectService: 'Выберите услугу',
+        sendMessage: 'Отправить сообщение',
+        other: 'Другое',
+        street: 'Улица',
+        houseNumber: 'Номер дома',
+        postalCode: 'Почтовый код',
+        city: 'Город',
+        namePlaceholder: 'Ваше имя',
+        emailPlaceholder: 'your@email.com',
+        phonePlaceholder: '+31 6 1234 5678',
+        streetPlaceholder: 'Название улицы',
+        houseNumberPlaceholder: '123',
+        postalCodePlaceholder: '1234 AB',
+        cityPlaceholder: 'Амстердам',
+        messagePlaceholder: 'Расскажите о вашем проекте...',
+        streetRequired: 'Улица обязательна',
+        houseNumberRequired: 'Номер дома обязателен',
+        postalCodeRequired: 'Почтовый код обязателен',
+        postalCodeInvalid: 'Неверный формат почтового кода. Используйте формат: 1234 AB',
+        successMessage: 'Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.',
+        errorMessage: 'Произошла ошибка. Пожалуйста, попробуйте еще раз.'
+      },
+      info: {
+        title: 'Контактная Информация',
+        phone: {
+          title: 'Телефон',
+          number1: '+31 6 1234 5678',
+          number2: '+31 6 8765 4321'
+        },
+        email: {
+          title: 'Email',
+          address1: 'vkbouwmaster@gmail.com',
+          address2: 'vkbouwmaster@gmail.com'
+        },
+        address: {
+          title: 'Адрес',
+          street: 'Главная улица, 123',
+          city: 'Амстердам, Нидерланды',
+          country: 'Нидерланды'
+        },
+        hours: {
+          title: 'Часы Работы',
+          weekdays: 'Пн-Пт: 8:00 - 18:00',
+          saturday: 'Сб: 9:00 - 16:00',
+          sunday: 'Вс: По договоренности',
+          byAppointment: 'По договорённости'
+        },
+        contactMethods: {
+          title: 'Связь со мной',
+          subtitle: 'Можно связаться через WhatsApp, Email и Telegram',
+          whatsapp: 'WhatsApp',
+          telegram: 'Telegram',
+          email: 'Email'
+        },
+        emergency: {
+          title: 'Экстренные Случаи',
+          description: 'Для срочных вопросов звоните круглосуточно',
+          phone: '+31 6 1111 2222'
+        }
+      },
+      faq: {
+        title: 'Часто Задаваемые Вопросы',
+        subtitle: 'Ответы на популярные вопросы',
+        q1: {
+          question: 'Сколько времени занимает ремонт?',
+          answer: 'Время выполнения зависит от сложности проекта. Обычно от 1-2 недель до нескольких месяцев.'
+        },
+        q2: {
+          question: 'Предоставляете ли вы гарантию?',
+          answer: 'Да, мы предоставляем гарантию на все виды работ от 1 до 5 лет в зависимости от типа работ.'
+        },
+        q3: {
+          question: 'Можно ли получить бесплатную смету?',
+          answer: 'Конечно! Мы предоставляем бесплатную консультацию и предварительную смету для всех проектов.'
+        },
+        q4: {
+          question: 'Работаете ли вы в выходные?',
+          answer: 'Да, мы можем работать в выходные дни по предварительной договоренности.'
+        }
+      }
+    },
+    blog: {
+      hero: {
+        title: 'Наш Блог',
+        subtitle: 'Экспертные советы, руководства по ремонту и инсайты индустрии для помощи в ваших проектах по улучшению дома'
+      },
+      featured: 'Рекомендуемое',
+      latest: {
+        title: 'Последние Статьи',
+        subtitle: 'Будьте в курсе последних тенденций, советов и инсайтов в сфере ремонта дома'
+      },
+      newsletter: {
+        title: 'Оставайтесь в Курсе',
+        subtitle: 'Подпишитесь на нашу рассылку для получения последних советов по ремонту, идей проектов и эксклюзивных предложений',
+        cta: 'Связаться со мной'
+      },
+      categories: {
+        title: 'Просмотр по Категориям',
+        subtitle: 'Найдите статьи, которые соответствуют вашим интересам и потребностям проекта'
+      },
+      readMore: 'Читать Далее',
+      noPosts: 'Пока нет статей',
+      noPostsSubtitle: 'Добавьте статьи через админ-панель'
+    },
+    faq: {
+      hero: {
+        title: 'Часто Задаваемые Вопросы',
+        subtitle: 'Найдите ответы на популярные вопросы о наших услугах по ремонту'
+      },
+      categories: [
+        {
+          title: 'Общие Вопросы',
+          questions: [
+            {
+              q: 'Сколько лет работает VK Bouwmaster?',
+              a: 'VK Bouwmaster предоставляет профессиональные услуги по ремонту уже более 10 лет. Мы зарекомендовали себя качественной работой и исключительным обслуживанием клиентов.'
+            },
+            {
+              q: 'В каких районах вы работаете?',
+              a: 'Мы обслуживаем большую столичную область и прилегающие регионы. Свяжитесь с нами, чтобы подтвердить, предоставляем ли мы услуги в вашем конкретном районе.'
+            },
+            {
+              q: 'Вы лицензированы и застрахованы?',
+              a: 'Да, VK Bouwmaster полностью лицензирована и застрахована. Мы имеем комплексную страховку ответственности и компенсацию работникам для защиты нашей команды и вашей собственности.'
+            },
+            {
+              q: 'Предоставляете ли вы бесплатные сметы?',
+              a: 'Абсолютно! Мы предлагаем бесплатные, без обязательств сметы для всех наших услуг. Наша команда посетит вашу собственность для оценки необходимых работ и предоставит подробную смету.'
+            }
+          ]
+        },
+        {
+          title: 'Услуги и Процесс',
+          questions: [
+            {
+              q: 'Какие виды услуг по ремонту вы предлагаете?',
+              a: 'Мы предлагаем комплексные услуги по ремонту, включая укладку напольных покрытий, покраску, сантехнические работы, ремонт крыш, укладку плитки, дизайн сада, утепление, выравнивание стен и установку окон/дверей.'
+            },
+            {
+              q: 'Сколько времени занимает типичный ремонт?',
+              a: 'Время выполнения проектов варьируется в зависимости от объема и сложности. Простые проекты, такие как покраска, могут занять 1-3 дня, в то время как крупные ремонты могут занять несколько недель. Мы предоставляем подробные временные рамки во время консультации.'
+            },
+            {
+              q: 'Занимаетесь ли вы разрешениями и инспекциями?',
+              a: 'Да, мы занимаемся всеми необходимыми разрешениями и координируем с инспекторами для проектов, которые их требуют. Мы обеспечиваем соответствие всех работ местным строительным нормам и правилам.'
+            },
+            {
+              q: 'Можете ли вы работать по моему графику?',
+              a: 'Мы понимаем, что ремонт может быть разрушительным. Мы работаем с вами, чтобы минимизировать неудобства и часто можем работать по вашему графику, включая вечера и выходные, когда это необходимо.'
+            }
+          ]
+        },
+        {
+          title: 'Ценообразование и Оплата',
+          questions: [
+            {
+              q: 'Как вы определяете цены?',
+              a: 'Наши цены основаны на нескольких факторах, включая объем проекта, необходимые материалы, требования к рабочей силе и временные рамки. Мы предоставляем прозрачные, подробные сметы без скрытых сборов.'
+            },
+            {
+              q: 'Какие способы оплаты вы принимаете?',
+              a: 'Мы принимаем наличные, чеки и основные кредитные карты. Условия оплаты варьируются в зависимости от размера проекта, при этом крупные проекты обычно требуют депозит и поэтапные платежи.'
+            },
+            {
+              q: 'Предлагаете ли вы варианты финансирования?',
+              a: 'Мы можем работать с вами, чтобы найти решения по финансированию для крупных проектов. У нас есть отношения с несколькими финансовыми компаниями, которые специализируются на кредитах на улучшение дома.'
+            },
+            {
+              q: 'Есть ли скрытые расходы?',
+              a: 'Нет, мы верим в прозрачное ценообразование. Все расходы четко изложены в вашей смете, и мы обсудим любые потенциальные дополнительные расходы перед началом работ.'
+            }
+          ]
+        },
+        {
+          title: 'Качество и Гарантия',
+          questions: [
+            {
+              q: 'Какую гарантию вы предоставляете?',
+              a: 'Мы предоставляем комплексные гарантии на все наши работы, от 1 до 5 лет в зависимости от услуги. Мы также предлагаем расширенные гарантии на премиум-проекты.'
+            },
+            {
+              q: 'Что если я недоволен работой?',
+              a: 'Ваша удовлетворенность - наш приоритет. Если вы не полностью довольны нашей работой, мы исправим это. Мы поддерживаем наше мастерство и оперативно решим любые проблемы.'
+            },
+            {
+              q: 'Используете ли вы качественные материалы?',
+              a: 'Да, мы используем только высококачественные материалы от надежных поставщиков. Мы можем работать с вашими предпочтительными брендами или рекомендовать лучшие варианты для вашего бюджета и потребностей.'
+            },
+            {
+              q: 'Как вы обеспечиваете контроль качества?',
+              a: 'У нас есть строгие процессы контроля качества, включая регулярные инспекции, опытных супервизоров и финальные обходы с клиентами, чтобы убедиться, что все соответствует нашим высоким стандартам.'
+            }
+          ]
+        }
+      ],
+      contact: {
+        title: 'Все Еще Есть Вопросы?',
+        subtitle: 'Не можете найти ответ, который ищете? Наша команда здесь, чтобы помочь!'
+      }
+    },
+    portfolio: {
+      hero: {
+        title: 'Моё портфолио',
+        subtitle: 'Изучите мои завершенные проекты и посмотрите качество моей работы'
+      },
+      stats: {
+        projects: 'Завершенных Проектов',
+        years: 'Лет Опыта',
+        satisfaction: 'Удовлетворенность Клиентов',
+        clients: 'Довольных Клиентов'
+      },
+      whyChoose: {
+        title: 'Почему выбирают меня',
+        features: [
+          { icon: '🛠️', title: 'Качество', desc: 'Аккуратно, чисто и с вниманием к деталям. Использую проверенные материалы и технологии.' },
+          { icon: '⏱️', title: 'Сроки', desc: 'Работаю по понятному графику. Завершаю вовремя — без сюрпризов и «завтраков».' },
+          { icon: '🤝', title: 'Честность', desc: 'Прозрачные сметы и этапы. Вы всегда понимаете, за что платите.' },
+          { icon: '💬', title: 'Коммуникация', desc: 'Постоянно на связи, быстро отвечаю и предлагаю решения под ваш запрос.' },
+          { icon: '🧼', title: 'Чистота', desc: 'Поддерживаю порядок на объекте, защищаю мебель и покрытие, убираю за собой.' },
+          { icon: '🔒', title: 'Гарантия', desc: 'Даю гарантию на выполненные работы и остаюсь на связи после сдачи.' }
+        ]
+      },
+      featured: {
+        title: 'Мои проекты',
+        subtitle: 'Каждый проект демонстрирует мою приверженность качеству, вниманию к деталям и уверенности клиентов'
+      },
+      features: 'Ключевые Особенности:',
+      noWorks: {
+        title: 'Пока нет добавленных работ',
+        subtitle: 'Добавьте работы через админ-панель'
+      },
+      testimonials: {
+        title: 'Что говорят мои клиенты',
+        subtitle: 'Не просто верьте на слово — прочитайте отзывы реальных клиентов'
+      },
+      noReviews: 'Пока нет отзывов',
+      cta: {
+        title: 'Готовы Начать Ваш Проект?',
+        subtitle: 'Позвольте мне преобразить ваше пространство с тем же качеством и вниманием к деталям'
+      },
+      detail: {
+        backToProjects: 'Назад к проектам',
+        projectNotFound: 'Проект не найден',
+        projectNotFoundSubtitle: 'Проект с ID {projectId} не существует или был удален',
+        noMedia: 'Пока нет фото и видео',
+        noMediaSubtitle: 'Добавьте фото и видео в админ-панели',
+        allPhotosAndVideos: 'Все фото и видео проекта',
+        oneOfWork: '✨ Одна из наших работ',
+        date: 'Дата',
+        city: 'Город',
+        photos: 'Фото',
+        videos: 'Видео',
+        comments: 'Комментарии',
+        noComments: 'Пока нет комментариев. Будьте первым!',
+        beFirst: 'Будьте первым!',
+        profileImageLabel: 'Фото профиля',
+        profileImageOptional: '(необязательно)',
+        addProfileImage: 'Добавить фото профиля',
+        changePhoto: 'Изменить фото',
+        deletePhoto: 'Удалить фото',
+        cityLabel: 'Город',
+        cityOptional: '(необязательно)',
+        cityPlaceholder: 'В каком городе был сделан заказ?',
+        ratingLabel: 'Оценка',
+        ratingRequired: '(обязательно)',
+        commentLabel: 'Ваш комментарий',
+        commentPlaceholder: 'Напишите ваш комментарий здесь...',
+        charactersLeft: 'Осталось символов:',
+        addPhotosLabel: '📷 Добавить фото',
+        addPhotosOptional: '(необязательно)',
+        selectPhotos: '📷 Выбрать фото',
+        photosUploaded: 'Загружено фото:',
+        addVideosLabel: '🎥 Добавить видео',
+        addVideosOptional: '(необязательно)',
+        selectVideos: '🎥 Выбрать видео',
+        videosUploaded: 'Загружено видео:',
+        deleteVideo: 'Удалить видео',
+        submitting: 'Отправка…',
+        submitComment: '📤 Отправить комментарий',
+        commentWillAppear: 'Комментарий появится после проверки администратором.',
+        viewAllPhotos: 'Просмотреть все фото ({count})',
+        noProject: 'Без проекта',
+        category: 'Категория',
+        project: 'Проект',
+        translateTo: 'Перевести на...',
+        showOriginal: 'Показать оригинал',
+        translatedTo: 'Переведено на',
+        translating: 'Переводим...'
+      }
+    },
+    pricing: {
+      hero: {
+        title: 'Цены',
+        subtitle: 'Прозрачное, конкурентоспособное ценообразование для всех наших услуг по ремонту'
+      },
+      packages: {
+        title: 'Пакеты Услуг',
+        subtitle: 'Выберите пакет, который лучше всего соответствует потребностям вашего проекта и бюджету',
+        popular: 'Самый Популярный'
+      },
+      services: {
+        title: 'Ценообразование по Отдельным Услугам',
+        subtitle: 'Подробное ценообразование для конкретных услуг. Все цены являются оценками и могут варьироваться в зависимости от объема проекта.'
+      },
+      factors: {
+        title: 'Что влияет на цену?',
+        subtitle: 'На финальную стоимость проекта влияют несколько факторов',
+        projectSize: {
+          title: 'Размер и масштаб проекта',
+          description: 'Более крупные проекты обычно стоят больше за квадратный метр из-за масштаба и сложности.'
+        },
+        materialQuality: {
+          title: 'Качество материалов',
+          description: 'Премиум-материалы стоят дороже, но предлагают лучшую долговечность и эстетику.'
+        },
+        timeline: {
+          title: 'Сроки',
+          description: 'Срочные проекты могут потребовать дополнительных затрат из-за ускоренного графика и сверхурочной работы.'
+        },
+        existingConditions: {
+          title: 'Существующие условия',
+          description: 'Структурные проблемы или скрытые дефекты, обнаруженные во время ремонта, могут повлиять на цену.'
+        },
+        location: {
+          title: 'Местоположение и доступ',
+          description: 'Сложный доступ или удаленные места могут потребовать дополнительного оборудования или времени.'
+        },
+        customization: {
+          title: 'Индивидуализация',
+          description: 'Индивидуальные дизайны и уникальные требования могут увеличить стоимость проекта.'
+        }
+      },
+      stats: {
+        projects: 'Проекты',
+        years: 'Лет',
+        satisfaction: 'Удовлетворенность',
+        support: 'Поддержка'
+      },
+      cta: {
+        title: 'Получите Вашу Бесплатную Смету Сегодня',
+        subtitle: 'Никаких скрытых сборов, никаких сюрпризов. Получите подробную, прозрачную смету для вашего проекта.',
+        getQuote: 'Получить Бесплатную Смету',
+        viewWorks: 'Посмотреть Наши Работы'
+      }
+    },
+    team: {
+      hero: {
+        title: 'Наша Команда',
+        subtitle: 'Познакомьтесь с опытными профессионалами, которые воплощают ваши мечты о ремонте в жизнь'
+      },
+      intro: {
+        title: 'Экспертные Мастера и Профессионалы',
+        subtitle: 'Наша команда состоит из опытных профессионалов, которые увлечены достижением исключительных результатов. Каждый член команды привносит уникальные навыки и экспертизу, чтобы обеспечить завершение вашего проекта по высочайшим стандартам.'
+      },
+      specialties: 'Специализации:',
+      experience: 'Опыт:',
+      values: {
+        title: 'Ценности Нашей Команды',
+        subtitle: 'Принципы, которые направляют нашу команду и обеспечивают исключительное обслуживание',
+        collaboration: 'Сотрудничество',
+        excellence: 'Превосходство',
+        learning: 'Непрерывное Обучение'
+      },
+      certs: {
+        title: 'Сертификации и Обучение',
+        licensed: 'Лицензированные Профессионалы',
+        training: 'Постоянное Обучение',
+        safety: 'Сертификация Безопасности',
+        quality: 'Обеспечение Качества'
+      },
+      join: {
+        title: 'Присоединяйтесь к Нашей Команде',
+        subtitle: 'Мы всегда ищем опытных профессионалов для присоединения к нашей растущей команде'
+      }
+    },
+    footer: {
+      description: 'Профессиональные услуги ремонта с более чем 10-летним опытом. Я преображаю ваше пространство качественной работой и вниманием к деталям.',
+      quickLinks: {
+        title: 'Быстрые ссылки'
+      },
+      services: {
+        title: 'Услуги'
+      },
+      shot: {
+        title: 'Shot'
+      },
+      copyright: '© 2025 VK Bouwmaster. All rights reserved.',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Service'
+    },
+    admin: {
+      login: {
+        title: 'Панель Администратора',
+        subtitle: 'Войдите для управления контентом',
+        email: 'Email',
+        password: 'Пароль',
+        emailPlaceholder: 'Введите ваш email адрес',
+        passwordPlaceholder: '••••••••',
+        loginButton: 'Войти',
+        loggingIn: 'Вход...',
+        connectionError: 'Ошибка подключения к серверу',
+        goHome: 'На Главную'
+      },
+      accessDenied: {
+        title: 'Доступ Запрещен',
+        message: 'Неверный email или пароль. У вас нет доступа к этой области — только администраторы имеют доступ.',
+        goHome: 'На Главную',
+        tryAgain: 'Попробовать Снова'
+      }
+    },
+    thankYou: {
+      title: 'Спасибо за отзыв!',
+      message1: 'Я очень рад, что вы поделились своим опытом!',
+      message2: 'Я всегда стараюсь быть лучше для вас. Ваш отзыв поможет мне стать ещё лучше.',
+      backToReviews: 'Вернуться к отзывам'
+    },
+    contactThankYou: {
+      title: 'Спасибо за ваше сообщение!',
+      message: 'Я свяжусь с вами в течение дня.',
+      backToContact: 'Вернуться к контактам'
+    },
+    reviews: {
+      hero: {
+        badge: 'Ваше мнение важно для нас',
+        title: 'Отзывы клиентов',
+        subtitle: 'Поделитесь своим опытом работы с нами. Ваши отзывы помогают другим клиентам принять решение.'
+      },
+      form: {
+        title: 'Оставить отзыв',
+        namePlaceholder: 'Имя',
+        surnamePlaceholder: 'Фамилия (необязательно)',
+        profileImageLabel: 'Фото профиля',
+        profileImageOptional: '(необязательно)',
+        addProfileImage: 'Добавить фото профиля',
+        changePhoto: 'Изменить фото',
+        deletePhoto: 'Удалить фото',
+        cityLabel: 'Город',
+        cityOptional: '(необязательно)',
+        cityPlaceholder: 'В каком городе был сделан заказ?',
+        ratingLabel: 'Оценка',
+        ratingRequired: '(обязательно)',
+        reviewLabel: 'Ваш отзыв',
+        reviewPlaceholder: 'Расскажите о вашем опыте работы с нами... Что вам понравилось? Что можно улучшить?',
+        charactersLeft: 'Осталось символов:',
+        goodReview: 'Хороший отзыв!',
+        addPhotosLabel: 'Добавить фото',
+        addPhotosOptional: '(необязательно)',
+        selectPhotos: '📷 Выбрать фото',
+        photosUploaded: 'Загружено фото:',
+        addVideosLabel: 'Добавить видео',
+        addVideosOptional: '(необязательно)',
+        selectVideos: '🎥 Выбрать видео',
+        videosUploaded: 'Загружено видео:',
+        deleteVideo: 'Удалить видео',
+        submitting: 'Отправка…',
+        submitButton: 'Отправить отзыв',
+        reviewWillAppear: 'Отзыв появится после проверки администратором',
+        fillRequiredFields: 'Пожалуйста, заполните имя и сообщение',
+        errorSubmitting: 'Ошибка при отправке отзыва. Пожалуйста, попробуйте ещё раз.',
+        errorConnection: 'Ошибка при отправке отзыва. Пожалуйста, проверьте подключение к интернету и попробуйте ещё раз.'
+      },
+      list: {
+        title: 'Все отзывы',
+        review: 'отзыв',
+        reviews2: 'отзыва',
+        reviews5: 'отзывов',
+        noReviews: 'Пока нет отзывов. Будьте первым!',
+        photosAndVideos: 'Фото и видео из отзыва',
+        viewAllMedia: 'Посмотреть все фото и видео →'
+      },
+      detail: {
+        backToReviews: 'Вернуться к отзывам',
+        reviewNotFound: 'Отзыв не найден',
+        reviewNotFoundSubtitle: 'Отзыв с ID {reviewId} не существует',
+        noMedia: 'У этого отзыва нет фото и видео',
+        noMediaSubtitle: 'Вернитесь к отзывам',
+        photosAndVideos: 'Фото и видео из отзыва'
+      }
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Укладка Напольных Покрытий',
+          subtitle: 'Профессиональная укладка и ремонт напольных покрытий для всех типов материалов'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Преобразите ваше пространство с помощью наших профессиональных услуг по укладке напольных покрытий. Я специализируюсь на всех типах напольных материалов и предоставляю услуги по экспертной установке, ремонту и обслуживанию.',
+          description2: 'Мой опыт обеспечивает правильные техники установки, внимание к деталям и использование качественных материалов для создания красивых, долговечных полов, которые прослужат годами.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Укладка паркета',
+            'Укладка ламината',
+            'Укладка плитки и камня',
+            'Укладка ковролина',
+            'Укладка виниловых полов (LVT)',
+            'Ремонт и реставрация полов'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Малярные Услуги',
+          subtitle: 'Профессиональные услуги по покраске интерьера и фасада с использованием материалов премиум качества'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Преобразите ваше пространство с помощью профессиональных малярных услуг. Я обеспечиваю качественную подготовку поверхности, использование премиум красок и безупречное выполнение.',
+          description2: 'Мой опыт гарантирует долговечные покрытия, идеально гладкие поверхности и защиту от внешних факторов.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Покраска стен и потолков',
+            'Покраска наружных фасадов',
+            'Декоративная покраска',
+            'Грунтовка поверхностей',
+            'Покраска деревянных конструкций',
+            'Защитная обработка'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Сантехнические Работы',
+          subtitle: 'Профессиональные услуги по ремонту и установке сантехники для домов и офисов'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Полный спектр сантехнических услуг для вашего дома или бизнеса. Я предоставляю качественную установку, ремонт и обслуживание всех типов сантехнических приборов.',
+          description2: 'Многолетний опыт гарантирует надежность, долговечность и соответствие всем стандартам безопасности.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Ремонт и замена труб',
+            'Установка сантехнических приборов',
+            'Установка водопровода',
+            'Ремонт канализации',
+            'Установка радиаторов',
+            'Прочистка сливов'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Ремонт Крыш',
+          subtitle: 'Экспертные услуги по ремонту и обслуживанию крыш для защиты вашей собственности'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Комплексный ремонт, обслуживание и профилактика крыш. Я работаю с различными типами кровли, устраняю протечки и повреждения.',
+          description2: 'Качественные материалы и строгое соблюдение технологии — для долговечной и надежной крыши.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Ремонт протечек и повреждений',
+            'Замена кровли',
+            'Установка и ремонт водостоков',
+            'Герметизация швов и примыканий',
+            'Локальный и капитальный ремонт',
+            'Профилактический осмотр и обслуживание'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Дизайн Сада',
+          subtitle: 'Красивый дизайн сада и ландшафтные услуги для улучшения вашего открытого пространства'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Индивидуальный подход к дизайну и ландшафтному оформлению. Я создаю функциональные и эстетичные сады, соответствующие вашим пожеланиям и условиям участка.',
+          description2: 'Подбор растений, освещения и покрытий — для гармонии и долгой службы.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Ландшафтный дизайн',
+            'Подбор растений и озеленение',
+            'Устройство газонов и дорожек',
+            'Системы полива и дренажа',
+            'Освещение сада',
+            'Сезонное обслуживание сада'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Укладка Плитки',
+          subtitle: 'Профессиональные услуги по демонтажу и укладке плитки для кухонь, ванных комнат и других помещений'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Демонтаж старой плитки, подготовка поверхности и точная укладка новой плитки. Я обеспечиваю правильную геометрию, затирку и гидроизоляцию.',
+          description2: 'Использую качественные материалы и инструменты — для безупречного результата и долговечности.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Демонтаж старой плитки',
+            'Подготовка и выравнивание поверхности',
+            'Гидроизоляция влажных зон',
+            'Укладка плитки и мозаики',
+            'Затирка и герметизация',
+            'Реставрация и замена отдельных элементов'
+          ]
+        }
+      },
+      paving: {
+        hero: {
+          title: 'Укладка Тротуарной Плитки',
+          subtitle: 'Профессиональная укладка тротуарной плитки для подъездных путей, дорожек, патио и открытых площадок'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Преобразите ваше открытое пространство с помощью профессиональной укладки тротуарной плитки. Я специализируюсь на создании красивых, долговечных поверхностей для подъездных путей, дорожек, патио и садовых зон.',
+          description2: 'Мой опыт обеспечивает правильную подготовку основания, точную укладку и внимание к деталям для долговечных результатов, которые повышают ценность и внешний вид вашей собственности.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Укладка подъездных путей',
+            'Установка дорожек и тропинок',
+            'Укладка патио и террас',
+            'Укладка садовых зон',
+            'Подготовка и выравнивание основания',
+            'Установка дренажной системы',
+            'Установка бордюров и финишная отделка'
+          ]
+        }
+      },
+      hedge: {
+        hero: {
+          title: 'Обрезка Живых Изгородей',
+          subtitle: 'Профессиональные услуги по обрезке и уходу за живыми изгородями для поддержания аккуратного и красивого вида вашего сада'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Поддерживайте ваш сад в идеальном состоянии с помощью профессиональных услуг по обрезке живых изгородей. Я предоставляю регулярное обслуживание и формирование, чтобы ваши изгороди оставались здоровыми и эстетически привлекательными.',
+          description2: 'Мой опыт работы с различными типами изгородей обеспечивает правильные техники обрезки, выбор времени и уход для оптимального роста и внешнего вида в течение всех сезонов.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Регулярная обрезка изгородей',
+            'Формирование и дизайн изгородей',
+            'Контроль высоты и ширины',
+            'Оценка здоровья и уход',
+            'Сезонное обслуживание',
+            'Уборка и утилизация'
+          ]
+        }
+      },
+      ceiling: {
+        hero: {
+          title: 'Потолки и Стены',
+          subtitle: 'Профессиональные услуги по установке, ремонту и отделке потолков и стен для внутренних помещений'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Преобразите ваши внутренние помещения с помощью профессиональных услуг по потолкам и стенам. Я предоставляю полные решения от установки до отделки, обеспечивая гладкие, ровные поверхности.',
+          description2: 'Мой опыт гарантирует правильную подготовку, точную установку и качественную отделку для красивых, долговечных результатов, которые улучшают вашу жилую или рабочую среду.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Установка и ремонт потолков',
+            'Выравнивание и подготовка стен',
+            'Штукатурка и отделка',
+            'Грунтовка поверхностей',
+            'Нанесение текстур',
+            'Ремонт трещин и реставрация'
+          ]
+        }
+      },
+      drywall: {
+        hero: {
+          title: 'Работа с Гипсокартоном',
+          subtitle: 'Профессиональные услуги по установке, ремонту и отделке гипсокартона для стен и потолков'
+        },
+        solutions: {
+          title: 'Профессиональные Решения',
+          description1: 'Экспертные услуги по гипсокартону для нового строительства, реконструкции и ремонта. Я специализируюсь на точной установке, бесшовных стыках и профессиональной отделке.',
+          description2: 'Мой опыт обеспечивает правильное каркасное строительство, точные измерения, гладкие поверхности и качественную отделку для стен и потолков, которые выглядят идеально и служат годами.',
+          projectsCompleted: 'Завершенных Проектов',
+          yearsExperience: 'Лет Опыта'
+        },
+        services: {
+          title: 'Наши Услуги',
+          items: [
+            'Установка гипсокартона',
+            'Заделка швов и шпаклевка',
+            'Шлифовка и отделка',
+            'Ремонт гипсокартона',
+            'Нанесение текстур',
+            'Грунтовка и подготовка к покраске'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Политика конфиденциальности',
+        subtitle: 'Политика конфиденциальности VK Bouwmaster'
+      },
+      introduction: {
+        title: '1. Введение',
+        content: 'VK Bouwmaster ("мы", "наш" или "компания") обязуется защищать вашу конфиденциальность. Эта Политика конфиденциальности объясняет, как мы собираем, используем, раскрываем и защищаем вашу информацию при использовании нашего веб-сайта и услуг.'
+      },
+      dataCollection: {
+        title: '2. Информация, которую мы собираем',
+        personalInfo: {
+          title: 'Личная информация',
+          items: ['Имя', 'Адрес электронной почты', 'Номер телефона']
+        },
+        projectInfo: {
+          title: 'Информация о проекте',
+          items: ['Детали запроса', 'Адрес проекта', 'Описание работ']
+        },
+        technicalInfo: {
+          title: 'Техническая информация',
+          items: ['IP-адрес', 'Тип браузера', 'Данные об использовании']
+        }
+      },
+      dataUsage: {
+        title: '3. Как мы используем вашу информацию',
+        subtitle: 'Мы используем собранную информацию для:',
+        items: [
+          { icon: '✅', text: 'Предоставления и улучшения наших услуг' },
+          { icon: '📞', text: 'Связи с вами по поводу вашего проекта' },
+          { icon: '📧', text: 'Отправки информационных материалов и обновлений' },
+          { icon: '🔒', text: 'Обеспечения безопасности нашего веб-сайта' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Защита данных',
+        content: 'Мы применяем соответствующие технические и организационные меры для защиты вашей личной информации от несанкционированного доступа, изменения, раскрытия или уничтожения.',
+        encryption: 'Шифрование данных',
+        secureAccess: 'Безопасный доступ',
+        regularChecks: 'Регулярные проверки'
+      },
+      thirdParty: {
+        title: '5. Раскрытие информации третьим лицам',
+        content: 'Мы не продаем, не обмениваем и не передаем вашу личную информацию третьим лицам без вашего согласия, за исключением случаев, когда это необходимо для предоставления наших услуг или требуется по закону.'
+      },
+      userRights: {
+        title: '6. Ваши права',
+        subtitle: 'Вы имеете право:',
+        items: [
+          { icon: '📖', text: 'Получить доступ к вашей личной информации' },
+          { icon: '✏️', text: 'Исправить неточную информацию' },
+          { icon: '🗑️', text: 'Запросить удаление ваших данных' },
+          { icon: '🔄', text: 'Отозвать согласие на обработку данных' }
+        ]
+      },
+      contact: {
+        title: '7. Контакты',
+        subtitle: 'Если у вас есть вопросы о нашей Политике конфиденциальности, пожалуйста, свяжитесь с нами:',
+        email: {
+          title: 'Email',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Телефон',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Изменения в Политике конфиденциальности',
+        content: 'Мы можем периодически обновлять эту Политику конфиденциальности. Мы уведомим вас о любых изменениях, разместив новую Политику конфиденциальности на этой странице с обновленной датой.'
+      },
+      lastUpdated: 'Последнее обновление: Январь 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Условия использования',
+        subtitle: 'Условия предоставления услуг VK Bouwmaster'
+      },
+      acceptance: {
+        title: '1. Принятие условий',
+        content: 'Используя веб-сайт и услуги VK Bouwmaster, вы соглашаетесь с настоящими Условиями обслуживания. Если вы не согласны с какими-либо условиями, пожалуйста, не используйте наши услуги.'
+      },
+      services: {
+        title: '2. Описание услуг',
+        content: 'VK Bouwmaster предоставляет профессиональные услуги по ремонту и реконструкции, включая, но не ограничиваясь: укладкой напольных покрытий, покраской, сантехническими работами, ремонтом крыш, дизайном садов и другими строительными услугами.'
+      },
+      estimates: {
+        title: '3. Оценки и расценки',
+        content: 'Мы предоставляем бесплатные оценки стоимости работ. Указанные цены являются ориентировочными и могут изменяться в зависимости от:',
+        factors: ['Сложности проекта', 'Используемых материалов', 'Объемов работ', 'Дополнительных требований клиента']
+      },
+      payment: {
+        title: '4. Оплата',
+        content: 'Условия оплаты оговариваются индивидуально для каждого проекта и указываются в договоре. Обычно требуется:',
+        items: ['Предоплата может потребоваться для закупки материалов', 'Окончательная оплата производится после завершения работ', 'Приемка работ осуществляется в присутствии заказчика']
+      },
+      warranty: {
+        title: '5. Гарантия',
+        content: 'Мы предоставляем гарантию на выполненные работы в соответствии с условиями договора. Детали гарантии обсуждаются индивидуально для каждого проекта.'
+      },
+      liability: {
+        title: '6. Ответственность',
+        content: 'VK Bouwmaster несет ответственность за качество выполненных работ в рамках согласованного договора. Мы используем качественные материалы и профессиональные методы работы. Клиент несет ответственность за предоставление точной информации о проекте.'
+      },
+      cancellation: {
+        title: '7. Отмена и изменения',
+        content: 'Изменения в проекте должны быть согласованы заранее. Отмена проекта должна быть уведомлена в разумные сроки. Условия возврата средств оговариваются индивидуально.'
+      },
+      intellectualProperty: {
+        title: '8. Интеллектуальная собственность',
+        content: 'Все материалы и дизайны, созданные VK Bouwmaster в рамках проекта, остаются собственностью компании до полной оплаты работ, после чего права передаются заказчику.'
+      },
+      contact: {
+        title: '9. Контакты',
+        content: 'По вопросам, связанным с настоящими Условиями обслуживания, обращайтесь:',
+        email: 'Email: vkbouwmaster@gmail.com',
+        phone: 'Телефон: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Изменения условий',
+        content: 'Мы оставляем за собой право изменять настоящие Условия обслуживания в любое время. Продолжение использования наших услуг после внесения изменений означает ваше согласие с новыми условиями.'
+      },
+      lastUpdated: 'Последнее обновление: Январь 2025'
+    }
+  },
+  UA: {
+    navigation: {
+      home: 'Головна',
+      about: 'Про нас',
+      services: 'Послуги',
+      portfolio: 'Портфоліо',
+      reviews: 'Відгуки',
+      team: 'Команда',
+      pricing: 'Ціни',
+      blog: 'Блог',
+      faq: 'FAQ',
+      contact: 'Контакти',
+      getQuote: 'Отримати кошторис',
+      language: 'Мова',
+      adminPanel: '🔐 Адмін-панель',
+      scrollLeft: 'Прокрутити вліво',
+      scrollRight: 'Прокрутити вправо',
+      adminPanelTitle: 'Панель адміністратора',
+      switchLanguage: 'Змінити мову'
+    },
+    common: {
+      loading: 'Завантаження...',
+      error: 'Помилка',
+      success: 'Успіх',
+      cancel: 'Скасувати',
+      save: 'Зберегти',
+      delete: 'Видалити',
+      edit: 'Редагувати',
+      view: 'Перегляд',
+      learnMore: 'Дізнатися більше',
+      readMore: 'Читати далі',
+      getStarted: 'Почати',
+      contactUs: 'Зв\'язатися з нами',
+      years: 'Років',
+      projects: 'Проекти',
+      satisfaction: 'Задоволеність',
+      support: 'Підтримка',
+      experience: 'Досвід',
+      quality: 'Якість',
+      team: 'Команда',
+      clients: 'Клієнти',
+      completed: 'Завершено',
+      happy: 'Щасливий',
+      available: 'Доступно',
+      expertise: 'Експертиза',
+      getQuote: 'Отримати кошторис',
+      includes: 'Включає:',
+      requestQuote: 'Запросити кошторис',
+      viewServices: 'Переглянути послуги',
+      callUs: 'Зателефонуйте нам',
+      callUsSubtitle: 'Поговоріть безпосередньо з нашою командою',
+      emailUs: 'Напишіть нам',
+      emailUsSubtitle: 'Отримайте детальну відповідь',
+      contactForm: 'Форма зворотного зв\'язку',
+      contactFormSubtitle: 'Надішліть нам повідомлення',
+      applyNow: 'Подати заявку',
+      emailPlaceholder: 'Введіть ваш email',
+      subscribe: 'Підписатися',
+      viewDetails: 'Переглянути деталі'
+    },
+    home: {
+      hero: {
+        title1: 'Професійні',
+        title2: 'Послуги Ремонту',
+        subtitle: 'Професійні послуги ремонту з понад 10-річним досвідом. Майстер своєї справи, який вміє все: від укладання підлог до повної реконструкції. Якісна робота, увага до кожної деталі, дотримання термінів та чесні ціни. Перетворюю ваш простір з любов\'ю та професіоналізмом.',
+        cta1: 'Отримати безкоштовний кошторис',
+        cta2: 'Подивитися мої роботи'
+      },
+      about: {
+        title: 'Про майстра',
+        description1: 'Володимир — майстер з понад 10-річним досвідом у сфері ремонту та будівництва. Його відрізняє <span class="text-blue-400 font-medium">виняткова відповідальність</span> та увага до деталей.',
+        description2: 'Кожен проект виконується з <span class="text-blue-400 font-medium">найвищою якістю</span> та точним дотриманням термінів. Клієнти цінують його за чесність, професійність та здатність втілювати найскладніші ідеї в реальність.',
+        projectsCount: '200+',
+        projectsLabel: 'Завершених проектів',
+        yearsCount: '10+',
+        yearsLabel: 'Років досвіду',
+        satisfactionPercent: '100%',
+        satisfactionLabel: 'Задоволених клієнтів',
+        supportLabel: 'Підтримка клієнтів',
+        viewWorks: 'Подивитися мої роботи'
+      },
+      works: {
+        title: 'Мої роботи',
+        description: 'Володимир — майстер, який перетворює ремонт на мистецтво: точні терміни, ідеальна геометрія та бездоганна якість у кожній деталі.',
+        work: 'робота',
+        works2: 'роботи',
+        works5: 'робіт'
+      },
+      services: {
+        title: 'Мої послуги',
+        subtitle: 'Я пропоную послуги з ремонту для перетворення вашого дому або бізнесу',
+        flooring: {
+          title: 'Укладання підлогових покриттів',
+          description: 'Професійне укладання та ремонт підлогових покриттів для всіх типів матеріалів.'
+        },
+        painting: {
+          title: 'Малярні послуги',
+          description: 'Внутрішні та зовнішні малярні роботи з використанням високоякісних фарб та покриттів.'
+        },
+        plumbing: {
+          title: 'Сантехнічні роботи',
+          description: 'Професійні послуги з ремонту та встановлення сантехніки для будинків та офісів.'
+        },
+        roofing: {
+          title: 'Ремонт дахів',
+          description: 'Експертні послуги з ремонту та обслуговування дахів для захисту вашої власності.'
+        },
+        garden: {
+          title: 'Дизайн саду',
+          description: 'Красивий дизайн саду та ландшафтні послуги для покращення вашого відкритого простору.'
+        },
+        tile: {
+          title: 'Укладання плитки',
+          description: 'Професійні послуги з демонтажу та укладання плитки для кухонь, ванних кімнат та інших приміщень.'
+        },
+        paving: {
+          title: 'Укладання тротуарної плитки',
+          description: 'Професійне укладання тротуарної плитки для під\'їзних шляхів, доріжок, патіо та відкритих майданчиків.'
+        },
+        hedge: {
+          title: 'Обрізка живих огорож',
+          description: 'Професійні послуги з обрізки та догляду за живими огорожами для підтримки акуратного та красивого вигляду вашого саду.'
+        },
+        ceiling: {
+          title: 'Стелі та стіни',
+          description: 'Професійні послуги з встановлення, ремонту та обробки стель та стін для внутрішніх приміщень.'
+        },
+        drywall: {
+          title: 'Робота з гіпсокартоном',
+          description: 'Професійні послуги з встановлення, ремонту та обробки гіпсокартону для стін та стель.'
+        }
+      },
+      achievements: {
+        title: 'Наші досягнення',
+        subtitle: 'Цифри, що говорять про наш успіх',
+        experience: {
+          title: 'Років досвіду',
+          subtitle: 'Понад десять років професійного обслуговування'
+        },
+        projects: {
+          title: 'Завершених проектів',
+          subtitle: 'Успішно виконаних проектів'
+        },
+        clients: {
+          title: 'Задоволених клієнтів',
+          subtitle: 'Задоволених замовників'
+        },
+        satisfaction: {
+          title: 'Рівень задоволеності',
+          subtitle: 'Гарантована задоволеність клієнтів'
+        },
+        support: {
+          title: 'Підтримка 24/7',
+          subtitle: 'Цілодобова підтримка клієнтів'
+        }
+      },
+      whyChoose: {
+        title: 'Чому обирають VK Bouwmaster?',
+        subtitle: 'Ми забезпечуємо виняткові результати завдяки нашій прихильності якості та задоволеності клієнтів',
+        experience: {
+          title: 'Багаторічний досвід',
+          description: 'Понад 10 років досвіду у сфері ремонту та будівництва'
+        },
+        quality: {
+          title: 'Висока якість',
+          description: 'Ми використовуємо лише найкращі матеріали та сучасні технології'
+        },
+        team: {
+          title: 'Професійна команда',
+          description: 'Наші майстри — це сертифіковані фахівці з багаторічним досвідом'
+        }
+      },
+      testimonials: {
+        title: 'Відгуки клієнтів',
+        subtitle: 'Що говорять про нас наші задоволені клієнти',
+        testimonial1: {
+          text: 'VK Bouwmaster перевершив всі наші очікування. Якість роботи та професійність команди на найвищому рівні.',
+          author: 'Анна Петрова',
+          role: 'Власник квартири'
+        },
+        testimonial2: {
+          text: 'Відмінна робота! Проект було завершено вчасно та з чудовою якістю. Рекомендую всім!',
+          author: 'Михайло Смирнов',
+          role: 'Директор офісу'
+        },
+        testimonial3: {
+          text: 'Дуже задоволені результатом. Команда працювала акуратно, прибирали за собою. Дякуємо за відмінну роботу!',
+          author: 'Олена Козлова',
+          role: 'Власник будинку'
+        }
+      },
+      process: {
+        title: 'Наш процес роботи',
+        subtitle: 'Як ми працюємо над вашим проектом',
+        step1: {
+          title: 'Консультація',
+          description: 'Безкоштовна консультація та оцінка вашого проекту'
+        },
+        step2: {
+          title: 'Планування',
+          description: 'Детальне планування та складання кошторису'
+        },
+        step3: {
+          title: 'Виконання',
+          description: 'Професійне виконання робіт з контролем якості'
+        },
+        step4: {
+          title: 'Завершення',
+          description: 'Фінальна перевірка та передача готового проекту'
+        }
+      },
+      cta: {
+        title: 'Готові розпочати ваш проект?',
+        subtitle: 'Зв\'яжіться з нами сьогодні для безкоштовної консультації',
+        cta1: 'Отримати безкоштовний кошторис',
+        cta2: 'Переглянути портфоліо',
+        cta3: 'Зв\'язатися з нами',
+        contact: {
+          title: 'Зателефонуйте нам',
+          description: 'Швидкі відповіді на ваші запитання',
+          phone: '+31 6 1234 5678'
+        },
+        email: {
+          title: 'Напишіть нам',
+          description: 'Надішліть нам повідомлення',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        chat: {
+          title: 'Онлайн чат',
+          description: 'Миттєва підтримка',
+          status: 'Онлайн'
+        }
+      }
+    },
+    about: {
+      hero: {
+        title: 'Про мене',
+        subtitle: 'Ваш надійний партнер у сфері ремонту та будівництва'
+      },
+      story: {
+        title: 'Моя історія',
+        paragraph1: 'VK Bouwmaster була заснована з метою надання високоякісних послуг з ремонту та будівництва.',
+        paragraph2: 'За роки роботи я накопичив багатий досвід у різних областях будівництва та ремонту. Я постійно вдосконалюю свої навички.',
+        paragraph3: 'Я пишаюся тим, що кожен мій проект виконується з максимальною увагою до деталей та якості. Моя мета — перевершити очікування клієнтів та створити простори, які надихають.'
+      },
+      mission: {
+        title: 'Моя місія',
+        subtitle: 'Що керує мною в роботі',
+        mission: {
+          title: 'Якість понад усе',
+          description: 'Я прагну до досконалості в кожному проекті, використовуючи лише найкращі матеріали та технології.'
+        },
+        quality: {
+          title: 'Інноваційні рішення',
+          description: 'Я застосовую сучасні методи та технології для досягнення найкращих результатів.'
+        },
+        customer: {
+          title: 'Задоволеність клієнтів',
+          description: 'Моя головна мета — повна задоволеність клієнтів та довгострокові партнерські відносини.'
+        }
+      },
+      whyChoose: {
+        title: 'Чому обирають мене',
+        subtitle: 'Мої переваги та унікальні особливості',
+        award: {
+          title: 'Нагороди та сертифікати',
+          description: 'Я отримав безліч нагород за якість роботи та інноваційні рішення.'
+        },
+        expert: {
+          title: 'Експертна команда',
+          description: 'Наші фахівці мають сертифікати та багаторічний досвід у різних областях будівництва.'
+        },
+        onTime: {
+          title: 'Дотримання термінів',
+          description: 'Я завжди виконую проекти в установлені терміни без компромісів у якості.'
+        },
+        fair: {
+          title: 'Чесні ціни',
+          description: 'Прозоре ціноутворення без прихованих платежів та несподіваних доплат.'
+        }
+      },
+      certifications: {
+        title: 'Система якості та ліцензії',
+        subtitle: 'Мої офіційні документи та досягнення',
+        licensed: {
+          title: 'Ліцензована діяльність',
+          description: 'Я маю всі необхідні ліцензії для виконання будівельних та ремонтних робіт.'
+        },
+        certified: {
+          title: 'Сертифіковані фахівці',
+          description: 'Наша команда складається з сертифікованих майстрів з підтвердженою кваліфікацією.'
+        },
+        quality: {
+          title: 'Система якості',
+          description: 'Я працюю за міжнародними стандартами якості та безпеки.'
+        }
+      },
+      cta: {
+        title: 'Готові працювати зі мною?',
+        subtitle: 'Зв\'яжіться зі мною для обговорення вашого проекту',
+        cta1: 'Отримати консультацію',
+        cta2: 'Переглянути мої роботи'
+      }
+    },
+    services: {
+      hero: {
+        title: 'Наші послуги',
+        subtitle: 'Повний спектр послуг з ремонту та будівництва'
+      },
+      whatWeDo: {
+        title: 'Що ми робимо',
+        subtitle: 'Ми спеціалізуємося на різних видах ремонтних та будівельних робіт'
+      },
+      process: {
+        title: 'Наш процес',
+        subtitle: 'Як ми працюємо над вашим проектом',
+        consultation: {
+          title: 'Консультація',
+          description: 'Безкоштовна консультація та оцінка вашого проекту'
+        },
+        planning: {
+          title: 'Планування',
+          description: 'Детальне планування та складання технічного завдання'
+        },
+        execution: {
+          title: 'Виконання',
+          description: 'Професійне виконання робіт з постійним контролем'
+        },
+        completion: {
+          title: 'Завершення',
+          description: 'Фінальна перевірка та передача готового проекту'
+        }
+      },
+      cta: {
+        title: 'Потрібна допомога з проектом?',
+        subtitle: 'Зв\'яжіться з нами для отримання детальної інформації',
+        cta1: 'Отримати консультацію',
+        cta2: 'Запросити кошторис'
+      }
+    },
+    contact: {
+      hero: {
+        title: 'Зв\'яжіться зі мною',
+        subtitle: 'Я готовий відповісти на ваші запитання та обговорити ваш проект'
+      },
+      form: {
+        title: 'Надіслати повідомлення',
+        name: 'Ім\'я',
+        email: 'Email',
+        phone: 'Телефон',
+        service: 'Послуга',
+        message: 'Повідомлення',
+        submit: 'Надіслати',
+        selectService: 'Виберіть послугу',
+        sendMessage: 'Надіслати повідомлення',
+        other: 'Інше',
+        street: 'Вулиця',
+        houseNumber: 'Номер будинку',
+        postalCode: 'Поштовий індекс',
+        city: 'Місто',
+        namePlaceholder: 'Ваше ім\'я',
+        emailPlaceholder: 'your@email.com',
+        phonePlaceholder: '+31 6 1234 5678',
+        streetPlaceholder: 'Назва вулиці',
+        houseNumberPlaceholder: '123',
+        postalCodePlaceholder: '1234 AB',
+        cityPlaceholder: 'Амстердам',
+        messagePlaceholder: 'Розкажіть про ваш проект...',
+        streetRequired: 'Вулиця обов\'язкова',
+        houseNumberRequired: 'Номер будинку обов\'язковий',
+        postalCodeRequired: 'Поштовий індекс обов\'язковий',
+        postalCodeInvalid: 'Невірний формат поштового індексу. Використовуйте формат: 1234 AB',
+        successMessage: 'Дякуємо за ваше повідомлення! Ми зв\'яжемося з вами найближчим часом.',
+        errorMessage: 'Сталася помилка. Будь ласка, спробуйте ще раз.'
+      },
+      info: {
+        title: 'Контактна інформація',
+        phone: {
+          title: 'Телефон',
+          number1: '+31 6 1234 5678',
+          number2: '+31 6 8765 4321'
+        },
+        email: {
+          title: 'Email',
+          address1: 'vkbouwmaster@gmail.com',
+          address2: 'vkbouwmaster@gmail.com'
+        },
+        address: {
+          title: 'Адреса',
+          street: 'Головна вулиця, 123',
+          city: 'Амстердам, Нідерланди',
+          country: 'Нідерланди'
+        },
+        hours: {
+          title: 'Години роботи',
+          weekdays: 'Пн-Пт: 8:00 - 18:00',
+          saturday: 'Сб: 9:00 - 16:00',
+          sunday: 'Нд: За домовленістю',
+          byAppointment: 'За домовленістю'
+        },
+        contactMethods: {
+          title: 'Зв\'язок зі мною',
+          subtitle: 'Можна зв\'язатися через WhatsApp, Email та Telegram',
+          whatsapp: 'WhatsApp',
+          telegram: 'Telegram',
+          email: 'Email'
+        },
+        emergency: {
+          title: 'Екстрені випадки',
+          description: 'Для термінових питань дзвоніть цілодобово',
+          phone: '+31 6 1111 2222'
+        }
+      },
+      faq: {
+        title: 'Часто задавані питання',
+        subtitle: 'Відповіді на популярні питання',
+        q1: {
+          question: 'Скільки часу займає ремонт?',
+          answer: 'Час виконання залежить від складності проекту. Зазвичай від 1-2 тижнів до кількох місяців.'
+        },
+        q2: {
+          question: 'Чи надаєте ви гарантію?',
+          answer: 'Так, ми надаємо гарантію на всі види робіт від 1 до 5 років залежно від типу робіт.'
+        },
+        q3: {
+          question: 'Чи можна отримати безкоштовний кошторис?',
+          answer: 'Звичайно! Ми надаємо безкоштовну консультацію та попередній кошторис для всіх проектів.'
+        },
+        q4: {
+          question: 'Чи працюєте ви у вихідні?',
+          answer: 'Так, ми можемо працювати у вихідні дні за попередньою домовленістю.'
+        }
+      }
+    },
+    blog: {
+      hero: {
+        title: 'Наш блог',
+        subtitle: 'Експертні поради, керівництва з ремонту та інсайти індустрії для допомоги у ваших проектах з покращення дому'
+      },
+      featured: 'Рекомендоване',
+      latest: {
+        title: 'Останні статті',
+        subtitle: 'Будьте в курсі останніх тенденцій, порад та інсайтів у сфері ремонту дому'
+      },
+      newsletter: {
+        title: 'Залишайтеся в курсі',
+        subtitle: 'Підпишіться на нашу розсилку для отримання останніх порад з ремонту, ідей проектів та ексклюзивних пропозицій',
+        cta: 'Зв\'язатися зі мною'
+      },
+      categories: {
+        title: 'Перегляд за категоріями',
+        subtitle: 'Знайдіть статті, які відповідають вашим інтересам та потребам проекту'
+      },
+      readMore: 'Читати далі',
+      noPosts: 'Поки немає статей',
+      noPostsSubtitle: 'Додайте статті через адмін-панель'
+    },
+    faq: {
+      hero: {
+        title: 'Часто задавані питання',
+        subtitle: 'Знайдіть відповіді на популярні питання про наші послуги з ремонту'
+      },
+      categories: [
+        {
+          title: 'Загальні питання',
+          questions: [
+            {
+              q: 'Скільки років працює VK Bouwmaster?',
+              a: 'VK Bouwmaster надає професійні послуги з ремонту вже понад 10 років. Ми зарекомендували себе якісною роботою та винятковим обслуговуванням клієнтів.'
+            },
+            {
+              q: 'У яких районах ви працюєте?',
+              a: 'Ми обслуговуємо велику столичну область та прилеглі регіони. Зв\'яжіться з нами, щоб підтвердити, чи надаємо ми послуги у вашому конкретному районі.'
+            },
+            {
+              q: 'Чи ви ліцензовані та застраховані?',
+              a: 'Так, VK Bouwmaster повністю ліцензована та застрахована. Ми маємо комплексне страхування відповідальності та компенсацію працівникам для захисту нашої команди та вашої власності.'
+            },
+            {
+              q: 'Чи надаєте ви безкоштовні кошториси?',
+              a: 'Абсолютно! Ми пропонуємо безкоштовні, без зобов\'язань кошториси для всіх наших послуг. Наша команда відвідає вашу власність для оцінки необхідних робіт та надасть детальний кошторис.'
+            }
+          ]
+        },
+        {
+          title: 'Послуги та процес',
+          questions: [
+            {
+              q: 'Які види послуг з ремонту ви пропонуєте?',
+              a: 'Ми пропонуємо комплексні послуги з ремонту, включаючи укладання підлогових покриттів, фарбування, сантехнічні роботи, ремонт дахів, укладання плитки, дизайн саду, утеплення, вирівнювання стін та установку вікон/дверей.'
+            },
+            {
+              q: 'Скільки часу займає типовий ремонт?',
+              a: 'Час виконання проектів варіюється залежно від обсягу та складності. Прості проекти, такі як фарбування, можуть зайняти 1-3 дні, тоді як великі ремонти можуть зайняти кілька тижнів. Ми надаємо детальні часові рамки під час консультації.'
+            },
+            {
+              q: 'Чи займаєтеся ви дозволами та інспекціями?',
+              a: 'Так, ми займаємося всіма необхідними дозволами та координуємо з інспекторами для проектів, які їх вимагають. Ми забезпечуємо відповідність всіх робіт місцевим будівельним нормам та правилам.'
+            },
+            {
+              q: 'Чи можете ви працювати за моїм графіком?',
+              a: 'Ми розуміємо, що ремонт може бути руйнівним. Ми працюємо з вами, щоб мінімізувати незручності та часто можемо працювати за вашим графіком, включаючи вечори та вихідні, коли це необхідно.'
+            }
+          ]
+        },
+        {
+          title: 'Ціноутворення та оплата',
+          questions: [
+            {
+              q: 'Як ви визначаєте ціни?',
+              a: 'Наші ціни базуються на кількох факторах, включаючи обсяг проекту, необхідні матеріали, вимоги до робочої сили та часові рамки. Ми надаємо прозорі, детальні кошториси без прихованих зборів.'
+            },
+            {
+              q: 'Які способи оплати ви приймаєте?',
+              a: 'Ми приймаємо готівку, чеки та основні кредитні картки. Умови оплати варіюються залежно від розміру проекту, при цьому великі проекти зазвичай вимагають депозит та покрокові платежі.'
+            },
+            {
+              q: 'Чи пропонуєте ви варіанти фінансування?',
+              a: 'Ми можемо працювати з вами, щоб знайти рішення з фінансування для великих проектів. У нас є відносини з кількома фінансовими компаніями, які спеціалізуються на кредитах на покращення дому.'
+            },
+            {
+              q: 'Чи є приховані витрати?',
+              a: 'Ні, ми віримо в прозоре ціноутворення. Всі витрати чітко викладені у вашому кошторисі, і ми обговоримо будь-які потенційні додаткові витрати перед початком робіт.'
+            }
+          ]
+        },
+        {
+          title: 'Якість та гарантія',
+          questions: [
+            {
+              q: 'Яку гарантію ви надаєте?',
+              a: 'Ми надаємо комплексні гарантії на всі наші роботи, від 1 до 5 років залежно від послуги. Ми також пропонуємо розширені гарантії на преміум-проекти.'
+            },
+            {
+              q: 'Що якщо я незадоволений роботою?',
+              a: 'Ваша задоволеність — наш пріоритет. Якщо ви не повністю задоволені нашою роботою, ми виправимо це. Ми підтримуємо наше майстерність та оперативно вирішимо будь-які проблеми.'
+            },
+            {
+              q: 'Чи використовуєте ви якісні матеріали?',
+              a: 'Так, ми використовуємо лише високоякісні матеріали від надійних постачальників. Ми можемо працювати з вашими бажаними брендами або рекомендувати найкращі варіанти для вашого бюджету та потреб.'
+            },
+            {
+              q: 'Як ви забезпечуєте контроль якості?',
+              a: 'У нас є суворі процеси контролю якості, включаючи регулярні інспекції, досвідчених супервізорів та фінальні обходи з клієнтами, щоб переконатися, що все відповідає нашим високим стандартам.'
+            }
+          ]
+        }
+      ],
+      contact: {
+        title: 'Все ще є питання?',
+        subtitle: 'Не можете знайти відповідь, яку шукаєте? Наша команда тут, щоб допомогти!'
+      }
+    },
+    portfolio: {
+      hero: {
+        title: 'Моє портфоліо',
+        subtitle: 'Вивчіть мої завершені проекти та подивіться якість моєї роботи'
+      },
+      stats: {
+        projects: 'Завершених проектів',
+        years: 'Років досвіду',
+        satisfaction: 'Задоволеність клієнтів',
+        clients: 'Задоволених клієнтів'
+      },
+      featured: {
+        title: 'Мої проекти',
+        subtitle: 'Кожен проект демонструє мою прихильність якості, увазі до деталей та впевненості клієнтів'
+      },
+      whyChoose: {
+        title: 'Чому обирають мене',
+        features: [
+          { icon: '🛠️', title: 'Якість', desc: 'Акуратно, чисто та з увагою до деталей. Використовую перевірені матеріали та технології.' },
+          { icon: '⏱️', title: 'Терміни', desc: 'Працюю за зрозумілим графіком. Завершую вчасно — без сюрпризів і «завтраків».' },
+          { icon: '🤝', title: 'Чесність', desc: 'Прозорі кошториси та етапи. Ви завжди розумієте, за що платите.' },
+          { icon: '💬', title: 'Комунікація', desc: 'Постійно на зв\'язку, швидко відповідаю та пропоную рішення під ваш запит.' },
+          { icon: '🧼', title: 'Чистота', desc: 'Підтримую порядок на об\'єкті, захищаю меблі та покриття, прибираю за собою.' },
+          { icon: '🔒', title: 'Гарантія', desc: 'Даю гарантію на виконані роботи та залишаюся на зв\'язку після здачі.' }
+        ]
+      },
+      features: 'Ключові особливості:',
+      noWorks: {
+        title: 'Поки немає доданих робіт',
+        subtitle: 'Додайте роботи через адмін-панель'
+      },
+      testimonials: {
+        title: 'Що говорять мої клієнти',
+        subtitle: 'Не просто вірьте на слово — прочитайте відгуки реальних клієнтів'
+      },
+      noReviews: 'Поки немає відгуків',
+      cta: {
+        title: 'Готові розпочати ваш проект?',
+        subtitle: 'Дозвольте мені перетворити ваш простір з тією ж якістю та увагою до деталей'
+      },
+      detail: {
+        backToProjects: 'Назад до проектів',
+        projectNotFound: 'Проект не знайдено',
+        projectNotFoundSubtitle: 'Проект з ID {projectId} не існує або був видалений',
+        noMedia: 'Поки немає фото та відео',
+        noMediaSubtitle: 'Додайте фото та відео в адмін-панелі',
+        allPhotosAndVideos: 'Всі фото та відео проекту',
+        oneOfWork: '✨ Одна з наших робіт',
+        date: 'Дата',
+        city: 'Місто',
+        photos: 'Фото',
+        videos: 'Відео',
+        comments: 'Коментарі',
+        noComments: 'Поки немає коментарів. Будьте першим!',
+        beFirst: 'Будьте першим!',
+        profileImageLabel: 'Фото профілю',
+        profileImageOptional: '(необов\'язково)',
+        addProfileImage: 'Додати фото профілю',
+        changePhoto: 'Змінити фото',
+        deletePhoto: 'Видалити фото',
+        cityLabel: 'Місто',
+        cityOptional: '(необов\'язково)',
+        cityPlaceholder: 'В якому місті було зроблено замовлення?',
+        ratingLabel: 'Оцінка',
+        ratingRequired: '(обов\'язково)',
+        commentLabel: 'Ваш коментар',
+        commentPlaceholder: 'Напишіть ваш коментар тут...',
+        charactersLeft: 'Залишилося символів:',
+        addPhotosLabel: '📷 Додати фото',
+        addPhotosOptional: '(необов\'язково)',
+        selectPhotos: '📷 Вибрати фото',
+        photosUploaded: 'Завантажено фото:',
+        addVideosLabel: '🎥 Додати відео',
+        addVideosOptional: '(необов\'язково)',
+        selectVideos: '🎥 Вибрати відео',
+        videosUploaded: 'Завантажено відео:',
+        deleteVideo: 'Видалити відео',
+        submitting: 'Відправка…',
+        submitComment: '📤 Відправити коментар',
+        commentWillAppear: 'Коментар з\'явиться після перевірки адміністратором.',
+        viewAllPhotos: 'Переглянути всі фото ({count})',
+        noProject: 'Без проекту',
+        category: 'Категорія',
+        project: 'Проект',
+        translateTo: 'Перекласти на...',
+        showOriginal: 'Показати оригінал',
+        translatedTo: 'Перекладено на',
+        translating: 'Перекладаємо...'
+      }
+    },
+    pricing: {
+      hero: {
+        title: 'Ціни',
+        subtitle: 'Прозоре, конкурентоспроможне ціноутворення для всіх наших послуг з ремонту'
+      },
+      packages: {
+        title: 'Пакети послуг',
+        subtitle: 'Виберіть пакет, який найкраще відповідає потребам вашого проекту та бюджету',
+        popular: 'Найпопулярніший'
+      },
+      services: {
+        title: 'Ціноутворення за окремими послугами',
+        subtitle: 'Детальне ціноутворення для конкретних послуг. Всі ціни є оцінками та можуть варіюватися залежно від обсягу проекту.'
+      },
+      factors: {
+        title: 'Що впливає на ціну?',
+        subtitle: 'На фінальну вартість проекту впливають кілька факторів',
+        projectSize: {
+          title: 'Розмір і масштаб проекту',
+          description: 'Більші проекти зазвичай коштують більше за квадратний метр через масштаб і складність.'
+        },
+        materialQuality: {
+          title: 'Якість матеріалів',
+          description: 'Преміум-матеріали коштують дорожче, але пропонують кращу довговічність і естетику.'
+        },
+        timeline: {
+          title: 'Терміни',
+          description: 'Термінові проекти можуть потребувати додаткових витрат через прискорений графік і понаднормову роботу.'
+        },
+        existingConditions: {
+          title: 'Існуючі умови',
+          description: 'Структурні проблеми або приховані дефекти, виявлені під час ремонту, можуть вплинути на ціну.'
+        },
+        location: {
+          title: 'Місцезнаходження і доступ',
+          description: 'Складний доступ або віддалені місця можуть потребувати додаткового обладнання або часу.'
+        },
+        customization: {
+          title: 'Індивідуалізація',
+          description: 'Індивідуальні дизайни і унікальні вимоги можуть збільшити вартість проекту.'
+        }
+      },
+      stats: {
+        projects: 'Проекти',
+        years: 'Років',
+        satisfaction: 'Задоволеність',
+        support: 'Підтримка'
+      },
+      cta: {
+        title: 'Отримайте вашу безкоштовну кошторис сьогодні',
+        subtitle: 'Жодних прихованих зборів, жодних сюрпризів. Отримайте детальну, прозору кошторис для вашого проекту.',
+        getQuote: 'Отримати Безкоштовну Кошторис',
+        viewWorks: 'Подивитися Наші Роботи'
+      }
+    },
+    team: {
+      hero: {
+        title: 'Наша команда',
+        subtitle: 'Познайомтеся з досвідченими професіоналами, які втілюють ваші мрії про ремонт у життя'
+      },
+      intro: {
+        title: 'Експертні майстри та професіонали',
+        subtitle: 'Наша команда складається з досвідчених професіоналів, які захоплені досягненням виняткових результатів. Кожен член команди привносить унікальні навички та експертизу, щоб забезпечити завершення вашого проекту за найвищими стандартами.'
+      },
+      specialties: 'Спеціалізації:',
+      experience: 'Досвід:',
+      values: {
+        title: 'Цінності нашої команди',
+        subtitle: 'Принципи, які керують нашою командою та забезпечують виняткове обслуговування',
+        collaboration: 'Співпраця',
+        excellence: 'Досконалість',
+        learning: 'Безперервне навчання'
+      },
+      certs: {
+        title: 'Сертифікації та навчання',
+        licensed: 'Ліцензовані професіонали',
+        training: 'Постійне навчання',
+        safety: 'Сертифікація безпеки',
+        quality: 'Забезпечення якості'
+      },
+      join: {
+        title: 'Приєднуйтеся до нашої команди',
+        subtitle: 'Ми завжди шукаємо досвідчених професіоналів для приєднання до нашої зростаючої команди'
+      }
+    },
+    footer: {
+      description: 'Професійні послуги ремонту з понад 10-річним досвідом. Я перетворюю ваш простір якісною роботою та увагою до деталей.',
+      quickLinks: {
+        title: 'Швидкі посилання'
+      },
+      services: {
+        title: 'Послуги'
+      },
+      shot: {
+        title: 'Shot'
+      },
+      copyright: '© 2025 VK Bouwmaster. Всі права захищені.',
+      privacy: 'Політика конфіденційності',
+      terms: 'Умови використання'
+    },
+    admin: {
+      login: {
+        title: 'Панель Адміністратора',
+        subtitle: 'Увійдіть для управління контентом',
+        email: 'Email',
+        password: 'Пароль',
+        emailPlaceholder: 'Введіть вашу email адресу',
+        passwordPlaceholder: '••••••••',
+        loginButton: 'Увійти',
+        loggingIn: 'Вхід...',
+        connectionError: 'Помилка підключення до сервера',
+        goHome: 'На Головну'
+      },
+      accessDenied: {
+        title: 'Доступ Заборонено',
+        message: 'Невірний email або пароль. У вас немає доступу до цієї області — тільки адміністратори мають доступ.',
+        goHome: 'На Головну',
+        tryAgain: 'Спробувати Знову'
+      }
+    },
+    thankYou: {
+      title: 'Дякую за відгук!',
+      message1: 'Я дуже радий, що ви поділилися своїм досвідом!',
+      message2: 'Я завжди прагну бути кращим для вас. Ваш відгук допоможе мені стати ще кращим.',
+      backToReviews: 'Повернутися до відгуків'
+    },
+    contactThankYou: {
+      title: 'Дякую за ваше повідомлення!',
+      message: 'Я зв\'яжуся з вами протягом дня.',
+      backToContact: 'Повернутися до контактів'
+    },
+    reviews: {
+      hero: {
+        badge: 'Ваша думка важлива для нас',
+        title: 'Відгуки клієнтів',
+        subtitle: 'Поділіться своїм досвідом роботи з нами. Ваші відгуки допомагають іншим клієнтам прийняти рішення.'
+      },
+      form: {
+        title: 'Залишити відгук',
+        namePlaceholder: 'Ім\'я',
+        surnamePlaceholder: 'Прізвище (необов\'язково)',
+        profileImageLabel: 'Фото профілю',
+        profileImageOptional: '(необов\'язково)',
+        addProfileImage: 'Додати фото профілю',
+        changePhoto: 'Змінити фото',
+        deletePhoto: 'Видалити фото',
+        cityLabel: 'Місто',
+        cityOptional: '(необов\'язково)',
+        cityPlaceholder: 'В якому місті було зроблено замовлення?',
+        ratingLabel: 'Оцінка',
+        ratingRequired: '(обов\'язково)',
+        reviewLabel: 'Ваш відгук',
+        reviewPlaceholder: 'Розкажіть про ваш досвід роботи з нами... Що вам сподобалося? Що можна покращити?',
+        charactersLeft: 'Залишилося символів:',
+        goodReview: 'Хороший відгук!',
+        addPhotosLabel: 'Додати фото',
+        addPhotosOptional: '(необов\'язково)',
+        selectPhotos: '📷 Вибрати фото',
+        photosUploaded: 'Завантажено фото:',
+        addVideosLabel: 'Додати відео',
+        addVideosOptional: '(необов\'язково)',
+        selectVideos: '🎥 Вибрати відео',
+        videosUploaded: 'Завантажено відео:',
+        deleteVideo: 'Видалити відео',
+        submitting: 'Відправка…',
+        submitButton: 'Відправити відгук',
+        reviewWillAppear: 'Відгук з\'явиться після перевірки адміністратором',
+        fillRequiredFields: 'Будь ласка, заповніть ім\'я та повідомлення',
+        errorSubmitting: 'Помилка при відправці відгуку. Будь ласка, спробуйте ще раз.',
+        errorConnection: 'Помилка при відправці відгуку. Будь ласка, перевірте підключення до інтернету та спробуйте ще раз.'
+      },
+      list: {
+        title: 'Всі відгуки',
+        review: 'відгук',
+        reviews2: 'відгуки',
+        reviews5: 'відгуків',
+        noReviews: 'Поки немає відгуків. Будьте першим!',
+        photosAndVideos: 'Фото та відео з відгуку',
+        viewAllMedia: 'Переглянути всі фото та відео →'
+      },
+      detail: {
+        backToReviews: 'Повернутися до відгуків',
+        reviewNotFound: 'Відгук не знайдено',
+        reviewNotFoundSubtitle: 'Відгук з ID {reviewId} не існує',
+        noMedia: 'У цього відгуку немає фото та відео',
+        noMediaSubtitle: 'Поверніться до відгуків',
+        photosAndVideos: 'Фото та відео з відгуку'
+      }
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Укладання підлогових покриттів',
+          subtitle: 'Професійні послуги з укладання та ремонту підлогових покриттів для всіх типів матеріалів'
+        },
+        solutions: {
+          title: 'Професійні Рішення',
+          description1: 'Перетворіть ваш простір завдяки нашим професійним послугам з укладання підлогових покриттів. Я спеціалізуюся на всіх типах підлогових матеріалів та надаю послуги з експертного монтажу, ремонту та обслуговування.',
+          description2: 'Мій досвід забезпечує правильні техніки монтажу, увагу до деталей та використання якісних матеріалів для створення красивих, міцних підлог, які прослужать роками.',
+          projectsCompleted: 'Завершених Проектів',
+          yearsExperience: 'Років Досвіду'
+        },
+        services: {
+          title: 'Наші Послуги',
+          items: [
+            'Укладання паркету',
+            'Укладання ламінату',
+            'Укладання плитки та каменю',
+            'Укладання килимових покриттів',
+            'Укладання вінілових покриттів (LVT)',
+            'Ремонт та реставрація підлог'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Малярні Послуги',
+          subtitle: 'Професійні послуги з фарбування інтер\'єру та фасаду з використанням матеріалів преміум якості'
+        },
+        solutions: {
+          title: 'Професійні Рішення',
+          description1: 'Перетворіть ваш простір завдяки професійним малярним послугам. Я забезпечую якісну підготовку поверхні, використання преміум фарб та бездоганне виконання.',
+          description2: 'Мій досвід гарантує міцні покриття, ідеально гладкі поверхні та захист від зовнішніх факторів.',
+          projectsCompleted: 'Завершених Проектів',
+          yearsExperience: 'Років Досвіду'
+        },
+        services: {
+          title: 'Наші Послуги',
+          items: [
+            'Фарбування стін та стелів',
+            'Фарбування зовнішніх фасадів',
+            'Декоративне фарбування',
+            'Грунтовка поверхонь',
+            'Фарбування дерев\'яних конструкцій',
+            'Захисна обробка'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Сантехнічні Роботи',
+          subtitle: 'Професійні послуги з ремонту та встановлення сантехніки для будинків та офісів'
+        },
+        solutions: {
+          title: 'Професійні Рішення',
+          description1: 'Повний спектр сантехнічних послуг для вашого будинку або бізнесу. Я надаю якісний монтаж, ремонт та обслуговування всіх типів сантехнічних приладів.',
+          description2: 'Багаторічний досвід гарантує надійність, довговічність та відповідність усім стандартам безпеки.',
+          projectsCompleted: 'Завершених Проектів',
+          yearsExperience: 'Років Досвіду'
+        },
+        services: {
+          title: 'Наші Послуги',
+          items: [
+            'Ремонт та заміна труб',
+            'Встановлення сантехнічних приладів',
+            'Монтаж водопроводу',
+            'Ремонт каналізації',
+            'Встановлення радіаторів',
+            'Прочищення стоків'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Ремонт Дахів',
+          subtitle: 'Експертні послуги з ремонту та обслуговування дахів для захисту вашої власності'
+        },
+        solutions: {
+          title: 'Професійні Рішення',
+          description1: 'Комплексний ремонт, обслуговування та профілактика дахів. Я працюю з різними типами покрівель, усуваю протікання та пошкодження.',
+          description2: 'Якісні матеріали та суворе дотримання технології — для міцного та надійного даху.',
+          projectsCompleted: 'Завершених Проектів',
+          yearsExperience: 'Років Досвіду'
+        },
+        services: {
+          title: 'Наші Послуги',
+          items: [
+            'Ремонт протікань та пошкоджень',
+            'Заміна покрівлі',
+            'Встановлення та ремонт водостоків',
+            'Герметизація швів та примикань',
+            'Локальний та капітальний ремонт',
+            'Профілактичний огляд та обслуговування'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Дизайн Саду',
+          subtitle: 'Красивий дизайн саду та ландшафтні послуги для покращення вашого відкритого простору'
+        },
+        solutions: {
+          title: 'Професійні Рішення',
+          description1: 'Індивідуальний підхід до дизайну та ландшафтного оформлення. Я створюю функціональні та естетичні сади, що відповідають вашим побажанням та умовам ділянки.',
+          description2: 'Підбір рослин, освітлення та покриттів — для гармонії та довгої служби.',
+          projectsCompleted: 'Завершених Проектів',
+          yearsExperience: 'Років Досвіду'
+        },
+        services: {
+          title: 'Наші Послуги',
+          items: [
+            'Ландшафтний дизайн',
+            'Підбір рослин та озеленення',
+            'Влаштування газонів та доріжок',
+            'Системи поливу та дренажу',
+            'Освітлення саду',
+            'Сезонне обслуговування саду'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Укладання Плитки',
+          subtitle: 'Професійні послуги з демонтажу та укладання плитки для кухонь, ванних кімнат та інших приміщень'
+        },
+        solutions: {
+          title: 'Професійні Рішення',
+          description1: 'Демонтаж старої плитки, підготовка поверхні та точне укладання нової плитки. Я забезпечую правильну геометрію, затирку та гідроізоляцію.',
+          description2: 'Використовую якісні матеріали та інструменти — для бездоганного результату та довговічності.',
+          projectsCompleted: 'Завершених Проектів',
+          yearsExperience: 'Років Досвіду'
+        },
+        services: {
+          title: 'Наші Послуги',
+          items: [
+            'Демонтаж старої плитки',
+            'Підготовка та вирівнювання поверхні',
+            'Гідроізоляція вологих зон',
+            'Укладання плитки та мозаїки',
+            'Затирка та герметизація',
+            'Реставрація та заміна окремих елементів'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Політика конфіденційності',
+        subtitle: 'Політика конфіденційності VK Bouwmaster'
+      },
+      introduction: {
+        title: '1. Вступ',
+        content: 'VK Bouwmaster ("ми", "наш" або "компанія") зобов\'язується захищати вашу конфіденційність. Ця Політика конфіденційності пояснює, як ми збираємо, використовуємо, розкриваємо та захищаємо вашу інформацію при використанні нашого веб-сайту та послуг.'
+      },
+      dataCollection: {
+        title: '2. Інформація, яку ми збираємо',
+        personalInfo: {
+          title: 'Особиста інформація',
+          items: ['Ім\'я', 'Адреса електронної пошти', 'Номер телефону']
+        },
+        projectInfo: {
+          title: 'Інформація про проект',
+          items: ['Деталі запиту', 'Адреса проекту', 'Опис робіт']
+        },
+        technicalInfo: {
+          title: 'Технічна інформація',
+          items: ['IP-адреса', 'Тип браузера', 'Дані про використання']
+        }
+      },
+      dataUsage: {
+        title: '3. Як ми використовуємо вашу інформацію',
+        subtitle: 'Ми використовуємо зібрану інформацію для:',
+        items: [
+          { icon: '✅', text: 'Надання та покращення наших послуг' },
+          { icon: '📞', text: 'Зв\'язку з вами щодо вашого проекту' },
+          { icon: '📧', text: 'Відправки інформаційних матеріалів та оновлень' },
+          { icon: '🔒', text: 'Забезпечення безпеки нашого веб-сайту' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Захист даних',
+        content: 'Ми застосовуємо відповідні технічні та організаційні заходи для захисту вашої особистої інформації від несанкціонованого доступу, зміни, розкриття або знищення.',
+        encryption: 'Шифрування даних',
+        secureAccess: 'Безпечний доступ',
+        regularChecks: 'Регулярні перевірки'
+      },
+      thirdParty: {
+        title: '5. Розкриття інформації третім особам',
+        content: 'Ми не продаємо, не обмінюємо та не передаємо вашу особисту інформацію третім особам без вашої згоди, за винятком випадків, коли це необхідно для надання наших послуг або вимагається законом.'
+      },
+      userRights: {
+        title: '6. Ваші права',
+        subtitle: 'Ви маєте право:',
+        items: [
+          { icon: '📖', text: 'Отримати доступ до вашої особистої інформації' },
+          { icon: '✏️', text: 'Виправити неточну інформацію' },
+          { icon: '🗑️', text: 'Запросити видалення ваших даних' },
+          { icon: '🔄', text: 'Відкликати згоду на обробку даних' }
+        ]
+      },
+      contact: {
+        title: '7. Контакти',
+        subtitle: 'Якщо у вас є питання щодо нашої Політики конфіденційності, будь ласка, зв\'яжіться з нами:',
+        email: {
+          title: 'Email',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Телефон',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Зміни в Політиці конфіденційності',
+        content: 'Ми можемо періодично оновлювати цю Політику конфіденційності. Ми повідомимо вас про будь-які зміни, розмістивши нову Політику конфіденційності на цій сторінці з оновленою датою.'
+      },
+      lastUpdated: 'Останнє оновлення: Січень 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Умови використання',
+        subtitle: 'Умови надання послуг VK Bouwmaster'
+      },
+      acceptance: {
+        title: '1. Прийняття умов',
+        content: 'Використовуючи веб-сайт та послуги VK Bouwmaster, ви погоджуєтеся з цими Умовами обслуговування. Якщо ви не погоджуєтеся з будь-якими умовами, будь ласка, не використовуйте наші послуги.'
+      },
+      services: {
+        title: '2. Опис послуг',
+        content: 'VK Bouwmaster надає професійні послуги з ремонту та реконструкції, включно, але не обмежуючись: укладанням підлогових покриттів, фарбуванням, сантехнічними роботами, ремонтом дахів, дизайном садів та іншими будівельними послугами.'
+      },
+      estimates: {
+        title: '3. Оцінки та ціноутворення',
+        content: 'Ми надаємо безкоштовні оцінки вартості робіт. Зазначені ціни є орієнтовними та можуть змінюватися в залежності від:',
+        factors: ['Складності проекту', 'Використаних матеріалів', 'Обсягів робіт', 'Додаткових вимог клієнта']
+      },
+      payment: {
+        title: '4. Оплата',
+        content: 'Умови оплати обговорюються індивідуально для кожного проекту та вказуються в договорі. Зазвичай потрібно:',
+        items: ['Передоплата може знадобитися для закупівлі матеріалів', 'Остаточна оплата здійснюється після завершення робіт', 'Прийомка робіт здійснюється в присутності замовника']
+      },
+      warranty: {
+        title: '5. Гарантія',
+        content: 'Ми надаємо гарантію на виконані роботи відповідно до умов договору. Деталі гарантії обговорюються індивідуально для кожного проекту.'
+      },
+      liability: {
+        title: '6. Відповідальність',
+        content: 'VK Bouwmaster несе відповідальність за якість виконаних робіт у рамках узгодженого договору. Ми використовуємо якісні матеріали та професійні методи роботи. Клієнт несе відповідальність за надання точної інформації про проект.'
+      },
+      cancellation: {
+        title: '7. Скасування та зміни',
+        content: 'Зміни в проекті повинні бути узгоджені заздалегідь. Скасування проекту повинно бути повідомлено в розумні терміни. Умови повернення коштів обговорюються індивідуально.'
+      },
+      intellectualProperty: {
+        title: '8. Інтелектуальна власність',
+        content: 'Всі матеріали та дизайни, створені VK Bouwmaster в рамках проекту, залишаються власністю компанії до повної оплати робіт, після чого права передаються замовнику.'
+      },
+      contact: {
+        title: '9. Контакти',
+        content: 'З питань, пов\'язаних з цими Умовами обслуговування, звертайтеся:',
+        email: 'Email: vkbouwmaster@gmail.com',
+        phone: 'Телефон: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Зміни умов',
+        content: 'Ми залишаємо за собою право змінювати ці Умови обслуговування в будь-який час. Продовження використання наших послуг після внесення змін означає вашу згоду з новими умовами.'
+      },
+      lastUpdated: 'Останнє оновлення: Січень 2025'
+    }
+  },
+  GR: {
+    navigation: {
+      home: 'Αρχική',
+      about: 'Σχετικά',
+      services: 'Υπηρεσίες',
+      portfolio: 'Portfolio',
+      reviews: 'Αξιολογήσεις',
+      team: 'Ομάδα',
+      pricing: 'Τιμές',
+      blog: 'Blog',
+      faq: 'FAQ',
+      contact: 'Επικοινωνία',
+      getQuote: 'Προσφορά',
+      language: 'Γλώσσα',
+      adminPanel: '🔐 Πίνακας διαχειριστή',
+      scrollLeft: 'Κύλιση προς τα αριστερά',
+      scrollRight: 'Κύλιση προς τα δεξιά',
+      adminPanelTitle: 'Πίνακας διαχειριστή',
+      switchLanguage: 'Αλλαγή γλώσσας'
+    },
+    common: {
+      loading: 'Φόρτωση...',
+      error: 'Σφάλμα',
+      success: 'Επιτυχία',
+      cancel: 'Ακύρωση',
+      save: 'Αποθήκευση',
+      delete: 'Διαγραφή',
+      edit: 'Επεξεργασία',
+      view: 'Προβολή',
+      learnMore: 'Μάθετε Περισσότερα',
+      readMore: 'Διαβάστε Περισσότερα',
+      getStarted: 'Ξεκινήστε',
+      contactUs: 'Επικοινωνήστε Μαζί Μας',
+      years: 'Χρόνια',
+      projects: 'Έργα',
+      satisfaction: 'Ικανοποίηση',
+      support: 'Υποστήριξη',
+      experience: 'Εμπειρία',
+      quality: 'Ποιότητα',
+      team: 'Ομάδα',
+      clients: 'Πελάτες',
+      completed: 'Ολοκληρωμένο',
+      happy: 'Ευτυχισμένος',
+      available: 'Διαθέσιμο',
+      expertise: 'Εξειδίκευση'
+    },
+    home: {
+      hero: {
+        title1: 'Επαγγελματικές',
+        title2: 'Υπηρεσίες Επισκευών',
+        subtitle: 'Επαγγελματικές υπηρεσίες επισκευών με περισσότερα από 10 χρόνια εμπειρίας. Αληθινός δάσκαλος της τέχνης του που ξέρει τα πάντα: από την εγκατάσταση δαπέδων έως την πλήρη ανακαίνιση. Ποιότητα εργασίας, προσοχή σε κάθε λεπτομέρεια, τήρηση προθεσμιών και δίκαιες τιμές. Μεταμορφώνω τον χώρο σας με αγάπη και επαγγελματισμό.',
+        cta1: 'Λάβετε Δωρεάν Προσφορά',
+        cta2: 'Δείτε τις Εργασίες Μου'
+      },
+      about: {
+        title: 'Σχετικά με τον Τεχνίτη',
+        description1: 'Ο Vladimir είναι ένας τεχνίτης με περισσότερα από 10 χρόνια εμπειρίας στις επισκευές και την κατασκευή. Τον διακρίνει <span class="text-blue-400 font-medium">εξαιρετική ευθύνη</span> και προσοχή στη λεπτομέρεια.',
+        description2: 'Κάθε έργο εκτελείται με <span class="text-blue-400 font-medium">υψηλότερη ποιότητα</span> και αυστηρή συμμόρφωση με τις προθεσμίες. Οι πελάτες τον εκτιμούν για την ειλικρίνειά του, τον επαγγελματισμό του και την ικανότητά του να πραγματοποιεί τις πιο σύνθετες ιδέες.',
+        projectsCount: '200+',
+        projectsLabel: 'Ολοκληρωμένα Έργα',
+        yearsCount: '10+',
+        yearsLabel: 'Χρόνια Εμπειρίας',
+        satisfactionPercent: '100%',
+        satisfactionLabel: 'Ευχαριστημένοι Πελάτες',
+        supportLabel: 'Υποστήριξη Πελατών',
+        viewWorks: 'Δείτε τις Εργασίες Μου'
+      },
+      works: {
+        title: 'Οι Εργασίες Μου',
+        description: 'Ο Vladimir είναι ένας τεχνίτης που μετατρέπει τις επισκευές σε τέχνη: ακριβείς προθεσμίες, ιδανική γεωμετρία και άψογη ποιότητα σε κάθε λεπτομέρεια.',
+        work: 'εργασία',
+        works2: 'εργασίες',
+        works5: 'εργασιών'
+      },
+      services: {
+        title: 'Οι Υπηρεσίες Μου',
+        subtitle: 'Προσφέρω υπηρεσίες επισκευών για να μεταμορφώσω το σπίτι ή την επιχείρησή σας',
+        flooring: {
+          title: 'Τοποθέτηση Επενδύσεων',
+          description: 'Επαγγελματικές υπηρεσίες τοποθέτησης και επισκευής δαπέδων για όλους τους τύπους υλικών δαπέδου.'
+        },
+        painting: {
+          title: 'Υπηρεσίες Βάψιματος',
+          description: 'Εσωτερικές και εξωτερικές εργασίες βάψιματος με υψηλής ποιότητας χρώματα και επενδύσεις.'
+        },
+        plumbing: {
+          title: 'Υδραυλικές Εργασίες',
+          description: 'Επαγγελματικές υπηρεσίες επισκευής και εγκατάστασης υδραυλικών για σπίτια και γραφεία.'
+        },
+        roofing: {
+          title: 'Επισκευές Στεγών',
+          description: 'Επαγγελματικές υπηρεσίες επισκευής και συντήρησης στεγών για την προστασία της ιδιοκτησίας σας.'
+        },
+        garden: {
+          title: 'Σχεδιασμός Κήπου',
+          description: 'Όμορφες υπηρεσίες σχεδιασμού κήπου και τοπίου για τη βελτίωση του εξωτερικού χώρου σας.'
+        },
+        tile: {
+          title: 'Τοποθέτηση Πλακιδίων',
+          description: 'Επαγγελματικές υπηρεσίες αφαίρεσης και τοποθέτησης πλακιδίων για κουζίνες, μπάνια και άλλα δωμάτια.'
+        },
+        paving: {
+          title: 'Τοποθέτηση Λιθόστρωσης',
+          description: 'Επαγγελματικές υπηρεσίες τοποθέτησης λιθόστρωσης για οδούς πρόσβασης, μονοπάτια, βεράντες και εξωτερικούς χώρους.'
+        },
+        hedge: {
+          title: 'Κλάδεμα Φράχτη',
+          description: 'Επαγγελματικές υπηρεσίες κλάδεματος και συντήρησης φράχτη για να διατηρήσετε τον κήπο σας τακτοποιημένο και όμορφο.'
+        },
+        ceiling: {
+          title: 'Οροφές & Τοίχοι',
+          description: 'Επαγγελματικές υπηρεσίες εγκατάστασης, επισκευής και φινιρίσματος οροφών και τοίχων για εσωτερικούς χώρους.'
+        },
+        drywall: {
+          title: 'Εργασίες Drywall',
+          description: 'Επαγγελματικές υπηρεσίες εγκατάστασης, επισκευής και φινιρίσματος drywall για τοίχους και οροφές.'
+        }
+      },
+      achievements: {
+        title: 'Οι Επιτεύξεις Μας',
+        subtitle: 'Αριθμοί που μιλούν για την επιτυχία μας',
+        experience: {
+          title: 'Χρόνια Εμπειρίας',
+          subtitle: 'Περισσότερο από μια δεκαετία επαγγελματικών υπηρεσιών'
+        },
+        projects: {
+          title: 'Ολοκληρωμένα Έργα',
+          subtitle: 'Επιτυχώς ολοκληρωμένα έργα'
+        },
+        clients: {
+          title: 'Ευχαριστημένοι Πελάτες',
+          subtitle: 'Ευχαριστημένοι πελάτες'
+        },
+        satisfaction: {
+          title: 'Επίπεδο Ικανοποίησης',
+          subtitle: 'Εγγυημένη ικανοποίηση πελατών'
+        },
+        support: {
+          title: 'Υποστήριξη 24/7',
+          subtitle: 'Υποστήριξη πελατών όλο το εικοσιτετράωρο'
+        }
+      },
+      whyChoose: {
+        title: 'Γιατί να Επιλέξετε τον VK Bouwmaster;',
+        subtitle: 'Παρέχουμε εξαιρετικά αποτελέσματα με την αφοσίωσή μας στην ποιότητα και την ικανοποίηση των πελατών',
+        experience: {
+          title: 'Χρόνια Εμπειρίας',
+          description: 'Περισσότερα από 10 χρόνια εμπειρίας σε υπηρεσίες επισκευών και κατασκευών'
+        },
+        quality: {
+          title: 'Εγγύηση Ποιότητας',
+          description: 'Υποστηρίζουμε την εργασία μας με περιεκτικές εγγυήσεις ποιότητας'
+        },
+        team: {
+          title: 'Ομάδα Ειδικών',
+          description: 'Εξειδικευμένοι επαγγελματίες που είναι αφοσιωμένοι στην παροχή εξαιρετικών αποτελεσμάτων'
+        }
+      },
+      testimonials: {
+        title: 'Τι Λένε οι Πελάτες Μας',
+        subtitle: 'Πραγματικές κριτικές από ευχαριστημένους πελάτες που μας εμπιστεύτηκαν τα έργα τους',
+        testimonial1: {
+          text: 'Εξαιρετική εργασία! Η ομάδα μεταμόρφωσε εντελώς την κουζίνα μας. Επαγγελματικά, καθαρά και παραδόθηκε εγκαίρως. Συνιστώ ανεπιφύλακτα!',
+          author: 'Γιάννης Παπαδόπουλος',
+          role: 'Ιδιοκτήτης Σπιτιού'
+        },
+        testimonial2: {
+          text: 'Εξαιρετική εξυπηρέτηση από την αρχή μέχρι το τέλος. Επισκεύασαν τον χώρο του γραφείου μας και ξεπέρασαν όλες τις προσδοκίες. Σίγουρα θα το χρησιμοποιήσω ξανά!',
+          author: 'Μαρία Γεωργίου',
+          role: 'Διευθύντρια Γραφείου'
+        }
+      }
+    },
+    about: {
+      hero: {
+        title: 'Σχετικά με τον VK Bouwmaster',
+        subtitle: 'Ο αξιόπιστος συνεργάτης σας σε επαγγελματικές υπηρεσίες ανακαίνισης και κατασκευών'
+      },
+      story: {
+        title: 'Η Ιστορία Μας',
+        paragraph1: 'Ιδρυμένος πριν από περισσότερα από δέκα χρόνια, ο VK Bouwmaster βρίσκεται στην πρώτη γραμμή των επαγγελματικών υπηρεσιών ανακαίνισης. Αυτό που ξεκίνησε ως μια μικρή οικογενειακή επιχείρηση έχει εξελιχθεί σε ένα από τα πιο αξιόπιστα ονόματα στον τομέα της βελτίωσης κατοικιών και κατασκευών.',
+        paragraph2: 'Το ταξίδι μας ξεκίνησε με μια απλή αποστολή: να μεταμορφώσουμε χώρους και να ξεπεράσουμε τις προσδοκίες. Σήμερα συνεχίζουμε να τηρούμε αυτή την δέσμευση μέσω καινοτόμων λύσεων, ποιοτικής κατασκευής και εξαιρετικής εξυπηρέτησης πελατών.',
+        paragraph3: 'Κάθε έργο που αναλαμβάνουμε αντικατοπτρίζει το πάθος μας για την αριστεία και τη δέσμευσή μας να κάνουμε το όραμά σας πραγματικότητα. Πιστεύουμε ότι το σπίτι σας είναι κάτι περισσότερο από ένα κτίριο—είναι το μέρος όπου δημιουργούνται αναμνήσεις και τα όνειρα γίνονται πραγματικότητα.'
+      },
+      mission: {
+        title: 'Η Αποστολή και οι Αξίες Μας',
+        subtitle: 'Οδηγούμαστε από τις βασικές μας αξίες και τη δέσμευσή μας για την αριστεία',
+        mission: {
+          title: 'Η Αποστολή Μας',
+          description: 'Να παρέχουμε εξαιρετικές υπηρεσίες ανακαίνισης που μεταμορφώνουν χώρους και ξεπερνούν τις προσδοκίες των πελατών μας μέσω ποιοτικής κατασκευής και καινοτόμων λύσεων.'
+        },
+        quality: {
+          title: 'Ποιότητα Πρώτα',
+          description: 'Ποτέ δεν συμβιβαζόμαστε με την ποιότητα. Κάθε έργο ολοκληρώνεται με προσοχή στη λεπτομέρεια και χρησιμοποιώντας μόνο τα καλύτερα υλικά και τεχνικές.'
+        },
+        customer: {
+          title: 'Εστίαση στον Πελάτη',
+          description: 'Οι πελάτες μας είναι στην καρδιά όλων όσων κάνουμε. Ακούμε, επικοινωνούμε σαφώς και συνεργαζόμαστε στενά μαζί σας για να επιτύχουμε το όραμά σας.'
+        }
+      },
+      whyChoose: {
+        title: 'Γιατί να Επιλέξετε τον VK Bouwmaster;',
+        subtitle: 'Ξεχωρίζουμε από τον ανταγωνισμό με την μοναδική μας προσέγγιση και τη δέσμευσή μας για την αριστεία',
+        award: {
+          title: 'Βραβευμένος',
+          description: 'Αναγνωρισμένος για την αριστεία σε υπηρεσίες ανακαίνισης και κατασκευών'
+        },
+        expert: {
+          title: 'Ομάδα Ειδικών',
+          description: 'Ειδικοί επαγγελματίες με χρόνια εμπειρίας στους αντίστοιχους τομείς τους'
+        },
+        onTime: {
+          title: 'Έγκαιρη Παράδοση',
+          description: 'Σεβόμαστε τον χρόνο σας και παραδίδουμε έργα σύμφωνα με το πρόγραμμα, κάθε φορά'
+        },
+        fair: {
+          title: 'Δίκαιες Τιμές',
+          description: 'Διαφανής τιμολόγηση χωρίς κρυφά έξοδα ή εκπλήξεις'
+        }
+      },
+      certifications: {
+        title: 'Πιστοποιήσεις και Άδειες',
+        subtitle: 'Διατηρούμε τα υψηλότερα πρότυπα με κατάλληλες πιστοποιήσεις και άδειες',
+        licensed: {
+          title: 'Άδεια και Ασφάλιση',
+          description: 'Πλήρως άδεια και ασφαλισμένος για την ηρεμία και την προστασία σας'
+        },
+        certified: {
+          title: 'Βιομηχανικά Πιστοποιημένος',
+          description: 'Πιστοποιημένος από κορυφαίους βιομηχανικούς οργανισμούς και επαγγελματικές ενώσεις'
+        },
+        quality: {
+          title: 'Εγγυημένη Ποιότητα',
+          description: 'Κανονικοί έλεγχοι ποιότητας και συνεχείς διαδικασίες βελτίωσης'
+        }
+      },
+      cta: {
+        title: 'Έτοιμοι να Συνεργαστούμε;',
+        subtitle: 'Ας συζητήσουμε το έργο σας και να δούμε πώς μπορούμε να κάνουμε το όραμά σας πραγματικότητα',
+        cta1: 'Λάβετε Δωρεάν Προσφορά',
+        cta2: 'Δείτε τη Δουλειά Μας'
+      }
+    },
+    portfolio: {
+      hero: {
+        title: 'Το Portfolio Μου',
+        subtitle: 'Εξερευνήστε τα ολοκληρωμένα μου έργα και δείτε την ποιότητα της δουλειάς μου'
+      },
+      stats: {
+        projects: 'Ολοκληρωμένα Έργα',
+        years: 'Χρόνια Εμπειρίας',
+        satisfaction: 'Ικανοποίηση Πελατών',
+        clients: 'Ευχαριστημένοι Πελάτες'
+      },
+      whyChoose: {
+        title: 'Γιατί Να Με Επιλέξετε',
+        features: [
+          { icon: '🛠️', title: 'Ποιότητα', desc: 'Τακτοποιημένα, καθαρά και με προσοχή στη λεπτομέρεια. Χρησιμοποιώ αποδεδειγμένα υλικά και τεχνολογίες.' },
+          { icon: '⏱️', title: 'Χρονοδιαγράμματα', desc: 'Δουλεύω με ένα σαφές χρονοδιάγραμμα. Τελειώνω στην ώρα — χωρίς εκπλήξεις ή "αύριο".' },
+          { icon: '🤝', title: 'Ειλικρίνεια', desc: 'Διαφανείς εκτιμήσεις και φάσεις. Κατανοείτε πάντα για τι πληρώνετε.' },
+          { icon: '💬', title: 'Επικοινωνία', desc: 'Πάντα διαθέσιμος, απαντώ γρήγορα και προτείνω λύσεις για το αίτημά σας.' },
+          { icon: '🧼', title: 'Καθαριότητα', desc: 'Διατηρώ τη σειρά στο χώρο, προστατεύω έπιπλα και επενδύσεις, καθαρίζω μετά από μένα.' },
+          { icon: '🔒', title: 'Εγγύηση', desc: 'Παρέχω εγγύηση στα ολοκληρωμένα έργα και παραμένω διαθέσιμος μετά την παράδοση.' }
+        ]
+      },
+      featured: {
+        title: 'Τα Έργα Μου',
+        subtitle: 'Κάθε έργο δείχνει τη δέσμευσή μου στην ποιότητα, την προσοχή στη λεπτομέρεια και την εμπιστοσύνη των πελατών'
+      },
+      features: 'Κύρια Χαρακτηριστικά:',
+      noWorks: {
+        title: 'Δεν έχουν προστεθεί ακόμα έργα',
+        subtitle: 'Προσθέστε έργα μέσω του πίνακα διαχείρισης'
+      },
+      testimonials: {
+        title: 'Τι Λένε οι Πελάτες Μου',
+        subtitle: 'Μην με πιστεύετε μόνο στα λόγια — διαβάστε κριτικές από πραγματικούς πελάτες'
+      },
+      noReviews: 'Δεν υπάρχουν ακόμα κριτικές',
+      cta: {
+        title: 'Έτοιμοι να Ξεκινήσετε το Έργο Σας;',
+        subtitle: 'Επιτρέψτε μου να μεταμορφώσω τον χώρο σας με την ίδια ποιότητα και προσοχή στη λεπτομέρεια'
+      },
+      detail: {
+        backToProjects: 'Επιστροφή στα έργα',
+        projectNotFound: 'Το έργο δεν βρέθηκε',
+        projectNotFoundSubtitle: 'Το έργο με ID {projectId} δεν υπάρχει ή έχει διαγραφεί',
+        noMedia: 'Δεν υπάρχουν ακόμα φωτογραφίες και βίντεο',
+        noMediaSubtitle: 'Προσθέστε φωτογραφίες και βίντεο στο πάνελ διαχείρισης',
+        allPhotosAndVideos: 'Όλες οι φωτογραφίες και βίντεο του έργου',
+        oneOfWork: '✨ Ένα από τα έργα μας',
+        date: 'Ημερομηνία',
+        city: 'Πόλη',
+        photos: 'Φωτογραφίες',
+        videos: 'Βίντεο',
+        comments: 'Σχόλια',
+        noComments: 'Δεν υπάρχουν ακόμα σχόλια. Γίνετε ο πρώτος!',
+        beFirst: 'Γίνετε ο πρώτος!',
+        profileImageLabel: 'Φωτογραφία προφίλ',
+        profileImageOptional: '(προαιρετικό)',
+        addProfileImage: 'Προσθήκη φωτογραφίας προφίλ',
+        changePhoto: 'Αλλαγή φωτογραφίας',
+        deletePhoto: 'Διαγραφή φωτογραφίας',
+        cityLabel: 'Πόλη',
+        cityOptional: '(προαιρετικό)',
+        cityPlaceholder: 'Σε ποια πόλη έγινε η παραγγελία;',
+        ratingLabel: 'Αξιολόγηση',
+        ratingRequired: '(απαιτείται)',
+        commentLabel: 'Το σχόλιό σας',
+        commentPlaceholder: 'Γράψτε το σχόλιό σας εδώ...',
+        charactersLeft: 'Υπολείπονται χαρακτήρες:',
+        addPhotosLabel: '📷 Προσθήκη φωτογραφιών',
+        addPhotosOptional: '(προαιρετικό)',
+        selectPhotos: '📷 Επιλογή φωτογραφιών',
+        photosUploaded: 'Ανεβασμένες φωτογραφίες:',
+        addVideosLabel: '🎥 Προσθήκη βίντεο',
+        addVideosOptional: '(προαιρετικό)',
+        selectVideos: '🎥 Επιλογή βίντεο',
+        videosUploaded: 'Ανεβασμένα βίντεο:',
+        deleteVideo: 'Διαγραφή βίντεο',
+        submitting: 'Αποστολή…',
+        submitComment: '📤 Υποβολή σχολίου',
+        commentWillAppear: 'Το σχόλιο θα εμφανιστεί μετά την έγκριση του διαχειριστή.',
+        viewAllPhotos: 'Προβολή όλων των φωτογραφιών ({count})',
+        noProject: 'Χωρίς έργο',
+        category: 'Κατηγορία',
+        project: 'Έργο'
+      }
+    },
+    thankYou: {
+      title: 'Ευχαριστώ για την κριτική σας!',
+      message1: 'Είμαι πολύ χαρούμενος που μοιραστήκατε την εμπειρία σας!',
+      message2: 'Πάντα προσπαθώ να γίνω καλύτερος για εσάς. Η κριτική σας θα με βοηθήσει να γίνω ακόμα καλύτερος.',
+      backToReviews: 'Επιστροφή στις κριτικές'
+    },
+    services: {
+      hero: {
+        title: 'Οι Υπηρεσίες Μας',
+        subtitle: 'Ολοκληρωμένες υπηρεσίες ανακαίνισης και κατασκευής για να μεταμορφώσουμε τον χώρο σας'
+      },
+      whatWeDo: {
+        title: 'Τι Κάνουμε',
+        subtitle: 'Από μικρές επισκευές έως πλήρεις ανακαινίσεις, έχουμε την εμπειρία για να χειριστούμε οποιοδήποτε έργο'
+      },
+      process: {
+        title: 'Η Διαδικασία Μας',
+        subtitle: 'Ακολουθούμε μια αποδεδειγμένη διαδικασία για να διασφαλίσουμε ότι το έργο σας ολοκληρώνεται σύμφωνα με τα υψηλότερα πρότυπα',
+        consultation: {
+          title: 'Συμβουλευτική',
+          description: 'Ξεκινάμε με μια λεπτομερή συμβουλευτική για να κατανοήσουμε τις ανάγκες και την όρασή σας'
+        },
+        planning: {
+          title: 'Σχεδιασμός',
+          description: 'Λεπτομερής σχεδιασμός και σχεδίαση για να διασφαλίσουμε το καλύτερο αποτέλεσμα για το έργο σας'
+        },
+        execution: {
+          title: 'Εκτέλεση',
+          description: 'Επαγγελματική εκτέλεση με ποιοτικά υλικά και επιδέξια χειροτεχνία'
+        },
+        completion: {
+          title: 'Ολοκλήρωση',
+          description: 'Τελικός έλεγχος και καθαρισμός για να διασφαλίσουμε την πλήρη ικανοποίησή σας'
+        }
+      },
+      cta: {
+        title: 'Έτοιμοι να Ξεκινήσετε το Έργο Σας;',
+        subtitle: 'Επικοινωνήστε μαζί μας σήμερα για δωρεάν συμβουλευτική και προσφορά',
+        cta1: 'Λάβετε Δωρεάν Προσφορά',
+        cta2: 'Δείτε τη Δουλειά Μας'
+      }
+    },
+    footer: {
+      description: 'Επαγγελματικές υπηρεσίες ανακαίνισης με πάνω από 10 χρόνια εμπειρίας. Μεταμορφώνω τον χώρο σας με ποιοτική εργασία και προσοχή στη λεπτομέρεια.',
+      quickLinks: {
+        title: 'Γρήγοροι Σύνδεσμοι'
+      },
+      services: {
+        title: 'Υπηρεσίες'
+      },
+      shot: {
+        title: 'Shot'
+      },
+      copyright: '© 2025 VK Bouwmaster. Όλα τα δικαιώματα διατηρούνται.',
+      privacy: 'Πολιτική Απορρήτου',
+      terms: 'Όροι Χρήσης'
+    },
+    admin: {
+      login: {
+        title: 'Πίνακας Διαχειριστή',
+        subtitle: 'Συνδεθείτε για να διαχειριστείτε το περιεχόμενο',
+        email: 'Email',
+        password: 'Κωδικός',
+        emailPlaceholder: 'Εισάγετε τη διεύθυνση email σας',
+        passwordPlaceholder: '••••••••',
+        loginButton: 'Σύνδεση',
+        loggingIn: 'Σύνδεση...',
+        connectionError: 'Σφάλμα σύνδεσης με τον διακομιστή',
+        goHome: 'Πηγαίνετε στην Αρχική'
+      },
+      accessDenied: {
+        title: 'Πρόσβαση Απορρίφθηκε',
+        message: 'Μη έγκυρη διεύθυνση email ή κωδικός. Δεν έχετε πρόσβαση σε αυτήν την περιοχή — μόνο οι διαχειριστές έχουν πρόσβαση.',
+        goHome: 'Πηγαίνετε στην Αρχική',
+        tryAgain: 'Δοκιμάστε Ξανά'
+      }
+    },
+    reviews: {
+      hero: { badge: 'Η γνώμη σας είναι σημαντική για εμάς', title: 'Αξιολογήσεις πελατών', subtitle: 'Μοιραστείτε την εμπειρία σας μαζί μας. Οι αξιολογήσεις σας βοηθούν άλλους πελάτες να πάρουν αποφάσεις.' },
+      form: { title: 'Αφήστε μια αξιολόγηση', namePlaceholder: 'Όνομα', surnamePlaceholder: 'Επώνυμο (προαιρετικό)', profileImageLabel: 'Φωτογραφία προφίλ', profileImageOptional: '(προαιρετικό)', addProfileImage: 'Προσθήκη φωτογραφίας προφίλ', changePhoto: 'Αλλαγή φωτογραφίας', deletePhoto: 'Διαγραφή φωτογραφίας', cityLabel: 'Πόλη', cityOptional: '(προαιρετικό)', cityPlaceholder: 'Σε ποια πόλη έγινε η παραγγελία;', ratingLabel: 'Αξιολόγηση', ratingRequired: '(υποχρεωτικό)', reviewLabel: 'Η αξιολόγησή σας', reviewPlaceholder: 'Πείτε μας για την εμπειρία σας μαζί μας... Τι σας άρεσε; Τι μπορεί να βελτιωθεί;', charactersLeft: 'Υπόλοιπα χαρακτήρες:', goodReview: 'Καλή αξιολόγηση!', addPhotosLabel: 'Προσθήκη φωτογραφιών', addPhotosOptional: '(προαιρετικό)', selectPhotos: '📷 Επιλογή φωτογραφιών', photosUploaded: 'Φωτογραφίες που ανέβηκαν:', addVideosLabel: 'Προσθήκη βίντεο', addVideosOptional: '(προαιρετικό)', selectVideos: '🎥 Επιλογή βίντεο', videosUploaded: 'Βίντεο που ανέβηκαν:', deleteVideo: 'Διαγραφή βίντεο', submitting: 'Αποστολή…', submitButton: 'Υποβολή αξιολόγησης', reviewWillAppear: 'Η αξιολόγηση θα εμφανιστεί μετά την έγκριση του διαχειριστή', fillRequiredFields: 'Παρακαλώ συμπληρώστε το όνομά και το μήνυμα', errorSubmitting: 'Σφάλμα κατά την υποβολή της αξιολόγησης. Παρακαλώ δοκιμάστε ξανά.', errorConnection: 'Σφάλμα κατά την υποβολή της αξιολόγησης. Παρακαλώ ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά.' },
+      list: { title: 'Όλες οι αξιολογήσεις', review: 'αξιολόγηση', reviews2: 'αξιολογήσεις', reviews5: 'αξιολογήσεις', noReviews: 'Δεν υπάρχουν ακόμη αξιολογήσεις. Γίνετε ο πρώτος!', photosAndVideos: 'Φωτογραφίες και βίντεο από την αξιολόγηση', viewAllMedia: 'Δείτε όλες τις φωτογραφίες και τα βίντεο →' },
+      detail: {
+        backToReviews: 'Επιστροφή στις κριτικές',
+        reviewNotFound: 'Η κριτική δεν βρέθηκε',
+        reviewNotFoundSubtitle: 'Η κριτική με ID {reviewId} δεν υπάρχει',
+        noMedia: 'Αυτή η κριτική δεν έχει φωτογραφίες και βίντεο',
+        noMediaSubtitle: 'Επιστροφή στις κριτικές',
+        photosAndVideos: 'Φωτογραφίες και βίντεο από την αξιολόγηση'
+      }
+    },
+    contact: {
+      hero: {
+        title: 'Επικοινωνήστε Μαζί Μας',
+        subtitle: 'Επικοινωνήστε με την ομάδα μας για δωρεάν διαβούλευση και προσφορά'
+      },
+      form: {
+        title: 'Στείλτε Μας Ένα Μήνυμα',
+        name: 'Πλήρες Όνομα',
+        email: 'Διεύθυνση Email',
+        phone: 'Αριθμός Τηλεφώνου',
+        service: 'Απαιτούμενη Υπηρεσία',
+        message: 'Μήνυμα',
+        submit: 'Αποστολή Μηνύματος',
+        selectService: 'Επιλέξτε μια υπηρεσία',
+        other: 'Άλλο',
+        street: 'Οδός',
+        houseNumber: 'Αριθμός Οικίας',
+        postalCode: 'Ταχυδρομικός Κώδικας',
+        city: 'Πόλη',
+        namePlaceholder: 'Το όνομά σας',
+        emailPlaceholder: 'sas@email.com',
+        phonePlaceholder: '+31 6 1234 5678',
+        streetPlaceholder: 'Όνομα οδού',
+        houseNumberPlaceholder: '123',
+        postalCodePlaceholder: '1234 AB',
+        cityPlaceholder: 'Άμστερνταμ',
+        messagePlaceholder: 'Πείτε μας για το έργο σας...',
+        streetRequired: 'Η οδός είναι υποχρεωτική',
+        houseNumberRequired: 'Ο αριθμός οικίας είναι υποχρεωτικός',
+        postalCodeRequired: 'Ο ταχυδρομικός κώδικας είναι υποχρεωτικός',
+        postalCodeInvalid: 'Μη έγκυρη μορφή ταχυδρομικού κώδικα. Χρησιμοποιήστε τη μορφή: 1234 AB',
+        successMessage: 'Ευχαριστούμε για το μήνυμά σας! Θα επικοινωνήσουμε μαζί σας σύντομα.',
+        errorMessage: 'Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.',
+        sendMessage: 'Αποστολή Μηνύματος'
+      },
+      info: {
+        title: 'Στοιχεία Επικοινωνίας',
+        phone: {
+          title: 'Τηλέφωνο',
+          number1: '+380 99 080 4115',
+          number2: ''
+        },
+        email: {
+          title: 'Email',
+          address1: 'vkbouwmaster@gmail.com',
+          address2: ''
+        },
+        address: {
+          title: 'Διεύθυνση',
+          street: '',
+          city: '',
+          country: 'Ολλανδία'
+        },
+        hours: {
+          title: 'Ώρες Λειτουργίας',
+          weekdays: '',
+          saturday: '',
+          sunday: '',
+          byAppointment: 'Κατόπιν ραντεβού'
+        },
+        emergency: {
+          title: 'Επείγουσα Υπηρεσία',
+          description: 'Χρειάζεστε επείγουσες επισκευές; Προσφέρουμε 24/7 επείγουσες υπηρεσίες για κρίσιμα ζητήματα.',
+          phone: 'Καλέστε Τώρα: +380 99 080 4115'
+        },
+        contactMethods: {
+          title: 'Επικοινωνήστε Μαζί Μου',
+          subtitle: 'Μπορείτε να επικοινωνήσετε μαζί μου μέσω WhatsApp, Email και Telegram',
+          whatsapp: 'WhatsApp',
+          telegram: 'Telegram',
+          email: 'Email'
+        }
+      },
+      faq: {
+        hero: {
+          title: 'Συχνές Ερωτήσεις',
+          subtitle: 'Βρείτε απαντήσεις σε δημοφιλείς ερωτήσεις για τις υπηρεσίες ανακαίνισής μας'
+        },
+        contact: {
+          title: 'Έχετε Ακόμα Ερωτήσεις;',
+          subtitle: 'Δεν μπορείτε να βρείτε την απάντηση που ψάχνετε; Η ομάδα μας είναι εδώ για να βοηθήσει!'
+        },
+        title: 'Συχνές Ερωτήσεις',
+        subtitle: 'Γρήγορες απαντήσεις σε κοινές ερωτήσεις σχετικά με τις υπηρεσίες μας',
+        q1: {
+          question: 'Πόσος χρόνος χρειάζεται μια τυπική ανακαίνιση;',
+          answer: 'Οι χρονικές προθεσμίες του έργου ποικίλλουν ανάλογα με το εύρος και την πολυπλοκότητα. Απλά έργα όπως το βάψιμο μπορεί να διαρκέσουν 1-3 ημέρες, ενώ οι μεγαλύτερες ανακαινίσεις μπορεί να διαρκέσουν αρκετές εβδομάδες. Παρέχουμε λεπτομερείς χρονικές προθεσμίες κατά τη διάρκεια της διαβούλευσης.'
+        },
+        q2: {
+          question: 'Προσφέρετε δωρεάν εκτιμήσεις;',
+          answer: 'Ναι! Προσφέρουμε δωρεάν, χωρίς υποχρεώσεις εκτιμήσεις για όλες τις υπηρεσίες μας. Η ομάδα μας θα επισκεφθεί την ιδιοκτησία σας για να αξιολογήσει την απαιτούμενη εργασία και να παρέχει μια λεπτομερή προσφορά.'
+        },
+        q3: {
+          question: 'Είστε αδειοδοτημένοι και ασφαλισμένοι;',
+          answer: 'Απολύτως. Το VK Bouwmaster είναι πλήρως αδειοδοτημένο και ασφαλισμένο. Έχουμε ολοκληρωμένη ασφάλεια ευθύνης και αποζημίωση εργαζομένων για την προστασία τόσο της ομάδας μας όσο και της ιδιοκτησίας σας.'
+        },
+        q4: {
+          question: 'Ποιες περιοχές εξυπηρετείτε;',
+          answer: 'Εξυπηρετούμε την ευρύτερη μητροπολιτική περιοχή και τις γύρω περιοχές. Επικοινωνήστε μαζί μας για να επιβεβαιώσουμε αν εξυπηρετούμε τη συγκεκριμένη τοποθεσία σας.'
+        }
+      }
+    },
+    contactThankYou: {
+      title: 'Ευχαριστώ για το μήνυμά σας!',
+      message: 'Θα επικοινωνήσω μαζί σας εντός μιας ημέρας.',
+      backToContact: 'Επιστροφή στην επικοινωνία'
+    },
+    servicePages: {
+      flooring: {
+        hero: {
+          title: 'Εγκατάσταση Δαπέδου',
+          subtitle: 'Επαγγελματικές υπηρεσίες εγκατάστασης και επισκευής δαπέδων για όλους τους τύπους υλικών δαπέδου'
+        },
+        solutions: {
+          title: 'Επαγγελματικές Λύσεις',
+          description1: 'Μεταμορφώστε τον χώρο σας με τις επαγγελματικές μας υπηρεσίες εγκατάστασης δαπέδου. Ειδικεύομαι σε όλους τους τύπους υλικών δαπέδου και παρέχω εγκατάσταση, επισκευή και συντήρηση ειδικών.',
+          description2: 'Η εμπειρία μου εξασφαλίζει σωστές τεχνικές εγκατάστασης, προσοχή στη λεπτομέρεια και χρήση ποιοτικών υλικών για τη δημιουργία όμορφων, ανθεκτικών δαπέδων που θα διαρκέσουν χρόνια.',
+          projectsCompleted: 'Ολοκληρωμένα Έργα',
+          yearsExperience: 'Χρόνια Εμπειρίας'
+        },
+        services: {
+          title: 'Οι Υπηρεσίες Μας',
+          items: [
+            'Εγκατάσταση παρκέ',
+            'Λαμινικό δάπεδο',
+            'Εγκατάσταση πλακιδίων και λίθου',
+            'Εγκατάσταση χαλιού',
+            'Βινυλικό δάπεδο (LVT)',
+            'Επισκευή και αποκατάσταση δαπέδων'
+          ]
+        }
+      },
+      painting: {
+        hero: {
+          title: 'Υπηρεσίες Βάψιματος',
+          subtitle: 'Επαγγελματικές υπηρεσίες εσωτερικού και εξωτερικού βάψιματος με βαφές premium ποιότητας'
+        },
+        solutions: {
+          title: 'Επαγγελματικές Λύσεις',
+          description1: 'Μεταμορφώστε τον χώρο σας με επαγγελματικές υπηρεσίες βάψιματος. Εξασφαλίζω ποιοτική προετοιμασία επιφάνειας, χρήση βαφών premium και αψεγάδιαστη εκτέλεση.',
+          description2: 'Η εμπειρία μου εγγυάται ανθεκτικές φινιρίσματα, τέλεια λεία επιφάνειες και προστασία από εξωτερικούς παράγοντες.',
+          projectsCompleted: 'Ολοκληρωμένα Έργα',
+          yearsExperience: 'Χρόνια Εμπειρίας'
+        },
+        services: {
+          title: 'Οι Υπηρεσίες Μας',
+          items: [
+            'Βάψιμο τοίχων και οροφών',
+            'Βάψιμο εξωτερικών προσόψεων',
+            'Διακοσμητικό βάψιμο',
+            'Αστάρωση επιφανειών',
+            'Βάψιμο ξύλινων κατασκευών',
+            'Προστατευτική επεξεργασία'
+          ]
+        }
+      },
+      plumbing: {
+        hero: {
+          title: 'Υδραυλικές Επισκευές',
+          subtitle: 'Επαγγελματικές υπηρεσίες επισκευής και εγκατάστασης υδραυλικών για σπίτια και γραφεία'
+        },
+        solutions: {
+          title: 'Επαγγελματικές Λύσεις',
+          description1: 'Πλήρες φάσμα υδραυλικών υπηρεσιών για το σπίτι ή την επιχείρησή σας. Παρέχω ποιοτική εγκατάσταση, επισκευή και συντήρηση όλων των τύπων υδραυλικών εγκαταστάσεων.',
+          description2: 'Χρόνια εμπειρίας εγγυώνται αξιοπιστία, ανθεκτικότητα και συμμόρφωση με όλα τα πρότυπα ασφαλείας.',
+          projectsCompleted: 'Ολοκληρωμένα Έργα',
+          yearsExperience: 'Χρόνια Εμπειρίας'
+        },
+        services: {
+          title: 'Οι Υπηρεσίες Μας',
+          items: [
+            'Επισκευή και αντικατάσταση σωληνώσεων',
+            'Εγκατάσταση υδραυλικών εγκαταστάσεων',
+            'Εγκατάσταση ύδρευσης',
+            'Επισκευή αποχέτευσης',
+            'Εγκατάσταση καλοριφέρ',
+            'Καθαρισμός αποχετεύσεων'
+          ]
+        }
+      },
+      roofing: {
+        hero: {
+          title: 'Επισκευές Στέγης',
+          subtitle: 'Ειδικές υπηρεσίες επισκευής και συντήρησης στέγης για την προστασία της περιουσίας σας'
+        },
+        solutions: {
+          title: 'Επαγγελματικές Λύσεις',
+          description1: 'Ολοκληρωμένη επισκευή, συντήρηση και πρόληψη στέγης. Δουλεύω με διάφορους τύπους στέγων, επισκευάζω διαρροές και ζημιές.',
+          description2: 'Ποιοτικά υλικά και αυστηρή συμμόρφωση με την τεχνολογία — για ανθεκτική και αξιόπιστη στέγη.',
+          projectsCompleted: 'Ολοκληρωμένα Έργα',
+          yearsExperience: 'Χρόνια Εμπειρίας'
+        },
+        services: {
+          title: 'Οι Υπηρεσίες Μας',
+          items: [
+            'Επισκευή διαρροών και ζημιών',
+            'Αντικατάσταση στέγης',
+            'Εγκατάσταση και επισκευή υδρορροών',
+            'Στεγάνωση αρμών και επενδύσεων',
+            'Τοπικές και μεγάλες επισκευές',
+            'Προληπτικός έλεγχος και συντήρηση'
+          ]
+        }
+      },
+      garden: {
+        hero: {
+          title: 'Σχεδιασμός Κήπου',
+          subtitle: 'Όμορφες υπηρεσίες σχεδιασμού κήπου και τοπιογραφίας για τη βελτίωση του εξωτερικού σας χώρου'
+        },
+        solutions: {
+          title: 'Επαγγελματικές Λύσεις',
+          description1: 'Εξατομικευμένη προσέγγιση στον σχεδιασμό και την τοπιογραφία. Δημιουργώ λειτουργικούς και αισθητικούς κήπους προσαρμοσμένους στις επιθυμίες σας και στις συνθήκες του χώρου.',
+          description2: 'Επιλογή φυτών, φωτισμού και επιφανειών — για αρμονία και μακρά διάρκεια ζωής.',
+          projectsCompleted: 'Ολοκληρωμένα Έργα',
+          yearsExperience: 'Χρόνια Εμπειρίας'
+        },
+        services: {
+          title: 'Οι Υπηρεσίες Μας',
+          items: [
+            'Τοπιογραφικός σχεδιασμός',
+            'Επιλογή και τοπιογραφία φυτών',
+            'Εγκατάσταση γκαζόνων και μονοπατιών',
+            'Συστήματα άρδευσης και αποστράγγισης',
+            'Φωτισμός κήπου',
+            'Εποχιακή συντήρηση κήπου'
+          ]
+        }
+      },
+      tile: {
+        hero: {
+          title: 'Εγκατάσταση Πλακιδίων',
+          subtitle: 'Επαγγελματικές υπηρεσίες αφαίρεσης και εγκατάστασης πλακιδίων για κουζίνες, μπάνια και άλλα'
+        },
+        solutions: {
+          title: 'Επαγγελματικές Λύσεις',
+          description1: 'Αφαίρεση παλιών πλακιδίων, προετοιμασία επιφάνειας και ακριβής εγκατάσταση πλακιδίων. Εξασφαλίζω σωστή γεωμετρία, αρμών και υδρομόνωση.',
+          description2: 'Χρησιμοποιώ ποιοτικά υλικά και εργαλεία — για αψεγάδιαστα αποτελέσματα και ανθεκτικότητα.',
+          projectsCompleted: 'Ολοκληρωμένα Έργα',
+          yearsExperience: 'Χρόνια Εμπειρίας'
+        },
+        services: {
+          title: 'Οι Υπηρεσίες Μας',
+          items: [
+            'Αφαίρεση παλιών πλακιδίων',
+            'Προετοιμασία και ισοπέδωση επιφάνειας',
+            'Υδρομόνωση υγρών ζωνών',
+            'Εγκατάσταση πλακιδίων και μωσαϊκών',
+            'Αρμών και στεγάνωση',
+            'Αποκατάσταση και αντικατάσταση μεμονωμένων στοιχείων'
+          ]
+        }
+      }
+    },
+    privacy: {
+      hero: {
+        title: 'Πολιτική Απορρήτου',
+        subtitle: 'Πολιτική Απορρήτου VK Bouwmaster'
+      },
+      introduction: {
+        title: '1. Εισαγωγή',
+        content: 'Η VK Bouwmaster ("εμείς", "μας" ή "εταιρεία") δεσμεύεται να προστατεύει το απόρρητό σας. Αυτή η Πολιτική Απορρήτου εξηγεί πώς συλλέγουμε, χρησιμοποιούμε, αποκαλύπτουμε και προστατεύουμε τις πληροφορίες σας όταν χρησιμοποιείτε τον ιστότοπό μας και τις υπηρεσίες μας.'
+      },
+      dataCollection: {
+        title: '2. Πληροφορίες που συλλέγουμε',
+        personalInfo: {
+          title: 'Προσωπικές πληροφορίες',
+          items: ['Όνομα', 'Διεύθυνση email', 'Αριθμός τηλεφώνου']
+        },
+        projectInfo: {
+          title: 'Πληροφορίες έργου',
+          items: ['Λεπτομέρειες αιτήματος', 'Διεύθυνση έργου', 'Περιγραφή εργασίας']
+        },
+        technicalInfo: {
+          title: 'Τεχνικές πληροφορίες',
+          items: ['Διεύθυνση IP', 'Τύπος προγράμματος περιήγησης', 'Δεδομένα χρήσης']
+        }
+      },
+      dataUsage: {
+        title: '3. Πώς χρησιμοποιούμε τις πληροφορίες σας',
+        subtitle: 'Χρησιμοποιούμε τις συλλεγμένες πληροφορίες για:',
+        items: [
+          { icon: '✅', text: 'Παροχή και βελτίωση των υπηρεσιών μας' },
+          { icon: '📞', text: 'Επικοινωνία μαζί σας σχετικά με το έργο σας' },
+          { icon: '📧', text: 'Αποστολή ενημερωτικών υλικών και ενημερώσεων' },
+          { icon: '🔒', text: 'Διασφάλιση της ασφάλειας του ιστότοπού μας' }
+        ]
+      },
+      dataProtection: {
+        title: '4. Προστασία δεδομένων',
+        content: 'Εφαρμόζουμε κατάλληλα τεχνικά και οργανωτικά μέτρα για την προστασία των προσωπικών σας πληροφοριών από μη εξουσιοδοτημένη πρόσβαση, τροποποίηση, αποκάλυψη ή καταστροφή.',
+        encryption: 'Κρυπτογράφηση δεδομένων',
+        secureAccess: 'Ασφαλής πρόσβαση',
+        regularChecks: 'Κανονικοί έλεγχοι'
+      },
+      thirdParty: {
+        title: '5. Αποκάλυψη σε τρίτους',
+        content: 'Δεν πωλούμε, ανταλλάσσουμε ή μεταφέρουμε τις προσωπικές σας πληροφορίες σε τρίτους χωρίς τη συγκατάθεσή σας, εκτός όταν είναι απαραίτητο για την παροχή των υπηρεσιών μας ή απαιτείται από το νόμο.'
+      },
+      userRights: {
+        title: '6. Τα δικαιώματά σας',
+        subtitle: 'Έχετε το δικαίωμα να:',
+        items: [
+          { icon: '📖', text: 'Πρόσβαση στις προσωπικές σας πληροφορίες' },
+          { icon: '✏️', text: 'Διόρθωση ανακριβών πληροφοριών' },
+          { icon: '🗑️', text: 'Ζητήσετε τη διαγραφή των δεδομένων σας' },
+          { icon: '🔄', text: 'Ανακαλέσετε τη συγκατάθεση για την επεξεργασία δεδομένων' }
+        ]
+      },
+      contact: {
+        title: '7. Επικοινωνία',
+        subtitle: 'Εάν έχετε ερωτήσεις σχετικά με την Πολιτική Απορρήτου μας, παρακαλώ επικοινωνήστε μαζί μας:',
+        email: {
+          title: 'Email',
+          address: 'vkbouwmaster@gmail.com'
+        },
+        phone: {
+          title: 'Τηλέφωνο',
+          number: '+380-99-080-4115'
+        }
+      },
+      updates: {
+        title: '8. Ενημερώσεις Πολιτικής Απορρήτου',
+        content: 'Μπορούμε να ενημερώνουμε περιοδικά αυτή την Πολιτική Απορρήτου. Θα σας ειδοποιήσουμε για οποιεσδήποτε αλλαγές δημοσιεύοντας τη νέα Πολιτική Απορρήτου σε αυτή τη σελίδα με ενημερωμένη ημερομηνία.'
+      },
+      lastUpdated: 'Τελευταία ενημέρωση: Ιανουάριος 2025'
+    },
+    terms: {
+      hero: {
+        title: 'Όροι Χρήσης',
+        subtitle: 'Όροι Υπηρεσιών VK Bouwmaster'
+      },
+      acceptance: {
+        title: '1. Αποδοχή όρων',
+        content: 'Χρησιμοποιώντας τον ιστότοπο και τις υπηρεσίες της VK Bouwmaster, αποδέχεστε αυτούς τους Όρους Χρήσης. Εάν δεν συμφωνείτε με οποιονδήποτε από τους όρους, παρακαλώ μην χρησιμοποιείτε τις υπηρεσίες μας.'
+      },
+      services: {
+        title: '2. Περιγραφή υπηρεσιών',
+        content: 'Η VK Bouwmaster παρέχει επαγγελματικές υπηρεσίες ανακαίνισης και αναδιαμόρφωσης, συμπεριλαμβανομένων αλλά όχι περιορισμένων σε: εγκατάσταση δαπέδων, βαφή, υδραυλικές εργασίες, επισκευές στέγης, σχεδιασμό κήπου και άλλες κατασκευαστικές υπηρεσίες.'
+      },
+      estimates: {
+        title: '3. Εκτιμήσεις και τιμές',
+        content: 'Παρέχουμε δωρεάν εκτιμήσεις εργασιών. Οι αναγραφόμενες τιμές είναι προσανατολιστικές και μπορεί να διαφέρουν ανάλογα με:',
+        factors: ['Πολυπλοκότητα έργου', 'Χρησιμοποιημένα υλικά', 'Έκταση εργασίας', 'Πρόσθετες απαιτήσεις πελάτη']
+      },
+      payment: {
+        title: '4. Πληρωμή',
+        content: 'Οι όροι πληρωμής συμφωνούνται ατομικά για κάθε έργο και καθορίζονται στη σύμβαση. Συνήθως απαιτείται:',
+        items: ['Μπορεί να απαιτηθεί προκαταβολή για αγορά υλικών', 'Η τελική πληρωμή γίνεται μετά την ολοκλήρωση των εργασιών', 'Η παραλαβή εργασιών γίνεται παρουσία του πελάτη']
+      },
+      warranty: {
+        title: '5. Εγγύηση',
+        content: 'Παρέχουμε εγγύηση για τις ολοκληρωμένες εργασίες σύμφωνα με τους όρους της σύμβασης. Οι λεπτομέρειες εγγύησης συζητούνται ατομικά για κάθε έργο.'
+      },
+      liability: {
+        title: '6. Ευθύνη',
+        content: 'Η VK Bouwmaster είναι υπεύθυνη για την ποιότητα των ολοκληρωμένων εργασιών στο πλαίσιο της συμφωνημένης σύμβασης. Χρησιμοποιούμε ποιοτικά υλικά και επαγγελματικές μεθόδους εργασίας. Ο πελάτης είναι υπεύθυνος για την παροχή ακριβών πληροφοριών σχετικά με το έργο.'
+      },
+      cancellation: {
+        title: '7. Ακύρωση και αλλαγές',
+        content: 'Οι αλλαγές στο έργο πρέπει να συμφωνηθούν εκ των προτέρων. Η ακύρωση έργου πρέπει να ειδοποιηθεί εντός λογικού χρόνου. Οι όροι επιστροφής χρημάτων συμφωνούνται ατομικά.'
+      },
+      intellectualProperty: {
+        title: '8. Πνευματική ιδιοκτησία',
+        content: 'Όλα τα υλικά και σχέδια που δημιουργήθηκαν από την VK Bouwmaster ως μέρος του έργου παραμένουν ιδιοκτησία της εταιρείας μέχρι την πλήρη πληρωμή των εργασιών, μετά την οποία τα δικαιώματα μεταβιβάζονται στον πελάτη.'
+      },
+      contact: {
+        title: '9. Επικοινωνία',
+        content: 'Για ερωτήσεις σχετικά με αυτούς τους Όρους Χρήσης, επικοινωνήστε:',
+        email: 'Email: vkbouwmaster@gmail.com',
+        phone: 'Τηλέφωνο: +380-99-080-4115'
+      },
+      changes: {
+        title: '10. Αλλαγές όρων',
+        content: 'Διατηρούμε το δικαίωμα να αλλάξουμε αυτούς τους Όρους Χρήσης ανά πάσα στιγμή. Η συνέχιση χρήσης των υπηρεσιών μας μετά από αλλαγές σημαίνει ότι αποδέχεστε τους νέους όρους.'
+      },
+      lastUpdated: 'Τελευταία ενημέρωση: Ιανουάριος 2025'
+    }
+  } as unknown as Translations
+}
+
+// Функция для получения перевода
+export function getTranslation(language: Language, key: string): string {
+  const keys = key.split('.')
+  let value: unknown = translations[language]
+  
+  for (const k of keys) {
+    if (value && typeof value === 'object' && k in value) {
+      value = (value as Record<string, unknown>)[k]
+    } else {
+      return key
+    }
+  }
+  
+  return typeof value === 'string' ? value : key
+}
+
+// Функция для получения всех переводов для языка
+export function getTranslations(language: Language): Translations {
+  const base = translations.EN as Translations
+  const langPack = translations[language]
+
+  // Полный пакет — вернуть как есть, но убедиться что contactThankYou, servicePages, privacy и terms есть
+  if ('home' in langPack && 'about' in langPack && 'services' in langPack && 'contact' in langPack && 
+      'blog' in langPack && 'faq' in langPack && 'portfolio' in langPack && 'pricing' in langPack && 'team' in langPack) {
+    const fullPack = langPack as Translations
+    // Если contactThankYou, servicePages, privacy или terms отсутствуют, добавить из базового
+    if (!fullPack.contactThankYou || !fullPack.servicePages || !fullPack.privacy || !fullPack.terms) {
+      return {
+        ...fullPack,
+        contactThankYou: fullPack.contactThankYou || base.contactThankYou,
+        servicePages: fullPack.servicePages || base.servicePages,
+        privacy: fullPack.privacy || base.privacy,
+        terms: fullPack.terms || base.terms
+      }
+    }
+    return fullPack
+  }
+
+  // Частичный пакет — аккуратно слить поверх EN (navigation и common)
+  const partial = langPack as PartialTranslations
+  const merged: Translations = {
+    ...base,
+    navigation: {
+      ...base.navigation,
+      ...(partial.navigation || {}),
+    },
+    common: {
+      ...base.common,
+      ...(partial.common || {}),
+    },
+    // Включить дополнительные секции, если они есть
+    ...(partial.home ? { home: partial.home } : {}),
+    ...(partial.about ? { about: partial.about } : {}),
+    ...(partial.services ? { services: partial.services } : {}),
+    ...(partial.contact ? { contact: partial.contact } : {}),
+    ...(partial.footer ? { footer: partial.footer } : {}),
+    ...(partial.thankYou ? { thankYou: partial.thankYou } : {}),
+    // contactThankYou берется из partial, если есть, иначе из base
+    contactThankYou: partial.contactThankYou || base.contactThankYou,
+    ...(partial.reviews ? { reviews: partial.reviews } : {}),
+    // admin всегда берется из partial, если есть, иначе из base
+    admin: partial.admin || base.admin,
+    // portfolio всегда берется из base, если его нет в partial
+    portfolio: partial.portfolio || base.portfolio,
+    // servicePages всегда берется из partial, если есть, иначе из base
+    servicePages: partial.servicePages || base.servicePages,
+    // privacy всегда берется из partial, если есть, иначе из base
+    privacy: partial.privacy || base.privacy,
+    // terms всегда берется из partial, если есть, иначе из base
+    terms: partial.terms || base.terms,
+  }
+
+  return merged
+}
