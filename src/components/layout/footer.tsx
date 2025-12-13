@@ -63,6 +63,11 @@ export function Footer() {
               <li><Link href="/services/plumbing-repairs" className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors break-words">{t.home.services?.plumbing?.title || 'Plumbing Repairs'}</Link></li>
               <li><Link href="/services/roof-repairs" className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors break-words">{t.home.services?.roofing?.title || 'Roof Repairs'}</Link></li>
               <li><Link href="/services/garden-design-landscaping" className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors break-words">{t.home.services?.garden?.title || 'Garden Design'}</Link></li>
+              <li><Link href="/services/tile-removal-installation" className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors break-words">{t.home.services?.tile?.title || 'Tile Installation'}</Link></li>
+              <li><Link href="/services/paving-stone-installation" className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors break-words">{t.home.services?.paving?.title || 'Paving Stone Installation'}</Link></li>
+              <li><Link href="/services/hedge-trimming" className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors break-words">{t.home.services?.hedge?.title || 'Hedge Trimming'}</Link></li>
+              <li><Link href="/services/ceiling-walls" className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors break-words">{t.home.services?.ceiling?.title || 'Ceilings & Walls'}</Link></li>
+              <li><Link href="/services/drywall-work" className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors break-words">{t.home.services?.drywall?.title || 'Drywall Work'}</Link></li>
             </ul>
           </div>
 
