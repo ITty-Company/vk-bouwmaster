@@ -10,13 +10,11 @@ import { GradientButton } from '@/components/ui/gradient-button'
 import { Parallax } from '@/components/ui/parallax'
 import { Phone, Mail, MapPin, Clock, MessageCircle, CheckCircle2, ArrowLeft } from 'lucide-react'
 import { PhoneInput } from '@/components/ui/phone-input'
-import { NetherlandsMap } from '@/components/ui/netherlands-map'
 
 export default function ContactPage() {
   const { t } = useTranslations()
   const contactInfoRef = useScrollAnimation()
   const [showThankYou, setShowThankYou] = useState(false)
-  const [selectedCity, setSelectedCity] = useState<string>('Amsterdam')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -552,38 +550,6 @@ export default function ContactPage() {
                 </div>
               </motion.div>
             </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Delivery Zones Map Section */}
-      <motion.section 
-        className="relative py-16 bg-gradient-to-b from-black via-gray-900 to-black z-10"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-300">
-                Зоны доставки в Нидерландах
-              </span>
-            </h2>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Выберите город для просмотра зон доставки наших услуг
-            </p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 sm:p-8 shadow-2xl border border-blue-700/30">
-            <NetherlandsMap 
-              selectedCity={selectedCity}
-              onCitySelect={(city) => {
-                setSelectedCity(city)
-                setFormData({ ...formData, city })
-              }}
-            />
           </div>
         </div>
       </motion.section>
