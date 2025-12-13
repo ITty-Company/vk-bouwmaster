@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "next dev --turbopack -H 0.0.0.0",
     "dev:https": "node server.js",
-    "tunnel": "cloudflared tunnel --url http://127.0.0.1:3457",
-    "tunnel:custom": "cloudflared tunnel run vkbouwmaster",
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
     "lint": "eslint"
