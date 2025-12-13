@@ -801,3 +801,125 @@ export async function translateWork(work: {
   return translations;
 }
 
+// Функция для перевода страницы услуги на все языки
+export async function translateServicePage(service: {
+  id: string;
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  solutions: {
+    title: string;
+    description1: string;
+    description2: string;
+    projectsCompleted: string;
+    yearsExperience: string;
+  };
+  services: {
+    title: string;
+    items: string[];
+  };
+}): Promise<Record<string, {
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  solutions: {
+    title: string;
+    description1: string;
+    description2: string;
+    projectsCompleted: string;
+    yearsExperience: string;
+  };
+  services: {
+    title: string;
+    items: string[];
+  };
+}>> {
+  // Автоматически определяем исходный язык на основе первого текста
+  const detectedSourceLang = detectSourceLanguage(service.hero.title || service.hero.subtitle || '');
+  const sourceLang = detectedSourceLang || 'nl'; // По умолчанию нидерландский
+  console.log(`[TranslateServicePage] Detected source language: ${sourceLang} for service: ${service.id}`);
+  
+  const languages = ['RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA'];
+  
+  const translations: Record<string, any> = {};
+
+  console.log(`[TranslateServicePage] Starting translation for service: ${service.id} to ${languages.length} languages`);
+  
+  for (const lang of languages) {
+    try {
+      const langCode = lang === 'RU' ? 'ru' : lang === 'EN' ? 'en' : lang === 'NL' ? 'nl' : lang === 'DE' ? 'de' : lang === 'FR' ? 'fr' : lang === 'ES' ? 'es' : lang === 'IT' ? 'it' : lang === 'PT' ? 'pt' : lang === 'PL' ? 'pl' : lang === 'CZ' ? 'cs' : lang === 'HU' ? 'hu' : lang === 'RO' ? 'ro' : lang === 'BG' ? 'bg' : lang === 'HR' ? 'hr' : lang === 'SK' ? 'sk' : lang === 'SL' ? 'sl' : lang === 'ET' ? 'et' : lang === 'LV' ? 'lv' : lang === 'LT' ? 'lt' : lang === 'FI' ? 'fi' : lang === 'SV' ? 'sv' : lang === 'DA' ? 'da' : lang === 'NO' ? 'no' : lang === 'GR' ? 'el' : lang === 'UA' ? 'uk' : 'en';
+      
+      if (sourceLang === langCode) {
+        translations[lang] = {
+          hero: {
+            title: service.hero.title,
+            subtitle: service.hero.subtitle
+          },
+          solutions: {
+            title: service.solutions.title,
+            description1: service.solutions.description1,
+            description2: service.solutions.description2,
+            projectsCompleted: service.solutions.projectsCompleted,
+            yearsExperience: service.solutions.yearsExperience
+          },
+          services: {
+            title: service.services.title,
+            items: service.services.items
+          }
+        };
+        console.log(`[TranslateServicePage] ⏭️ Skipped translation to ${lang} (same as source)`);
+        continue;
+      }
+      
+      console.log(`[TranslateServicePage] Translating to ${lang} (${sourceLang}->${langCode})...`);
+      
+      // Переводим все поля
+      const [heroTitle, heroSubtitle, solutionsTitle, solutionsDesc1, solutionsDesc2, projectsCompleted, yearsExperience, servicesTitle, ...serviceItems] = await Promise.all([
+        translateText(service.hero.title, lang, sourceLang),
+        translateText(service.hero.subtitle, lang, sourceLang),
+        translateText(service.solutions.title, lang, sourceLang),
+        translateText(service.solutions.description1, lang, sourceLang),
+        translateText(service.solutions.description2, lang, sourceLang),
+        translateText(service.solutions.projectsCompleted, lang, sourceLang),
+        translateText(service.solutions.yearsExperience, lang, sourceLang),
+        translateText(service.services.title, lang, sourceLang),
+        ...service.services.items.map(item => translateText(item, lang, sourceLang))
+      ]);
+
+      translations[lang] = {
+        hero: {
+          title: heroTitle || service.hero.title,
+          subtitle: heroSubtitle || service.hero.subtitle
+        },
+        solutions: {
+          title: solutionsTitle || service.solutions.title,
+          description1: solutionsDesc1 || service.solutions.description1,
+          description2: solutionsDesc2 || service.solutions.description2,
+          projectsCompleted: projectsCompleted || service.solutions.projectsCompleted,
+          yearsExperience: yearsExperience || service.solutions.yearsExperience
+        },
+        services: {
+          title: servicesTitle || service.services.title,
+          items: serviceItems.filter(Boolean).length > 0 ? serviceItems.filter(Boolean) : service.services.items
+        }
+      };
+      
+      console.log(`[TranslateServicePage] ✅ Completed translation to ${lang}`);
+      
+      await new Promise(resolve => setTimeout(resolve, 50));
+    } catch (error: any) {
+      console.error(`[TranslateServicePage] ❌ Error translating service to ${lang}:`, error.message || error);
+      translations[lang] = {
+        hero: service.hero,
+        solutions: service.solutions,
+        services: service.services
+      };
+    }
+  }
+  
+  console.log(`[TranslateServicePage] ✅ Finished translation. Created translations for ${Object.keys(translations).length} languages`);
+  return translations;
+}
+

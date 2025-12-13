@@ -5,10 +5,12 @@ import { Parallax } from "@/components/ui/parallax";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Meteors } from "@/components/ui/meteors";
 import { useTranslations } from "@/hooks/useTranslations";
+import { useService } from "@/hooks/useService";
 
 export default function RoofRepairsPage() {
-  const { t } = useTranslations();
+  const { t, currentLanguage } = useTranslations();
   const sectionRef = useScrollAnimation();
+  const { service } = useService('roofing', currentLanguage);
 
   return (
     <div className="unified-gradient-bg">
@@ -22,10 +24,10 @@ export default function RoofRepairsPage() {
             <div className="text-center mx-auto mb-8">
               <div className="text-6xl mb-6">🏠</div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
-                <span className="text-gray-200">{t.servicePages?.roofing?.hero?.title || 'Roof Repairs'}</span>
+                <span className="text-gray-200">{service?.hero.title || t.servicePages?.roofing?.hero?.title || 'Roof Repairs'}</span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                {t.servicePages?.roofing?.hero?.subtitle || 'Expert roof repair and maintenance services to protect your property'}
+                {service?.hero.subtitle || t.servicePages?.roofing?.hero?.subtitle || 'Expert roof repair and maintenance services to protect your property'}
               </p>
             </div>
           </div>
@@ -38,14 +40,14 @@ export default function RoofRepairsPage() {
             <div>
               <h2 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl leading-tight font-bold section-title mb-8">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-300">
-                  {t.servicePages?.roofing?.solutions?.title || 'Professional Solutions'}
+                  {service?.solutions.title || t.servicePages?.roofing?.solutions?.title || 'Professional Solutions'}
                 </span>
               </h2>
               <p className="text-gray-200 text-lg md:text-xl leading-relaxed mb-6 elegant-text">
-                {t.servicePages?.roofing?.solutions?.description1 || 'Comprehensive roof repair, maintenance, and prevention. I work with various types of roofing, fix leaks and damage.'}
+                {service?.solutions.description1 || t.servicePages?.roofing?.solutions?.description1 || 'Comprehensive roof repair, maintenance, and prevention. I work with various types of roofing, fix leaks and damage.'}
               </p>
               <p className="text-gray-200 text-lg md:text-xl leading-relaxed mb-6 elegant-text">
-                {t.servicePages?.roofing?.solutions?.description2 || 'Quality materials and precise adherence to technology — for a durable and reliable roof.'}
+                {service?.solutions.description2 || t.servicePages?.roofing?.solutions?.description2 || 'Quality materials and precise adherence to technology — for a durable and reliable roof.'}
               </p>
 
               <div className="grid grid-cols-2 gap-6">
@@ -53,14 +55,14 @@ export default function RoofRepairsPage() {
                   <Meteors number={15} />
                   <div className="relative z-10">
                     <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-2">200+</div>
-                    <div className="text-gray-300">{t.servicePages?.roofing?.solutions?.projectsCompleted || 'Completed Projects'}</div>
+                    <div className="text-gray-300">{service?.solutions.projectsCompleted || t.servicePages?.roofing?.solutions?.projectsCompleted || 'Completed Projects'}</div>
                   </div>
                 </div>
                 <div className="text-center elegant-card p-6 animate-slide-up relative" style={{animationDelay: '0.1s'}}>
                   <Meteors number={15} />
                   <div className="relative z-10">
                     <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-2">10+</div>
-                    <div className="text-gray-300">{t.servicePages?.roofing?.solutions?.yearsExperience || 'Years of Experience'}</div>
+                    <div className="text-gray-300">{service?.solutions.yearsExperience || t.servicePages?.roofing?.solutions?.yearsExperience || 'Years of Experience'}</div>
                   </div>
                 </div>
               </div>
@@ -69,19 +71,19 @@ export default function RoofRepairsPage() {
             <div className="elegant-card p-8 animate-slide-up relative">
               <Meteors number={20} />
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold elegant-title mb-6">{t.servicePages?.roofing?.services?.title || 'Our Services'}</h3>
+                <h3 className="text-2xl font-bold elegant-title mb-6">{service?.services.title || t.servicePages?.roofing?.services?.title || 'Our Services'}</h3>
                 <div className="space-y-4">
-                  {(t.servicePages?.roofing?.services?.items || [
+                  {(service?.services.items || t.servicePages?.roofing?.services?.items || [
                     'Leak and damage repair',
                     'Roofing replacement',
                     'Gutter installation and repair',
                     'Joint and flashing sealing',
                     'Local and major repairs',
                     'Preventive inspection and maintenance'
-                  ]).map((service: string, idx: number) => (
+                  ]).map((serviceItem: string, idx: number) => (
                     <div key={idx} className="flex items-center animate-fade-in" style={{animationDelay: `${idx * 0.1}s`}}>
                       <span className="w-3 h-3 bg-blue-400 rounded-full mr-4"></span>
-                      <span className="text-gray-200 elegant-text">{service}</span>
+                      <span className="text-gray-200 elegant-text">{serviceItem}</span>
                     </div>
                   ))}
                 </div>

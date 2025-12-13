@@ -1416,11 +1416,11 @@ export function getTranslatedWork(
 
   // Если переводов нет или они пустые, возвращаем оригинал
   // В будущем здесь можно добавить fallback на перевод в реальном времени
-  return {
-    title: work.title,
-    description: work.description,
-    category: translateCategory(work.category, language),
-    city: work.city
+    return {
+      title: work.title,
+      description: work.description,
+      category: translateCategory(work.category, language),
+      city: work.city
   }
 }
 

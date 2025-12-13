@@ -172,21 +172,21 @@ export async function GET(request: NextRequest) {
         const work = worksNeedingTranslation[i];
         const index = works.findIndex(w => w.id === work.id);
         if (index !== -1) {
-          try {
+        try {
             console.log(`[Works API] 🔄 Translating work ${i + 1}/${worksNeedingTranslation.length}: "${work.title.substring(0, 30)}..."`);
-            const translations = await translateWork({
-              title: work.title,
-              description: work.description || '',
-              category: work.category,
-              city: work.city
-            });
+          const translations = await translateWork({
+            title: work.title,
+            description: work.description || '',
+            category: work.category,
+            city: work.city
+          });
             works[index] = { ...work, translations };
-            translationsAdded = true;
+          translationsAdded = true;
             console.log(`[Works API] ✅ Translation completed for work ${work.id}. Languages:`, Object.keys(translations || {}).length);
-            // Небольшая задержка между переводами, чтобы не спамить API
+          // Небольшая задержка между переводами, чтобы не спамить API
             await new Promise(resolve => setTimeout(resolve, 100));
-          } catch (error: any) {
-            console.error(`[Works API] ❌ Error translating work ${work.id}:`, error.message || error);
+        } catch (error: any) {
+          console.error(`[Works API] ❌ Error translating work ${work.id}:`, error.message || error);
           }
         }
       }
