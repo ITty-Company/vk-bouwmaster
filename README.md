@@ -187,8 +187,6 @@ npm start
 
 - 📱 **Instagram**: [@ittycompany](https://www.instagram.com/ittycompany/)
 - 💬 **Telegram / Viber / WhatsApp**: [+380953398039](tel:+380953398039)
-- 🌐 **Веб-сайт**: [Форма обратной связи](https://vkbouwmaster.com/contact)
-- 📝 **GitHub**: [Создать issue](https://github.com/ITty-Company/vk-bouwmaster/issues)
 
 ---
 
