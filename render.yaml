@@ -6,14 +6,25 @@ services:
     region: frankfurt
     branch: main
     buildCommand: npm install && npm run build
-    startCommand: npm run start
+    startCommand: npm start
     autoDeploy: true
     healthCheckPath: /
     envVars:
       - key: NODE_ENV
         value: production
-      # ВАЖНО: Добавьте OPENAI_API_KEY в настройках Render через веб-интерфейс:
+      # ВАЖНО: Добавьте следующие переменные окружения в настройках Render через веб-интерфейс:
       # Settings → Environment → Add Environment Variable
-      # key: OPENAI_API_KEY
-      # value: ваш-ключ-от-openai
+      # 
+      # Для отправки email (опционально):
+      # SMTP_HOST=your-smtp-host
+      # SMTP_PORT=587
+      # SMTP_USER=your-email
+      # SMTP_PASS=your-password
+      # RECIPIENT_EMAIL=your-recipient-email
+      #
+      # Для переводов (опционально):
+      # OPENAI_API_KEY=your-openai-key
+      #
+      # Для загрузки файлов (опционально):
+      # BLOB_READ_WRITE_TOKEN=your-blob-token
 
