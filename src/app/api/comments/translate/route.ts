@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
 import { translateText, detectSourceLanguage } from '@/lib/translate';
 import { Language } from '@/lib/translations';
+import {
+  commentsRuntimeFile,
+  commentsSeedFile,
+  ensureCommentsFileWithSeed,
+  ensureDirForFile,
+} from '@/lib/data-file-paths';
 
 type Comment = {
   id: string;
@@ -20,12 +25,14 @@ type Comment = {
   translations?: Record<string, string>;
 }
 
-const COMMENTS_FILE = join(process.cwd(), 'src/lib/comments-data.json');
-
 function readComments(): Comment[] {
   try {
-    if (!existsSync(COMMENTS_FILE)) return [];
-    const data = readFileSync(COMMENTS_FILE, 'utf-8');
+    ensureCommentsFileWithSeed();
+    const runtime = commentsRuntimeFile();
+    const seed = commentsSeedFile();
+    const path = existsSync(runtime) ? runtime : seed;
+    if (!existsSync(path)) return [];
+    const data = readFileSync(path, 'utf-8');
     return JSON.parse(data);
   } catch {
     return [];
@@ -33,7 +40,9 @@ function readComments(): Comment[] {
 }
 
 function writeComments(list: Comment[]) {
-  writeFileSync(COMMENTS_FILE, JSON.stringify(list, null, 2), 'utf-8');
+  const target = commentsRuntimeFile();
+  ensureDirForFile(target);
+  writeFileSync(target, JSON.stringify(list, null, 2), 'utf-8');
 }
 
 export async function POST(request: NextRequest) {

@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
 import { translateFAQCategory } from '@/lib/translate';
-
-const FAQ_FILE = join(process.cwd(), 'src/lib/faq-data.json');
+import { faqRuntimeFile, faqSeedFile, readJsonWithSeed, writeJsonFile } from '@/lib/data-file-paths';
 
 interface FAQQuestion {
   id: string;
@@ -27,16 +24,11 @@ interface FAQCategory {
 }
 
 function readFAQData(): FAQCategory[] {
-  try {
-    const data = readFileSync(FAQ_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
+  return readJsonWithSeed<FAQCategory[]>(faqRuntimeFile(), faqSeedFile(), []);
 }
 
 function writeFAQData(data: FAQCategory[]) {
-  writeFileSync(FAQ_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  writeJsonFile(faqRuntimeFile(), data);
 }
 
 export async function GET(request: NextRequest) {

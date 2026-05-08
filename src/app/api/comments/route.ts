@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from 'fs'
-import { join, dirname } from 'path'
+import { readFileSync, writeFileSync, existsSync } from 'fs'
 import { translateText, detectSourceLanguage } from '@/lib/translate'
 import { Language } from '@/lib/translations'
+import {
+  commentsRuntimeFile,
+  commentsSeedFile,
+  ensureCommentsFileWithSeed,
+} from '@/lib/data-file-paths'
+
+/** Admin approve / message edit can take a while (many translations). */
+export const maxDuration = 300
 
 type Comment = {
   id: string
@@ -20,48 +27,14 @@ type Comment = {
   translations?: Record<string, string> // Переводы сообщения на разные языки
 }
 
-// NOTE:
-// - `src/lib/comments-data.json` is part of the source tree and may be read-only in production.
-// - We store runtime data in `data/comments-data.json` (or via env override) so approvals persist.
-const SEED_COMMENTS_FILE = join(process.cwd(), 'src/lib/comments-data.json')
-const RUNTIME_COMMENTS_FILE =
-  process.env.COMMENTS_FILE_PATH && process.env.COMMENTS_FILE_PATH.trim()
-    ? process.env.COMMENTS_FILE_PATH.trim()
-    : join(process.cwd(), 'data', 'comments-data.json')
-
-function ensureRuntimeCommentsFile() {
-  const dir = dirname(RUNTIME_COMMENTS_FILE)
-  try {
-    mkdirSync(dir, { recursive: true })
-  } catch {
-    // ignore
-  }
-
-  if (existsSync(RUNTIME_COMMENTS_FILE)) return
-
-  // First run: copy seeded reviews if present, otherwise create empty list.
-  try {
-    if (existsSync(SEED_COMMENTS_FILE)) {
-      copyFileSync(SEED_COMMENTS_FILE, RUNTIME_COMMENTS_FILE)
-      return
-    }
-  } catch {
-    // ignore
-  }
-
-  try {
-    writeFileSync(RUNTIME_COMMENTS_FILE, '[]', 'utf-8')
-  } catch {
-    // ignore
-  }
-}
+// NOTE: Seed lives in src/lib; runtime path from COMMENTS_FILE_PATH (e.g. /var/data on Render).
 
 function readComments(): Comment[] {
   try {
-    ensureRuntimeCommentsFile()
-    const fileToRead = existsSync(RUNTIME_COMMENTS_FILE)
-      ? RUNTIME_COMMENTS_FILE
-      : SEED_COMMENTS_FILE
+    ensureCommentsFileWithSeed()
+    const runtime = commentsRuntimeFile()
+    const seed = commentsSeedFile()
+    const fileToRead = existsSync(runtime) ? runtime : seed
 
     if (!existsSync(fileToRead)) return []
     const data = readFileSync(fileToRead, 'utf-8')
@@ -73,8 +46,42 @@ function readComments(): Comment[] {
 }
 
 function writeComments(list: Comment[]) {
-  ensureRuntimeCommentsFile()
-  writeFileSync(RUNTIME_COMMENTS_FILE, JSON.stringify(list, null, 2), 'utf-8')
+  ensureCommentsFileWithSeed()
+  writeFileSync(commentsRuntimeFile(), JSON.stringify(list, null, 2), 'utf-8')
+}
+
+const COMMENT_LANGS: Language[] = [
+  'RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL',
+  'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA',
+]
+
+function sourceLangCodeFromMessage(message: string): string {
+  const sourceLang = detectSourceLanguage(message)
+  return sourceLang === 'ru' ? 'RU' : sourceLang === 'nl' ? 'NL' : sourceLang === 'en' ? 'EN' : 'RU'
+}
+
+/** Full multi-language map — used after admin approval or when editing message (not on public POST). */
+async function buildTranslationsForAllLanguages(message: string): Promise<Record<string, string>> {
+  const sourceLang = detectSourceLanguage(message)
+  const sourceLangCode = sourceLangCodeFromMessage(message)
+  const translations: Record<string, string> = { [sourceLangCode]: message }
+
+  for (const lang of COMMENT_LANGS) {
+    if (lang === sourceLangCode) continue
+    try {
+      translations[lang] = await translateText(message, lang, sourceLang)
+      await new Promise((resolve) => setTimeout(resolve, 50))
+    } catch (error) {
+      console.error(`Error translating comment to ${lang}:`, error)
+      translations[lang] = message
+    }
+  }
+  return translations
+}
+
+function translationsLookComplete(t?: Record<string, string>): boolean {
+  if (!t || typeof t !== 'object') return false
+  return Object.keys(t).length >= COMMENT_LANGS.length
 }
 
 export async function GET(request: NextRequest) {
@@ -111,31 +118,10 @@ export async function POST(request: NextRequest) {
     const rating = body.rating !== undefined ? Math.max(1, Math.min(5, Number(body.rating))) : undefined
     const profileImage = String(body.profileImage || '').trim()
     
-    let translations: Record<string, string> | undefined
-    try {
-      const sourceLang = detectSourceLanguage(message)
-      console.log(`[Comments API] Detected source language: ${sourceLang} for comment message`)
-      
-      const sourceLangCode = sourceLang === 'ru' ? 'RU' : sourceLang === 'nl' ? 'NL' : sourceLang === 'en' ? 'EN' : 'RU'
-      const languages: Language[] = ['RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA']
-      
-      translations = { [sourceLangCode]: message } // Сохраняем оригинал
-      
-      for (const lang of languages) {
-        if (lang === sourceLangCode) continue // Пропускаем исходный язык
-        
-        try {
-          const translated = await translateText(message, lang, sourceLang)
-          translations[lang] = translated
-          await new Promise(resolve => setTimeout(resolve, 50))
-        } catch (error) {
-          console.error(`Error translating comment to ${lang}:`, error)
-          translations[lang] = message // В случае ошибки используем оригинал
-        }
-      }
-    } catch (translationError) {
-      console.error('Translation error:', translationError)
-    }
+    // Save quickly: only store original text keyed by detected language. Full translations run when an
+    // admin approves (PUT) or edits the message — avoids timeouts when guests submit the form.
+    const sourceLangCode = sourceLangCodeFromMessage(message)
+    const translations: Record<string, string> = { [sourceLangCode]: message }
     
     const comment: Comment = {
       id: Date.now().toString(),
@@ -150,7 +136,7 @@ export async function POST(request: NextRequest) {
       rating: rating,
       city: city ? city.slice(0, 100) : undefined,
       profileImage: profileImage || undefined,
-      translations: translations || body.translations,
+      translations,
     }
     list.push(comment)
     writeComments(list)
@@ -167,48 +153,69 @@ export async function PUT(request: NextRequest) {
     if (!id) return NextResponse.json({ error: 'id required' }, { status: 400 })
     const body = await request.json()
     const list = readComments()
-    const idx = list.findIndex(c => c.id === id)
+    const idx = list.findIndex((c) => c.id === id)
     if (idx === -1) return NextResponse.json({ error: 'Not found' }, { status: 404 })
-    let translations = body.translations || list[idx].translations
-    if (body.message !== undefined && body.message !== list[idx].message) {
-      try {
-        const sourceLang = detectSourceLanguage(body.message)
-        console.log(`[Comments API] Detected source language: ${sourceLang} for updated comment message`)
-        
-        const sourceLangCode = sourceLang === 'ru' ? 'RU' : sourceLang === 'nl' ? 'NL' : sourceLang === 'en' ? 'EN' : 'RU'
-        const languages: Language[] = ['RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA']
-        
-        translations = { [sourceLangCode]: body.message }
-        
-        for (const lang of languages) {
-          if (lang === sourceLangCode) continue
-          
-          try {
-            const translated = await translateText(body.message, lang, sourceLang)
-            translations[lang] = translated
-            await new Promise(resolve => setTimeout(resolve, 50))
-          } catch (error) {
-            console.error(`Error translating comment to ${lang}:`, error)
-            translations[lang] = body.message
-          }
-        }
-      } catch (translationError) {
-        console.error('Translation error:', translationError)
-      }
+
+    const prev = list[idx]
+    const messageChanged =
+      body.message !== undefined && String(body.message) !== prev.message
+    const nextMessage =
+      body.message !== undefined ? String(body.message).slice(0, 2000) : prev.message
+    const nextApproved =
+      body.approved !== undefined ? Boolean(body.approved) : prev.approved
+    const becameApproved = !prev.approved && nextApproved
+
+    let translations: Record<string, string> | undefined = prev.translations
+
+    if (messageChanged && body.message !== undefined) {
+      translations = await buildTranslationsForAllLanguages(String(body.message))
+    } else if (
+      becameApproved &&
+      nextMessage.trim() &&
+      !translationsLookComplete(prev.translations)
+    ) {
+      translations = await buildTranslationsForAllLanguages(nextMessage)
+    } else if (body.translations !== undefined) {
+      translations = body.translations
     }
-    
+
     list[idx] = {
-      ...list[idx],
-      name: body.name !== undefined ? String(body.name).slice(0, 60) : list[idx].name,
-      surname: body.surname !== undefined ? String(body.surname).slice(0, 80) : list[idx].surname,
-      message: body.message !== undefined ? String(body.message).slice(0, 2000) : list[idx].message,
-      approved: body.approved !== undefined ? Boolean(body.approved) : list[idx].approved,
-      photos: body.photos !== undefined ? (Array.isArray(body.photos) ? (body.photos.length > 0 ? body.photos : undefined) : list[idx].photos) : list[idx].photos,
-      videos: body.videos !== undefined ? (Array.isArray(body.videos) ? (body.videos.length > 0 ? body.videos : undefined) : list[idx].videos) : list[idx].videos,
-      rating: body.rating !== undefined ? Math.max(1, Math.min(5, Number(body.rating))) : list[idx].rating,
-      city: body.city !== undefined ? (String(body.city).trim() ? String(body.city).slice(0, 100) : undefined) : list[idx].city,
-      profileImage: body.profileImage !== undefined ? (String(body.profileImage).trim() ? String(body.profileImage) : undefined) : list[idx].profileImage,
-      translations: translations || list[idx].translations,
+      ...prev,
+      name: body.name !== undefined ? String(body.name).slice(0, 60) : prev.name,
+      surname: body.surname !== undefined ? String(body.surname).slice(0, 80) : prev.surname,
+      message: nextMessage,
+      approved: nextApproved,
+      photos:
+        body.photos !== undefined
+          ? Array.isArray(body.photos)
+            ? body.photos.length > 0
+              ? body.photos
+              : undefined
+            : prev.photos
+          : prev.photos,
+      videos:
+        body.videos !== undefined
+          ? Array.isArray(body.videos)
+            ? body.videos.length > 0
+              ? body.videos
+              : undefined
+            : prev.videos
+          : prev.videos,
+      rating:
+        body.rating !== undefined ? Math.max(1, Math.min(5, Number(body.rating))) : prev.rating,
+      city:
+        body.city !== undefined
+          ? String(body.city).trim()
+            ? String(body.city).slice(0, 100)
+            : undefined
+          : prev.city,
+      profileImage:
+        body.profileImage !== undefined
+          ? String(body.profileImage).trim()
+            ? String(body.profileImage)
+            : undefined
+          : prev.profileImage,
+      translations: translations || prev.translations,
     }
     writeComments(list)
     return NextResponse.json({ success: true, comment: list[idx] })

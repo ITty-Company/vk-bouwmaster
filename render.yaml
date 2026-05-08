@@ -2,13 +2,16 @@ services:
   - type: web
     name: vk-bouwmaster
     env: node
-    plan: starter
+    # Starter = 512MB RAM; Next.js `npm run build` often exceeds that and the deploy fails.
+    # Standard = 2GB — required for reliable Next.js builds on Render.
+    plan: standard
     region: frankfurt
     branch: main
     buildCommand: npm install && npm run build
     startCommand: npm start
     autoDeploy: true
-    healthCheckPath: /
+    # Fast JSON route; avoid depending on full-page SSR for deploy readiness.
+    healthCheckPath: /api/health
     # Persistent disk is required if you want reviews/messages to survive restarts & deploys.
     disk:
       name: vk-bouwmaster-data
@@ -17,6 +20,12 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      # Predictable heap on Standard (2GB) instances; keeps headroom for native deps + OS.
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=1536
+      # @vercel/blob pulls AWS SDK — stops pointless EC2 metadata probes (169.254.169.254) on Render.
+      - key: AWS_EC2_METADATA_DISABLED
+        value: "true"
       # Runtime storage paths (use Render persistent disk)
       - key: COMMENTS_FILE_PATH
         value: /var/data/comments-data.json
@@ -24,6 +33,24 @@ services:
         value: /var/data/contact-data.json
       - key: CONTACT_MESSAGES_FILE_PATH
         value: /var/data/contact-messages.json
+      # Admin-edited JSON (same persistent disk — survives deploys; optional locally via defaults in src/lib or data/)
+      - key: WORKS_FILE_PATH
+        value: /var/data/works-data.json
+      - key: SERVICES_FILE_PATH
+        value: /var/data/services-data.json
+      - key: PORTFOLIO_FILE_PATH
+        value: /var/data/portfolio-data.json
+      - key: TEAM_FILE_PATH
+        value: /var/data/team-data.json
+      - key: BLOG_FILE_PATH
+        value: /var/data/blog-data.json
+      - key: FAQ_FILE_PATH
+        value: /var/data/faq-data.json
+      - key: PRICING_FILE_PATH
+        value: /var/data/pricing-data.json
+      # User-uploaded images/videos (same disk as JSON). Optional: if unset, app uses /var/data/uploads when /var/data exists.
+      - key: UPLOAD_DIR
+        value: /var/data/uploads
       # ВАЖНО: Добавьте следующие переменные окружения в настройках Render через веб-интерфейс:
       # Settings → Environment → Add Environment Variable
       # 

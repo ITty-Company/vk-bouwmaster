@@ -1,20 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, writeFileSync } from 'fs';
 import { translateServicePage } from '@/lib/translate';
+import { ensureDirForFile, servicesRuntimeFile, servicesSeedFile } from '@/lib/data-file-paths';
 
-const RENDER_DISK_PATH = '/uploads';
-const LOCAL_UPLOADS_PATH = join(process.cwd(), 'public', 'uploads');
-const FALLBACK_REPO_FILE = join(process.cwd(), 'src', 'lib', 'services-data.json');
-
-const getStorageDir = () => (existsSync(RENDER_DISK_PATH) ? RENDER_DISK_PATH : LOCAL_UPLOADS_PATH);
-const getServicesFilePath = () => join(getStorageDir(), 'services-data.json');
-
-function ensureStorageDir() {
-  const dir = getStorageDir();
-  if (!existsSync(dir)) {
-    mkdirSync(dir, { recursive: true });
-  }
+function getServicesFilePath() {
+  return servicesRuntimeFile();
 }
 
 export interface ServicePage {
@@ -80,16 +70,18 @@ function needsTranslation(service: ServicePage): boolean {
 
 async function readServicesData(): Promise<ServicePage[]> {
   try {
-    const data = readFileSync(getServicesFilePath(), 'utf-8');
-    return JSON.parse(data);
+    const raw = readFileSync(getServicesFilePath(), 'utf-8');
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : parsed.services || [];
   } catch (primaryError) {
     try {
-      const data = readFileSync(FALLBACK_REPO_FILE, 'utf-8');
+      const data = readFileSync(servicesSeedFile(), 'utf-8');
       const parsed = JSON.parse(data);
       const services = parsed.services || [];
       try {
-        ensureStorageDir();
-        writeFileSync(getServicesFilePath(), JSON.stringify(services, null, 2), 'utf-8');
+        const target = getServicesFilePath();
+        ensureDirForFile(target);
+        writeFileSync(target, JSON.stringify(services, null, 2), 'utf-8');
       } catch (seedError) {
         console.warn('Не удалось сохранить seed данных в основное хранилище:', seedError);
       }
@@ -103,8 +95,9 @@ async function readServicesData(): Promise<ServicePage[]> {
 
 async function writeServicesData(data: ServicePage[]): Promise<void> {
   try {
-    ensureStorageDir();
-    writeFileSync(getServicesFilePath(), JSON.stringify(data, null, 2), 'utf-8');
+    const target = getServicesFilePath();
+    ensureDirForFile(target);
+    writeFileSync(target, JSON.stringify(data, null, 2), 'utf-8');
   } catch (error: any) {
     console.error('Ошибка записи данных услуг:', error);
     throw error;

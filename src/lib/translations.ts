@@ -665,6 +665,7 @@ export interface Translations {
     title: string
     message1: string
     message2: string
+    message3?: string
     backToReviews: string
   }
   contactThankYou: {
@@ -728,6 +729,11 @@ export interface Translations {
       noMedia: string
       noMediaSubtitle: string
       photosAndVideos: string
+    }
+    pendingSubmission?: {
+      title: string
+      body: string
+      dismiss: string
     }
   }
   admin: {
@@ -1887,6 +1893,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
       title: 'Thank you for your review!',
       message1: 'I am very happy that you shared your experience!',
       message2: 'I always strive to be better for you. Your review will help me become even better.',
+      message3:
+        'Your review was saved. It will appear in the public list only after moderation — until then, other visitors will not see it.',
       backToReviews: 'Back to reviews'
     },
     contactThankYou: {
@@ -1950,6 +1958,11 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         noMedia: 'This review has no photos and videos',
         noMediaSubtitle: 'Return to reviews',
         photosAndVideos: 'Photos and videos from review'
+      },
+      pendingSubmission: {
+        title: 'Submitted — pending moderation',
+        body: 'Your review is saved on the server. Others will only see it after an administrator approves it (usually soon).',
+        dismiss: 'Got it'
       }
     },
     portfolio: {
@@ -21346,6 +21359,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
       title: 'Спасибо за отзыв!',
       message1: 'Я очень рад, что вы поделились своим опытом!',
       message2: 'Я всегда стараюсь быть лучше для вас. Ваш отзыв поможет мне стать ещё лучше.',
+      message3:
+        'Отзыв сохранён. В общем списке он появится только после модерации — до этого другие посетители его не видят.',
       backToReviews: 'Вернуться к отзывам'
     },
     contactThankYou: {
@@ -21409,6 +21424,11 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         noMedia: 'У этого отзыва нет фото и видео',
         noMediaSubtitle: 'Вернитесь к отзывам',
         photosAndVideos: 'Фото и видео из отзыва'
+      },
+      pendingSubmission: {
+        title: 'Отзыв отправлен — на модерации',
+        body: 'Он сохранён на сервере. Другие увидят его только после одобрения администратором (обычно в ближайшее время).',
+        dismiss: 'Понятно'
       }
     },
     servicePages: {

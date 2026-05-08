@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { translateTeamMember } from '@/lib/translate';
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
-
-const TEAM_FILE = join(process.cwd(), 'src/lib/team-data.json');
+import { readJsonWithSeed, teamRuntimeFile, teamSeedFile, writeJsonFile } from '@/lib/data-file-paths';
 
 interface TeamMember {
   id: string;
@@ -23,16 +20,11 @@ interface TeamMember {
 }
 
 function readTeamData(): TeamMember[] {
-  try {
-    const data = readFileSync(TEAM_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
+  return readJsonWithSeed<TeamMember[]>(teamRuntimeFile(), teamSeedFile(), []);
 }
 
 function writeTeamData(data: TeamMember[]) {
-  writeFileSync(TEAM_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  writeJsonFile(teamRuntimeFile(), data);
 }
 
 export async function POST(request: NextRequest) {

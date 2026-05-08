@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { translatePricingData } from '@/lib/translate';
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
-
-const PRICING_FILE = join(process.cwd(), 'src/lib/pricing-data.json');
+import {
+  pricingRuntimeFile,
+  pricingSeedFile,
+  readJsonWithSeed,
+  writeJsonFile,
+} from '@/lib/data-file-paths';
 
 interface PricingData {
   packages: Array<{
@@ -37,17 +39,16 @@ interface PricingData {
   }>;
 }
 
+function emptyPricing(): PricingData {
+  return { packages: [], services: [] };
+}
+
 function readPricingData(): PricingData {
-  try {
-    const data = readFileSync(PRICING_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    return { packages: [], services: [] };
-  }
+  return readJsonWithSeed<PricingData>(pricingRuntimeFile(), pricingSeedFile(), emptyPricing());
 }
 
 function writePricingData(data: PricingData) {
-  writeFileSync(PRICING_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  writeJsonFile(pricingRuntimeFile(), data);
 }
 
 export async function POST(request: NextRequest) {

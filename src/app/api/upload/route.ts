@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { mkdir, access } from 'fs/promises';
-import { join } from 'path';
+import { join, resolve, sep } from 'path';
 import { existsSync, createWriteStream, constants } from 'fs';
 import { pipeline } from 'stream/promises';
 import { Readable } from 'stream';
+import { uploadPublicUrl, uploadStorageDir } from '@/lib/data-file-paths';
 
 export const maxDuration = 300;
 export const runtime = 'nodejs';
@@ -46,21 +47,9 @@ export async function POST(request: NextRequest) {
     const originalName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
     const fileName = `${timestamp}_${originalName}`;
 
-    const renderDiskPath = '/uploads';
-    const hasRenderDisk = existsSync(renderDiskPath);
-    
-    let uploadDir: string;
-    let fileUrl: string;
-    
-    if (hasRenderDisk) {
-      uploadDir = renderDiskPath;
-      fileUrl = `/api/uploads/${fileName}`;
-      console.log('Используется Render Disk:', uploadDir);
-    } else {
-      uploadDir = join(process.cwd(), 'public', 'uploads');
-      fileUrl = `/uploads/${fileName}`;
-      console.log('Используется локальное хранилище:', uploadDir);
-    }
+    const uploadDir = uploadStorageDir();
+    const fileUrl = uploadPublicUrl(fileName);
+    console.log('Загрузки сохраняются в:', uploadDir, '→ URL:', fileUrl);
 
     try {
       if (!existsSync(uploadDir)) {
@@ -76,7 +65,7 @@ export async function POST(request: NextRequest) {
             error: 'Файловая система доступна только для чтения.',
             code: 'READ_ONLY_FS',
             details: dirError.message,
-            hint: 'На Render.com нужно создать Render Disk: Settings → Disk → Create Disk (mount path: /uploads)'
+            hint: 'Нужен записываемый каталог (локально public/uploads; на Render — Persistent Disk с mount /var/data, загрузки в /var/data/uploads)'
           },
           { status: 500 }
         );
@@ -102,7 +91,7 @@ export async function POST(request: NextRequest) {
             error: 'Файловая система доступна только для чтения.',
             code: 'READ_ONLY_FS',
             details: writeError.message,
-            hint: 'На Render.com создайте Render Disk: Settings → Disk → Create Disk (mount path: /uploads, минимум 1GB)',
+            hint: 'На Render: Persistent Disk с mount /var/data (загрузки пишутся в /var/data/uploads автоматически)',
             solution: 'https://dashboard.render.com → ваш сервис → Settings → Disk → Create Disk'
           },
           { status: 500 }
@@ -139,15 +128,14 @@ export async function DELETE(request: NextRequest) {
         { status: 400 }
       );
     }
+    if (fileName.includes('..') || fileName.includes('/') || fileName.includes('\\')) {
+      return NextResponse.json({ error: 'Недопустимое имя файла' }, { status: 400 });
+    }
 
-    const renderDiskPath = '/uploads';
-    const hasRenderDisk = existsSync(renderDiskPath);
-    
-    let filePath: string;
-    if (hasRenderDisk) {
-      filePath = join(renderDiskPath, fileName);
-    } else {
-      filePath = join(process.cwd(), 'public', 'uploads', fileName);
+    const root = resolve(uploadStorageDir());
+    const filePath = resolve(join(uploadStorageDir(), fileName));
+    if (!filePath.startsWith(root + sep) && filePath !== root) {
+      return NextResponse.json({ error: 'Недопустимый путь' }, { status: 400 });
     }
 
     const { unlink } = await import('fs/promises');

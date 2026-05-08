@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stat, readFile } from 'fs/promises';
-import { join } from 'path';
+import { join, resolve, sep } from 'path';
 import { existsSync, createReadStream } from 'fs';
+import { uploadStorageDir } from '@/lib/data-file-paths';
 
 export async function GET(
   request: NextRequest,
@@ -9,16 +10,15 @@ export async function GET(
 ) {
   try {
     const params = await context.params;
-    const filePath = params.path.join('/');
-    
-    const renderDiskPath = '/uploads';
-    const hasRenderDisk = existsSync(renderDiskPath);
-    
-    let fullPath: string;
-    if (hasRenderDisk) {
-      fullPath = join(renderDiskPath, filePath);
-    } else {
-      fullPath = join(process.cwd(), 'public', 'uploads', filePath);
+    const segments = params.path || [];
+    if (segments.some((s) => s.includes('..'))) {
+      return NextResponse.json({ error: 'Недопустимый путь' }, { status: 400 });
+    }
+    const rel = segments.join('/');
+    const root = resolve(uploadStorageDir());
+    const fullPath = resolve(join(uploadStorageDir(), rel));
+    if (!fullPath.startsWith(root + sep) && fullPath !== root) {
+      return NextResponse.json({ error: 'Файл не найден' }, { status: 404 });
     }
 
     if (!existsSync(fullPath)) {
@@ -27,7 +27,7 @@ export async function GET(
 
     const fileStat = await stat(fullPath);
 
-    const ext = filePath.split('.').pop()?.toLowerCase();
+    const ext = rel.split('.').pop()?.toLowerCase();
     const mimeTypes: Record<string, string> = {
       jpg: 'image/jpeg',
       jpeg: 'image/jpeg',

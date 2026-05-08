@@ -1,26 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, writeFileSync } from 'fs';
 import { translateWork } from '@/lib/translate';
+import {
+  ensureDirForFile,
+  uploadServedViaApi,
+  worksRuntimeFile,
+  worksSeedFile,
+} from '@/lib/data-file-paths';
 
-const RENDER_DISK_PATH = '/uploads';
-const LOCAL_UPLOADS_PATH = join(process.cwd(), 'public', 'uploads');
-const FALLBACK_REPO_FILE = join(process.cwd(), 'src', 'lib', 'works-data.json');
-
-const getStorageDir = () => (existsSync(RENDER_DISK_PATH) ? RENDER_DISK_PATH : LOCAL_UPLOADS_PATH);
-const getWorksFilePath = () => join(getStorageDir(), 'works-data.json');
-const hasRenderDisk = () => existsSync(RENDER_DISK_PATH);
-
-function ensureStorageDir() {
-  const dir = getStorageDir();
-  if (!existsSync(dir)) {
-    mkdirSync(dir, { recursive: true });
-  }
+function getWorksFilePath() {
+  return worksRuntimeFile();
 }
 
-function normalizeFileUrl(url: string | undefined, renderDisk: boolean): string | undefined {
+function normalizeFileUrl(url: string | undefined, serveViaApi: boolean): string | undefined {
   if (!url) return url;
-  if (renderDisk && url.startsWith('/uploads/')) {
+  if (serveViaApi && url.startsWith('/uploads/')) {
     const fileName = url.split('/').pop();
     if (fileName) {
       return `/api/uploads/${fileName}`;
@@ -29,10 +23,10 @@ function normalizeFileUrl(url: string | undefined, renderDisk: boolean): string 
   return url;
 }
 
-function normalizeWorkFiles(work: PortfolioWork, renderDisk: boolean): PortfolioWork {
-  const normalizedMain = normalizeFileUrl(work.mainImage, renderDisk) || work.mainImage;
-  const normalizedImages = (work.images || []).map(img => normalizeFileUrl(img, renderDisk) || img);
-  const normalizedVideos = (work.videos || []).map(vid => normalizeFileUrl(vid, renderDisk) || vid);
+function normalizeWorkFiles(work: PortfolioWork, serveViaApi: boolean): PortfolioWork {
+  const normalizedMain = normalizeFileUrl(work.mainImage, serveViaApi) || work.mainImage;
+  const normalizedImages = (work.images || []).map(img => normalizeFileUrl(img, serveViaApi) || img);
+  const normalizedVideos = (work.videos || []).map(vid => normalizeFileUrl(vid, serveViaApi) || vid);
   return {
     ...work,
     mainImage: normalizedMain,
@@ -91,11 +85,12 @@ async function readWorksData(): Promise<PortfolioWork[]> {
     return JSON.parse(data);
   } catch (primaryError) {
     try {
-      const data = readFileSync(FALLBACK_REPO_FILE, 'utf-8');
+      const data = readFileSync(worksSeedFile(), 'utf-8');
       const parsed = JSON.parse(data);
       try {
-        ensureStorageDir();
-        writeFileSync(getWorksFilePath(), JSON.stringify(parsed, null, 2), 'utf-8');
+        const target = getWorksFilePath();
+        ensureDirForFile(target);
+        writeFileSync(target, JSON.stringify(parsed, null, 2), 'utf-8');
       } catch (seedError) {
         console.warn('Не удалось сохранить seed данных в основное хранилище:', seedError);
       }
@@ -109,13 +104,14 @@ async function readWorksData(): Promise<PortfolioWork[]> {
 
 async function writeWorksData(data: PortfolioWork[]): Promise<void> {
   try {
-    ensureStorageDir();
-    writeFileSync(getWorksFilePath(), JSON.stringify(data, null, 2), 'utf-8');
+    const target = getWorksFilePath();
+    ensureDirForFile(target);
+    writeFileSync(target, JSON.stringify(data, null, 2), 'utf-8');
   } catch (error: any) {
     console.error('Error writing works data:', error);
     if (error.code === 'EACCES' || error.code === 'EROFS' || error.message?.includes('read-only')) {
       throw new Error(
-        'Файловая система доступна только для чтения. Для сохранения работ нужен Render Disk (mount: /uploads).'
+        'Файловая система доступна только для чтения. Задайте WORKS_FILE_PATH на persistent disk (например /var/data/works-data.json).'
       );
     }
     throw new Error(`Ошибка записи данных: ${error.message || 'Неизвестная ошибка'}`);
@@ -128,13 +124,13 @@ export async function GET(request: NextRequest) {
     const projectId = searchParams.get('projectId');
     const category = searchParams.get('category');
     const translateAll = searchParams.get('translateAll') === 'true';
-    const renderDisk = hasRenderDisk();
+    const serveViaApi = uploadServedViaApi();
 
     let works = await readWorksData();
     works = works.map(w => ({ ...w, videos: [] }));
     let normalized = false;
     works = works.map(work => {
-      const normalizedWork = normalizeWorkFiles(work, renderDisk);
+      const normalizedWork = normalizeWorkFiles(work, serveViaApi);
       if (
         normalizedWork.mainImage !== work.mainImage ||
         normalizedWork.images !== work.images ||
@@ -230,7 +226,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const work: PortfolioWork = await request.json();
-    const renderDisk = hasRenderDisk();
+    const serveViaApi = uploadServedViaApi();
     work.videos = [];
 
     console.log('POST /api/works - получена работа:', {
@@ -263,7 +259,7 @@ export async function POST(request: NextRequest) {
     const works = await readWorksData();
 
     const newWork: PortfolioWork = {
-      ...normalizeWorkFiles(work, renderDisk),
+      ...normalizeWorkFiles(work, serveViaApi),
       id: work.id || Date.now().toString(),
       projectId: work.projectId || `project-${Date.now()}`,
       workDate: work.workDate || new Date().toISOString().split('T')[0],
@@ -299,7 +295,7 @@ export async function PUT(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
     const work: PortfolioWork = await request.json();
-    const renderDisk = hasRenderDisk();
+    const serveViaApi = uploadServedViaApi();
     work.videos = [];
 
     if (!id && !work.id) {
@@ -346,7 +342,7 @@ export async function PUT(request: NextRequest) {
 
     works[index] = { 
       ...existingWork, 
-      ...normalizeWorkFiles(work, renderDisk), 
+      ...normalizeWorkFiles(work, serveViaApi), 
       id: workId,
       translations: translations || existingWork.translations,
       videos: [] // отключаем видео

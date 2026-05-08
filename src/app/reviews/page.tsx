@@ -39,6 +39,8 @@ export default function ReviewsPage() {
   const [uploading, setUploading] = useState(false)
   const [dragActivePhotos, setDragActivePhotos] = useState(false)
   const [showThankYou, setShowThankYou] = useState(false)
+  /** Only this browser session — reminds user their review is queued for moderation. */
+  const [sessionPendingNotice, setSessionPendingNotice] = useState<Comment | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [form, setForm] = useState({ name: '', surname: '', message: '', rating: 5, city: '', profileImage: '' })
   const [formPhotos, setFormPhotos] = useState<string[]>([])
@@ -137,12 +139,15 @@ export default function ReviewsPage() {
         setForm({ name: '', surname: '', message: '', rating: 5, city: '', profileImage: '' })
         setFormPhotos([])
         setError(null)
-        
+        if (data.comment) {
+          setSessionPendingNotice(data.comment)
+        }
+        // Публичный GET отдаёт только approved — список не изменится до модерации (это ожидаемо).
         fetch('/api/comments')
           .then(res => res.json())
           .then(list => setComments(list))
-          .catch(() => {}) // Игнорируем ошибки при обновлении списка
-        
+          .catch(() => {})
+
         window.scrollTo({ top: 0, behavior: 'smooth' })
         setShowThankYou(true)
         setSending(false)
@@ -208,6 +213,8 @@ export default function ReviewsPage() {
       title: 'Thank you for your review!',
       message1: 'I am very happy that you shared your experience!',
       message2: 'I always strive to be better for you. Your review will help me become even better.',
+      message3:
+        'Your review was saved. It will appear in the public list only after moderation — until then, other visitors will not see it.',
       backToReviews: 'Back to reviews'
     }
 
@@ -273,10 +280,20 @@ export default function ReviewsPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.1, duration: 0.5 }}
-                className="text-gray-300 text-lg md:text-xl leading-relaxed"
+                className="text-gray-300 text-lg md:text-xl leading-relaxed mb-4"
               >
                 {thankYouText.message2}
               </motion.p>
+              {thankYouText.message3 && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.25, duration: 0.5 }}
+                  className="text-amber-100/95 text-base md:text-lg leading-relaxed border-t border-amber-500/30 pt-4 mt-4"
+                >
+                  {thankYouText.message3}
+                </motion.p>
+              )}
             </motion.div>
             
             <motion.div
@@ -300,9 +317,40 @@ export default function ReviewsPage() {
     )
   }
 
+  const pendingText = (t.reviews as any)?.pendingSubmission
+
   return (
     <div className="unified-gradient-bg min-h-screen text-white pt-32 sm:pt-40 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {sessionPendingNotice && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8 rounded-2xl border border-amber-500/50 bg-amber-950/40 px-4 py-4 sm:px-6 sm:py-5"
+          >
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p className="font-semibold text-amber-100">
+                  {pendingText?.title || 'Submitted — pending moderation'}
+                </p>
+                <p className="mt-1 text-sm text-amber-100/85">
+                  {pendingText?.body ||
+                    'Your review is saved. It will only appear in the public list after an administrator approves it.'}
+                </p>
+                <p className="mt-2 text-sm text-white/90 line-clamp-3 whitespace-pre-wrap">
+                  &ldquo;{sessionPendingNotice.message}&rdquo;
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSessionPendingNotice(null)}
+                className="shrink-0 rounded-lg border border-amber-400/60 bg-amber-500/20 px-4 py-2 text-sm font-medium text-amber-50 hover:bg-amber-500/30"
+              >
+                {pendingText?.dismiss || 'Got it'}
+              </button>
+            </div>
+          </motion.div>
+        )}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -1,20 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { translateWork } from '@/lib/translate';
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { ensureDirForFile, worksRuntimeFile, worksSeedFile } from '@/lib/data-file-paths';
 
-const RENDER_DISK_PATH = '/uploads';
-const LOCAL_UPLOADS_PATH = join(process.cwd(), 'public', 'uploads');
-const FALLBACK_REPO_FILE = join(process.cwd(), 'src', 'lib', 'works-data.json');
-
-const getStorageDir = () => (existsSync(RENDER_DISK_PATH) ? RENDER_DISK_PATH : LOCAL_UPLOADS_PATH);
-const getWorksFilePath = () => join(getStorageDir(), 'works-data.json');
-
-function ensureStorageDir() {
-  const dir = getStorageDir();
-  if (!existsSync(dir)) {
-    mkdirSync(dir, { recursive: true });
-  }
+function getWorksFilePath() {
+  return worksRuntimeFile();
 }
 
 export interface PortfolioWork {
@@ -42,11 +32,12 @@ async function readWorksData(): Promise<PortfolioWork[]> {
     return JSON.parse(data);
   } catch (primaryError) {
     try {
-      const data = readFileSync(FALLBACK_REPO_FILE, 'utf-8');
+      const data = readFileSync(worksSeedFile(), 'utf-8');
       const parsed = JSON.parse(data);
       try {
-        ensureStorageDir();
-        writeFileSync(getWorksFilePath(), JSON.stringify(parsed, null, 2), 'utf-8');
+        const target = getWorksFilePath();
+        ensureDirForFile(target);
+        writeFileSync(target, JSON.stringify(parsed, null, 2), 'utf-8');
       } catch (seedError) {
         console.warn('Не удалось сохранить seed данных:', seedError);
       }
@@ -60,8 +51,9 @@ async function readWorksData(): Promise<PortfolioWork[]> {
 
 async function writeWorksData(data: PortfolioWork[]): Promise<void> {
   try {
-    ensureStorageDir();
-    writeFileSync(getWorksFilePath(), JSON.stringify(data, null, 2), 'utf-8');
+    const target = getWorksFilePath();
+    ensureDirForFile(target);
+    writeFileSync(target, JSON.stringify(data, null, 2), 'utf-8');
   } catch (error: any) {
     console.error('Ошибка записи данных работ:', error);
     throw new Error(`Не удалось сохранить данные: ${error.message || 'Неизвестная ошибка'}`);

@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
-
-const PORTFOLIO_FILE = join(process.cwd(), 'src/lib/portfolio-data.json');
+import {
+  portfolioRuntimeFile,
+  portfolioSeedFile,
+  readJsonWithSeed,
+  writeJsonFile,
+} from '@/lib/data-file-paths';
 
 interface PortfolioItem {
   id: string;
@@ -13,17 +15,14 @@ interface PortfolioItem {
   date?: string;
 }
 
-function readPortfolioData() {
-  try {
-    const data = readFileSync(PORTFOLIO_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    return {};
-  }
+type PortfolioData = Record<string, PortfolioItem[]>;
+
+function readPortfolioData(): PortfolioData {
+  return readJsonWithSeed<PortfolioData>(portfolioRuntimeFile(), portfolioSeedFile(), {});
 }
 
-function writePortfolioData(data: any) {
-  writeFileSync(PORTFOLIO_FILE, JSON.stringify(data, null, 2), 'utf-8');
+function writePortfolioData(data: PortfolioData) {
+  writeJsonFile(portfolioRuntimeFile(), data);
 }
 
 export async function GET(request: NextRequest) {
@@ -63,7 +62,7 @@ export async function POST(request: NextRequest) {
       data[item.service] = [];
     }
 
-    const newItem = {
+    const newItem: PortfolioItem = {
       ...item,
       id: item.id || Date.now().toString(),
       date: item.date || new Date().toISOString(),

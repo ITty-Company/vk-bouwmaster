@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
 import { translateBlogPost } from '@/lib/translate';
-
-const BLOG_FILE = join(process.cwd(), 'src/lib/blog-data.json');
+import { blogRuntimeFile, blogSeedFile, readJsonWithSeed, writeJsonFile } from '@/lib/data-file-paths';
 
 interface BlogPostTranslations {
   title: string;
@@ -26,16 +23,11 @@ interface BlogPost {
 }
 
 function readBlogData(): BlogPost[] {
-  try {
-    const data = readFileSync(BLOG_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
+  return readJsonWithSeed<BlogPost[]>(blogRuntimeFile(), blogSeedFile(), []);
 }
 
 function writeBlogData(data: BlogPost[]) {
-  writeFileSync(BLOG_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  writeJsonFile(blogRuntimeFile(), data);
 }
 
 export async function GET() {
