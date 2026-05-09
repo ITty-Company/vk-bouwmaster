@@ -4,6 +4,7 @@ import {
   commentsSeedFile,
   ensureDirForFile,
 } from '@/lib/data-file-paths'
+import suppressedSeedIds from '@/lib/comments-suppressed-seed-ids.json'
 
 export type StoredComment = {
   id: string
@@ -100,12 +101,16 @@ export function loadRuntimeState(): CommentsRuntimeState {
 
 /** Seed from repo + overlay / tombstones on disk — new seed IDs from deploy appear automatically. */
 export function mergeComments(seed: StoredComment[], state: CommentsRuntimeState): StoredComment[] {
-  const removed = new Set(state.removedSeedIds)
+  const removed = new Set([
+    ...state.removedSeedIds,
+    ...(Array.isArray(suppressedSeedIds) ? suppressedSeedIds : []),
+  ])
   const map = new Map<string, StoredComment>()
   for (const s of seed) {
     if (!removed.has(s.id)) map.set(s.id, s)
   }
   for (const e of state.entries) {
+    if (removed.has(e.id)) continue
     map.set(e.id, e)
   }
   return [...map.values()]
@@ -133,7 +138,8 @@ function persistMergedToDisk(merged: StoredComment[], options?: PersistMergedOpt
   if (options?.removedSeedIdsOverride) {
     removedSeedIds = options.removedSeedIdsOverride.filter((id) => seedMap.has(id))
   } else {
-    removedSeedIds = (prev.removedSeedIds || []).filter((id) => seedMap.has(id))
+    /** Keep tombstones even when id was removed from seed JSON — blocks ghost rows from old disk snapshots. */
+    removedSeedIds = [...new Set(prev.removedSeedIds || [])]
     const del = options?.deletedSeedId?.trim()
     if (del && seedMap.has(del)) {
       removedSeedIds = [...new Set([...removedSeedIds, del])]
