@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { Navigation } from './navigation';
 import { Footer } from './footer';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import { PushTestPanel } from '@/components/push-test-panel';
 
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
     return (
       <LanguageProvider>
         {children}
+        <PushTestPanel />
       </LanguageProvider>
     );
   }
@@ -24,6 +26,7 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <Footer />
+      <PushTestPanel />
     </LanguageProvider>
   );
 }
