@@ -600,15 +600,20 @@ export default function AdminPage() {
     }
   };
 
-  const loadMessages = async () => {
+  const loadMessages = useCallback(async () => {
     try {
       const response = await fetch('/api/contact?type=messages');
       const data = await response.json();
-      setMessages(data);
+      setMessages(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error('Ошибка загрузки сообщений:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated || activeTab !== 'messages') return;
+    void loadMessages();
+  }, [activeTab, isAuthenticated, loadMessages]);
 
   const handleMessageMarkRead = async (id: string) => {
     try {

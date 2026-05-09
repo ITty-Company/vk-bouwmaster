@@ -2,9 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from 'fs';
 import { join, dirname } from 'path';
 import nodemailer from 'nodemailer';
+import {
+  notifyTelegramContactMessage,
+  publicSiteUrlFromRequest,
+} from '@/lib/telegram-contact-notify';
 
 // Source JSON files can be read-only in production (e.g. Vercel).
 // Keep editable runtime data in /data (or via env override) so it persists.
+// Render: set CONTACT_MESSAGES_FILE_PATH to a path on the persistent disk (e.g. /data/contact-messages.json)
+// so заявки с формы не теряются при редеплое.
 const SEED_CONTACT_FILE = join(process.cwd(), 'src/lib/contact-data.json');
 const SEED_MESSAGES_FILE = join(process.cwd(), 'src/lib/contact-messages.json');
 
@@ -180,74 +186,6 @@ function writeMessages(messages: ContactMessage[]) {
   writeFileSync(RUNTIME_MESSAGES_FILE, JSON.stringify(messages, null, 2), 'utf-8');
 }
 
-function escapeHtml(text: string) {
-  return text
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;');
-}
-
-async function sendTelegram(message: ContactMessage, requestUrl?: string) {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
-
-  if (!token || !chatId) {
-    console.log('Telegram настройки не заданы. Уведомление в Telegram не будет отправлено.');
-    console.log('Для настройки задайте переменные окружения: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID');
-    return false;
-  }
-
-  const created = new Date(message.createdAt);
-  const lines: string[] = [];
-  lines.push('<b>📩 Новая анкета с сайта VK Bouwmaster</b>');
-  lines.push('');
-  lines.push(`<b>Имя:</b> ${escapeHtml(message.name)}`);
-  lines.push(`<b>Email:</b> ${escapeHtml(message.email)}`);
-  if (message.phone) lines.push(`<b>Телефон:</b> ${escapeHtml(message.phone)}`);
-  lines.push('');
-  lines.push('<b>Адрес:</b>');
-  lines.push(`${escapeHtml(message.street)} ${escapeHtml(message.houseNumber)}`);
-  lines.push(`${escapeHtml(message.postalCode)}${message.city ? `, ${escapeHtml(message.city)}` : ''}`);
-  if (message.service) {
-    lines.push('');
-    lines.push(`<b>Услуга:</b> ${escapeHtml(message.service)}`);
-  }
-  lines.push('');
-  lines.push('<b>Сообщение:</b>');
-  lines.push(escapeHtml(message.message));
-  lines.push('');
-  lines.push(`<b>ID:</b> ${escapeHtml(message.id)}`);
-  lines.push(`<b>Дата:</b> ${escapeHtml(created.toLocaleString('ru-RU'))}`);
-  if (requestUrl) lines.push(`<b>Источник:</b> ${escapeHtml(requestUrl)}`);
-
-  const text = lines.join('\n');
-
-  try {
-    const url = `https://api.telegram.org/bot${token}/sendMessage`;
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text,
-        parse_mode: 'HTML',
-        disable_web_page_preview: true,
-      }),
-    });
-
-    if (!res.ok) {
-      const err = await res.text().catch(() => '');
-      console.error('Telegram sendMessage failed:', res.status, err);
-      return false;
-    }
-
-    return true;
-  } catch (error) {
-    console.error('Telegram sendMessage error:', error);
-    return false;
-  }
-}
-
 async function sendEmail(message: ContactMessage) {
   try {
     const emailBody = `
@@ -394,8 +332,11 @@ export async function POST(request: NextRequest) {
     messages.unshift(message); // Добавляем новое сообщение в начало
     writeMessages(messages);
 
-    sendEmail(message).catch(err => console.error('Email sending failed:', err));
-    sendTelegram(message, request.url).catch(err => console.error('Telegram sending failed:', err));
+    const siteUrl = publicSiteUrlFromRequest(request);
+    sendEmail(message).catch((err) => console.error('Email sending failed:', err));
+    notifyTelegramContactMessage(message, { siteUrl }).catch((err) =>
+      console.error('Telegram sending failed:', err)
+    );
 
     return NextResponse.json({ success: true, message });
   } catch (error) {
