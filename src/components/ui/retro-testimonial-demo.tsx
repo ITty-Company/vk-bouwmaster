@@ -1,8 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import {Carousel, TestimonialCard} from "@/components/ui/retro-testimonial";
 import {iTestimonial} from "@/components/ui/retro-testimonial";
+import { useTranslations } from "@/hooks/useTranslations"
 
 type Comment = {
   id: string
@@ -19,6 +21,7 @@ type Comment = {
 }
 
 const RetroTestimonialDemo = () => {
+  const { t } = useTranslations()
   const [reviews, setReviews] = useState<Comment[]>([])
 
   useEffect(() => {
@@ -64,10 +67,20 @@ const RetroTestimonialDemo = () => {
       )
     })
 
+  const allReviewsLabel = t.reviews?.list?.title || "All reviews"
+
   return (
     <div className="bg-black">
       <div className="max-w-5xl mx-auto px-4">
         <Carousel items={cards} />
+        <div className="flex justify-center mt-6 pb-2">
+          <Link
+            href="/reviews"
+            className="text-sm md:text-base font-medium text-cyan-300/90 hover:text-cyan-200 underline underline-offset-4 decoration-cyan-500/50 hover:decoration-cyan-300 transition-colors"
+          >
+            {allReviewsLabel} →
+          </Link>
+        </div>
       </div>
     </div>
   );

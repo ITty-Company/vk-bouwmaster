@@ -191,6 +191,11 @@ const Carousel = ({items, initialScroll = 0}: iCarouselProps) => {
   }, [initialScroll]);
 
   useEffect(() => {
+    const id = requestAnimationFrame(() => checkScrollability())
+    return () => cancelAnimationFrame(id)
+  }, [items.length])
+
+  useEffect(() => {
     if (items.length > 1) {
       startAutoScroll();
     }
@@ -209,8 +214,30 @@ const Carousel = ({items, initialScroll = 0}: iCarouselProps) => {
 
   return (
     <div className="relative w-full mt-10">
+      {items.length > 1 && (
+        <>
+          <button
+            type="button"
+            aria-label="Vorige recensies"
+            onClick={handleScrollLeft}
+            disabled={!canScrollLeft}
+            className="absolute left-0 top-1/2 z-20 -translate-y-1/2 hidden md:flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-lg backdrop-blur-sm transition-opacity hover:bg-black/80 disabled:pointer-events-none disabled:opacity-30"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            aria-label="Volgende recensies"
+            onClick={handleScrollRight}
+            disabled={!canScrollRight}
+            className="absolute right-0 top-1/2 z-20 -translate-y-1/2 hidden md:flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-lg backdrop-blur-sm transition-opacity hover:bg-black/80 disabled:pointer-events-none disabled:opacity-30"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+        </>
+      )}
       <div
-        className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] py-5"
+        className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] py-5 md:px-12"
         ref={carouselRef}
         onScroll={checkScrollability}
         onMouseDown={() => {

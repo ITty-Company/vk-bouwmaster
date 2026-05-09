@@ -1,48 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { translateText, detectSourceLanguage } from '@/lib/translate';
 import { Language } from '@/lib/translations';
+import { ensureCommentsFileWithSeed } from '@/lib/data-file-paths';
 import {
-  commentsRuntimeFile,
-  commentsSeedFile,
-  ensureCommentsFileWithSeed,
-  ensureDirForFile,
-} from '@/lib/data-file-paths';
+  readMergedComments,
+  persistMergedComments,
+  type StoredComment,
+} from '@/lib/comments-storage';
 
-type Comment = {
-  id: string;
-  projectId: string;
-  name: string;
-  surname?: string;
-  message: string;
-  createdAt: string;
-  approved: boolean;
-  photos?: string[];
-  videos?: string[];
-  rating?: number;
-  city?: string;
-  profileImage?: string;
-  translations?: Record<string, string>;
-}
+type Comment = StoredComment;
 
 function readComments(): Comment[] {
   try {
     ensureCommentsFileWithSeed();
-    const runtime = commentsRuntimeFile();
-    const seed = commentsSeedFile();
-    const path = existsSync(runtime) ? runtime : seed;
-    if (!existsSync(path)) return [];
-    const data = readFileSync(path, 'utf-8');
-    return JSON.parse(data);
+    return readMergedComments();
   } catch {
     return [];
   }
 }
 
 function writeComments(list: Comment[]) {
-  const target = commentsRuntimeFile();
-  ensureDirForFile(target);
-  writeFileSync(target, JSON.stringify(list, null, 2), 'utf-8');
+  ensureCommentsFileWithSeed();
+  persistMergedComments(list);
 }
 
 export async function POST(request: NextRequest) {

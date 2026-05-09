@@ -1,45 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { readFileSync, writeFileSync, existsSync } from 'fs'
 import { translateText, detectSourceLanguage } from '@/lib/translate'
 import { Language } from '@/lib/translations'
+import { ensureCommentsFileWithSeed } from '@/lib/data-file-paths'
 import {
-  commentsRuntimeFile,
-  commentsSeedFile,
-  ensureCommentsFileWithSeed,
-} from '@/lib/data-file-paths'
+  readMergedComments,
+  persistMergedComments,
+  type StoredComment,
+} from '@/lib/comments-storage'
 
 /** Admin approve / message edit can take a while (many translations). */
 export const maxDuration = 300
 
-type Comment = {
-  id: string
-  projectId: string
-  name: string
-  surname?: string
-  message: string
-  createdAt: string
-  approved: boolean
-  photos?: string[]
-  videos?: string[]
-  rating?: number
-  city?: string
-  profileImage?: string
-  translations?: Record<string, string> // Переводы сообщения на разные языки
-}
+type Comment = StoredComment
 
-// NOTE: Seed lives in src/lib; runtime path from COMMENTS_FILE_PATH (e.g. /var/data on Render).
+// NOTE: Seed in src/lib merges with runtime overlay (COMMENTS_FILE_PATH, e.g. /var/data on Render).
 
 function readComments(): Comment[] {
   try {
     ensureCommentsFileWithSeed()
-    const runtime = commentsRuntimeFile()
-    const seed = commentsSeedFile()
-    const fileToRead = existsSync(runtime) ? runtime : seed
-
-    if (!existsSync(fileToRead)) return []
-    const data = readFileSync(fileToRead, 'utf-8')
-    const parsed = JSON.parse(data)
-    return Array.isArray(parsed) ? parsed : []
+    return readMergedComments()
   } catch {
     return []
   }
@@ -47,7 +26,7 @@ function readComments(): Comment[] {
 
 function writeComments(list: Comment[]) {
   ensureCommentsFileWithSeed()
-  writeFileSync(commentsRuntimeFile(), JSON.stringify(list, null, 2), 'utf-8')
+  persistMergedComments(list)
 }
 
 const COMMENT_LANGS: Language[] = [

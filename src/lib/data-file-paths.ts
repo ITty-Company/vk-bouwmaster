@@ -1,5 +1,5 @@
 import { dirname, join, resolve } from 'path'
-import { mkdirSync, existsSync, copyFileSync, writeFileSync, readFileSync } from 'fs'
+import { mkdirSync, existsSync, writeFileSync, readFileSync } from 'fs'
 
 /** Ensure parent directory exists before writing a JSON file (e.g. under /var/data). */
 export function ensureDirForFile(filePath: string): void {
@@ -22,22 +22,17 @@ export function commentsSeedFile(): string {
   return join(process.cwd(), 'src/lib/comments-data.json')
 }
 
-/** Create runtime comments file from seed or [] on first use (Render: under /var/data). */
+/** Ensure runtime comments file exists (overlay format — seed always read from repo at merge time). */
 export function ensureCommentsFileWithSeed(): void {
   const runtime = commentsRuntimeFile()
-  const seed = commentsSeedFile()
   mkdirSync(dirname(runtime), { recursive: true })
   if (existsSync(runtime)) return
   try {
-    if (existsSync(seed)) {
-      copyFileSync(seed, runtime)
-      return
-    }
-  } catch {
-    /* ignore */
-  }
-  try {
-    writeFileSync(runtime, '[]', 'utf-8')
+    writeFileSync(
+      runtime,
+      JSON.stringify({ version: 1, removedSeedIds: [], entries: [] }, null, 2),
+      'utf-8'
+    )
   } catch {
     /* ignore */
   }

@@ -275,5 +275,281 @@
       "GR": "Het snoeien van een laurierhaag\nZeer nette en vriendelijke man die keurig netjes werkt. Hij is een echte aanrader.",
       "UA": "Het snoeien van een laurierhaag\nZeer nette en vriendelijke man die keurig netjes werkt. Hij is een echte aanrader."
     }
+  },
+  {
+    "id": "1746729601001",
+    "projectId": "general",
+    "name": "Marco",
+    "surname": "de Vries",
+    "message": "Schilderwerk in de woonkamer en gang. Strakke lijnen, goede voorbereiding en geen verf op de vloer achtergelaten. Precies wat we wilden.",
+    "createdAt": "2026-04-12T14:20:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Eindhoven"
+  },
+  {
+    "id": "1746729601002",
+    "projectId": "general",
+    "name": "Irina",
+    "message": "Laminaat laten leggen met nieuwe plinten. Netjes gemeten, snel geplaatst en al het zaagsel direct opgeruimd. Zeer tevreden!",
+    "createdAt": "2026-04-18T09:45:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Amsterdam"
+  },
+  {
+    "id": "1746729601003",
+    "projectId": "general",
+    "name": "Peter",
+    "surname": "Bakker",
+    "message": "Kleine lekkage bij de badkraan: dezelfde dag nog gebeld en binnen twee uur opgelost. Eerlijke uitleg en netjes afgewerkt.",
+    "createdAt": "2026-05-02T16:10:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Breda"
+  },
+  {
+    "id": "1746729601004",
+    "projectId": "general",
+    "name": "Sophie",
+    "surname": "Vermeulen",
+    "message": "Tuin opnieuw ingedeeld en bestrating vervangen. Goede communicatie over planning en kosten. Resultaat ziet er professioneel uit.",
+    "createdAt": "2026-05-05T11:30:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Tilburg"
+  },
+  {
+    "id": "1746729601005",
+    "projectId": "general",
+    "name": "Lars",
+    "surname": "Janssen",
+    "message": "Plafond glad gestuukt en LED-spots laten inbouwen. Alles volgens afspraak en netjes afgewerkt. Zou zo weer bellen voor een volgende klus.",
+    "createdAt": "2026-05-07T08:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Rotterdam"
+  },
+  {
+    "id": "1746729601006",
+    "projectId": "general",
+    "name": "Elena",
+    "message": "Duidelijke offerte, geen verborgen kosten en netjes op tijd. Vakmanschap op hoog niveau; kleine details ook goed meegenomen.",
+    "createdAt": "2026-05-08T10:15:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "'s-Hertogenbosch"
+  },
+  {
+    "id": "1746729601007",
+    "projectId": "general",
+    "name": "Annemiek",
+    "surname": "van Dongen",
+    "message": "Nieuwe voordeur laten plaatsen inclusief kozijn. Goede isolatie en sluit perfect. Zeer tevreden over het advies en de uitvoering.",
+    "createdAt": "2026-01-14T13:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Utrecht"
+  },
+  {
+    "id": "1746729601008",
+    "projectId": "general",
+    "name": "Dmitri",
+    "message": "Elektra in de keuken vernieuwd en extra groepen aangelegd. Alles volgens NEN en netjes in de meterkast gelabeld.",
+    "createdAt": "2026-01-22T10:30:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Haarlem"
+  },
+  {
+    "id": "1746729601009",
+    "projectId": "general",
+    "name": "Femke",
+    "surname": "Mulder",
+    "message": "Behangen van drie slaapkamers. Strak lijmwerk, geen luchtbellen en randjes netjes afgewerkt. Huis rook nog naar verf — dat was het enige nadeel!",
+    "createdAt": "2026-02-03T15:45:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Groningen"
+  },
+  {
+    "id": "1746729601010",
+    "projectId": "general",
+    "name": "Tom",
+    "message": "Garage opruimen en nieuwe wandrekken monteren. Snel klaar en al het oude hout meegenomen. Prima service.",
+    "createdAt": "2026-02-09T09:15:00.000Z",
+    "approved": true,
+    "rating": 4,
+    "city": "Arnhem"
+  },
+  {
+    "id": "1746729601011",
+    "projectId": "general",
+    "name": "Olga",
+    "surname": "Petrova",
+    "message": "Badkamer betegeling vernieuwd en voegen waterdicht gemaakt. Geen lekkage meer; werkt al maanden perfect.",
+    "createdAt": "2026-02-17T11:20:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Den Haag"
+  },
+  {
+    "id": "1746729601012",
+    "projectId": "general",
+    "name": "Rob",
+    "surname": "Smit",
+    "message": "Dakgoot gerepareerd na stormschade. Snel geïnspecteerd en eerlijk gezegd wat nodig was — geen onnodige extra werkzaamheden.",
+    "createdAt": "2026-02-25T08:40:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Zwolle"
+  },
+  {
+    "id": "1746729601013",
+    "projectId": "general",
+    "name": "Charlotte",
+    "message": "Hekwerk en poort in de achtertuin. Stevig materiaal en nette lasnaden. Buren zeiden ook: ziet er professioneel uit.",
+    "createdAt": "2026-03-04T14:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Maastricht"
+  },
+  {
+    "id": "1746729601014",
+    "projectId": "general",
+    "name": "Ahmed",
+    "surname": "El Amrani",
+    "message": "Vloerverwarming in de woonkamer laten aanleggen vóór de nieuwe tegelvloer. Voelt comfortabel en energieverbruik lijkt lager.",
+    "createdAt": "2026-03-11T16:25:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Leiden"
+  },
+  {
+    "id": "1746729601015",
+    "projectId": "general",
+    "name": "Ingrid",
+    "surname": "Hoekstra",
+    "message": "Kozijnen buiten geschilderd en kitwerk vernieuwd. Geen rot plekken meer; kleur precies zoals op het staaltje.",
+    "createdAt": "2026-03-19T12:10:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Almere"
+  },
+  {
+    "id": "1746729601016",
+    "projectId": "general",
+    "name": "Victor",
+    "message": "CV-ketel onderhoud en kleine storing verholpen. Uitleg in begrijpelijke taal en onderdelen vooraf besproken.",
+    "createdAt": "2026-03-26T09:50:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Enschede"
+  },
+  {
+    "id": "1746729601017",
+    "projectId": "general",
+    "name": "Nina",
+    "surname": "Kowalski",
+    "message": "Keukenblad vervangen en kraan gemonteerd. Past perfect bij de bestaande keuken; monteurs werkten efficiënt en netjes.",
+    "createdAt": "2026-04-01T13:35:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Nijmegen"
+  },
+  {
+    "id": "1746729601018",
+    "projectId": "general",
+    "name": "Bas",
+    "surname": "Visser",
+    "message": "Zolder isolatie en vaste trap laten plaatsen. Veel warmer en we gebruiken de ruimte eindelijk dagelijks.",
+    "createdAt": "2026-04-06T08:55:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Apeldoorn"
+  },
+  {
+    "id": "1746729601019",
+    "projectId": "general",
+    "name": "Yulia",
+    "message": "Ramen laten kitten en een raam vervangen na een barst. Geen tocht meer en het ziet er strak uit.",
+    "createdAt": "2026-04-10T17:05:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Hilversum"
+  },
+  {
+    "id": "1746729601020",
+    "projectId": "general",
+    "name": "Frank",
+    "surname": "de Boer",
+    "message": "Schutting langs de erfgrens vervangen. Palen stevig gezet en hout behandeld tegen weersinvloeden. Top!",
+    "createdAt": "2026-04-15T10:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Haarlemmermeer"
+  },
+  {
+    "id": "1746729601021",
+    "projectId": "general",
+    "name": "Mehmet",
+    "message": "Tegels in de hal gelegd met verwarmingsdraad eronder. Geen koude voeten meer in de winter. Bedankt!",
+    "createdAt": "2026-04-16T14:40:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Rotterdam"
+  },
+  {
+    "id": "1746729601022",
+    "projectId": "general",
+    "name": "Rianne",
+    "surname": "Peters",
+    "message": "Binnenmuur tussen keuken en woonkamer deels verwijderd en dragende balk geplaatst. Vergunning meegenomen in het proces — opluchting.",
+    "createdAt": "2026-04-20T09:20:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Eindhoven"
+  },
+  {
+    "id": "1746729601023",
+    "projectId": "general",
+    "name": "André",
+    "message": "Buitenverlichting aangesloten en sensor ingesteld. Werkt zoals beloofd; geen rare flikkeringen meer ’s nachts.",
+    "createdAt": "2026-04-23T11:45:00.000Z",
+    "approved": true,
+    "rating": 4,
+    "city": "Venlo"
+  },
+  {
+    "id": "1746729601024",
+    "projectId": "general",
+    "name": "Kim",
+    "surname": "Linden",
+    "message": "Wasmachine-aansluiting verplaatst en leidingen netjes weggewerkt achter de keukenkast. Geen lekken, geen geluid.",
+    "createdAt": "2026-04-27T08:30:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Amersfoort"
+  },
+  {
+    "id": "1746729601025",
+    "projectId": "general",
+    "name": "Stefan",
+    "message": "Plinten en deurlijsten in het hele appartement vervangen. Één kleurverschil gemeld — de volgende dag opnieuw gebracht en gemonteerd. Klantgericht.",
+    "createdAt": "2026-05-01T15:15:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Dordrecht"
+  },
+  {
+    "id": "1746729601026",
+    "projectId": "general",
+    "name": "Mila",
+    "surname": "Novak",
+    "message": "Complete badkamer renovatie in vier weken afgerond. Dagelijks kort contact over voortgang; eindresultaat modern en onderhoudsvriendelijk.",
+    "createdAt": "2026-05-06T12:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Alkmaar"
   }
 ]
