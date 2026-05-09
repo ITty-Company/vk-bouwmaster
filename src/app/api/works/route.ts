@@ -78,7 +78,7 @@ async function writeWorksData(data: PortfolioWork[], persistOpts?: PersistWorksM
     console.error('Error writing works data:', error);
     if (error.code === 'EACCES' || error.code === 'EROFS' || error.message?.includes('read-only')) {
       throw new Error(
-        'Файловая система доступна только для чтения. Задайте WORKS_FILE_PATH на persistent disk (например /var/data/works-data.json).'
+        'Файловая система доступна только для чтения. Укажите WORKS_FILE_PATH на persistent disk (например /uploads/works-data.json или /var/data/works-data.json — путь должен совпадать с точкой монтирования диска в Render).'
       );
     }
     throw new Error(`Ошибка записи данных: ${error.message || 'Неизвестная ошибка'}`);

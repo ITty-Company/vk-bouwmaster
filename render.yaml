@@ -15,8 +15,9 @@ services:
     # Persistent disk is required if you want reviews/messages to survive restarts & deploys.
     disk:
       name: vk-bouwmaster-data
-      mountPath: /var/data
-      sizeGB: 1
+      # Должно совпадать с Mount path в Dashboard; часто используют /uploads как корень диска.
+      mountPath: /uploads
+      sizeGB: 10
     envVars:
       - key: NODE_ENV
         value: production
@@ -28,29 +29,29 @@ services:
         value: "true"
       # Runtime storage paths (use Render persistent disk)
       - key: COMMENTS_FILE_PATH
-        value: /var/data/comments-data.json
+        value: /uploads/comments-data.json
       - key: CONTACT_FILE_PATH
-        value: /var/data/contact-data.json
+        value: /uploads/contact-data.json
       - key: CONTACT_MESSAGES_FILE_PATH
-        value: /var/data/contact-messages.json
+        value: /uploads/contact-messages.json
       # Admin-edited JSON (same persistent disk — survives deploys; optional locally via defaults in src/lib or data/)
       - key: WORKS_FILE_PATH
-        value: /var/data/works-data.json
+        value: /uploads/works-data.json
       - key: SERVICES_FILE_PATH
-        value: /var/data/services-data.json
+        value: /uploads/services-data.json
       - key: PORTFOLIO_FILE_PATH
-        value: /var/data/portfolio-data.json
+        value: /uploads/portfolio-data.json
       - key: TEAM_FILE_PATH
-        value: /var/data/team-data.json
+        value: /uploads/team-data.json
       - key: BLOG_FILE_PATH
-        value: /var/data/blog-data.json
+        value: /uploads/blog-data.json
       - key: FAQ_FILE_PATH
-        value: /var/data/faq-data.json
+        value: /uploads/faq-data.json
       - key: PRICING_FILE_PATH
-        value: /var/data/pricing-data.json
-      # User-uploaded images/videos (same disk as JSON). Optional: if unset, app uses /var/data/uploads when /var/data exists.
+        value: /uploads/pricing-data.json
+      # Медиа лежат в корне смонтированного диска (рядом с JSON): /uploads/<имя файла из JSON>.
       - key: UPLOAD_DIR
-        value: /var/data/uploads
+        value: /uploads
       # Браузер переписывает `/uploads/…` → `/api/uploads/…` там, где файлы только на диске Render.
       - key: NEXT_PUBLIC_UPLOADS_VIA_API
         value: "true"
