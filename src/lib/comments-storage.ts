@@ -117,12 +117,28 @@ export function readMergedComments(): StoredComment[] {
   return mergeComments(seed, state)
 }
 
-function persistMergedToDisk(merged: StoredComment[]): void {
+export type PersistMergedOptions = {
+  /** Seed id the user explicitly deleted in DELETE /api/comments — never infer “removed” from a partial merged list. */
+  deletedSeedId?: string
+  /** Replace removals entirely (e.g. recover from bad disk state). */
+  removedSeedIdsOverride?: string[]
+}
+
+function persistMergedToDisk(merged: StoredComment[], options?: PersistMergedOptions): void {
   const seed = loadSeedComments()
   const seedMap = new Map(seed.map((s) => [s.id, s]))
-  const mergedIds = new Set(merged.map((m) => m.id))
+  const prev = loadRuntimeState()
 
-  const removedSeedIds = seed.filter((s) => !mergedIds.has(s.id)).map((s) => s.id)
+  let removedSeedIds: string[]
+  if (options?.removedSeedIdsOverride) {
+    removedSeedIds = options.removedSeedIdsOverride.filter((id) => seedMap.has(id))
+  } else {
+    removedSeedIds = (prev.removedSeedIds || []).filter((id) => seedMap.has(id))
+    const del = options?.deletedSeedId?.trim()
+    if (del && seedMap.has(del)) {
+      removedSeedIds = [...new Set([...removedSeedIds, del])]
+    }
+  }
 
   const entries: StoredComment[] = []
   for (const m of merged) {
@@ -144,6 +160,14 @@ function persistMergedToDisk(merged: StoredComment[]): void {
   writeFileSync(runtimePath, JSON.stringify(state, null, 2), 'utf-8')
 }
 
-export function persistMergedComments(merged: StoredComment[]): void {
-  persistMergedToDisk(merged)
+export function persistMergedComments(merged: StoredComment[], options?: PersistMergedOptions): void {
+  persistMergedToDisk(merged, options)
+}
+
+/** Clears tombstones so every id from `comments-data.json` can show again (disk state recovery). */
+export function resetCommentSeedRemovals(): void {
+  const seed = loadSeedComments()
+  const state = loadRuntimeState()
+  const merged = mergeComments(seed, { ...state, removedSeedIds: [] })
+  persistMergedToDisk(merged, { removedSeedIdsOverride: [] })
 }

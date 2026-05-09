@@ -225,7 +225,8 @@ export async function DELETE(request: NextRequest) {
     if (!id) return NextResponse.json({ error: 'id required' }, { status: 400 })
     const list = readComments()
     const filtered = list.filter(c => c.id !== id)
-    writeComments(filtered)
+    ensureCommentsFileWithSeed()
+    persistMergedComments(filtered, { deletedSeedId: id })
     return NextResponse.json({ success: true })
   } catch (e) {
     return NextResponse.json({ error: 'Failed to delete comment' }, { status: 500 })

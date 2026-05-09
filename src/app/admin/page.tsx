@@ -302,6 +302,39 @@ export default function AdminPage() {
     }
   };
 
+  /** Clears bogus removedSeedIds on disk so seeded reviews from Git show again (Render recovery). */
+  const handleResetSeedRemovals = async () => {
+    if (
+      !confirm(
+        'Сбросить на сервере пометки «удалён из репозитория»? Нужно, если после деплоя новые отзывы из Git не видны на сайте (типичная ошибка старого файла на диске). Продолжить?'
+      )
+    ) {
+      return;
+    }
+    const email = prompt('Email администратора', 'admin@vkbouwmaster.com');
+    const password = prompt('Пароль администратора');
+    if (!email?.trim() || !password) return;
+    setReviewTranslateBusy(true);
+    try {
+      const res = await fetch('/api/comments/reset-seed-removals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), password }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert(data.message ?? 'Готово');
+        loadReviews();
+      } else {
+        alert(data.error ?? 'Ошибка');
+      }
+    } catch {
+      alert('Сетевая ошибка');
+    } finally {
+      setReviewTranslateBusy(false);
+    }
+  };
+
   const handleReviewApprove = async (id: string) => {
     try {
       const response = await fetch(`/api/comments?id=${id}`, {
@@ -1521,6 +1554,15 @@ export default function AdminPage() {
                       className="px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 disabled:opacity-50 text-white text-xs sm:text-sm whitespace-nowrap"
                     >
                       Пересобрать все языки
+                    </button>
+                    <button
+                      type="button"
+                      disabled={reviewTranslateBusy}
+                      onClick={() => void handleResetSeedRemovals()}
+                      className="px-3 py-2 rounded-lg bg-amber-800/90 hover:bg-amber-700 disabled:opacity-50 text-white text-xs sm:text-sm whitespace-nowrap"
+                      title="Если новые отзывы из репозитория не появились после деплоя"
+                    >
+                      Показать все сиды с диска
                     </button>
                   </div>
                 </div>
