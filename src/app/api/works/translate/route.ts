@@ -1,59 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { translateWork } from '@/lib/translate';
-import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { ensureDirForFile, worksRuntimeFile, worksSeedFile } from '@/lib/data-file-paths';
+import {
+  readMergedWorks,
+  persistMergedWorks,
+  type PortfolioWork,
+} from '@/lib/works-storage';
 
-function getWorksFilePath() {
-  return worksRuntimeFile();
-}
+export type { PortfolioWork } from '@/lib/works-storage';
 
-export interface PortfolioWork {
-  id: string;
-  title: string;
-  description: string;
-  mainImage: string;
-  category: string;
-  projectId?: string;
-  images?: string[];
-  videos?: string[];
-  workDate?: string;
-  city?: string;
-  translations?: Record<string, {
-    title: string;
-    description: string;
-    category: string;
-    city?: string;
-  }>;
-}
-
-async function readWorksData(): Promise<PortfolioWork[]> {
+function readWorksData(): PortfolioWork[] {
   try {
-    const data = readFileSync(getWorksFilePath(), 'utf-8');
-    return JSON.parse(data);
-  } catch (primaryError) {
-    try {
-      const data = readFileSync(worksSeedFile(), 'utf-8');
-      const parsed = JSON.parse(data);
-      try {
-        const target = getWorksFilePath();
-        ensureDirForFile(target);
-        writeFileSync(target, JSON.stringify(parsed, null, 2), 'utf-8');
-      } catch (seedError) {
-        console.warn('Не удалось сохранить seed данных:', seedError);
-      }
-      return parsed;
-    } catch (fallbackError) {
-      console.error('Ошибка чтения данных работ:', primaryError, fallbackError);
-      return [];
-    }
+    return readMergedWorks();
+  } catch (e) {
+    console.error('Ошибка чтения данных работ:', e);
+    return [];
   }
 }
 
 async function writeWorksData(data: PortfolioWork[]): Promise<void> {
   try {
-    const target = getWorksFilePath();
-    ensureDirForFile(target);
-    writeFileSync(target, JSON.stringify(data, null, 2), 'utf-8');
+    persistMergedWorks(data);
   } catch (error: any) {
     console.error('Ошибка записи данных работ:', error);
     throw new Error(`Не удалось сохранить данные: ${error.message || 'Неизвестная ошибка'}`);
@@ -66,7 +32,7 @@ export async function POST(request: NextRequest) {
     const workId = searchParams.get('workId'); // Опционально: перевести только одну работу
     const force = searchParams.get('force') === 'true'; // Принудительно перевести даже если переводы есть
     
-    const works = await readWorksData();
+    const works = readWorksData();
     
     if (workId) {
       const index = works.findIndex(w => w.id === workId);
@@ -166,7 +132,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    const works = await readWorksData();
+    const works = readWorksData();
     
     const stats = {
       total: works.length,

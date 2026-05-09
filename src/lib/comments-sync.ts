@@ -1,17 +1,17 @@
 /**
- * Синхронизация списка отзывов: после действий в админке публичные страницы подтягивают API без долгого ожидания.
- * — BroadcastChannel: сразу между вкладками одного браузера
- * — localStorage + storage: запасной канал для тех же вкладок в некоторых сценариях
+ * После действий в админке открытые страницы подтягивают данные без долгого ожидания.
+ * Один канал для отзывов и работ (портфолио подписано на тот же refresh).
  */
 
-const CHANNEL = 'vk-bouwmaster-comments-v1'
-const LS_BUMP_KEY = 'vk-comments-bump'
+const CHANNEL = 'vk-bouwmaster-sync-v1'
+const LS_BUMP_KEY = 'vk-site-data-bump'
 
-export function notifyCommentsChanged(): void {
+/** Уведомить все подписанные вкладки (отзывы + работы). */
+export function notifySiteDataChanged(): void {
   if (typeof window === 'undefined') return
   try {
     const bc = new BroadcastChannel(CHANNEL)
-    bc.postMessage({ type: 'comments-changed', at: Date.now() })
+    bc.postMessage({ type: 'site-data-changed', at: Date.now() })
     bc.close()
   } catch {
     /* ignore */
@@ -22,6 +22,9 @@ export function notifyCommentsChanged(): void {
     /* ignore */
   }
 }
+
+export const notifyCommentsChanged = notifySiteDataChanged
+export const notifyWorksChanged = notifySiteDataChanged
 
 /** Подписка на обновления (верни unsubscribe). Безопасно на SSR — вернёт no-op. */
 export function subscribeCommentsRefresh(onRefresh: () => void): () => void {

@@ -1,18 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFileSync, writeFileSync } from 'fs';
 import { translateWork } from '@/lib/translate';
+import { uploadServedViaApi } from '@/lib/data-file-paths';
 import {
-  ensureDirForFile,
-  uploadServedViaApi,
-  worksRuntimeFile,
-  worksSeedFile,
-} from '@/lib/data-file-paths';
+  readMergedWorks,
+  persistMergedWorks,
+  type PortfolioWork,
+  type WorkTranslations,
+  type PersistWorksMergedOptions,
+} from '@/lib/works-storage';
 import { TRANSLATION_LANGUAGE_KEYS, autoTranslateOnFetch } from '@/lib/translation-languages';
 import { workTranslateFingerprint } from '@/lib/content-fingerprint';
 
-function getWorksFilePath() {
-  return worksRuntimeFile();
-}
+export type { PortfolioWork, WorkTranslations } from '@/lib/works-storage';
 
 function normalizeFileUrl(url: string | undefined, serveViaApi: boolean): string | undefined {
   if (!url) return url;
@@ -63,56 +62,18 @@ function needsTranslation(work: PortfolioWork): boolean {
   return work._translationSourceFingerprint !== fp;
 }
 
-export interface WorkTranslations {
-  title: string;
-  description: string;
-  category: string;
-  city?: string;
-}
-
-export interface PortfolioWork {
-  id: string;
-  title: string;
-  description: string;
-  mainImage: string;
-  category: string;
-  projectId?: string;
-  images?: string[];
-  videos?: string[]; // optional list of video urls per work
-  workDate?: string;
-  city?: string; // Город, где была выполнена работа
-  translations?: Record<string, WorkTranslations>;
-  _translationSourceFingerprint?: string;
-}
-
-async function readWorksData(): Promise<PortfolioWork[]> {
+function readWorksData(): PortfolioWork[] {
   try {
-    const data = readFileSync(getWorksFilePath(), 'utf-8');
-    return JSON.parse(data);
-  } catch (primaryError) {
-    try {
-      const data = readFileSync(worksSeedFile(), 'utf-8');
-      const parsed = JSON.parse(data);
-      try {
-        const target = getWorksFilePath();
-        ensureDirForFile(target);
-        writeFileSync(target, JSON.stringify(parsed, null, 2), 'utf-8');
-      } catch (seedError) {
-        console.warn('Не удалось сохранить seed данных в основное хранилище:', seedError);
-      }
-      return parsed;
-    } catch (fallbackError) {
-      console.error('Ошибка чтения данных работ:', primaryError, fallbackError);
-      return [];
-    }
+    return readMergedWorks();
+  } catch (e) {
+    console.error('Ошибка чтения данных работ:', e);
+    return [];
   }
 }
 
-async function writeWorksData(data: PortfolioWork[]): Promise<void> {
+async function writeWorksData(data: PortfolioWork[], persistOpts?: PersistWorksMergedOptions): Promise<void> {
   try {
-    const target = getWorksFilePath();
-    ensureDirForFile(target);
-    writeFileSync(target, JSON.stringify(data, null, 2), 'utf-8');
+    persistMergedWorks(data, persistOpts);
   } catch (error: any) {
     console.error('Error writing works data:', error);
     if (error.code === 'EACCES' || error.code === 'EROFS' || error.message?.includes('read-only')) {
@@ -132,7 +93,7 @@ export async function GET(request: NextRequest) {
     const translateAll = searchParams.get('translateAll') === 'true';
     const serveViaApi = uploadServedViaApi();
 
-    let works = await readWorksData();
+    let works = readWorksData();
     works = works.map(w => ({ ...w, videos: [] }));
     let normalized = false;
     works = works.map(work => {
@@ -278,7 +239,7 @@ export async function POST(request: NextRequest) {
       console.error('Translation error:', translationError);
     }
 
-    const works = await readWorksData();
+    const works = readWorksData();
 
     const normalized = normalizeWorkFiles(work, serveViaApi);
     const newWork: PortfolioWork = {
@@ -335,7 +296,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const workId = id || work.id;
-    const works = await readWorksData();
+    const works = readWorksData();
     const index = works.findIndex(w => w.id === workId);
 
     if (index === -1) {
@@ -408,9 +369,9 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const works = await readWorksData();
+    const works = readWorksData();
     const filteredWorks = works.filter(work => work.id !== id);
-    await writeWorksData(filteredWorks);
+    await writeWorksData(filteredWorks, { deletedSeedId: id });
 
     return NextResponse.json({ success: true });
   } catch (error) {

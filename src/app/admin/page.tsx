@@ -305,6 +305,40 @@ export default function AdminPage() {
     }
   };
 
+  /** Disk recovery: show all works from repo seed again (same idea as reviews). */
+  const handleResetWorkSeedRemovals = async () => {
+    if (
+      !confirm(
+        'Сбросить пометки «работа из репозитория удалена» на сервере? Нужно, если после деплоя не видны работы из Git. Продолжить?'
+      )
+    ) {
+      return;
+    }
+    const email = prompt('Email администратора', 'admin@vkbouwmaster.com');
+    const password = prompt('Пароль администратора');
+    if (!email?.trim() || !password) return;
+    setUploading(true);
+    try {
+      const res = await fetch('/api/works/reset-seed-removals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), password }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert(data.message ?? 'Готово');
+        loadWorks();
+        notifyCommentsChanged();
+      } else {
+        alert(data.error ?? 'Ошибка');
+      }
+    } catch {
+      alert('Сетевая ошибка');
+    } finally {
+      setUploading(false);
+    }
+  };
+
   /** Clears bogus removedSeedIds on disk so seeded reviews from Git show again (Render recovery). */
   const handleResetSeedRemovals = async () => {
     if (
@@ -1147,6 +1181,7 @@ export default function AdminPage() {
         setEditingWork(null);
         setIsCustomCategory(false);
         loadWorks();
+        notifyCommentsChanged();
       } else {
         const errorData = await response.json().catch(() => ({ error: 'Неизвестная ошибка' }));
         const errorMessage = errorData.error || 'Неизвестная ошибка';
@@ -1173,6 +1208,7 @@ export default function AdminPage() {
       if (response.ok) {
         alert('Работа удалена!');
         loadWorks();
+        notifyCommentsChanged();
       }
     } catch {
       alert('Ошибка при удалении');
@@ -2020,7 +2056,18 @@ export default function AdminPage() {
               </div>
 
               <div className="elegant-card p-4 sm:p-6 lg:p-8">
-                <h2 className="text-xl sm:text-2xl font-bold elegant-title mb-4 sm:mb-6">Работы ({works.length})</h2>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6">
+                  <h2 className="text-xl sm:text-2xl font-bold elegant-title">Работы ({works.length})</h2>
+                  <button
+                    type="button"
+                    disabled={uploading}
+                    onClick={() => void handleResetWorkSeedRemovals()}
+                    className="px-3 py-2 rounded-lg bg-amber-800/90 hover:bg-amber-700 disabled:opacity-50 text-white text-xs sm:text-sm whitespace-nowrap shrink-0"
+                    title="Если работы из репозитория не видны после деплоя"
+                  >
+                    Показать все сиды работ (Git)
+                  </button>
+                </div>
                 <div className="space-y-3 sm:space-y-4 max-h-[600px] sm:max-h-[800px] overflow-y-auto">
                   {works.length === 0 ? (
                     <p className="text-gray-400 text-center py-6 sm:py-8 text-sm sm:text-base">Нет работ. Добавьте первую работу.</p>
