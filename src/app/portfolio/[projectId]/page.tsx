@@ -15,6 +15,7 @@ import { translateCategory, getTranslatedWork } from '@/lib/translations'
 import { GALLERY_GRID_SIZES, IMAGE_BLUR_DATA_URL } from '@/lib/blur-placeholder'
 import { commentsListFetchInit } from '@/lib/comments-client'
 import { subscribeCommentsRefresh } from '@/lib/comments-sync'
+import { UploadFallbackImage } from '@/components/ui/upload-fallback-image'
 type Comment = { id: string; projectId: string; name: string; surname?: string; message: string; createdAt: string; photos?: string[]; videos?: string[]; rating?: number; city?: string; profileImage?: string; translations?: Record<string, string> }
 
 export default function PortfolioDetailPage() {
@@ -518,7 +519,7 @@ export default function PortfolioDetailPage() {
                     className="aspect-[9/16] rounded-xl overflow-hidden border border-gray-800 cursor-pointer group relative"
                     onClick={() => handleMediaClick(idx)}
                   >
-                    <Image
+                    <UploadFallbackImage
                       src={media.url}
                       alt={media.title}
                       fill
@@ -568,7 +569,7 @@ export default function PortfolioDetailPage() {
                           <h3 className="text-xl font-bold text-white">{translated.title}</h3>
                           
                           <div className="relative aspect-square rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform">
-                            <Image
+                            <UploadFallbackImage
                               src={work.mainImage}
                               alt={translated.title}
                               fill
@@ -869,7 +870,7 @@ export default function PortfolioDetailPage() {
             >
               {selectedImageIndex !== null && selectedImageIndex < allMedia.length && (
                 <>
-                  <Image
+                  <UploadFallbackImage
                     src={allMedia[selectedImageIndex].url}
                     alt={allMedia[selectedImageIndex].title}
                     width={1920}

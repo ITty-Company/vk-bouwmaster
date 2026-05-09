@@ -1,7 +1,7 @@
 "use client"
 
 import {useEffect, useRef, useState} from 'react'
-import Image from 'next/image'
+import { UploadFallbackImage } from '@/components/ui/upload-fallback-image'
 import Link from 'next/link'
 import {useScrollAnimation} from '@/hooks/useScrollAnimation'
 import {useTranslations} from '@/hooks/useTranslations'
@@ -132,7 +132,7 @@ export function SimpleWorksGridSection() {
                     aria-label={`Открыть галерею проекта: ${translated.title}`}
                   >
                     <div className="relative w-full aspect-[9/16]">
-                      <Image
+                      <UploadFallbackImage
                         src={w.mainImage}
                         alt={translated.title}
                         fill

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import { UploadFallbackImage } from '@/components/ui/upload-fallback-image'
 import { useTranslations } from '@/hooks/useTranslations'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { iPortfolioWork } from '@/components/ui/portfolio-gallery'
@@ -210,7 +210,7 @@ export default function PortfolioPage() {
                       className="elegant-card overflow-hidden block group rounded-2xl"
                     >
                       <div className="relative w-full aspect-[9/16]">
-                        <Image
+                        <UploadFallbackImage
                           src={work.mainImage}
                           alt={translated.title}
                           fill
