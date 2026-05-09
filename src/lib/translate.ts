@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+import { TRANSLATION_LANGUAGE_KEYS } from '@/lib/translation-languages';
 
 const getOpenAIClient = () => {
   const apiKey = process.env.OPENAI_API_KEY;
@@ -344,8 +345,8 @@ export async function translateBlogPost(post: {
   content?: string;
   category: string;
 }>> {
-  const languages = ['EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA'];
-  
+  const languages = TRANSLATION_LANGUAGE_KEYS.filter((k) => k !== 'RU');
+
   const translations: Record<string, {
     title: string;
     excerpt: string;
@@ -404,8 +405,8 @@ export async function translateFAQCategory(category: {
     answer: string;
   }>;
 }>> {
-  const languages = ['EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA'];
-  
+  const languages = TRANSLATION_LANGUAGE_KEYS.filter((k) => k !== 'RU');
+
   const translations: Record<string, {
     title: string;
     questions: Array<{
@@ -464,8 +465,8 @@ export async function translateTeamMember(member: {
   const sourceLang = detectedLang === 'nl' && /[a-zA-Z]/.test(member.position) && !/[а-яё]/i.test(member.position) ? 'en' : detectedLang;
   console.log(`[TranslateTeamMember] Using source language: ${sourceLang} for member: "${member.name}"`);
   
-  const languages = ['RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA'];
-  
+  const languages = [...TRANSLATION_LANGUAGE_KEYS];
+
   const translations: Record<string, {
     name: string;
     position: string;
@@ -561,8 +562,8 @@ export async function translatePricingData(pricing: {
   const sourceLang = detectedLang === 'nl' && /[a-zA-Z]/.test(sampleText) && !/[а-яё]/i.test(sampleText) ? 'en' : detectedLang;
   console.log(`[TranslatePricing] Using source language: ${sourceLang}`);
   
-  const languages = ['RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA'];
-  
+  const languages = [...TRANSLATION_LANGUAGE_KEYS];
+
   const translations: Record<string, {
     packages: Array<{
       name: string;
@@ -662,10 +663,12 @@ export async function translateWork(work: {
   category: string;
   city?: string;
 }>> {
-  const sourceLang = 'nl';
-  console.log(`[TranslateWork] Using source language: ${sourceLang} (Dutch) for work: "${work.title.substring(0, 30)}..."`);
-  
-  const languages = ['RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA'];
+  const combined = `${work.title}\n${work.description || ''}`;
+  const detectedSourceLang = detectSourceLanguage(combined);
+  const sourceLang = detectedSourceLang || 'nl';
+  console.log(`[TranslateWork] Using source language: ${sourceLang} for work: "${work.title.substring(0, 30)}..."`);
+
+  const languages = [...TRANSLATION_LANGUAGE_KEYS];
   
   const translations: Record<string, {
     title: string;
@@ -769,8 +772,8 @@ export async function translateServicePage(service: {
   const sourceLang = detectedSourceLang || 'nl'; // По умолчанию нидерландский
   console.log(`[TranslateServicePage] Detected source language: ${sourceLang} for service: ${service.id}`);
   
-  const languages = ['RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA'];
-  
+  const languages = [...TRANSLATION_LANGUAGE_KEYS];
+
   const translations: Record<string, any> = {};
 
   console.log(`[TranslateServicePage] Starting translation for service: ${service.id} to ${languages.length} languages`);

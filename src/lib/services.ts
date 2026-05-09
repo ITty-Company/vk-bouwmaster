@@ -34,6 +34,7 @@ export interface ServicePage {
       items: string[];
     };
   }>;
+  _translationSourceFingerprint?: string;
 }
 
 export function getTranslatedService(

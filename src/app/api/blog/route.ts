@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { translateBlogPost } from '@/lib/translate';
 import { blogRuntimeFile, blogSeedFile, readJsonWithSeed, writeJsonFile } from '@/lib/data-file-paths';
+import { TRANSLATION_LANGUAGE_KEYS, autoTranslateOnFetch } from '@/lib/translation-languages';
+import { blogPostFingerprint } from '@/lib/content-fingerprint';
 
 interface BlogPostTranslations {
   title: string;
@@ -19,7 +21,27 @@ interface BlogPost {
   readTime: string;
   slug: string;
   content?: string;
-  translations?: Record<string, BlogPostTranslations>; // Язык -> перевод
+  translations?: Record<string, BlogPostTranslations>;
+  _translationSourceFingerprint?: string;
+}
+
+function blogNeedsTranslation(post: BlogPost): boolean {
+  const fp = blogPostFingerprint({
+    title: post.title,
+    excerpt: post.excerpt,
+    category: post.category,
+    content: post.content,
+  });
+  const tr = post.translations;
+  if (!tr) return true;
+
+  for (const lang of TRANSLATION_LANGUAGE_KEYS) {
+    const t = tr[lang];
+    if (!t?.title?.trim() || !t?.excerpt?.trim() || !t?.category?.trim()) return true;
+  }
+
+  if (!post._translationSourceFingerprint) return true;
+  return post._translationSourceFingerprint !== fp;
 }
 
 function readBlogData(): BlogPost[] {
@@ -32,13 +54,52 @@ function writeBlogData(data: BlogPost[]) {
 
 export async function GET() {
   try {
-    const data = readBlogData();
+    let data = readBlogData();
+
+    if (autoTranslateOnFetch()) {
+      const needs = data.filter(blogNeedsTranslation);
+      if (needs.length > 0) {
+        console.log(`[Blog API] Filling translations for ${needs.length} post(s)`);
+        let dirty = false;
+        const next: BlogPost[] = [];
+        for (const post of data) {
+          if (!blogNeedsTranslation(post)) {
+            next.push(post);
+            continue;
+          }
+          try {
+            const translations = await translateBlogPost({
+              title: post.title,
+              excerpt: post.excerpt,
+              content: post.content,
+              category: post.category || '',
+            });
+            next.push({
+              ...post,
+              translations,
+              _translationSourceFingerprint: blogPostFingerprint({
+                title: post.title,
+                excerpt: post.excerpt,
+                category: post.category,
+                content: post.content,
+              }),
+            });
+            dirty = true;
+          } catch (e) {
+            console.error(`[Blog API] Translate failed for ${post.id}`, e);
+            next.push(post);
+          }
+        }
+        if (dirty) {
+          writeBlogData(next);
+          data = next;
+        }
+      }
+    }
+
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Ошибка при чтении данных' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Ошибка при чтении данных' }, { status: 500 });
   }
 }
 
@@ -47,10 +108,7 @@ export async function POST(request: NextRequest) {
     const item: BlogPost = await request.json();
 
     if (!item.title || !item.excerpt || !item.image) {
-      return NextResponse.json(
-        { error: 'Необходимы: title, excerpt, image' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Необходимы: title, excerpt, image' }, { status: 400 });
     }
 
     let translations: Record<string, BlogPostTranslations> | undefined;
@@ -59,19 +117,26 @@ export async function POST(request: NextRequest) {
         title: item.title,
         excerpt: item.excerpt,
         content: item.content,
-        category: item.category || ''
+        category: item.category || '',
       });
     } catch (translationError) {
       console.error('Translation error:', translationError);
     }
 
     const data = readBlogData();
+    const fp = blogPostFingerprint({
+      title: item.title,
+      excerpt: item.excerpt,
+      category: item.category,
+      content: item.content,
+    });
     const newItem: BlogPost = {
       ...item,
       id: item.id || Date.now().toString(),
       date: item.date || new Date().toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' }),
       slug: item.slug || item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
-      translations: translations || item.translations
+      translations: translations || item.translations,
+      _translationSourceFingerprint: fp,
     };
 
     data.push(newItem);
@@ -80,10 +145,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true, item: newItem });
   } catch (error) {
     console.error('Error in POST:', error);
-    return NextResponse.json(
-      { error: 'Ошибка при сохранении' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Ошибка при сохранении' }, { status: 500 });
   }
 }
 
@@ -92,38 +154,32 @@ export async function PUT(request: NextRequest) {
     const item: BlogPost = await request.json();
 
     if (!item.id) {
-      return NextResponse.json(
-        { error: 'Необходим id' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Необходим id' }, { status: 400 });
     }
 
     const data = readBlogData();
-    const index = data.findIndex(p => p.id === item.id);
+    const index = data.findIndex((p) => p.id === item.id);
 
     if (index === -1) {
-      return NextResponse.json(
-        { error: 'Запись не найдена' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'Запись не найдена' }, { status: 404 });
     }
 
     const existingItem = data[index];
-    const needsRetranslation = 
+    const needsRetranslation =
       existingItem.title !== item.title ||
       existingItem.excerpt !== item.excerpt ||
       existingItem.content !== item.content ||
       existingItem.category !== item.category;
 
     let translations = item.translations || existingItem.translations;
-    
+
     if (needsRetranslation) {
       try {
         translations = await translateBlogPost({
           title: item.title,
           excerpt: item.excerpt,
           content: item.content,
-          category: item.category || ''
+          category: item.category || '',
         });
       } catch (translationError) {
         console.error('Translation error:', translationError);
@@ -131,20 +187,24 @@ export async function PUT(request: NextRequest) {
       }
     }
 
-    data[index] = { 
-      ...data[index], 
+    const merged: BlogPost = {
+      ...data[index],
       ...item,
-      translations: translations || data[index].translations
+      translations: translations || data[index].translations,
     };
+    merged._translationSourceFingerprint = blogPostFingerprint({
+      title: merged.title,
+      excerpt: merged.excerpt,
+      category: merged.category,
+      content: merged.content,
+    });
+    data[index] = merged;
     writeBlogData(data);
 
     return NextResponse.json({ success: true, item: data[index] });
   } catch (error) {
     console.error('Error in PUT:', error);
-    return NextResponse.json(
-      { error: 'Ошибка при обновлении' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Ошибка при обновлении' }, { status: 500 });
   }
 }
 
@@ -154,22 +214,15 @@ export async function DELETE(request: NextRequest) {
     const id = searchParams.get('id');
 
     if (!id) {
-      return NextResponse.json(
-        { error: 'Необходим id' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Необходим id' }, { status: 400 });
     }
 
     const data = readBlogData();
-    const filtered = data.filter(item => item.id !== id);
+    const filtered = data.filter((item) => item.id !== id);
     writeBlogData(filtered);
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Ошибка при удалении' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Ошибка при удалении' }, { status: 500 });
   }
 }
-

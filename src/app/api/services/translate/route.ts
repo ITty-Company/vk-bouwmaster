@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { readFileSync, writeFileSync } from 'fs';
 import { translateServicePage } from '@/lib/translate';
 import { ensureDirForFile, servicesRuntimeFile, servicesSeedFile } from '@/lib/data-file-paths';
+import { TRANSLATION_LANGUAGE_COUNT } from '@/lib/translation-languages';
+import { serviceTranslateFingerprint } from '@/lib/content-fingerprint';
 
 function getServicesFilePath() {
   return servicesRuntimeFile();
@@ -25,6 +27,7 @@ export interface ServicePage {
     items: string[];
   };
   translations?: Record<string, any>;
+  _translationSourceFingerprint?: string;
 }
 
 async function readServicesData(): Promise<ServicePage[]> {
@@ -79,7 +82,9 @@ export async function GET(request: NextRequest) {
       services = [service];
     }
 
-    const servicesToTranslate = force ? services : services.filter(s => !s.translations || Object.keys(s.translations).length < 25);
+    const servicesToTranslate = force
+      ? services
+      : services.filter((s) => !s.translations || Object.keys(s.translations).length < TRANSLATION_LANGUAGE_COUNT);
 
     if (servicesToTranslate.length === 0) {
       return NextResponse.json({ 
@@ -98,6 +103,7 @@ export async function GET(request: NextRequest) {
         const serviceIndex = services.findIndex(s => s.id === service.id);
         if (serviceIndex !== -1) {
           services[serviceIndex].translations = translations;
+          services[serviceIndex]._translationSourceFingerprint = serviceTranslateFingerprint(services[serviceIndex]);
         }
       } catch (error: any) {
         console.error(`[Services Translate API] Error translating service ${service.id}:`, error.message || error);

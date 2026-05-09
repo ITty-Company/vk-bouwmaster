@@ -7,6 +7,8 @@ import {
   worksRuntimeFile,
   worksSeedFile,
 } from '@/lib/data-file-paths';
+import { TRANSLATION_LANGUAGE_KEYS, autoTranslateOnFetch } from '@/lib/translation-languages';
+import { workTranslateFingerprint } from '@/lib/content-fingerprint';
 
 function getWorksFilePath() {
   return worksRuntimeFile();
@@ -35,27 +37,30 @@ function normalizeWorkFiles(work: PortfolioWork, serveViaApi: boolean): Portfoli
   };
 }
 
-const EXPECTED_LANGUAGES = ['RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL', 'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA'];
-
 function needsTranslation(work: PortfolioWork): boolean {
+  const fp = workTranslateFingerprint(work);
+
   const translations = work.translations;
   if (!translations || Object.keys(translations).length === 0) return true;
-  
-  const missingLanguages = EXPECTED_LANGUAGES.filter(lang => !translations[lang]);
+
+  const missingLanguages = TRANSLATION_LANGUAGE_KEYS.filter((lang) => !translations[lang]);
   if (missingLanguages.length > 0) {
     console.log(`[needsTranslation] Work ${work.id} missing translations for: ${missingLanguages.join(', ')}`);
     return true;
   }
-  
-  const hasEmptyTranslations = Object.values(translations).some(
-    (t) => !t || !t.title || !t.description || !t.category || t.title.trim() === '' || t.description.trim() === ''
-  );
+
+  const hasEmptyTranslations = TRANSLATION_LANGUAGE_KEYS.some((lang) => {
+    const t = translations[lang];
+    return !t?.title?.trim() || !t?.description?.trim() || !t?.category?.trim();
+  });
   if (hasEmptyTranslations) {
     console.log(`[needsTranslation] Work ${work.id} has empty translations`);
     return true;
   }
-  
-  return false;
+
+  if (!work._translationSourceFingerprint) return true;
+
+  return work._translationSourceFingerprint !== fp;
 }
 
 export interface WorkTranslations {
@@ -77,6 +82,7 @@ export interface PortfolioWork {
   workDate?: string;
   city?: string; // Город, где была выполнена работа
   translations?: Record<string, WorkTranslations>;
+  _translationSourceFingerprint?: string;
 }
 
 async function readWorksData(): Promise<PortfolioWork[]> {
@@ -142,7 +148,7 @@ export async function GET(request: NextRequest) {
     });
 
     let translationsAdded = false;
-    const worksNeedingTranslation = works.filter(w => needsTranslation(w));
+    const worksNeedingTranslation = autoTranslateOnFetch() ? works.filter((w) => needsTranslation(w)) : [];
 
     if (worksNeedingTranslation.length > 0) {
       console.log(
@@ -160,7 +166,11 @@ export async function GET(request: NextRequest) {
             category: work.category,
             city: work.city
           });
-            works[index] = { ...work, translations };
+            works[index] = {
+              ...work,
+              translations,
+              _translationSourceFingerprint: workTranslateFingerprint(work),
+            };
           translationsAdded = true;
             console.log(`[Works API] ✅ Translation completed for work ${work.id}. Languages:`, Object.keys(translations || {}).length);
             await new Promise(resolve => setTimeout(resolve, 100));
@@ -189,7 +199,11 @@ export async function GET(request: NextRequest) {
               category: work.category,
               city: work.city
             });
-            works[i] = { ...work, translations };
+            works[i] = {
+              ...work,
+              translations,
+              _translationSourceFingerprint: workTranslateFingerprint(work),
+            };
             updated = true;
             await new Promise(resolve => setTimeout(resolve, 50));
           } catch (error) {
@@ -260,14 +274,21 @@ export async function POST(request: NextRequest) {
 
     const works = await readWorksData();
 
+    const normalized = normalizeWorkFiles(work, serveViaApi);
     const newWork: PortfolioWork = {
-      ...normalizeWorkFiles(work, serveViaApi),
+      ...normalized,
       id: work.id || Date.now().toString(),
       projectId: work.projectId || `project-${Date.now()}`,
       workDate: work.workDate || new Date().toISOString().split('T')[0],
       translations: translations || work.translations,
       images: work.images || [],
-      videos: []
+      videos: [],
+      _translationSourceFingerprint: workTranslateFingerprint({
+        title: normalized.title,
+        description: normalized.description || '',
+        category: normalized.category,
+        city: normalized.city,
+      }),
     };
 
     console.log('Сохранение работы:', {
@@ -342,13 +363,20 @@ export async function PUT(request: NextRequest) {
       }
     }
 
-    works[index] = { 
-      ...existingWork, 
-      ...normalizeWorkFiles(work, serveViaApi), 
+    const merged: PortfolioWork = {
+      ...existingWork,
+      ...normalizeWorkFiles(work, serveViaApi),
       id: workId,
       translations: translations || existingWork.translations,
-      videos: [] // отключаем видео
+      videos: [],
     };
+    merged._translationSourceFingerprint = workTranslateFingerprint({
+      title: merged.title,
+      description: merged.description || '',
+      category: merged.category,
+      city: merged.city,
+    });
+    works[index] = merged;
     await writeWorksData(works);
 
     return NextResponse.json({ success: true, work: works[index] });

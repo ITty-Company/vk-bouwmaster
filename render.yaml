@@ -51,6 +51,9 @@ services:
       # User-uploaded images/videos (same disk as JSON). Optional: if unset, app uses /var/data/uploads when /var/data exists.
       - key: UPLOAD_DIR
         value: /var/data/uploads
+      # Services/works/FAQ/blog: fill missing translations on GET (disable with "false" if cold starts time out).
+      - key: AUTO_TRANSLATE_ON_FETCH
+        value: "true"
       # ВАЖНО: Добавьте следующие переменные окружения в настройках Render через веб-интерфейс:
       # Settings → Environment → Add Environment Variable
       # 
