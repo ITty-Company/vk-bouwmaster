@@ -111,41 +111,56 @@ export async function GET(request: NextRequest) {
     let translationsAdded = false;
     const worksNeedingTranslation = autoTranslateOnFetch() ? works.filter((w) => needsTranslation(w)) : [];
 
-    if (worksNeedingTranslation.length > 0) {
-      console.log(
-        `[Works API] Translating ${worksNeedingTranslation.length}/${works.length} work(s) missing or incomplete translations`
-      );
+    /** Публичный GET не должен ждать перевод — иначе главная зависает на спиннере (таймаут /api/works). */
+    const runLazyTranslations = async (): Promise<boolean> => {
+      let added = false;
       for (let i = 0; i < worksNeedingTranslation.length; i++) {
         const work = worksNeedingTranslation[i];
         const index = works.findIndex(w => w.id === work.id);
-        if (index !== -1) {
+        if (index === -1) continue;
         try {
-            console.log(`[Works API] 🔄 Translating work ${i + 1}/${worksNeedingTranslation.length}: "${work.title.substring(0, 30)}..."`);
+          console.log(
+            `[Works API] 🔄 Translating work ${i + 1}/${worksNeedingTranslation.length}: "${work.title.substring(0, 30)}..."`
+          );
           const translations = await translateWork({
             title: work.title,
             description: work.description || '',
             category: work.category,
-            city: work.city
+            city: work.city,
           });
-            works[index] = {
-              ...work,
-              translations,
-              _translationSourceFingerprint: workTranslateFingerprint(work),
-            };
-          translationsAdded = true;
-            console.log(`[Works API] ✅ Translation completed for work ${work.id}. Languages:`, Object.keys(translations || {}).length);
-            await new Promise(resolve => setTimeout(resolve, 100));
-        } catch (error: any) {
-          console.error(`[Works API] ❌ Error translating work ${work.id}:`, error.message || error);
-          }
+          works[index] = {
+            ...work,
+            translations,
+            _translationSourceFingerprint: workTranslateFingerprint(work),
+          };
+          added = true;
+          console.log(
+            `[Works API] ✅ Translation completed for work ${work.id}. Languages:`,
+            Object.keys(translations || {}).length
+          );
+          await new Promise(resolve => setTimeout(resolve, 100));
+        } catch (error: unknown) {
+          const msg = error instanceof Error ? error.message : String(error);
+          console.error(`[Works API] ❌ Error translating work ${work.id}:`, msg);
         }
       }
-    }
-    
-    if (translationsAdded) {
-      console.log(`[Works API] 💾 Saving ${works.length} works with new translations...`);
-      await writeWorksData(works);
-      console.log(`[Works API] ✅ Works saved successfully with translations`);
+      if (added) {
+        console.log(`[Works API] 💾 Saving ${works.length} works with new translations...`);
+        await writeWorksData(works);
+        console.log(`[Works API] ✅ Works saved successfully with translations`);
+      }
+      return added;
+    };
+
+    if (worksNeedingTranslation.length > 0) {
+      console.log(
+        `[Works API] Translating ${worksNeedingTranslation.length}/${works.length} work(s) missing or incomplete translations`
+      );
+      if (translateAll) {
+        translationsAdded = await runLazyTranslations();
+      } else {
+        void runLazyTranslations().catch((e) => console.error('[Works API] Background translation failed:', e));
+      }
     }
 
     if (translateAll) {
