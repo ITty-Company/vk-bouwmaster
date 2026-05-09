@@ -143,9 +143,11 @@ export async function GET(request: NextRequest) {
 
     let translationsAdded = false;
     const worksNeedingTranslation = works.filter(w => needsTranslation(w));
-    console.log(`[Works API] Found ${worksNeedingTranslation.length} works needing translation out of ${works.length} total`);
-    
+
     if (worksNeedingTranslation.length > 0) {
+      console.log(
+        `[Works API] Translating ${worksNeedingTranslation.length}/${works.length} work(s) missing or incomplete translations`
+      );
       for (let i = 0; i < worksNeedingTranslation.length; i++) {
         const work = worksNeedingTranslation[i];
         const index = works.findIndex(w => w.id === work.id);
