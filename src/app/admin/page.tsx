@@ -1666,32 +1666,32 @@ export default function AdminPage() {
                             )}
                           </div>
                         ) : null}
-                        <div className="flex flex-col sm:flex-row gap-2 flex-wrap">
+                        <div className="flex flex-row flex-nowrap items-stretch gap-1.5 sm:gap-2 overflow-x-auto max-w-full pb-0.5 [-webkit-overflow-scrolling:touch] [scrollbar-width:thin]">
                           <button
                             type="button"
                             disabled={reviewTranslateBusy}
                             onClick={() => handleTranslateOneReview(review.id)}
-                            className="px-3 py-1.5 sm:px-4 sm:py-2 bg-cyan-700 hover:bg-cyan-600 disabled:opacity-50 rounded text-xs sm:text-sm text-white flex-1 sm:flex-none"
+                            className="shrink-0 whitespace-nowrap px-2.5 py-1.5 sm:px-4 sm:py-2 bg-cyan-700 hover:bg-cyan-600 disabled:opacity-50 rounded text-xs sm:text-sm text-white"
                           >
                             Перевести
                           </button>
                           {!review.approved && (
                             <button
                               onClick={() => handleReviewApprove(review.id)}
-                              className="px-3 py-1.5 sm:px-4 sm:py-2 bg-green-600 hover:bg-green-700 rounded text-xs sm:text-sm text-white flex-1 sm:flex-none"
+                              className="shrink-0 whitespace-nowrap px-2.5 py-1.5 sm:px-4 sm:py-2 bg-green-600 hover:bg-green-700 rounded text-xs sm:text-sm text-white"
                             >
                               Одобрить
                             </button>
                           )}
                           <button
                             onClick={() => handleReviewEdit(review)}
-                            className="px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-600 hover:bg-blue-700 rounded text-xs sm:text-sm text-white flex-1 sm:flex-none"
+                            className="shrink-0 whitespace-nowrap px-2.5 py-1.5 sm:px-4 sm:py-2 bg-blue-600 hover:bg-blue-700 rounded text-xs sm:text-sm text-white"
                           >
                             Редактировать
                           </button>
                           <button
                             onClick={() => handleReviewReject(review.id)}
-                            className="px-3 py-1.5 sm:px-4 sm:py-2 bg-red-600 hover:bg-red-700 rounded text-xs sm:text-sm text-white flex-1 sm:flex-none"
+                            className="shrink-0 whitespace-nowrap px-2.5 py-1.5 sm:px-4 sm:py-2 bg-red-600 hover:bg-red-700 rounded text-xs sm:text-sm text-white"
                           >
                             Удалить
                           </button>
