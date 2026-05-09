@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 import { useTranslations } from '@/hooks/useTranslations'
 import { GradientButton } from '@/components/ui/gradient-button'
 import { commentsListFetchInit } from '@/lib/comments-client'
+import { subscribeCommentsRefresh } from '@/lib/comments-sync'
 import { getCommentDisplayMessage } from '@/lib/comment-display'
 import { Star, MessageSquare, Camera, MapPin, User, CheckCircle2, Heart } from 'lucide-react'
 
@@ -106,14 +107,19 @@ export default function ReviewsPage() {
       } catch {}
     }
     load()
+    const unsubSync = subscribeCommentsRefresh(load)
     const onVisible = () => {
       if (document.visibilityState === 'visible') load()
     }
+    const onPageShow = () => load()
     window.addEventListener('focus', load)
+    window.addEventListener('pageshow', onPageShow)
     document.addEventListener('visibilitychange', onVisible)
-    const interval = setInterval(load, 45_000)
+    const interval = setInterval(load, 15_000)
     return () => {
+      unsubSync()
       window.removeEventListener('focus', load)
+      window.removeEventListener('pageshow', onPageShow)
       document.removeEventListener('visibilitychange', onVisible)
       clearInterval(interval)
     }

@@ -6,6 +6,7 @@ import {Carousel, TestimonialCard} from "@/components/ui/retro-testimonial";
 import {iTestimonial} from "@/components/ui/retro-testimonial";
 import { useTranslations } from "@/hooks/useTranslations"
 import { commentsListFetchInit } from "@/lib/comments-client"
+import { subscribeCommentsRefresh } from "@/lib/comments-sync"
 
 type Comment = {
   id: string
@@ -36,14 +37,18 @@ const RetroTestimonialDemo = () => {
       } catch {}
     }
     load()
+    const unsubSync = subscribeCommentsRefresh(load)
     const onVisible = () => {
       if (document.visibilityState === 'visible') load()
     }
     window.addEventListener('focus', load)
+    window.addEventListener('pageshow', load)
     document.addEventListener('visibilitychange', onVisible)
-    const interval = setInterval(load, 45_000)
+    const interval = setInterval(load, 15_000)
     return () => {
+      unsubSync()
       window.removeEventListener('focus', load)
+      window.removeEventListener('pageshow', load)
       document.removeEventListener('visibilitychange', onVisible)
       clearInterval(interval)
     }

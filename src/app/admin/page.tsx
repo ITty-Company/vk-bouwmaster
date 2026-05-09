@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GradientButton } from '@/components/ui/gradient-button';
+import { notifyCommentsChanged } from '@/lib/comments-sync';
 
 type TabType = 'blog' | 'team' | 'faq' | 'pricing' | 'contact' | 'works' | 'reviews' | 'messages';
 
@@ -271,6 +272,7 @@ export default function AdminPage() {
       if (res.ok) {
         alert(data.message ?? 'Готово');
         loadReviews();
+        notifyCommentsChanged();
       } else {
         alert(data.error ?? 'Ошибка перевода');
       }
@@ -292,6 +294,7 @@ export default function AdminPage() {
       if (res.ok) {
         alert('Переводы для отзыва обновлены');
         loadReviews();
+        notifyCommentsChanged();
       } else {
         alert(data.error ?? 'Ошибка');
       }
@@ -325,6 +328,7 @@ export default function AdminPage() {
       if (res.ok) {
         alert(data.message ?? 'Готово');
         loadReviews();
+        notifyCommentsChanged();
       } else {
         alert(data.error ?? 'Ошибка');
       }
@@ -344,6 +348,7 @@ export default function AdminPage() {
       });
       if (response.ok) {
         loadReviews();
+        notifyCommentsChanged();
         alert('Отзыв одобрен!');
       }
     } catch {
@@ -359,6 +364,7 @@ export default function AdminPage() {
       });
       if (response.ok) {
         loadReviews();
+        notifyCommentsChanged();
         alert('Отзыв удален!');
       }
     } catch {
@@ -398,7 +404,7 @@ export default function AdminPage() {
       const response = await fetch(`/api/comments?id=${editingReview.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dataToSave),
+        body: JSON.stringify({ ...dataToSave, approved: true }),
       });
       
       if (response.ok) {
@@ -415,6 +421,7 @@ export default function AdminPage() {
           profileImage: '',
         });
         loadReviews();
+        notifyCommentsChanged();
       } else {
         const errorData = await response.json();
         alert(`Ошибка при обновлении: ${errorData.error || 'Неизвестная ошибка'}`);

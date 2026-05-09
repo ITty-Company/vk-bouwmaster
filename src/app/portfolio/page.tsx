@@ -15,6 +15,7 @@ import { useRef } from 'react'
 import { translateCategory, getTranslatedWork } from '@/lib/translations'
 import { IMAGE_BLUR_DATA_URL, PORTFOLIO_CARD_SIZES } from '@/lib/blur-placeholder'
 import { commentsListFetchInit } from '@/lib/comments-client'
+import { subscribeCommentsRefresh } from '@/lib/comments-sync'
 
 export default function PortfolioPage() {
   const { t, isInitialized, currentLanguage } = useTranslations()
@@ -62,7 +63,12 @@ export default function PortfolioPage() {
     
     fetchWorks()
     fetchReviews()
-    
+
+    const unsubSync = subscribeCommentsRefresh(() => {
+      fetchWorks()
+      fetchReviews()
+    })
+
     const onFocus = () => {
       fetchWorks()
       fetchReviews()
@@ -73,11 +79,14 @@ export default function PortfolioPage() {
         fetchReviews()
       }
     }
-    
+
     window.addEventListener('focus', onFocus)
     document.addEventListener('visibilitychange', onVisible)
+    const poll = setInterval(fetchReviews, 15_000)
 
     return () => {
+      unsubSync()
+      clearInterval(poll)
       window.removeEventListener('focus', onFocus)
       document.removeEventListener('visibilitychange', onVisible)
     }

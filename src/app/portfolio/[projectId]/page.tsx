@@ -14,6 +14,7 @@ import { getCommentDisplayMessage } from '@/lib/comment-display'
 import { translateCategory, getTranslatedWork } from '@/lib/translations'
 import { GALLERY_GRID_SIZES, IMAGE_BLUR_DATA_URL } from '@/lib/blur-placeholder'
 import { commentsListFetchInit } from '@/lib/comments-client'
+import { subscribeCommentsRefresh } from '@/lib/comments-sync'
 type Comment = { id: string; projectId: string; name: string; surname?: string; message: string; createdAt: string; photos?: string[]; videos?: string[]; rating?: number; city?: string; profileImage?: string; translations?: Record<string, string> }
 
 export default function PortfolioDetailPage() {
@@ -96,6 +97,11 @@ export default function PortfolioDetailPage() {
     fetchWorks()
     fetchComments()
 
+    const unsubSync = subscribeCommentsRefresh(() => {
+      fetchWorks()
+      fetchComments()
+    })
+
     const onFocus = () => {
       fetchWorks()
       fetchComments()
@@ -109,8 +115,11 @@ export default function PortfolioDetailPage() {
 
     window.addEventListener('focus', onFocus)
     document.addEventListener('visibilitychange', onVisible)
+    const poll = setInterval(fetchComments, 15_000)
 
     return () => {
+      unsubSync()
+      clearInterval(poll)
       window.removeEventListener('focus', onFocus)
       document.removeEventListener('visibilitychange', onVisible)
     }

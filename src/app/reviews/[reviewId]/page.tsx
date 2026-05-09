@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,6 +8,7 @@ import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from '@/hooks/useTranslations'
 import { commentsListFetchInit } from '@/lib/comments-client'
+import { subscribeCommentsRefresh } from '@/lib/comments-sync'
 import { getCommentDisplayMessage } from '@/lib/comment-display'
 
 type Comment = {
@@ -52,11 +53,7 @@ export default function ReviewMediaPage() {
   const [selectedMediaIndex, setSelectedMediaIndex] = useState<number | null>(null)
   const [direction, setDirection] = useState(0)
 
-  useEffect(() => {
-    fetchReview()
-  }, [reviewId])
-
-  const fetchReview = async () => {
+  const fetchReview = useCallback(async () => {
     try {
       setLoading(true)
       const response = await fetch('/api/comments?includeUnapproved=1', { cache: 'no-store' })
@@ -81,7 +78,17 @@ export default function ReviewMediaPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [reviewId])
+
+  useEffect(() => {
+    void fetchReview()
+    const unsub = subscribeCommentsRefresh(() => void fetchReview())
+    const interval = setInterval(() => void fetchReview(), 15_000)
+    return () => {
+      unsub()
+      clearInterval(interval)
+    }
+  }, [fetchReview])
 
   const allMedia = review
     ? [
