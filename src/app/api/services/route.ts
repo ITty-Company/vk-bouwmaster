@@ -111,8 +111,9 @@ export async function GET(request: NextRequest) {
     const servicesNeedingTranslation = services.filter(needsTranslation);
     
     if (servicesNeedingTranslation.length > 0) {
-      console.log(`[Services API] Found ${servicesNeedingTranslation.length} services needing translation out of ${services.length} total`);
-      console.log(`[Services API] Starting automatic translation for: ${servicesNeedingTranslation.map(s => s.id).join(', ')}`);
+      console.log(
+        `[Services API] Translating ${servicesNeedingTranslation.length}/${services.length} service(s): ${servicesNeedingTranslation.map((s) => s.id).join(', ')}`
+      );
       
       for (const service of servicesNeedingTranslation) {
         try {
@@ -134,8 +135,6 @@ export async function GET(request: NextRequest) {
       
       await writeServicesData(services);
       console.log(`[Services API] ✅ All translations saved`);
-    } else {
-      console.log(`[Services API] All ${services.length} services are already translated`);
     }
     
     return NextResponse.json(services);
