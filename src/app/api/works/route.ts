@@ -15,11 +15,11 @@ export type { PortfolioWork, WorkTranslations } from '@/lib/works-storage';
 
 function normalizeFileUrl(url: string | undefined, serveViaApi: boolean): string | undefined {
   if (!url) return url;
-  if (serveViaApi && url.startsWith('/uploads/')) {
-    const fileName = url.split('/').pop();
-    if (fileName) {
-      return `/api/uploads/${fileName}`;
-    }
+  if (!serveViaApi) return url;
+  const baseName = url.split('/').pop();
+  if (!baseName) return url;
+  if (url.startsWith('/uploads/') || url.startsWith('/api/uploads/')) {
+    return `/api/uploads/${baseName}`;
   }
   return url;
 }
