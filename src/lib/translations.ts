@@ -1502,7 +1502,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
       },
       services: {
         title: 'Our Services',
-        subtitle: 'We offer comprehensive renovation services to transform your home or business',
+        subtitle:
+          'We focus on lighting & electrics, taps & sanitary plumbing, outdoor gardens, and tile work done week in, week out—from kitchens and wet rooms to terraces.',
         flooring: {
           title: 'Flooring Installation',
           description: 'Professional flooring installation and repair services for all types of flooring materials.'
@@ -1513,7 +1514,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         },
         plumbing: {
           title: 'Plumbing Repairs',
-          description: 'Professional plumbing repair and installation services for homes and offices.'
+          description:
+            'Taps, mixers, toilets, showers and pipework—neat installs, leak-free connections and fast call-outs for homes and businesses.',
         },
         roofing: {
           title: 'Roof Repairs',
@@ -1521,11 +1523,13 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         },
         garden: {
           title: 'Garden Design',
-          description: 'Beautiful garden design and landscaping services to enhance your outdoor space.'
+          description:
+            'Paths, terraces, planting and irrigation—landscaping that keeps your outdoor space usable and looking sharp.',
         },
         tile: {
           title: 'Tile Installation',
-          description: 'Professional tile removal and installation services for kitchens, bathrooms, and more.'
+          description:
+            'Demolition and tiling we do constantly: kitchens, bathrooms, hallways—large-format, mosaics and wet-area detailing.',
         },
         paving: {
           title: 'Paving Stone Installation',
@@ -1537,7 +1541,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         },
         ceiling: {
           title: 'Ceilings & Walls',
-          description: 'Professional ceiling and wall installation, repair, and finishing services for interior spaces.'
+          description:
+            'Plaster, finishes and built-in ceilings—plus mounting spots, LED strips and the electrical prep your lighting needs.',
         },
         drywall: {
           title: 'Drywall Work',
@@ -2577,7 +2582,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
       },
       services: {
         title: 'Onze Diensten',
-        subtitle: 'We bieden uitgebreide renovatiediensten om uw huis of bedrijf te transformeren',
+        subtitle:
+          'Extra nadruk op verlichting & elektra, kranen & sanitair, tuin en voortdurend tegelwerk — van keuken en natte ruimtes tot terras.',
         flooring: {
           title: 'Vloerinstallatie',
           description: 'Professionele vloerinstallatie en reparatiediensten voor alle soorten vloermaterialen.'
@@ -2588,7 +2594,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         },
         plumbing: {
           title: 'Loodgieterswerk',
-          description: 'Professionele loodgietersreparatie en installatiediensten voor woningen en kantoren.'
+          description:
+            'Kranen, mengkranen, toiletten, douches en leidingwerk — netjes gemonteerd, lekvrij en snel ingezet bij storingen.',
         },
         roofing: {
           title: 'Dakreparaties',
@@ -2596,11 +2603,13 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         },
         garden: {
           title: 'Tuinontwerp',
-          description: 'Prachtige tuinontwerp en landschapsarchitectuurdiensten om uw buitenruimte te verbeteren.'
+          description:
+            'Paden, terrassen, beplanting en beregening — tuinen die er goed uitzien én bruikbaar blijven.',
         },
         tile: {
           title: 'Tegelinstallatie',
-          description: 'Professionele tegelverwijdering en installatiediensten voor keukens, badkamers en meer.'
+          description:
+            'Slopen en tegelwerk dat we voortdurend doen: keuken, badkamer, hal — groot formaat, mozaïek en detail in natte zones.',
         },
         paving: {
           title: 'Bestrating Installatie',
@@ -2612,7 +2621,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         },
         ceiling: {
           title: 'Plafonds & Muren',
-          description: 'Professionele plafond- en muurinstallatie, reparatie en afwerkingsdiensten voor binnenruimtes.'
+          description:
+            'Stuc, afwerking en onderliggende plafonds — plus spots, LED-strips en het elektrisch voorbereidende werk voor uw verlichting.',
         },
         drywall: {
           title: 'Gipsplaatwerk',
@@ -20682,7 +20692,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
       },
       services: {
         title: 'Наши Услуги',
-        subtitle: 'Я предлагаю услуги по ремонту для преобразования вашего дома или бизнеса',
+        subtitle:
+          'Делаем упор на освещение и электрику, сантехнику и смесители, сад и постоянную работу с плиткой — от кухни и «мокрых» зон до террасы.',
         flooring: {
           title: 'Укладка Напольных Покрытий',
           description: 'Профессиональная укладка и ремонт напольных покрытий для всех типов материалов.'
@@ -20693,7 +20704,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         },
         plumbing: {
           title: 'Сантехнические Работы',
-          description: 'Профессиональные услуги по ремонту и установке сантехники для домов и офисов.'
+          description:
+            'Смесители, унитазы, душевые системы и разводка — аккуратный монтаж, герметичные соединения и оперативный аварийный выезд.',
         },
         roofing: {
           title: 'Ремонт Крыш',
@@ -20701,11 +20713,13 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         },
         garden: {
           title: 'Дизайн Сада',
-          description: 'Красивый дизайн сада и ландшафтные услуги для улучшения вашего открытого пространства.'
+          description:
+            'Дорожки, террасы, посадки и полив — ландшафт, чтобы участок был ухоженным и удобным каждый день.',
         },
         tile: {
           title: 'Укладка Плитки',
-          description: 'Профессиональные услуги по демонтажу и укладке плитки для кухонь, ванных комнат и других помещений.'
+          description:
+            'Демонтаж и укладка плитки — одно из наших постоянных направлений: кухни, ванные, коридоры, крупный формат и зоны повышенной влажности.',
         },
         paving: {
           title: 'Укладка Тротуарной Плитки',
@@ -20717,7 +20731,8 @@ export const translations: Record<Language, Translations | PartialTranslations> 
         },
         ceiling: {
           title: 'Потолки и Стены',
-          description: 'Профессиональные услуги по установке, ремонту и отделке потолков и стен для внутренних помещений.'
+          description:
+            'Штукатурка, отделка и каркасные потолки — плюс монтаж светильников, точечных светов и подготовка электрики под освещение.',
         },
         drywall: {
           title: 'Работа с Гипсокартоном',
