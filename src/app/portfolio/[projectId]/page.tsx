@@ -10,7 +10,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { iPortfolioWork } from '@/components/ui/portfolio-gallery'
 import { GradientButton } from '@/components/ui/gradient-button'
 import { useTranslations } from '@/hooks/useTranslations'
+import { getCommentDisplayMessage } from '@/lib/comment-display'
 import { translateCategory, getTranslatedWork } from '@/lib/translations'
+import { GALLERY_GRID_SIZES, IMAGE_BLUR_DATA_URL } from '@/lib/blur-placeholder'
+import { commentsListFetchInit } from '@/lib/comments-client'
 type Comment = { id: string; projectId: string; name: string; surname?: string; message: string; createdAt: string; photos?: string[]; videos?: string[]; rating?: number; city?: string; profileImage?: string; translations?: Record<string, string> }
 
 export default function PortfolioDetailPage() {
@@ -29,7 +32,6 @@ export default function PortfolioDetailPage() {
   const [form, setForm] = useState({ name: '', surname: '', message: '', rating: 5, city: '', profileImage: '' })
   const [formPhotos, setFormPhotos] = useState<string[]>([])
   const sectionRef = useScrollAnimation()
-  const [failedMedia, setFailedMedia] = useState<Record<string, boolean>>({})
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false)
 
   const StarRating = ({ rating, onRatingChange, readOnly = false }: { rating: number; onRatingChange?: (rating: number) => void; readOnly?: boolean }) => {
@@ -93,20 +95,24 @@ export default function PortfolioDetailPage() {
   useEffect(() => {
     fetchWorks()
     fetchComments()
-    
-    const interval = setInterval(() => {
-      fetchWorks()
-    }, 5000)
-    
+
     const onFocus = () => {
       fetchWorks()
+      fetchComments()
     }
-    
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') {
+        fetchWorks()
+        fetchComments()
+      }
+    }
+
     window.addEventListener('focus', onFocus)
-    
+    document.addEventListener('visibilitychange', onVisible)
+
     return () => {
-      clearInterval(interval)
       window.removeEventListener('focus', onFocus)
+      document.removeEventListener('visibilitychange', onVisible)
     }
   }, [projectId, currentLanguage]) // Добавляем currentLanguage, чтобы обновлять при смене языка
 
@@ -163,38 +169,24 @@ export default function PortfolioDetailPage() {
   }
 
   const getAllMedia = () => {
-    const media: Array<{ url: string; title: string; workId: string; type: 'image' | 'video' }> = [];
+    const media: Array<{ url: string; title: string; workId: string }> = []
     const source = viewMode === 'project' ? projectWorks : allWorks
-    
+
     source.forEach(work => {
       const translated = getTranslatedWork(work, currentLanguage)
       if (work.images && Array.isArray(work.images) && work.images.length > 0) {
         work.images.forEach(img => {
-          if (img) { // Проверяем, что URL не пустой
+          if (img) {
             media.push({
               url: img,
               title: translated.title,
               workId: work.id,
-              type: 'image'
-            })
-          }
-        })
-      }
-      
-      if (work.videos && Array.isArray(work.videos) && work.videos.length > 0) {
-        work.videos.forEach(video => {
-          if (video) { // Проверяем, что URL не пустой
-            media.push({
-              url: video,
-              title: translated.title,
-              workId: work.id,
-              type: 'video'
             })
           }
         })
       }
     })
-    
+
     return media
   }
 
@@ -220,7 +212,7 @@ export default function PortfolioDetailPage() {
   async function fetchComments() {
     try {
       if (!projectId) return
-      const res = await fetch(`/api/comments?projectId=${projectId}`)
+      const res = await fetch(`/api/comments?projectId=${encodeURIComponent(projectId)}`, commentsListFetchInit)
       if (res.ok) setComments(await res.json())
     } catch {}
   }
@@ -492,31 +484,6 @@ export default function PortfolioDetailPage() {
                       </motion.p>
                     </div>
                   </motion.div>
-
-                  <motion.div 
-                    className="flex items-center gap-3 group"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.2, duration: 0.4 }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-pink-500/20 border border-red-500/30 flex items-center justify-center group-hover:scale-110 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-red-500/20">
-                      <svg className="w-6 h-6 text-red-400 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">{t.portfolio?.detail?.videos || 'Videos'}</p>
-                      <motion.p 
-                        className="text-2xl font-bold text-white"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.3 }}
-                      >
-                        {projectWorks.reduce((total, work) => total + (work.videos?.length || 0), 0)}
-                      </motion.p>
-                    </div>
-                  </motion.div>
                 </motion.div>
               </motion.div>
             </div>
@@ -529,7 +496,7 @@ export default function PortfolioDetailPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-8 text-center">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-300">
-                {t.portfolio?.detail?.allPhotosAndVideos || 'All photos and videos from the project'}
+                {t.portfolio?.detail?.allPhotosAndVideos || 'All photos from the project'}
               </span>
             </h2>
             {allMedia.length > 0 ? (
@@ -542,42 +509,17 @@ export default function PortfolioDetailPage() {
                     className="aspect-[9/16] rounded-xl overflow-hidden border border-gray-800 cursor-pointer group relative"
                     onClick={() => handleMediaClick(idx)}
                   >
-                    {media.type === 'video' ? (
-                      failedMedia[media.url] ? (
-                        <div className="w-full h-full flex items-center justify-center bg-gray-900 text-gray-300 text-xs text-center px-2">
-                          Ошибка загрузки видео
-                          <a
-                            href={media.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="block text-blue-400 underline mt-1"
-                          >
-                            Открыть в новой вкладке
-                          </a>
-                        </div>
-                      ) : (
-                        <>
-                          <video
-                            src={media.url}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                            playsInline
-                            muted
-                            controls
-                            onError={() => setFailedMedia(prev => ({ ...prev, [media.url]: true }))}
-                          />
-                          <div className="absolute top-2 right-2 bg-black/70 px-2 py-1 rounded text-white text-xs">
-                            📹
-                          </div>
-                        </>
-                      )
-                    ) : (
-                      <Image
-                        src={media.url}
-                        alt={media.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                    )}
+                    <Image
+                      src={media.url}
+                      alt={media.title}
+                      fill
+                      sizes={GALLERY_GRID_SIZES}
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      placeholder="blur"
+                      blurDataURL={IMAGE_BLUR_DATA_URL}
+                      priority={idx < 10}
+                      quality={75}
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </motion.div>
                 ))}
@@ -585,8 +527,8 @@ export default function PortfolioDetailPage() {
             ) : (
               <div className="text-center py-16 border-2 border-dashed border-gray-700 rounded-lg bg-gray-900/30">
                 <div className="text-6xl mb-4">📷</div>
-                <p className="text-gray-300 text-xl font-medium mb-2">{t.portfolio?.detail?.noMedia || 'No photos and videos yet'}</p>
-                <p className="text-gray-500 text-sm">{t.portfolio?.detail?.noMediaSubtitle || 'Add photos and videos in the admin panel'}</p>
+                <p className="text-gray-300 text-xl font-medium mb-2">{t.portfolio?.detail?.noMedia || 'No photos yet'}</p>
+                <p className="text-gray-500 text-sm">{t.portfolio?.detail?.noMediaSubtitle || 'Add photos in the admin panel'}</p>
               </div>
             )}
           </div>
@@ -621,6 +563,9 @@ export default function PortfolioDetailPage() {
                               src={work.mainImage}
                               alt={translated.title}
                               fill
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              placeholder="blur"
+                              blurDataURL={IMAGE_BLUR_DATA_URL}
                               className="object-cover"
                             />
                           </div>
@@ -665,7 +610,7 @@ export default function PortfolioDetailPage() {
                     <div className="flex items-center gap-3 mb-3">
                       <div className="relative w-10 h-10 flex-shrink-0 rounded-full overflow-hidden bg-black/60 border border-gray-700 flex items-center justify-center">
                         {c.profileImage && c.profileImage !== '/vk-bouwmaster-logo.svg' && c.profileImage.trim() !== '' ? (
-                          <Image src={c.profileImage} alt={c.name} fill className="object-cover" />
+                          <Image src={c.profileImage} alt={c.name} fill sizes="40px" className="object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center p-1 bg-black">
                             <span className="text-[6px] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 text-center leading-tight px-0.5 uppercase tracking-tight">
@@ -688,9 +633,7 @@ export default function PortfolioDetailPage() {
                       </div>
                     </div>
                     <div className="text-white whitespace-pre-wrap mb-2 text-base leading-relaxed">
-                      {c.translations && c.translations[currentLanguage] 
-                            ? c.translations[currentLanguage] 
-                        : c.message}
+                      {getCommentDisplayMessage(c, currentLanguage)}
                     </div>
                     {(c.photos && c.photos.length > 0) || (c.videos && c.videos.length > 0) ? (
                       <div className="mt-3">
@@ -698,7 +641,7 @@ export default function PortfolioDetailPage() {
                           <div className="grid grid-cols-3 gap-2 mb-2">
                             {c.photos.map((photo, idx) => (
                               <div key={idx} className="relative aspect-square rounded overflow-hidden">
-                                <Image src={photo} alt={`Photo ${idx + 1}`} fill className="object-cover" />
+                                <Image src={photo} alt={`Photo ${idx + 1}`} fill sizes="120px" className="object-cover" />
                               </div>
                             ))}
                           </div>
@@ -757,7 +700,7 @@ export default function PortfolioDetailPage() {
                 <div className="relative mb-2">
                   {form.profileImage && form.profileImage !== '/vk-bouwmaster-logo.svg' && form.profileImage.trim() !== '' ? (
                     <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-gray-700">
-                      <Image src={form.profileImage} alt="Profile" fill className="object-cover" />
+                      <Image src={form.profileImage} alt="Profile" fill sizes="80px" className="object-cover" />
                       <button
                         type="button"
                         onClick={() => setForm({ ...form, profileImage: '' })}
@@ -837,7 +780,7 @@ export default function PortfolioDetailPage() {
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                       {formPhotos.map((url, idx) => (
                         <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-gray-700 group">
-                          <Image src={url} alt={`Photo ${idx + 1}`} fill className="object-cover" />
+                          <Image src={url} alt={`Photo ${idx + 1}`} fill sizes="96px" className="object-cover" />
                           <button
                             type="button"
                             onClick={() => setFormPhotos(formPhotos.filter((_, i) => i !== idx))}
@@ -917,37 +860,18 @@ export default function PortfolioDetailPage() {
             >
               {selectedImageIndex !== null && selectedImageIndex < allMedia.length && (
                 <>
-                  {allMedia[selectedImageIndex].type === 'video' ? (
-                    failedMedia[allMedia[selectedImageIndex].url] ? (
-                      <div className="max-w-full max-h-full flex flex-col items-center justify-center text-white text-center gap-2 px-4">
-                        <span>Не удалось загрузить видео.</span>
-                        <a
-                          href={allMedia[selectedImageIndex].url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-blue-300 underline"
-                        >
-                          Открыть в новой вкладке
-                        </a>
-                      </div>
-                    ) : (
-                      <video
-                        src={allMedia[selectedImageIndex].url}
-                        className="max-w-full max-h-full object-contain"
-                        controls
-                        autoPlay
-                        onError={() => setFailedMedia(prev => ({ ...prev, [allMedia[selectedImageIndex].url]: true }))}
-                      />
-                    )
-                  ) : (
-                    <Image
-                      src={allMedia[selectedImageIndex].url}
-                      alt={allMedia[selectedImageIndex].title}
-                      width={1200}
-                      height={800}
-                      className="max-w-full max-h-full object-contain"
-                    />
-                  )}
+                  <Image
+                    src={allMedia[selectedImageIndex].url}
+                    alt={allMedia[selectedImageIndex].title}
+                    width={1920}
+                    height={1280}
+                    sizes="100vw"
+                    priority
+                    quality={85}
+                    placeholder="blur"
+                    blurDataURL={IMAGE_BLUR_DATA_URL}
+                    className="max-w-full max-h-[85vh] w-auto h-auto object-contain"
+                  />
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 px-4 py-2 rounded-lg">
                     <p className="text-white text-center">
                       {allMedia[selectedImageIndex].title} ({selectedImageIndex + 1} / {allMedia.length})

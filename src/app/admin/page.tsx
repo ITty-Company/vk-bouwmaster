@@ -222,6 +222,7 @@ export default function AdminPage() {
     videos: [] as string[],
     profileImage: '',
   });
+  const [reviewTranslateBusy, setReviewTranslateBusy] = useState(false);
 
   const StarRating = ({ rating, onRatingChange, readOnly = false }: { rating: number; onRatingChange?: (rating: number) => void; readOnly?: boolean }) => {
     return (
@@ -245,11 +246,59 @@ export default function AdminPage() {
 
   const loadReviews = async () => {
     try {
-      const response = await fetch('/api/comments?includeUnapproved=1');
+      const response = await fetch('/api/comments?includeUnapproved=1', { cache: 'no-store' });
       const data = await response.json();
       setReviews(data);
     } catch (error) {
       console.error('Error loading reviews:', error);
+    }
+  };
+
+  const handleTranslateAllReviews = async (force: boolean) => {
+    if (
+      !confirm(
+        force
+          ? 'Пересобрать переводы на все языки для КАЖДОГО отзыва? Существующие переводы будут заменены. Может занять несколько минут.'
+          : 'Дозаполнить только недостающие языки у всех отзывов? (Рекомендуется.)'
+      )
+    ) {
+      return;
+    }
+    setReviewTranslateBusy(true);
+    try {
+      const res = await fetch(`/api/comments/translate?force=${force}`, { method: 'POST' });
+      const data = await res.json();
+      if (res.ok) {
+        alert(data.message ?? 'Готово');
+        loadReviews();
+      } else {
+        alert(data.error ?? 'Ошибка перевода');
+      }
+    } catch {
+      alert('Сетевая ошибка');
+    } finally {
+      setReviewTranslateBusy(false);
+    }
+  };
+
+  const handleTranslateOneReview = async (id: string) => {
+    setReviewTranslateBusy(true);
+    try {
+      const res = await fetch(
+        `/api/comments/translate?commentId=${encodeURIComponent(id)}`,
+        { method: 'POST' }
+      );
+      const data = await res.json();
+      if (res.ok) {
+        alert('Переводы для отзыва обновлены');
+        loadReviews();
+      } else {
+        alert(data.error ?? 'Ошибка');
+      }
+    } catch {
+      alert('Сетевая ошибка');
+    } finally {
+      setReviewTranslateBusy(false);
     }
   };
 
@@ -409,7 +458,7 @@ export default function AdminPage() {
 
   const loadWorks = async () => {
     try {
-      const response = await fetch('/api/works');
+      const response = await fetch('/api/works', { cache: 'no-store' });
       const data = await response.json();
       setWorks(data);
     } catch (error) {
@@ -1452,9 +1501,29 @@ export default function AdminPage() {
               )}
               
               <div className="elegant-card p-4 sm:p-6 lg:p-8">
-                <h2 className="text-xl sm:text-2xl font-bold elegant-title mb-4 sm:mb-6">
-                  Отзывы ({reviews.length})
-                </h2>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6">
+                  <h2 className="text-xl sm:text-2xl font-bold elegant-title">
+                    Отзывы ({reviews.length})
+                  </h2>
+                  <div className="flex flex-wrap gap-2 shrink-0">
+                    <button
+                      type="button"
+                      disabled={reviewTranslateBusy || reviews.length === 0}
+                      onClick={() => handleTranslateAllReviews(false)}
+                      className="px-3 py-2 rounded-lg bg-cyan-700 hover:bg-cyan-600 disabled:opacity-50 text-white text-xs sm:text-sm whitespace-nowrap"
+                    >
+                      {reviewTranslateBusy ? '…' : 'Дозаполнить переводы'}
+                    </button>
+                    <button
+                      type="button"
+                      disabled={reviewTranslateBusy || reviews.length === 0}
+                      onClick={() => handleTranslateAllReviews(true)}
+                      className="px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 disabled:opacity-50 text-white text-xs sm:text-sm whitespace-nowrap"
+                    >
+                      Пересобрать все языки
+                    </button>
+                  </div>
+                </div>
                 <div className="space-y-4 max-h-[800px] overflow-y-auto">
                   {reviews.length === 0 ? (
                     <p className="text-gray-400 text-center py-8">Нет отзывов</p>
@@ -1512,7 +1581,15 @@ export default function AdminPage() {
                             )}
                           </div>
                         ) : null}
-                        <div className="flex flex-col sm:flex-row gap-2">
+                        <div className="flex flex-col sm:flex-row gap-2 flex-wrap">
+                          <button
+                            type="button"
+                            disabled={reviewTranslateBusy}
+                            onClick={() => handleTranslateOneReview(review.id)}
+                            className="px-3 py-1.5 sm:px-4 sm:py-2 bg-cyan-700 hover:bg-cyan-600 disabled:opacity-50 rounded text-xs sm:text-sm text-white flex-1 sm:flex-none"
+                          >
+                            Перевести
+                          </button>
                           {!review.approved && (
                             <button
                               onClick={() => handleReviewApprove(review.id)}

@@ -28,11 +28,9 @@ export function PortfolioGallerySection() {
     }
     window.addEventListener('focus', onFocus)
     document.addEventListener('visibilitychange', onVisible)
-    const interval = setInterval(fetchWorks, 15000)
     return () => {
       window.removeEventListener('focus', onFocus)
       document.removeEventListener('visibilitychange', onVisible)
-      clearInterval(interval)
     }
   }, [])
 

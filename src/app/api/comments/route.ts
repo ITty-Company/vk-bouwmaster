@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { translateText, detectSourceLanguage } from '@/lib/translate'
-import { Language } from '@/lib/translations'
 import { ensureCommentsFileWithSeed } from '@/lib/data-file-paths'
 import {
   readMergedComments,
   persistMergedComments,
   type StoredComment,
 } from '@/lib/comments-storage'
+import {
+  buildCommentTranslationsForAllLanguages,
+  commentTranslationsComplete,
+  fillMissingCommentTranslations,
+  normalizeCommentTranslationKeys,
+  sourceLangCodeFromMessage,
+} from '@/lib/comment-translations'
+import { autoTranslateOnFetch } from '@/lib/translation-languages'
 
 /** Admin approve / message edit can take a while (many translations). */
 export const maxDuration = 300
@@ -29,40 +35,6 @@ function writeComments(list: Comment[]) {
   persistMergedComments(list)
 }
 
-const COMMENT_LANGS: Language[] = [
-  'RU', 'EN', 'NL', 'DE', 'FR', 'ES', 'IT', 'PT', 'PL', 'CZ', 'HU', 'RO', 'BG', 'HR', 'SK', 'SL',
-  'ET', 'LV', 'LT', 'FI', 'SV', 'DA', 'NO', 'GR', 'UA',
-]
-
-function sourceLangCodeFromMessage(message: string): string {
-  const sourceLang = detectSourceLanguage(message)
-  return sourceLang === 'ru' ? 'RU' : sourceLang === 'nl' ? 'NL' : sourceLang === 'en' ? 'EN' : 'RU'
-}
-
-/** Full multi-language map — used after admin approval or when editing message (not on public POST). */
-async function buildTranslationsForAllLanguages(message: string): Promise<Record<string, string>> {
-  const sourceLang = detectSourceLanguage(message)
-  const sourceLangCode = sourceLangCodeFromMessage(message)
-  const translations: Record<string, string> = { [sourceLangCode]: message }
-
-  for (const lang of COMMENT_LANGS) {
-    if (lang === sourceLangCode) continue
-    try {
-      translations[lang] = await translateText(message, lang, sourceLang)
-      await new Promise((resolve) => setTimeout(resolve, 50))
-    } catch (error) {
-      console.error(`Error translating comment to ${lang}:`, error)
-      translations[lang] = message
-    }
-  }
-  return translations
-}
-
-function translationsLookComplete(t?: Record<string, string>): boolean {
-  if (!t || typeof t !== 'object') return false
-  return Object.keys(t).length >= COMMENT_LANGS.length
-}
-
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
@@ -70,11 +42,54 @@ export async function GET(request: NextRequest) {
     const includeUnapproved = searchParams.get('includeUnapproved') === '1'
 
     let list = readComments()
+
+    if (autoTranslateOnFetch()) {
+      const maxRepair = Math.max(
+        1,
+        Math.min(50, Number(process.env.COMMENTS_REPAIR_BATCH_PER_GET ?? 24))
+      )
+      let repaired = 0
+      let dirty = false
+      const next: Comment[] = []
+      for (const c of list) {
+        if (
+          !c.approved ||
+          commentTranslationsComplete(c.translations) ||
+          repaired >= maxRepair
+        ) {
+          next.push(c)
+          continue
+        }
+        repaired++
+        try {
+          const translations = await fillMissingCommentTranslations(
+            c.message,
+            c.translations
+          )
+          next.push({ ...c, translations })
+          dirty = true
+        } catch (e) {
+          console.error('[comments GET] Failed to repair translations for', c.id, e)
+          next.push(c)
+        }
+      }
+      if (dirty) {
+        writeComments(next)
+        list = next
+      }
+    }
+
     if (projectId) list = list.filter(c => c.projectId === projectId)
     if (!includeUnapproved) list = list.filter(c => c.approved)
 
     list.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-    return NextResponse.json(list)
+    list = list.map((c) => {
+      const n = normalizeCommentTranslationKeys(c.translations)
+      return { ...c, translations: n ?? c.translations }
+    })
+    const res = NextResponse.json(list)
+    res.headers.set('Cache-Control', 'no-store, must-revalidate')
+    return res
   } catch (e) {
     return NextResponse.json({ error: 'Failed to read comments' }, { status: 500 })
   }
@@ -147,13 +162,13 @@ export async function PUT(request: NextRequest) {
     let translations: Record<string, string> | undefined = prev.translations
 
     if (messageChanged && body.message !== undefined) {
-      translations = await buildTranslationsForAllLanguages(String(body.message))
+      translations = await buildCommentTranslationsForAllLanguages(String(body.message))
     } else if (
       becameApproved &&
       nextMessage.trim() &&
-      !translationsLookComplete(prev.translations)
+      !commentTranslationsComplete(prev.translations)
     ) {
-      translations = await buildTranslationsForAllLanguages(nextMessage)
+      translations = await fillMissingCommentTranslations(nextMessage, prev.translations)
     } else if (body.translations !== undefined) {
       translations = body.translations
     }

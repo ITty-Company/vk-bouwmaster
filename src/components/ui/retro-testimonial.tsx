@@ -12,6 +12,7 @@ import {Footer} from "@/components/layout/footer";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTranslations } from '@/hooks/useTranslations';
+import { getCommentDisplayMessage } from '@/lib/comment-display';
 
 export interface iTestimonial {
   id?: string; // ID отзыва для навигации
@@ -315,12 +316,11 @@ const TestimonialCard = ({
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
   
-  const getTranslatedDescription = () => {
-    if (testimonial.translations && testimonial.translations[currentLanguage]) {
-      return testimonial.translations[currentLanguage];
-    }
-    return testimonial.description;
-  };
+  const getTranslatedDescription = () =>
+    getCommentDisplayMessage(
+      { message: testimonial.description, translations: testimonial.translations },
+      currentLanguage
+    );
   const [showPhotos, setShowPhotos] = useState(false);
   const [showVideos, setShowVideos] = useState(false);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);

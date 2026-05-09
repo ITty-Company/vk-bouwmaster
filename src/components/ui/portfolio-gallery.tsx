@@ -8,6 +8,9 @@ import Link from "next/link";
 import {cn} from "@/lib/utils";
 import {getTranslatedWork, translateCategory, Language} from "@/lib/translations";
 import {useTranslations} from "@/hooks/useTranslations";
+import {IMAGE_BLUR_DATA_URL} from "@/lib/blur-placeholder";
+
+const cardMainSizes = "(max-width: 768px) 320px, 384px";
 
 export interface WorkTranslations {
   title: string;
@@ -371,6 +374,9 @@ const PortfolioCard = ({
                   src={work.mainImage}
                   alt={translated.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 896px"
+                  placeholder="blur"
+                  blurDataURL={IMAGE_BLUR_DATA_URL}
                   className="object-cover"
                   priority
                 />
@@ -419,6 +425,10 @@ const PortfolioCard = ({
                 src={backgroundImage || work.mainImage}
                 alt="Background layer"
                 fill
+                sizes={cardMainSizes}
+                placeholder="blur"
+                blurDataURL={IMAGE_BLUR_DATA_URL}
+                priority={index < 4}
               />
             </div>
           </div>
@@ -429,6 +439,10 @@ const PortfolioCard = ({
                 src={work.mainImage}
                 alt={translated.title}
                 fill
+                sizes={cardMainSizes}
+                placeholder="blur"
+                blurDataURL={IMAGE_BLUR_DATA_URL}
+                priority={index < 4}
                 className="object-cover"
               />
             </div>

@@ -13,6 +13,8 @@ import { Carousel, TestimonialCard } from '@/components/ui/retro-testimonial'
 import { iTestimonial } from '@/components/ui/retro-testimonial'
 import { useRef } from 'react'
 import { translateCategory, getTranslatedWork } from '@/lib/translations'
+import { IMAGE_BLUR_DATA_URL, PORTFOLIO_CARD_SIZES } from '@/lib/blur-placeholder'
+import { commentsListFetchInit } from '@/lib/comments-client'
 
 export default function PortfolioPage() {
   const { t, isInitialized, currentLanguage } = useTranslations()
@@ -48,7 +50,7 @@ export default function PortfolioPage() {
     
     const fetchReviews = async () => {
       try {
-        const res = await fetch('/api/comments')
+        const res = await fetch('/api/comments', commentsListFetchInit)
         if (res.ok) {
           const list = await res.json()
           setReviews(Array.isArray(list) ? list : [])
@@ -74,16 +76,10 @@ export default function PortfolioPage() {
     
     window.addEventListener('focus', onFocus)
     document.addEventListener('visibilitychange', onVisible)
-    
-    const interval = setInterval(() => {
-      fetchWorks()
-      fetchReviews()
-    }, 5000)
-    
+
     return () => {
       window.removeEventListener('focus', onFocus)
       document.removeEventListener('visibilitychange', onVisible)
-      clearInterval(interval)
     }
   }, [])
 
@@ -205,7 +201,17 @@ export default function PortfolioPage() {
                       className="elegant-card overflow-hidden block group rounded-2xl"
                     >
                       <div className="relative w-full aspect-[9/16]">
-                        <Image src={work.mainImage} alt={translated.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <Image
+                          src={work.mainImage}
+                          alt={translated.title}
+                          fill
+                          sizes={PORTFOLIO_CARD_SIZES}
+                          placeholder="blur"
+                          blurDataURL={IMAGE_BLUR_DATA_URL}
+                          priority={i < 8}
+                          quality={75}
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
                       </div>
                       <div className="p-6">
                         <h3 className="text-lg md:text-xl font-semibold text-white mb-1 line-clamp-1">{translated.title}</h3>

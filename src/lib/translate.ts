@@ -1,6 +1,12 @@
 import OpenAI from 'openai';
 import { TRANSLATION_LANGUAGE_KEYS } from '@/lib/translation-languages';
 
+/**
+ * По умолчанию используются только бесплатные переводчики (Google gtx, MyMemory, Lingva, LibreTranslate).
+ * Платные OpenAI / DeepL — только при TRANSLATE_USE_PAID_FALLBACK=true и наличии ключей.
+ */
+const paidFallbackEnabled = () => process.env.TRANSLATE_USE_PAID_FALLBACK === 'true'
+
 const getOpenAIClient = () => {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
@@ -45,8 +51,11 @@ export async function translateText(text: string, targetLang: string, sourceLang
     return text;
   }
 
-  const hasOpenAI = !!process.env.OPENAI_API_KEY;
-  const maxLength = hasOpenAI ? 4000 : 500; // OpenAI может обрабатывать до 128k токенов, но для безопасности используем 4000 символов
+  const chunkMax = Math.min(
+    8000,
+    Math.max(500, Number(process.env.TRANSLATE_CHUNK_MAX_LENGTH || 3500))
+  )
+  const maxLength = chunkMax
   
   if (text.length <= maxLength) {
     return await translateChunk(text, targetCode, sourceCode);
@@ -92,246 +101,369 @@ export async function translateText(text: string, targetLang: string, sourceLang
   return translatedChunks.join(' ');
 }
 
+/** ISO 639-1 codes understood by translate APIs / translateChunk. */
 export function detectSourceLanguage(text: string): string {
-  if (!text || text.trim() === '') return 'nl';
-  
-  const lowerText = text.toLowerCase();
-  
-  const nlWords = /\b(van|de|het|een|is|op|voor|met|aan|in|dat|die|wat|zijn|worden|hebben|kunnen|moeten|willen|doen|gaan|komen|zien|weten|denken|zeggen|geven|nemen|maken|vinden|krijgen|staan|liggen|zitten|blijven|beginnen|eindigen|proberen|helpen|werken|leven|groot|klein|goed|slecht|nieuw|oud|jong|lang|kort|hoog|laag|warm|koud|mooi|lelijk|rijk|arm|sterk|zwak|snel|langzaam|makkelijk|moeilijk|belangrijk|nodig|mogelijk|onmogelijk|waarschijnlijk|zeker|onzeker|open|dicht|vol|leeg|schoon|vuil|licht|donker|zacht|hard|zoet|zuur|bitter|zout|heet|nat|droog|recht|krom|rond|vierkant|driehoekig|breed|smal|dik|dun|zwaar|professioneel|leg|tegels|klinker|onder|grond|afwatering|verwijder|bereid|zorgvuldig|oppervlak|vlak|stevig|duurzaam|geschikt|tuin|paden|terrassen|opritten|bestrate)\b/i;
-  const nlPatterns = /(ij|oe|eu|aa|ee|uu|sch|cht)/i; // Характерные нидерландские буквосочетания
-  
-  const ruIndicators = /[а-яё]/i;
-  
-  const enIndicators = /\b(the|and|is|are|was|were|been|have|has|had|do|does|did|will|would|should|could|can|may|might|must|shall|this|that|these|those|what|which|who|whom|whose|where|when|why|how|all|each|every|some|any|no|not|only|just|also|too|very|much|many|more|most|less|least|few|little|enough|so|such|as|like|than|from|to|in|on|at|by|for|with|about|into|onto|upon|over|under|above|below|between|among|through|during|before|after|while|since|until|till|because|although|though|however|therefore|thus|hence|moreover|furthermore|besides|instead|otherwise|nevertheless|nonetheless|meanwhile|finally|first|second|third|last|next|then|now|here|there)\b/i;
-  
-  const nlScore = (nlWords.test(text) ? 2 : 0) + (nlPatterns.test(text) ? 1 : 0);
-  const ruScore = ruIndicators.test(text) ? 3 : 0;
-  const enScore = enIndicators.test(text) ? 2 : 0;
-  
-  if (ruScore > 0) return 'ru';
-  if (nlScore > enScore) return 'nl';
-  if (enScore > 0) return 'en';
-  
-  return 'nl';
+  if (!text || text.trim() === '') return 'nl'
+
+  // Ukrainian — distinct alphabet (must run before generic Cyrillic → ru)
+  if (/[іїєґІЇЄҐ]/.test(text)) return 'uk'
+
+  // Cyrillic: Russian (and similar; Bulgarian reviews are rare here)
+  if (/[а-яёА-ЯЁ]/.test(text)) return 'ru'
+
+  const nlWords =
+    /\b(van|de|het|een|is|op|voor|met|aan|in|dat|die|wat|zijn|worden|hebben|kunnen|moeten|willen|doen|gaan|komen|zien|weten|denken|zeggen|geven|nemen|maken|vinden|krijgen|staan|liggen|zitten|blijven|beginnen|eindigen|proberen|helpen|werken|leven|groot|klein|goed|slecht|nieuw|oud|jong|lang|kort|hoog|laag|warm|koud|mooi|lelijk|rijk|arm|sterk|zwak|snel|langzaam|makkelijk|moeilijk|belangrijk|nodig|mogelijk|onmogelijk|waarschijnlijk|zeker|onzeker|open|dicht|vol|leeg|schoon|vuil|licht|donker|zacht|hard|zoet|zuur|bitter|zout|heet|nat|droog|recht|krom|rond|vierkant|driehoekig|breed|smal|dik|dun|zwaar|professioneel|leg|tegels|klinker|onder|grond|afwatering|verwijder|bereid|zorgvuldig|oppervlak|vlak|stevig|duurzaam|geschikt|tuin|paden|terrassen|opritten|bestrate)\b/i
+  const nlPatterns = /(ij|oe|eu|aa|ee|uu|sch|cht)/i
+
+  const deWords =
+    /\b(der|die|das|und|nicht|ich|ist|wir|mit|auf|für|auch|noch|ein|eine|werden|haben|können|müssen|über|schon|wenn|aber|nur|nach|wie|aus|bei|sehr|gut|alle|man|sie|dem|den|des)\b/i
+  const frWords =
+    /\b(le|la|les|des|un|une|est|sont|pour|avec|dans|sur|pas|plus|très|vous|nous|être|faire|tout|cette|comme|mais|bien|merci|bonjour|donc)\b/i
+  const esWords =
+    /\b(el|la|los|las|que|con|por|para|una|muy|más|como|pero|todo|esta|este|hay|han|sin|sobre|también|muy|bien)\b/i
+  const itWords =
+    /\b(il|la|lo|gli|le|un|una|che|per|con|non|più|come|anche|questo|questa|tutto|sono|essere|molto)\b/i
+  const enIndicators =
+    /\b(the|and|is|are|was|were|been|have|has|had|do|does|did|will|would|should|could|can|may|might|must|shall|this|that|these|those|what|which|who|whom|whose|where|when|why|how|all|each|every|some|any|no|not|only|just|also|too|very|much|many|more|most|less|least|few|little|enough|so|such|as|like|than|from|to|in|on|at|by|for|with|about)\b/i
+
+  const scores = {
+    nl: (nlWords.test(text) ? 2 : 0) + (nlPatterns.test(text) ? 1 : 0),
+    en: enIndicators.test(text) ? 2 : 0,
+    de: deWords.test(text) ? 3 : 0,
+    fr: frWords.test(text) ? 3 : 0,
+    es: esWords.test(text) ? 3 : 0,
+    it: itWords.test(text) ? 3 : 0,
+  } as const
+
+  type Lat = keyof typeof scores
+  let best: Lat = 'nl'
+  let max = -1
+  for (const lang of Object.keys(scores) as Lat[]) {
+    if (scores[lang] > max) {
+      max = scores[lang]
+      best = lang
+    }
+  }
+  if (max > 0) return best
+
+  return 'nl'
+}
+
+function usableTranslation(
+  translated: string | undefined | null,
+  sourceCode: string,
+  targetCode: string,
+  original: string
+): string | null {
+  const tr = translated?.trim()
+  if (!tr) return null
+  if (sourceCode !== targetCode && tr === original.trim()) return null
+  return tr
 }
 
 async function translateChunk(text: string, targetCode: string, sourceLang?: string): Promise<string> {
-  const sourceCode = sourceLang || detectSourceLanguage(text);
-  
+  const sourceCode = sourceLang || detectSourceLanguage(text)
+
   if (sourceCode === targetCode) {
-    console.log(`[Translate] Skipping translation: source (${sourceCode}) = target (${targetCode})`);
-    return text;
+    console.log(`[Translate] Skipping translation: source (${sourceCode}) = target (${targetCode})`)
+    return text
   }
-  
-  console.log(`[Translate] Translating from ${sourceCode} to ${targetCode}: "${text.substring(0, 50)}..."`);
-  
-  const apis = [
-    async () => {
-      const client = getOpenAIClient();
-      if (!client) {
-        console.log(`[Translate] OpenAI API key not configured, skipping AI translation`);
-        return null;
-      }
-      
+
+  console.log(`[Translate] Translating from ${sourceCode} to ${targetCode}: "${text.substring(0, 50)}..."`)
+
+  const tryGoogleFree = async (): Promise<string | null> => {
+    const endpoints = [
+      `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceCode}&tl=${targetCode}&dt=t&q=${encodeURIComponent(text)}`,
+      `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=${sourceCode}&tl=${targetCode}&q=${encodeURIComponent(text)}`,
+    ]
+    for (const url of endpoints) {
       try {
-        const languageNames: Record<string, string> = {
-          'ru': 'Russian',
-          'en': 'English',
-          'nl': 'Dutch',
-          'de': 'German',
-          'fr': 'French',
-          'es': 'Spanish',
-          'it': 'Italian',
-          'pt': 'Portuguese',
-          'pl': 'Polish',
-          'cs': 'Czech',
-          'hu': 'Hungarian',
-          'ro': 'Romanian',
-          'bg': 'Bulgarian',
-          'hr': 'Croatian',
-          'sk': 'Slovak',
-          'sl': 'Slovenian',
-          'et': 'Estonian',
-          'lv': 'Latvian',
-          'lt': 'Lithuanian',
-          'fi': 'Finnish',
-          'sv': 'Swedish',
-          'da': 'Danish',
-          'no': 'Norwegian',
-          'el': 'Greek',
-          'uk': 'Ukrainian'
-        };
-        
-        const sourceLangName = languageNames[sourceCode] || sourceCode;
-        const targetLangName = languageNames[targetCode] || targetCode;
-        
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000);
-        
-        const response = await client.chat.completions.create({
-          model: 'gpt-4o-mini', // Используем более дешевую модель для переводов
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 8000)
+        const response = await fetch(url, {
+          signal: controller.signal,
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          },
+        })
+        clearTimeout(timeoutId)
+        if (!response.ok) continue
+        const data = await response.json()
+        let translated = ''
+        if (Array.isArray(data) && data[0] && Array.isArray(data[0])) {
+          translated = data[0].map((item: any[]) => item?.[0] || '').filter(Boolean).join('')
+        } else if (typeof data === 'string') {
+          translated = data
+        } else if (data.sentences && Array.isArray(data.sentences)) {
+          translated = data.sentences.map((s: any) => s.trans || '').join('')
+        }
+        const tr = usableTranslation(translated, sourceCode, targetCode, text)
+        if (tr) {
+          console.log(`[Translate] ✅ Google (free) ${sourceCode}->${targetCode}`)
+          return tr
+        }
+      } catch (e: any) {
+        if (e.name !== 'AbortError') {
+          console.warn(`[Translate] Google endpoint failed:`, e.message)
+        }
+      }
+    }
+    return null
+  }
+
+  const tryMyMemoryFree = async (): Promise<string | null> => {
+    try {
+      const email =
+        process.env.MYMEMORY_CONTACT_EMAIL?.trim() ||
+        process.env.TRANSLATION_CONTACT_EMAIL?.trim()
+      let apiUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${sourceCode}|${targetCode}`
+      if (email) {
+        apiUrl += `&de=${encodeURIComponent(email)}`
+      }
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 8000)
+      const response = await fetch(apiUrl, { signal: controller.signal })
+      clearTimeout(timeoutId)
+      if (!response.ok) return null
+      const data = await response.json()
+      if (data.responseStatus === 200 && data.responseData?.translatedText) {
+        const tr = usableTranslation(data.responseData.translatedText, sourceCode, targetCode, text)
+        if (tr) {
+          console.log(`[Translate] ✅ MyMemory (free) ${sourceCode}->${targetCode}`)
+          return tr
+        }
+      }
+    } catch (e: any) {
+      if (e.name !== 'AbortError') {
+        console.warn(`[Translate] MyMemory failed:`, e.message)
+      }
+    }
+    return null
+  }
+
+  const tryLingvaFree = async (): Promise<string | null> => {
+    const bases = (process.env.LINGVA_INSTANCES || 'https://lingva.ml')
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean)
+    if (text.length > 1800) return null
+    for (const base of bases) {
+      try {
+        const root = base.replace(/\/$/, '')
+        const url = `${root}/api/v1/${sourceCode}/${targetCode}/${encodeURIComponent(text)}`
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 8000)
+        const response = await fetch(url, {
+          signal: controller.signal,
+          headers: { 'User-Agent': 'Mozilla/5.0 (compatible; VK-Bouwmaster/1.0)' },
+        })
+        clearTimeout(timeoutId)
+        if (!response.ok) continue
+        const data = await response.json()
+        const raw =
+          typeof data.translation === 'string'
+            ? data.translation
+            : typeof data.translatedText === 'string'
+              ? data.translatedText
+              : null
+        const tr = usableTranslation(raw, sourceCode, targetCode, text)
+        if (tr) {
+          console.log(`[Translate] ✅ Lingva (free) ${sourceCode}->${targetCode}`)
+          return tr
+        }
+      } catch (e: any) {
+        if (e.name !== 'AbortError') {
+          console.warn(`[Translate] Lingva ${base} failed:`, e.message)
+        }
+      }
+    }
+    return null
+  }
+
+  const tryLibreTranslateFree = async (): Promise<string | null> => {
+    const endpoints = (
+      process.env.LIBRETRANSLATE_URLS ||
+      'https://libretranslate.de/translate,https://translate.argosopentech.com/translate'
+    )
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean)
+    const apiKey = process.env.LIBRETRANSLATE_API_KEY?.trim()
+    for (const endpoint of endpoints) {
+      try {
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 12000)
+        const body: Record<string, string> = {
+          q: text,
+          source: sourceCode,
+          target: targetCode,
+          format: 'text',
+        }
+        if (apiKey) body.api_key = apiKey
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+          signal: controller.signal,
+        })
+        clearTimeout(timeoutId)
+        if (!response.ok) continue
+        const data = await response.json()
+        const tr = usableTranslation(data.translatedText, sourceCode, targetCode, text)
+        if (tr) {
+          console.log(`[Translate] ✅ LibreTranslate (free) ${sourceCode}->${targetCode}`)
+          return tr
+        }
+      } catch (e: any) {
+        if (e.name !== 'AbortError') {
+          console.warn(`[Translate] LibreTranslate ${endpoint} failed:`, e.message)
+        }
+      }
+    }
+    return null
+  }
+
+  const tryOpenAIPaid = async (): Promise<string | null> => {
+    if (!paidFallbackEnabled()) return null
+    const client = getOpenAIClient()
+    if (!client) return null
+
+    try {
+      const languageNames: Record<string, string> = {
+        ru: 'Russian',
+        en: 'English',
+        nl: 'Dutch',
+        de: 'German',
+        fr: 'French',
+        es: 'Spanish',
+        it: 'Italian',
+        pt: 'Portuguese',
+        pl: 'Polish',
+        cs: 'Czech',
+        hu: 'Hungarian',
+        ro: 'Romanian',
+        bg: 'Bulgarian',
+        hr: 'Croatian',
+        sk: 'Slovak',
+        sl: 'Slovenian',
+        et: 'Estonian',
+        lv: 'Latvian',
+        lt: 'Lithuanian',
+        fi: 'Finnish',
+        sv: 'Swedish',
+        da: 'Danish',
+        no: 'Norwegian',
+        el: 'Greek',
+        uk: 'Ukrainian',
+      }
+
+      const sourceLangName = languageNames[sourceCode] || sourceCode
+      const targetLangName = languageNames[targetCode] || targetCode
+
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 15000)
+
+      const response = await client.chat.completions.create(
+        {
+          model: 'gpt-4o-mini',
           messages: [
             {
               role: 'system',
-              content: `You are a professional translator. Translate the text from ${sourceLangName} to ${targetLangName}. Preserve the original meaning, tone, and style. Return only the translated text without any explanations or additional text.`
+              content: `You are a professional translator. Translate the text from ${sourceLangName} to ${targetLangName}. Preserve the original meaning, tone, and style. Return only the translated text without any explanations or additional text.`,
             },
             {
               role: 'user',
-              content: text
-            }
+              content: text,
+            },
           ],
-          temperature: 0.3, // Низкая температура для более точных переводов
-          max_tokens: Math.ceil(text.length * 2) // Резервируем достаточно токенов
-        }, {
-          signal: controller.signal as any
-        });
-        
-        clearTimeout(timeoutId);
-        
-        const translated = response.choices[0]?.message?.content?.trim();
-        
-        if (translated && translated !== text) {
-          console.log(`[Translate] ✅ OpenAI AI translation success ${sourceCode}->${targetCode}`);
-          return translated;
+          temperature: 0.3,
+          max_tokens: Math.ceil(text.length * 2),
+        },
+        {
+          signal: controller.signal as any,
         }
-      } catch (e: any) {
-        if (e.name !== 'AbortError') {
-          console.warn(`[Translate] OpenAI translation failed:`, e.message);
+      )
+
+      clearTimeout(timeoutId)
+
+      const translated = response.choices[0]?.message?.content?.trim()
+      if (translated) {
+        const tr = translated.trim()
+        const src = text.trim()
+        if (sourceCode !== targetCode && tr === src) {
+          return null
         }
+        console.log(`[Translate] ✅ OpenAI (paid fallback) ${sourceCode}->${targetCode}`)
+        return tr
       }
-      return null;
-    },
-    
-    async () => {
-      const endpoints = [
-        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceCode}&tl=${targetCode}&dt=t&q=${encodeURIComponent(text)}`,
-        `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=${sourceCode}&tl=${targetCode}&q=${encodeURIComponent(text)}`
-      ];
-      
-      for (const url of endpoints) {
-        try {
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 8000);
-          
-          const response = await fetch(url, { 
-            signal: controller.signal,
-            headers: {
-              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-          });
-          clearTimeout(timeoutId);
-          
-          if (response.ok) {
-            const data = await response.json();
-            let translated = '';
-            
-            if (Array.isArray(data) && data[0] && Array.isArray(data[0])) {
-              translated = data[0].map((item: any[]) => item?.[0] || '').filter(Boolean).join('');
-            } else if (typeof data === 'string') {
-              translated = data;
-            } else if (data.sentences && Array.isArray(data.sentences)) {
-              translated = data.sentences.map((s: any) => s.trans || '').join('');
-            }
-            
-            if (translated && translated.trim() && translated !== text) {
-              console.log(`[Translate] ✅ Google Translate success ${sourceCode}->${targetCode}`);
-              return translated;
-            }
-          }
-        } catch (e: any) {
-          if (e.name !== 'AbortError') {
-            console.warn(`[Translate] Google Translate endpoint failed:`, e.message);
-          }
-        }
+    } catch (e: any) {
+      if (e.name !== 'AbortError') {
+        console.warn(`[Translate] OpenAI translation failed:`, e.message)
       }
-      return null;
-    },
-    
-    async () => {
-      try {
-        const apiUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${sourceCode}|${targetCode}`;
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000);
-        
-        const response = await fetch(apiUrl, { signal: controller.signal });
-        clearTimeout(timeoutId);
-        
-        if (response.ok) {
-          const data = await response.json();
-          if (data.responseStatus === 200 && data.responseData?.translatedText) {
-            const translated = data.responseData.translatedText;
-            if (translated && translated.trim() && translated !== text) {
-              console.log(`[Translate] ✅ MyMemory success ${sourceCode}->${targetCode}`);
-              return translated;
-            }
-          }
-        }
-      } catch (e: any) {
-        if (e.name !== 'AbortError') {
-          console.warn(`[Translate] MyMemory failed:`, e.message);
-        }
-      }
-      return null;
-    },
-    
-    async () => {
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000);
-        
-        const response = await fetch(`https://api-free.deepl.com/v2/translate`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'User-Agent': 'Mozilla/5.0'
-          },
-          body: new URLSearchParams({
-            auth_key: '', // Публичный API не требует ключа для некоторых языков
-            text: text,
-            source_lang: sourceCode.toUpperCase(),
-            target_lang: targetCode.toUpperCase()
-          }),
-          signal: controller.signal
-        });
-        clearTimeout(timeoutId);
-        
-        if (response.ok) {
-          const data = await response.json();
-          if (data.translations && data.translations[0]?.text) {
-            const translated = data.translations[0].text;
-            if (translated && translated.trim() && translated !== text) {
-              console.log(`[Translate] ✅ DeepL success ${sourceCode}->${targetCode}`);
-              return translated;
-            }
-          }
-        }
-      } catch (e: any) {
-        if (e.name !== 'AbortError') {
-        }
-      }
-      return null;
-    },
-    
-    async () => {
-      console.warn(`[Translate] ⚠️ All APIs failed, using original text for ${sourceCode}->${targetCode}`);
-      return null; // Вернём null, чтобы попробовать другие варианты
     }
-  ];
-  
-  for (const api of apis) {
+    return null
+  }
+
+  const tryDeepLPaid = async (): Promise<string | null> => {
+    if (!paidFallbackEnabled()) return null
+    const authKey = process.env.DEEPL_AUTH_KEY?.trim()
+    if (!authKey) return null
     try {
-      const result = await api();
-      if (result) {
-        return result;
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 8000)
+
+      const response = await fetch(`https://api-free.deepl.com/v2/translate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          auth_key: authKey,
+          text,
+          source_lang: sourceCode.toUpperCase(),
+          target_lang: targetCode.toUpperCase(),
+        }),
+        signal: controller.signal,
+      })
+      clearTimeout(timeoutId)
+
+      if (response.ok) {
+        const data = await response.json()
+        const translated = data.translations?.[0]?.text as string | undefined
+        const tr = usableTranslation(translated, sourceCode, targetCode, text)
+        if (tr) {
+          console.log(`[Translate] ✅ DeepL (paid fallback) ${sourceCode}->${targetCode}`)
+          return tr
+        }
       }
+    } catch (e: any) {
+      if (e.name !== 'AbortError') {
+        console.warn(`[Translate] DeepL failed:`, e.message)
+      }
+    }
+    return null
+  }
+
+  const providers = [
+    tryGoogleFree,
+    tryMyMemoryFree,
+    tryLingvaFree,
+    tryLibreTranslateFree,
+    tryOpenAIPaid,
+    tryDeepLPaid,
+  ]
+
+  for (const run of providers) {
+    try {
+      const result = await run()
+      if (result) return result
     } catch (error: any) {
-      console.warn(`[Translate] API attempt failed:`, error.message);
-      continue;
+      console.warn(`[Translate] Provider failed:`, error.message)
     }
   }
-  
-  console.error(`[Translate] ❌ All translation APIs failed for ${sourceCode}->${targetCode}`);
-  return text;
+
+  console.error(`[Translate] ❌ All translation APIs failed for ${sourceCode}->${targetCode}`)
+  return text
 }
 
 export async function translateBlogPost(post: {

@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { useTranslations } from '@/hooks/useTranslations'
 import { GradientButton } from '@/components/ui/gradient-button'
+import { commentsListFetchInit } from '@/lib/comments-client'
+import { getCommentDisplayMessage } from '@/lib/comment-display'
 import { Star, MessageSquare, Camera, MapPin, User, CheckCircle2, Heart } from 'lucide-react'
 
 type Comment = { id: string; projectId: string; name: string; surname?: string; message: string; createdAt: string; photos?: string[]; videos?: string[]; rating?: number; city?: string; profileImage?: string; translations?: Record<string, string> }
@@ -97,13 +99,25 @@ export default function ReviewsPage() {
   }
 
   useEffect(() => {
-    ;(async () => {
+    const load = async () => {
       try {
-        const res = await fetch('/api/comments')
+        const res = await fetch('/api/comments', commentsListFetchInit)
         if (res.ok) setComments(await res.json())
       } catch {}
-    })()
-  }, [])
+    }
+    load()
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') load()
+    }
+    window.addEventListener('focus', load)
+    document.addEventListener('visibilitychange', onVisible)
+    const interval = setInterval(load, 45_000)
+    return () => {
+      window.removeEventListener('focus', load)
+      document.removeEventListener('visibilitychange', onVisible)
+      clearInterval(interval)
+    }
+  }, [currentLanguage])
 
   useEffect(() => {
     if (showThankYou) {
@@ -143,7 +157,7 @@ export default function ReviewsPage() {
           setSessionPendingNotice(data.comment)
         }
         // Публичный GET отдаёт только approved — список не изменится до модерации (это ожидаемо).
-        fetch('/api/comments')
+        fetch('/api/comments', commentsListFetchInit)
           .then(res => res.json())
           .then(list => setComments(list))
           .catch(() => {})
@@ -746,9 +760,7 @@ export default function ReviewsPage() {
 
                       <div className="mb-4">
                         <p className="text-white text-base md:text-lg leading-relaxed whitespace-pre-wrap">
-                          {c.translations && c.translations[currentLanguage] 
-                                ? c.translations[currentLanguage] 
-                            : c.message}
+                          {getCommentDisplayMessage(c, currentLanguage)}
                         </p>
                       </div>
 

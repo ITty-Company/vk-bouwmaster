@@ -5,6 +5,7 @@ import Link from "next/link"
 import {Carousel, TestimonialCard} from "@/components/ui/retro-testimonial";
 import {iTestimonial} from "@/components/ui/retro-testimonial";
 import { useTranslations } from "@/hooks/useTranslations"
+import { commentsListFetchInit } from "@/lib/comments-client"
 
 type Comment = {
   id: string
@@ -25,15 +26,27 @@ const RetroTestimonialDemo = () => {
   const [reviews, setReviews] = useState<Comment[]>([])
 
   useEffect(() => {
-    ;(async () => {
+    const load = async () => {
       try {
-        const res = await fetch('/api/comments')
+        const res = await fetch('/api/comments', commentsListFetchInit)
         if (res.ok) {
           const list = await res.json()
           setReviews(Array.isArray(list) ? list : [])
         }
       } catch {}
-    })()
+    }
+    load()
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') load()
+    }
+    window.addEventListener('focus', load)
+    document.addEventListener('visibilitychange', onVisible)
+    const interval = setInterval(load, 45_000)
+    return () => {
+      window.removeEventListener('focus', load)
+      document.removeEventListener('visibilitychange', onVisible)
+      clearInterval(interval)
+    }
   }, [])
 
   if (reviews.length === 0) {

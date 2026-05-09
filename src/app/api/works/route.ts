@@ -230,7 +230,13 @@ export async function GET(request: NextRequest) {
       console.log(`[Works API] ✅ Works saved successfully`);
     }
 
-    return NextResponse.json(works);
+    const res = NextResponse.json(works);
+    /* Публичный сайт: браузер/CDN может переиспользовать ответ; админка запрашивает с cache: 'no-store'. */
+    res.headers.set(
+      'Cache-Control',
+      'public, max-age=15, s-maxage=60, stale-while-revalidate=300'
+    );
+    return res;
   } catch (error) {
     return NextResponse.json(
       { error: 'Ошибка при чтении данных' },

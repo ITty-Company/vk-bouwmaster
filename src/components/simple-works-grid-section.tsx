@@ -6,6 +6,7 @@ import Link from 'next/link'
 import {useScrollAnimation} from '@/hooks/useScrollAnimation'
 import {useTranslations} from '@/hooks/useTranslations'
 import {getTranslatedWork} from '@/lib/translations'
+import {IMAGE_BLUR_DATA_URL} from '@/lib/blur-placeholder'
 
 type Work = {
   id: string
@@ -66,13 +67,10 @@ export function SimpleWorksGridSection() {
     
     window.addEventListener('focus', onFocus)
     document.addEventListener('visibilitychange', onVisible)
-    
-    const interval = setInterval(fetchWorks, 15000)
-    
+
     return () => {
       window.removeEventListener('focus', onFocus)
       document.removeEventListener('visibilitychange', onVisible)
-      clearInterval(interval)
     }
   }, [])
 
@@ -124,7 +122,7 @@ export function SimpleWorksGridSection() {
               className="flex gap-3 sm:gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar px-2 sm:px-4"
               style={{ WebkitOverflowScrolling: 'touch' }}
             >
-              {items.map((w) => {
+              {items.map((w, idx) => {
                 const translated = (w as any).translations ? getTranslatedWork(w as any, currentLanguage) : { title: w.title }
                 return (
                   <Link
@@ -134,7 +132,17 @@ export function SimpleWorksGridSection() {
                     aria-label={`Открыть галерею проекта: ${translated.title}`}
                   >
                     <div className="relative w-full aspect-[9/16]">
-                      <Image src={w.mainImage} alt={translated.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 640px) 160px, (max-width: 768px) 200px, (max-width: 1024px) 220px, 240px" />
+                      <Image
+                        src={w.mainImage}
+                        alt={translated.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 640px) 160px, (max-width: 768px) 200px, (max-width: 1024px) 220px, 240px"
+                        placeholder="blur"
+                        blurDataURL={IMAGE_BLUR_DATA_URL}
+                        priority={idx < 6}
+                        quality={75}
+                      />
                     </div>
                     <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/80 to-transparent">
                       <div className="text-white text-sm sm:text-base font-semibold line-clamp-1 break-words">{translated.title}</div>

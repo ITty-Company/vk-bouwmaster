@@ -514,10 +514,10 @@
     "id": "1746729601023",
     "projectId": "general",
     "name": "André",
-    "message": "Buitenverlichting aangesloten en sensor ingesteld. Werkt zoals beloofd; geen rare flikkeringen meer ’s nachts.",
+    "message": "Oude wandtegels badkamer eraf laten halen en nieuwe keramiek tot het plafond gezet. Voegen strak, hoeken netjes afgewerkt met profiel — geen scherp randje meer.",
     "createdAt": "2026-04-23T11:45:00.000Z",
     "approved": true,
-    "rating": 4,
+    "rating": 5,
     "city": "Venlo"
   },
   {
@@ -525,7 +525,7 @@
     "projectId": "general",
     "name": "Kim",
     "surname": "Linden",
-    "message": "Wasmachine-aansluiting verplaatst en leidingen netjes weggewerkt achter de keukenkast. Geen lekken, geen geluid.",
+    "message": "Keukenwand achter het fornuis met grote formaat tegels; nauwelijks voegen zichtbaar. Snede rond het raam perfect haaks — vakwerk.",
     "createdAt": "2026-04-27T08:30:00.000Z",
     "approved": true,
     "rating": 5,
@@ -535,7 +535,7 @@
     "id": "1746729601025",
     "projectId": "general",
     "name": "Stefan",
-    "message": "Plinten en deurlijsten in het hele appartement vervangen. Één kleurverschil gemeld — de volgende dag opnieuw gebracht en gemonteerd. Klantgericht.",
+    "message": "Hal en toilet volledig betegeld met dezelfde vloertegel als voorzetwand in een klein dessin. Overgang naar parket met strip netjes geplaatst.",
     "createdAt": "2026-05-01T15:15:00.000Z",
     "approved": true,
     "rating": 5,
@@ -546,10 +546,315 @@
     "projectId": "general",
     "name": "Mila",
     "surname": "Novak",
-    "message": "Complete badkamer renovatie in vier weken afgerond. Dagelijks kort contact over voortgang; eindresultaat modern en onderhoudsvriendelijk.",
+    "message": "Douchecabine opnieuw ingemeten; tegelwerk tot op de vloer met afloop naar het putje. Water loopt overal weg, voegen drogen goed.",
     "createdAt": "2026-05-06T12:00:00.000Z",
     "approved": true,
     "rating": 5,
     "city": "Alkmaar"
+  },
+  {
+    "id": "1746729601027",
+    "projectId": "general",
+    "name": "Thomas",
+    "surname": "de Vries",
+    "message": "Terras oude betontegels verwijderd, ondergrond geëgaliseerd en nieuwe keramische terrastegels gelegd. Voeg zandkleur — na regen geen plassen tussen de tegels.",
+    "createdAt": "2026-05-07T09:20:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Groningen"
+  },
+  {
+    "id": "1746729601028",
+    "projectId": "general",
+    "name": "Fatima",
+    "message": "Badkamervloer met slipvrije tegels en mozaïekstrook in de inloopdouche. Kleine mozaïektegels perfect uitgelijnd — geen wiebelende randjes.",
+    "createdAt": "2026-05-07T14:45:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Arnhem"
+  },
+  {
+    "id": "1746729601029",
+    "projectId": "general",
+    "name": "Rick",
+    "surname": "Jansen",
+    "message": "Bestaande tegelvloer keuken laten verlagen ivm drempel; nieuwe tegels in visgraatmotief gelegd. Patroon loopt strak door onder het kookeiland.",
+    "createdAt": "2026-05-08T08:10:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Maastricht"
+  },
+  {
+    "id": "1746729601030",
+    "projectId": "general",
+    "name": "Sophie",
+    "message": "Tuinpad met dikke antraciet tegels op bedding zand-cement. Randen met opsluitband mee uitgelijnd met het terras — heel rustig beeld.",
+    "createdAt": "2026-05-08T11:30:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Zwolle"
+  },
+  {
+    "id": "1746729601031",
+    "projectId": "general",
+    "name": "Henk",
+    "message": "Scheurtjes in oude voegen badkamermuur — voegen uit-gekapt en opnieuw ingevoegd met kleurechte kit. Geen losse tegels meer.",
+    "createdAt": "2026-05-08T16:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Haarlem"
+  },
+  {
+    "id": "1746729601032",
+    "projectId": "general",
+    "name": "Ingrid",
+    "surname": "Bakker",
+    "message": "Wand achter het bad met hexagon tegels; zwaar materiaal maar overal gelijke naad. Siliconenrand tussen bad en tegel netjes strak.",
+    "createdAt": "2026-05-09T07:40:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Leiden"
+  },
+  {
+    "id": "1746729601033",
+    "projectId": "general",
+    "name": "Youssef",
+    "message": "Renovatie kleine wc: oude tegels eraf, wand vlak gestuukt waar nodig en nieuwe witte tegel tot halverwege met donkere plinttegel.",
+    "createdAt": "2026-05-09T10:15:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Apeldoorn"
+  },
+  {
+    "id": "1746729601034",
+    "projectId": "general",
+    "name": "Petra",
+    "message": "Trapgat randen afgevlakt en voorzien van traptreden met antislip keramiek. Trede naar trede gelijke overhang — voelt stevig aan.",
+    "createdAt": "2026-05-09T13:50:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Almere"
+  },
+  {
+    "id": "1746729601035",
+    "projectId": "general",
+    "name": "Lucas",
+    "surname": "Meijer",
+    "message": "Kelder bijkeuken vochtbestendig betegeld tot aan leidinggoten; hoeken afgerond met strip voor makkelijk schoonmaken. Precies wat we nodig hadden.",
+    "createdAt": "2026-05-09T17:25:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Nijmegen"
+  },
+  {
+    "id": "1746729601036",
+    "projectId": "general",
+    "name": "Chantal",
+    "message": "Nisjes in de douche met dezelfde tegel als de wand maar ander formaat — doorlopende lijn in het voegpatroon. Oog voor detail.",
+    "createdAt": "2026-05-09T19:10:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Enschede"
+  },
+  {
+    "id": "1746729601037",
+    "projectId": "general",
+    "name": "Bas",
+    "message": "Woonkamervloer grote tegels 120×60 gelegd zonder mavertanding zichtbaar in het licht. Laser gebruikt voor rechte startrij — super strak.",
+    "createdAt": "2026-05-10T08:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Utrecht"
+  },
+  {
+    "id": "1746729601038",
+    "projectId": "general",
+    "name": "Nora",
+    "surname": "Elzinga",
+    "message": "Marmerlook tegels badkamer; alle boorgaten voor accessoires vooraf besproken zodat er geen scheur in de glazuur ontstond.",
+    "createdAt": "2026-05-10T09:30:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Den Bosch"
+  },
+  {
+    "id": "1746729601039",
+    "projectId": "general",
+    "name": "Emiel",
+    "message": "Oude kit bij het bad verwijderd, rand opnieuw ingevoegd en gesiliconeerd. Geen bruine rand meer tussen tegel en bad.",
+    "createdAt": "2026-05-10T11:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Rotterdam"
+  },
+  {
+    "id": "1746729601040",
+    "projectId": "general",
+    "name": "Leonie",
+    "message": "Keuken betegeling alleen onder de bovenkastjes — kleine muurvlak maar haaks gezaagd rond het raamkozijn zonder chip.",
+    "createdAt": "2026-05-10T12:15:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Haarlem"
+  },
+  {
+    "id": "1746729601041",
+    "projectId": "general",
+    "name": "Marc",
+    "message": "Pad naar schuur met keramische tegels op grindbed; voeg met drainage-gruis eronder — na zware regen geen schimmel onder de tegels.",
+    "createdAt": "2026-05-10T14:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Breda"
+  },
+  {
+    "id": "1746729601042",
+    "projectId": "general",
+    "name": "Tessa",
+    "message": "Betegelde plint in badkamer vervangen door tegel op hoogte van de deurlijsten — één doorlopende lijn, rustiger voor het oog.",
+    "createdAt": "2026-05-10T15:40:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Amsterdam"
+  },
+  {
+    "id": "1746729601043",
+    "projectId": "general",
+    "name": "Ruben",
+    "message": "Schuine wand onder het dak in badkamer uitgelijnd met wiggen achter de tegel — geen holle klank bij tikken, overal vol kleef.",
+    "createdAt": "2026-05-11T08:20:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Tilburg"
+  },
+  {
+    "id": "1746729601044",
+    "projectId": "general",
+    "name": "Iris",
+    "message": "Natuursteenlook buiten bij voordeur; impregneren na het voegen uitgelegd en meegegeven — water parelt nu af.",
+    "createdAt": "2026-05-11T10:50:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Hilversum"
+  },
+  {
+    "id": "1746729601045",
+    "projectId": "general",
+    "name": "Joris",
+    "message": "Renovlies verwijderd en wand voorbereid; daarna volledig betegeld met langwerpige tegels verticaal geplaatst — ruimte lijkt hoger.",
+    "createdAt": "2026-05-11T13:05:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Eindhoven"
+  },
+  {
+    "id": "1746729601046",
+    "projectId": "general",
+    "name": "Selma",
+    "message": "Voegen terras opnieuw ingestrooid na vorstschade; losse tegels vastgezet zonder alles te vervangen — eerlijk advies.",
+    "createdAt": "2026-05-11T15:30:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Den Haag"
+  },
+  {
+    "id": "1746729601047",
+    "projectId": "general",
+    "name": "Daan",
+    "message": "Hoek douchebankje met afgeschuinde tegelhoeken — geen scherpe punt waar vuil blijft zitten. Schoonmaak nu veel sneller.",
+    "createdAt": "2026-05-12T09:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Gouda"
+  },
+  {
+    "id": "1746729601048",
+    "projectId": "general",
+    "name": "Mirjam",
+    "message": "Zolderbad gedeeltelijk betegeld waar de douche komt; rest geschilderd — netjes maskerwerk tussen verf en tegelrand.",
+    "createdAt": "2026-05-12T11:45:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Zaandam"
+  },
+  {
+    "id": "1746729601049",
+    "projectId": "general",
+    "name": "Olivier",
+    "message": "Tegelzetwerk bij nieuwe voordeur drempel afgestemd op bestaand pad — geen trip hazard meer tussen straat en hal.",
+    "createdAt": "2026-05-12T14:20:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Roosendaal"
+  },
+  {
+    "id": "1746729601050",
+    "projectId": "general",
+    "name": "Elise",
+    "message": "Badkamermeubel tussen twee tegelwanden ingepast; zijkanten strak tegen het voegbeeld aan zaagwerk miniem zichtbaar.",
+    "createdAt": "2026-05-13T08:30:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Alphen"
+  },
+  {
+    "id": "1746729601051",
+    "projectId": "general",
+    "name": "Victor",
+    "message": "Glasmozaïek rand om het bad als accent; kleine tegels maar gelijkmatige voegbreedte — geen rommelige rand bij het badrand.",
+    "createdAt": "2026-05-13T10:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Hoorn"
+  },
+  {
+    "id": "1746729601052",
+    "projectId": "general",
+    "name": "Floor",
+    "message": "Carrelage buiten bij zwembadje kinderen: antislip voorkant tegel en voeg kleur op kleur met het terras achter.",
+    "createdAt": "2026-05-13T12:30:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Maassluis"
+  },
+  {
+    "id": "1746729601053",
+    "projectId": "general",
+    "name": "Sander",
+    "message": "Keukenvloer eerst oude PVC verwijderd, onderlaag vlak geschuurd en daarna keramiek gelegd — geen hol klikgeluid meer.",
+    "createdAt": "2026-05-13T15:00:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Hoofddorp"
+  },
+  {
+    "id": "1746729601054",
+    "projectId": "general",
+    "name": "Renée",
+    "message": "Hal met Portugese tegellook keramiek; patroon doorgezet in het hoeknis alleen tot aan het deurkozijn — netjes afgemeten.",
+    "createdAt": "2026-05-14T09:15:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Vlaardingen"
+  },
+  {
+    "id": "1746729601055",
+    "projectId": "general",
+    "name": "Pim",
+    "message": "Douchewand halfhoog betegeld met afdeklijst bovenkant waterpas — geen diepe richel waar zeep blijft liggen.",
+    "createdAt": "2026-05-14T11:40:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Schiedam"
+  },
+  {
+    "id": "1746729601056",
+    "projectId": "general",
+    "name": "Caroline",
+    "message": "Complete tegelstrip slaapkamer ensuite naar badkamer gelegd met dezelfde vloertegel als douche — ruimtes lopen visueel in elkaar over.",
+    "createdAt": "2026-05-14T14:25:00.000Z",
+    "approved": true,
+    "rating": 5,
+    "city": "Leiderdorp"
   }
 ]

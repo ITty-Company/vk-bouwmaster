@@ -7,6 +7,8 @@ import Link from 'next/link'
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from '@/hooks/useTranslations'
+import { commentsListFetchInit } from '@/lib/comments-client'
+import { getCommentDisplayMessage } from '@/lib/comment-display'
 
 type Comment = {
   id: string
@@ -57,14 +59,14 @@ export default function ReviewMediaPage() {
   const fetchReview = async () => {
     try {
       setLoading(true)
-      const response = await fetch('/api/comments?includeUnapproved=1')
+      const response = await fetch('/api/comments?includeUnapproved=1', { cache: 'no-store' })
       if (response.ok) {
         const data = await response.json()
         const foundReview = data.find((c: Comment) => c.id === reviewId)
         if (foundReview) {
           setReview(foundReview)
         } else {
-          const response2 = await fetch('/api/comments')
+          const response2 = await fetch('/api/comments', commentsListFetchInit)
           if (response2.ok) {
             const data2 = await response2.json()
             const foundReview2 = data2.find((c: Comment) => c.id === reviewId)
@@ -216,9 +218,7 @@ export default function ReviewMediaPage() {
             )}
             <div className="bg-gradient-to-br from-gray-900/90 via-gray-900/80 to-gray-900/90 border-2 border-blue-700/40 rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl shadow-blue-900/20 backdrop-blur-sm">
               <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed whitespace-pre-wrap">
-                {review.translations && review.translations[currentLanguage] 
-                  ? review.translations[currentLanguage] 
-                  : review.message}
+{getCommentDisplayMessage(review, currentLanguage)}
               </p>
           </div>
           </motion.div>
@@ -291,9 +291,7 @@ export default function ReviewMediaPage() {
           )}
           <div className="bg-gradient-to-br from-gray-900/90 via-gray-900/80 to-gray-900/90 border-2 border-blue-700/40 rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl shadow-blue-900/20 backdrop-blur-sm">
             <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed whitespace-pre-wrap">
-            {review.translations && review.translations[currentLanguage] 
-              ? review.translations[currentLanguage] 
-              : review.message}
+{getCommentDisplayMessage(review, currentLanguage)}
           </p>
           </div>
         </motion.div>
