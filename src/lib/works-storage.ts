@@ -145,10 +145,57 @@ export function mergeWorks(seed: PortfolioWork[], state: WorksRuntimeState): Por
   return [...map.values()]
 }
 
+/** Раскодирует случайно записанный URL-encoding в строках (ошибка копирования / двойное кодирование). */
+const PCT_SEQ = /%[0-9A-Fa-f]{2}/g
+
+function tryDecodeAccidentalPercentEncoding(s: string): string {
+  if (!s || typeof s !== 'string') return s
+  const hits = s.match(PCT_SEQ)
+  if (!hits || hits.length < 3) return s
+  let out = s
+  for (let pass = 0; pass < 2; pass++) {
+    if (!/%[0-9A-Fa-f]{2}/.test(out)) break
+    try {
+      const next = decodeURIComponent(out.replace(/\+/g, ' '))
+      if (next === out) break
+      out = next
+    } catch {
+      break
+    }
+  }
+  return out
+}
+
+function sanitizeTranslationBlock(t: WorkTranslations): WorkTranslations {
+  return {
+    title: tryDecodeAccidentalPercentEncoding(t.title),
+    description: tryDecodeAccidentalPercentEncoding(t.description),
+    category: tryDecodeAccidentalPercentEncoding(t.category),
+    city: t.city !== undefined ? tryDecodeAccidentalPercentEncoding(t.city) : undefined,
+  }
+}
+
+function sanitizePortfolioWork(work: PortfolioWork): PortfolioWork {
+  const translations = work.translations
+    ? Object.fromEntries(
+        Object.entries(work.translations).map(([lang, block]) => [lang, sanitizeTranslationBlock(block)])
+      )
+    : undefined
+  return {
+    ...work,
+    title: tryDecodeAccidentalPercentEncoding(work.title),
+    description: tryDecodeAccidentalPercentEncoding(work.description),
+    category: tryDecodeAccidentalPercentEncoding(work.category),
+    city: work.city !== undefined ? tryDecodeAccidentalPercentEncoding(work.city) : undefined,
+    translations,
+  }
+}
+
 export function readMergedWorks(): PortfolioWork[] {
   const seed = loadSeedWorks()
   const state = loadRuntimeWorksState()
-  return mergeWorks(seed, state)
+  const merged = mergeWorks(seed, state)
+  return merged.map(sanitizePortfolioWork)
 }
 
 export type PersistWorksMergedOptions = {
