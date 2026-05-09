@@ -1577,8 +1577,8 @@ export default function AdminPage() {
               )}
               
               <div className="elegant-card p-4 sm:p-6 lg:p-8">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6">
-                  <h2 className="text-xl sm:text-2xl font-bold elegant-title">
+                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between mb-4 sm:mb-6">
+                  <h2 className="text-xl sm:text-2xl font-bold elegant-title shrink-0 break-normal">
                     Отзывы ({reviews.length})
                   </h2>
                   <div className="flex flex-wrap gap-2 shrink-0">
@@ -2056,8 +2056,8 @@ export default function AdminPage() {
               </div>
 
               <div className="elegant-card p-4 sm:p-6 lg:p-8">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6">
-                  <h2 className="text-xl sm:text-2xl font-bold elegant-title">Работы ({works.length})</h2>
+                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between mb-4 sm:mb-6">
+                  <h2 className="text-xl sm:text-2xl font-bold elegant-title shrink-0 break-normal">Работы ({works.length})</h2>
                   <button
                     type="button"
                     disabled={uploading}
