@@ -123,10 +123,10 @@ async function sendTelegramHtml(text: string, logLabel: string): Promise<boolean
   return okAny
 }
 
-function uniqueUrls(urls: Array<string | undefined | null>): string[] {
+function uniqueUrls(urls?: Array<string | undefined | null> | null): string[] {
   const seen = new Set<string>()
   const out: string[] = []
-  for (const raw of urls) {
+  for (const raw of urls || []) {
     const u = String(raw || '').trim()
     if (!u || seen.has(u)) continue
     seen.add(u)
@@ -277,7 +277,7 @@ async function sendTelegramPhotos(
   const cfg = telegramConfig()
   if (!cfg) return
 
-  const photos = uniqueUrls(photoUrls)
+  const photos = uniqueUrls(photoUrls ?? [])
     .map((src) => resolvePhoto(src, options.siteUrl))
     .filter((p): p is ResolvedPhoto => p != null)
     .slice(0, MAX_ALBUM)
