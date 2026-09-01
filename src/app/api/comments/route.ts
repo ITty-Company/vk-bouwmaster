@@ -156,7 +156,9 @@ export async function POST(request: NextRequest) {
         projectId: comment.projectId,
         city: comment.city,
         rating: comment.rating,
-        photosCount: comment.photos?.length,
+        photos: comment.photos,
+        videos: comment.videos,
+        profileImage: comment.profileImage,
       },
       { siteUrl }
     ).catch((err) => console.error('Telegram sending failed:', err))

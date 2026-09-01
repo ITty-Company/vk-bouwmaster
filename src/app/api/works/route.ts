@@ -299,7 +299,7 @@ export async function POST(request: NextRequest) {
         city: newWork.city,
         projectId: newWork.projectId,
         workDate: newWork.workDate,
-        imagesCount: (newWork.images?.length || 0) + (newWork.mainImage ? 1 : 0),
+        photos: [newWork.mainImage, ...(newWork.images || [])].filter(Boolean),
       },
       { siteUrl }
     ).catch((err) => console.error('Telegram sending failed:', err));
