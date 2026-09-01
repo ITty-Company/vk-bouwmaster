@@ -65,11 +65,12 @@ SMTP_USER=your-email
 SMTP_PASS=your-password
 RECIPIENT_EMAIL=your-recipient-email
 
-# Telegram уведомления (для контактной формы)
-# Создайте бота через @BotFather и получите token.
-# CHAT_ID: ваш id или id группы/канала (для групп обычно отрицательный).
+# Telegram уведомления (заявки, новые работы, новые отзывы)
+# 1. Создайте бота через @BotFather и получите token.
+# 2. Добавьте бота в группу и напишите там сообщение.
+# 3. CHAT_ID группы обычно отрицательный (для супергрупп вида -100…).
 TELEGRAM_BOT_TOKEN=123456:ABCDEF-your-token
-TELEGRAM_CHAT_ID=123456789
+TELEGRAM_CHAT_ID=-1001234567890
 
 # OpenAI API (для переводов, опционально)
 OPENAI_API_KEY=your-openai-key

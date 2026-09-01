@@ -13,6 +13,10 @@ import {
   sourceLangCodeFromMessage,
 } from '@/lib/comment-translations'
 import { autoTranslateOnFetch } from '@/lib/translation-languages'
+import {
+  notifyTelegramNewComment,
+  publicSiteUrlFromRequest,
+} from '@/lib/telegram-contact-notify'
 
 /** Admin approve / message edit can take a while (many translations). */
 export const maxDuration = 300
@@ -140,6 +144,22 @@ export async function POST(request: NextRequest) {
     }
     list.push(comment)
     writeComments(list)
+
+    const siteUrl = publicSiteUrlFromRequest(request)
+    notifyTelegramNewComment(
+      {
+        id: comment.id,
+        name: comment.name,
+        surname: comment.surname,
+        message: comment.message,
+        createdAt: comment.createdAt,
+        projectId: comment.projectId,
+        city: comment.city,
+        rating: comment.rating,
+        photosCount: comment.photos?.length,
+      },
+      { siteUrl }
+    ).catch((err) => console.error('Telegram sending failed:', err))
 
     const commentId = comment.id
     after(async () => {

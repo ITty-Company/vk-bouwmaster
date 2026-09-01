@@ -10,6 +10,10 @@ import {
 } from '@/lib/works-storage';
 import { TRANSLATION_LANGUAGE_KEYS, autoTranslateOnFetch } from '@/lib/translation-languages';
 import { workTranslateFingerprint } from '@/lib/content-fingerprint';
+import {
+  notifyTelegramNewWork,
+  publicSiteUrlFromRequest,
+} from '@/lib/telegram-contact-notify';
 
 export type { PortfolioWork, WorkTranslations } from '@/lib/works-storage';
 
@@ -284,6 +288,21 @@ export async function POST(request: NextRequest) {
     await writeWorksData(works);
 
     console.log('Работа успешно сохранена. Всего работ:', works.length);
+
+    const siteUrl = publicSiteUrlFromRequest(request);
+    notifyTelegramNewWork(
+      {
+        id: newWork.id,
+        title: newWork.title,
+        description: newWork.description,
+        category: newWork.category,
+        city: newWork.city,
+        projectId: newWork.projectId,
+        workDate: newWork.workDate,
+        imagesCount: (newWork.images?.length || 0) + (newWork.mainImage ? 1 : 0),
+      },
+      { siteUrl }
+    ).catch((err) => console.error('Telegram sending failed:', err));
 
     return NextResponse.json({ success: true, work: newWork });
   } catch (error) {
