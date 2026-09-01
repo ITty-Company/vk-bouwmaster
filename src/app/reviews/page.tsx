@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -8,9 +8,9 @@ import { motion } from 'framer-motion'
 import { useTranslations } from '@/hooks/useTranslations'
 import { GradientButton } from '@/components/ui/gradient-button'
 import { commentsListFetchInit } from '@/lib/comments-client'
-import { subscribeCommentsRefresh } from '@/lib/comments-sync'
+import { notifyCommentsChanged, subscribeCommentsRefresh } from '@/lib/comments-sync'
 import { getCommentDisplayMessage } from '@/lib/comment-display'
-import { Star, MessageSquare, Camera, MapPin, User, CheckCircle2, Heart } from 'lucide-react'
+import { Star, MessageSquare, Camera, MapPin, User, CheckCircle2 } from 'lucide-react'
 
 type Comment = { id: string; projectId: string; name: string; surname?: string; message: string; createdAt: string; photos?: string[]; videos?: string[]; rating?: number; city?: string; profileImage?: string; translations?: Record<string, string> }
 
@@ -41,10 +41,12 @@ export default function ReviewsPage() {
   const [sending, setSending] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [dragActivePhotos, setDragActivePhotos] = useState(false)
-  const [showThankYou, setShowThankYou] = useState(false)
+  const [submittedNotice, setSubmittedNotice] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [form, setForm] = useState({ name: '', surname: '', message: '', rating: 5, city: '', profileImage: '' })
   const [formPhotos, setFormPhotos] = useState<string[]>([])
+  const lastPostedRef = useRef<Comment | null>(null)
+  const listSectionRef = useRef<HTMLDivElement | null>(null)
 
   const handleFileUpload = async (file: File): Promise<string | null> => {
     const formData = new FormData()
@@ -97,11 +99,24 @@ export default function ReviewsPage() {
     e.target.value = ''
   }
 
+  const mergeCommentsFromServer = (list: Comment[]) => {
+    if (!Array.isArray(list)) return
+    const posted = lastPostedRef.current
+    const map = new Map<string, Comment>()
+    for (const c of list) {
+      if (c?.id) map.set(c.id, c)
+    }
+    if (posted?.id && !map.has(posted.id)) {
+      map.set(posted.id, posted)
+    }
+    setComments([...map.values()].sort((a, b) => b.createdAt.localeCompare(a.createdAt)))
+  }
+
   useEffect(() => {
     const load = async () => {
       try {
         const res = await fetch('/api/comments', commentsListFetchInit)
-        if (res.ok) setComments(await res.json())
+        if (res.ok) mergeCommentsFromServer(await res.json())
       } catch {}
     }
     load()
@@ -124,10 +139,10 @@ export default function ReviewsPage() {
   }, [currentLanguage])
 
   useEffect(() => {
-    if (showThankYou) {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }, [showThankYou])
+    if (!submittedNotice) return
+    const timer = setTimeout(() => setSubmittedNotice(false), 8000)
+    return () => clearTimeout(timer)
+  }, [submittedNotice])
 
 
 
@@ -157,15 +172,25 @@ export default function ReviewsPage() {
         setForm({ name: '', surname: '', message: '', rating: 5, city: '', profileImage: '' })
         setFormPhotos([])
         setError(null)
-        // Публичный GET отдаёт только approved — список не изменится до модерации (это ожидаемо).
+        if (data.comment?.id) {
+          lastPostedRef.current = data.comment as Comment
+          setComments((prev) => {
+            const next = [data.comment as Comment, ...prev.filter((c) => c.id !== data.comment.id)]
+            next.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+            return next
+          })
+        }
+        notifyCommentsChanged()
         fetch('/api/comments', commentsListFetchInit)
-          .then(res => res.json())
-          .then(list => setComments(list))
+          .then((res) => res.json())
+          .then((list) => mergeCommentsFromServer(list))
           .catch(() => {})
 
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        setShowThankYou(true)
+        setSubmittedNotice(true)
         setSending(false)
+        requestAnimationFrame(() => {
+          listSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        })
       } else {
         const reviewsText = t.reviews || ({} as any)
         setError(data.error || reviewsText.form?.errorSubmitting || 'Error submitting review. Please try again.')
@@ -221,103 +246,6 @@ export default function ReviewsPage() {
       viewAllMedia: 'View all photos and videos →'
     }
   }) as typeof t.reviews
-
-  if (showThankYou) {
-    const thankYouText = t.thankYou || {
-      title: 'Thank you for your review!',
-      message1: 'I am very happy that you shared your experience!',
-      message2: 'I always strive to be better for you. Your review will help me become even better.',
-      backToReviews: 'Back to reviews'
-    }
-
-    return (
-      <div className="unified-gradient-bg fixed inset-0 z-50 text-white flex items-center justify-center overflow-auto" style={{ minHeight: '100vh', width: '100vw' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 w-full">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className="text-center"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-              className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 mb-8"
-            >
-              <CheckCircle2 className="h-12 w-12 text-white" />
-            </motion.div>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6"
-            >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-300 animate-gradient bg-[length:200%_auto]">
-                {thankYouText.title}
-              </span>
-            </motion.h1>
-            
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="flex items-center justify-center mb-8"
-            >
-              <motion.div
-                animate={{ scale: [1, 1.15, 1] }}
-                transition={{ delay: 0.8, duration: 0.8, ease: "easeInOut" }}
-              >
-                <Heart className="h-8 w-8 text-red-500 fill-red-500" />
-              </motion.div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
-              className="bg-gradient-to-br from-gray-900/90 via-gray-900/80 to-gray-900/90 border-2 border-blue-700/40 rounded-2xl p-8 md:p-12 mb-8"
-            >
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9, duration: 0.5 }}
-                className="text-gray-200 text-xl md:text-2xl mb-4 leading-relaxed"
-              >
-                {thankYouText.message1}
-              </motion.p>
-              
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.1, duration: 0.5 }}
-                className="text-gray-300 text-lg md:text-xl leading-relaxed"
-              >
-                {thankYouText.message2}
-              </motion.p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 0.5 }}
-            >
-              <GradientButton
-                onClick={() => {
-                  setShowThankYou(false)
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
-                }}
-                className="text-lg px-8 py-4"
-              >
-                {thankYouText.backToReviews}
-              </GradientButton>
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="unified-gradient-bg min-h-screen text-white pt-32 sm:pt-40 pb-16">
@@ -602,15 +530,26 @@ export default function ReviewsPage() {
                   </span>
                 )}
               </GradientButton>
+              <p className="text-xs text-gray-400 text-center mt-3">
+                {reviewsText.form?.reviewWillAppear || 'Your review will appear on this page immediately'}
+              </p>
             </motion.div>
           </motion.form>
 
+          <div ref={listSectionRef} className="lg:col-span-2">
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="lg:col-span-2"
           >
+            {submittedNotice && (
+              <div className="mb-6 flex items-start gap-3 rounded-xl border border-green-500/40 bg-green-900/30 px-4 py-3 text-green-100">
+                <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                <p className="text-sm sm:text-base">
+                  {t.thankYou?.message3 || reviewsText.form?.reviewWillAppear || 'Your review is now visible in the list below.'}
+                </p>
+              </div>
+            )}
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl md:text-3xl font-bold">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-cyan-300">
@@ -775,6 +714,7 @@ export default function ReviewsPage() {
               </div>
             )}
           </motion.div>
+          </div>
         </div>
       </div>
     </div>

@@ -56,21 +56,12 @@ export default function ReviewMediaPage() {
   const fetchReview = useCallback(async () => {
     try {
       setLoading(true)
-      const response = await fetch('/api/comments?includeUnapproved=1', { cache: 'no-store' })
+      const response = await fetch('/api/comments', commentsListFetchInit)
       if (response.ok) {
         const data = await response.json()
         const foundReview = data.find((c: Comment) => c.id === reviewId)
         if (foundReview) {
           setReview(foundReview)
-        } else {
-          const response2 = await fetch('/api/comments', commentsListFetchInit)
-          if (response2.ok) {
-            const data2 = await response2.json()
-            const foundReview2 = data2.find((c: Comment) => c.id === reviewId)
-            if (foundReview2) {
-              setReview(foundReview2)
-            }
-          }
         }
       }
     } catch (error) {

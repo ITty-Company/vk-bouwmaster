@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse, after } from 'next/server'
 import { ensureCommentsFileWithSeed } from '@/lib/data-file-paths'
 import {
   readMergedComments,
@@ -43,39 +43,45 @@ export async function GET(request: NextRequest) {
 
     let list = readComments()
 
+    // Publish any leftover reviews that were saved under the old moderation flow.
+    if (list.some((c) => !c.approved)) {
+      list = list.map((c) => (c.approved ? c : { ...c, approved: true }))
+      writeComments(list)
+    }
+
     if (autoTranslateOnFetch()) {
-      const maxRepair = Math.max(
-        1,
-        Math.min(50, Number(process.env.COMMENTS_REPAIR_BATCH_PER_GET ?? 24))
+      const toRepair = list.filter(
+        (c) => c.approved && !commentTranslationsComplete(c.translations)
       )
-      let repaired = 0
-      let dirty = false
-      const next: Comment[] = []
-      for (const c of list) {
-        if (
-          !c.approved ||
-          commentTranslationsComplete(c.translations) ||
-          repaired >= maxRepair
-        ) {
-          next.push(c)
-          continue
-        }
-        repaired++
-        try {
-          const translations = await fillMissingCommentTranslations(
-            c.message,
-            c.translations
+      if (toRepair.length > 0) {
+        after(async () => {
+          const maxRepair = Math.max(
+            1,
+            Math.min(50, Number(process.env.COMMENTS_REPAIR_BATCH_PER_GET ?? 24))
           )
-          next.push({ ...c, translations })
-          dirty = true
-        } catch (e) {
-          console.error('[comments GET] Failed to repair translations for', c.id, e)
-          next.push(c)
-        }
-      }
-      if (dirty) {
-        writeComments(next)
-        list = next
+          let repaired = 0
+          const translatedById = new Map<string, Comment>()
+          for (const c of toRepair) {
+            if (repaired >= maxRepair) break
+            repaired++
+            try {
+              const translations = await fillMissingCommentTranslations(
+                c.message,
+                c.translations
+              )
+              translatedById.set(c.id, { ...c, translations })
+            } catch (e) {
+              console.error('[comments GET] Failed to repair translations for', c.id, e)
+            }
+          }
+          if (translatedById.size === 0) return
+          const current = readComments()
+          const merged = current.map((c) => {
+            const updated = translatedById.get(c.id)
+            return updated?.translations ? { ...c, translations: updated.translations } : c
+          })
+          writeComments(merged)
+        })
       }
     }
 
@@ -112,8 +118,8 @@ export async function POST(request: NextRequest) {
     const rating = body.rating !== undefined ? Math.max(1, Math.min(5, Number(body.rating))) : undefined
     const profileImage = String(body.profileImage || '').trim()
     
-    // Save quickly: only store original text keyed by detected language. Full translations run when an
-    // admin approves (PUT) or edits the message — avoids timeouts when guests submit the form.
+    // Save quickly: only store original text keyed by detected language. Remaining languages
+    // are filled on GET (autoTranslateOnFetch) or when an admin edits the message.
     const sourceLangCode = sourceLangCodeFromMessage(message)
     const translations: Record<string, string> = { [sourceLangCode]: message }
     
@@ -124,7 +130,7 @@ export async function POST(request: NextRequest) {
       surname: surname ? surname.slice(0, 80) : undefined,
       message: message.slice(0, 2000),
       createdAt: new Date().toISOString(),
-      approved: false, // requires admin approval
+      approved: true, // published immediately; admin can still edit or delete
       photos: Array.isArray(body.photos) ? body.photos : undefined,
       videos: Array.isArray(body.videos) ? body.videos : undefined,
       rating: rating,
@@ -134,6 +140,26 @@ export async function POST(request: NextRequest) {
     }
     list.push(comment)
     writeComments(list)
+
+    const commentId = comment.id
+    after(async () => {
+      try {
+        const latest = readComments()
+        const idx = latest.findIndex((c) => c.id === commentId)
+        if (idx === -1) return
+        const current = latest[idx]
+        if (commentTranslationsComplete(current.translations)) return
+        const translations = await fillMissingCommentTranslations(
+          current.message,
+          current.translations
+        )
+        latest[idx] = { ...current, translations }
+        writeComments(latest)
+      } catch (e) {
+        console.error('[comments POST] background translation failed', commentId, e)
+      }
+    })
+
     return NextResponse.json({ success: true, comment })
   } catch (e) {
     return NextResponse.json({ error: 'Failed to save comment' }, { status: 500 })
