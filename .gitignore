@@ -8,6 +8,7 @@ node_modules/
 
 # Next.js
 /.next/
+/.next.bak/
 /out/
 
 # Production
@@ -62,3 +63,7 @@ public/uploads/
 # Архив загрузок для Render (npm run uploads:pack) — не коммитить
 referenced-uploads*.tar.gz
 
+
+# Runtime-данные контактов (создаются API локально; сиды в src/lib)
+data/contact-data.json
+data/contact-messages.json
